@@ -1,0 +1,14 @@
+# BStudioB website
+
+Static public landing site for BStudioB. It contains no forms, scripts from third parties, analytics, or user-data collection.
+
+## Publishing review checklist
+
+1. Choose a hosting route: make this repository public for GitHub Pages on GitHub Free, or upgrade to a GitHub plan that supports Pages from private repositories.
+2. In repository Pages settings, select the `main` branch and `/ (root)` source.
+3. Verify `bstudiob.co.uk` with GitHub before adding DNS records.
+4. Add the custom domain in GitHub Pages settings first; then make DNS changes at the registrar.
+5. Configure the apex and `www` records exactly as GitHub provides, enable HTTPS, and verify the redirect.
+6. Review every public claim, then replace any company-pending wording with the company number when incorporation is confirmed.
+
+Never store credentials, Companies House codes, identity documents, or private operating material in this repository.
