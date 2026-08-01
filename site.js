@@ -16,12 +16,14 @@
   targets.forEach((target, index) => {
     target.classList.add('reveal');
     target.style.setProperty('--reveal-delay', `${Math.min(index * 35, 140)}ms`);
+    if (target.getBoundingClientRect().top < window.innerHeight * .92) target.classList.add('is-visible');
     observer.observe(target);
   });
 
   itemTargets.forEach((target, index) => {
     target.classList.add('reveal-item');
     target.style.setProperty('--item-delay', `${(index % 4) * 85}ms`);
+    if (target.getBoundingClientRect().top < window.innerHeight * .92) target.classList.add('is-visible');
     observer.observe(target);
   });
 })();

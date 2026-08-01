@@ -19,6 +19,7 @@ body {
   line-height: 1.5;
 }
 a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid #7f9900; outline-offset: 4px; }
 main, footer { max-width: 1280px; margin: 0 auto; padding-left: 5vw; padding-right: 5vw; }
 nav { display: flex; align-items: center; justify-content: space-between; padding-top: 30px; font-size: .88rem; }
 .wordmark { font-size: 1.35rem; font-weight: 800; letter-spacing: -.06em; }
@@ -46,6 +47,7 @@ h1 { font-size: clamp(4.4rem, 11vw, 10rem); font-weight: 750; }
 h1 em { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
 .lede { max-width: 620px; font-size: clamp(1.15rem, 2vw, 1.48rem); margin: 2.6rem 0; color: #343a42; }
 .button { display: inline-flex; gap: .7rem; align-items: center; padding: .9rem 1.15rem; border-radius: 99px; background: var(--ink); color: #fff; font-size: .92rem; font-weight: 700; }
+.waitlist-form { margin-top: 1.8rem; max-width: 470px; }.waitlist-form label { display: block; margin-bottom: .45rem; font-size: .76rem; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; }.waitlist-controls { display: flex; gap: .65rem; align-items: center; flex-wrap: wrap; }.waitlist-controls input, .compact-form input { min-width: 0; flex: 1 1 180px; border: 1px solid #9ca2aa; border-radius: 99px; padding: .82rem 1rem; color: var(--ink); background: #fff; font: inherit; }.waitlist-controls input::placeholder, .compact-form input::placeholder { color: #737b86; }.waitlist-form .button { border: 0; cursor: pointer; }.form-note { margin: .65rem 0 0; color: var(--muted); font-size: .78rem; }.form-note a { text-decoration: underline; text-underline-offset: .18em; }.honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }.light-form label, .light-form .form-note { color: #d7dce3; }.light-form .waitlist-controls input { border-color: #76808e; }.compact-form { margin-top: 1.05rem; }.compact-form input { display: block; width: 100%; padding: .65rem .8rem; border-radius: .25rem; font-size: .86rem; }.compact-form .waitlist-link { margin-top: .7rem; border: 0; padding: 0 0 .13rem; background: transparent; color: inherit; cursor: pointer; font-family: inherit; }.compact-form label { margin-bottom: .4rem; font-size: .7rem; }
 .button span, .contact a span { font-size: 1.1rem; }
 .hero-actions { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
 .text-link { font-size: .93rem; font-weight: 700; border-bottom: 1px solid currentColor; }
@@ -92,6 +94,6 @@ footer p { margin: 0; } footer div { display: flex; gap: 1.3rem; }
 @media (max-width: 700px) {
   .statement, .featured, .section-heading, .principles { grid-template-columns: 1fr; gap: .5rem; }
   .statement .eyebrow { grid-column: auto; grid-row: auto; }
-  .focus-grid, .showcase-grid, .product-list, .everyday-grid, .collection-routes, .community-products { grid-template-columns: 1fr; }.collection-intro { grid-template-columns: 1fr; gap: .75rem; }.collection-intro p:last-child { grid-column: auto; }.focus-grid article { min-height: 190px; }.showcase-card figure { height: 250px; }.product-list article { min-height: 150px; }.everyday-grid article { min-height: 250px; }.everyday-grid figure { height: 250px; }.product-feature { grid-template-columns: 1fr; min-height: 0; }.product-feature > figure { min-height: 300px; }.product-feature.reverse figure { order: 0; }.dark-feature .inspector-mark { min-height: 300px; }.collection-hero { background: none; }.nav-links a:not(:last-child) { display: none; }
+  .focus-grid, .showcase-grid, .product-list, .everyday-grid, .collection-routes, .community-products { grid-template-columns: 1fr; }.collection-intro { grid-template-columns: 1fr; gap: .75rem; }.collection-intro p:last-child { grid-column: auto; }.focus-grid article { min-height: 190px; }.showcase-card figure { height: 250px; }.product-list article { min-height: 150px; }.everyday-grid article { min-height: 250px; }.everyday-grid figure { height: 250px; }.product-feature { grid-template-columns: 1fr; min-height: 0; }.product-feature > figure { min-height: 300px; }.product-feature.reverse figure { order: 0; }.dark-feature .inspector-mark { min-height: 300px; }.collection-hero { background: none; }.nav-links { gap: .85rem; }.nav-links a { font-size: .8rem; }.waitlist-controls { align-items: stretch; }.waitlist-controls input, .waitlist-controls .button { width: 100%; flex-basis: 100%; justify-content: center; }
   footer { align-items: flex-start; flex-direction: column; }
 }
