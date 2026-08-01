@@ -92,6 +92,23 @@ footer p { margin: 0; } footer div { display: flex; gap: 1.3rem; }
 .legal h2 { font-size: 1.4rem; letter-spacing: -.03em; margin-top: 3rem; }
 .legal p, .legal li { color: #454b54; max-width: 680px; }
 @media (max-width: 700px) {
+  main, footer { padding-left: 1.15rem; padding-right: 1.15rem; }
+  nav { padding-top: 1.1rem; }
+  .hero { padding: 4.4rem 0 3.5rem; }
+  .hero h1 { font-size: clamp(3.45rem, 15vw, 5.5rem); }
+  .hero .lede { margin: 1.35rem 0 1.6rem; font-size: 1.08rem; }
+  .company-collections { padding: 3.5rem 0; }
+  .section-heading { margin-bottom: 1.8rem; }
+  .section-heading h2 { font-size: clamp(2.35rem, 11vw, 3.4rem); }
+  .section-heading > div > p { margin-top: .9rem; font-size: 1rem; }
+  .collection-route { min-height: 245px; padding: 1.15rem; }
+  .collection-route b { margin-top: 1rem; }
+  .contact { padding: 3.5rem 0 4.25rem; }
+  .contact p:not(.eyebrow) { margin-top: 1rem; }
+  .contact a { margin-top: 1.5rem; }
+  .collection-hero { padding: 4.4rem 0 3.5rem; }
+  .collection-hero > p:last-child { margin-top: 1.35rem; }
+  .product-feature > figure { min-height: 235px; }
   .statement, .featured, .section-heading, .principles { grid-template-columns: 1fr; gap: .5rem; }
   .statement .eyebrow { grid-column: auto; grid-row: auto; }
   .focus-grid, .showcase-grid, .product-list, .everyday-grid, .collection-routes, .community-products { grid-template-columns: 1fr; }.collection-intro { grid-template-columns: 1fr; gap: .75rem; }.collection-intro p:last-child { grid-column: auto; }.focus-grid article { min-height: 190px; }.showcase-card figure { height: 250px; }.product-list article { min-height: 150px; }.everyday-grid article { min-height: 250px; }.everyday-grid figure { height: 250px; }.product-feature { grid-template-columns: 1fr; min-height: 0; }.product-feature > figure { min-height: 300px; }.product-feature.reverse figure { order: 0; }.dark-feature .inspector-mark { min-height: 300px; }.collection-hero { background: none; }.nav-links { gap: .85rem; }.nav-links a { font-size: .8rem; }.waitlist-controls { align-items: stretch; }.waitlist-controls input, .waitlist-controls .button { width: 100%; flex-basis: 100%; justify-content: center; }
