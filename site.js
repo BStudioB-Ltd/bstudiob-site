@@ -30,6 +30,12 @@
 
     const note = form.querySelector('.form-note');
     if (note && config.note) note.firstChild.nodeValue = `${config.note} `;
+
+    const consent = document.createElement('label');
+    consent.className = 'form-consent';
+    consent.htmlFor = `${form.querySelector('input[type="email"]').id}-consent`;
+    consent.innerHTML = `<input id="${consent.htmlFor}" name="privacy_consent" type="checkbox" required> <span>I agree that BStudioB may use my details for ${recipient.includes('inspector') ? 'this pilot enquiry' : 'relevant product updates'}, as described in the <a href="privacy.html">Privacy notice</a>.</span>`;
+    note.before(consent);
   });
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
