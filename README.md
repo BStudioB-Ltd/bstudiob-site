@@ -1,6 +1,6 @@
 # BStudioB website
 
-Static public landing site for BStudioB. It contains no forms, scripts from third parties, analytics, or user-data collection.
+Static public landing site for BStudioB, currently focused on FlowCue, Inspector-Edu and Cards. It has no analytics or advertising scripts. The three free interest forms are delivered through FormSubmit to product-specific BStudioB mailboxes.
 
 ## Publishing review checklist
 
