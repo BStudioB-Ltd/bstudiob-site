@@ -1,6 +1,6 @@
 # BStudioB website
 
-Static public landing site for BStudioB, currently focused on FlowCue, Inspector-Edu and Cards. It has no analytics or advertising scripts. The three free interest forms are delivered through FormSubmit to product-specific BStudioB mailboxes.
+Static public landing site for BStudioB. Its current launch focus is FlowCue, Inspector-Edu and Cards; it also introduces GhP WebEditor as a web-publishing tool. It has no analytics or advertising scripts. The three free interest forms are delivered through FormSubmit to product-specific BStudioB mailboxes.
 
 ## Publishing review checklist
 
