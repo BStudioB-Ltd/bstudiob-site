@@ -15,10 +15,10 @@
       subject: 'BStudioB — Cards playtester interest',
       note: 'Free, no-obligation invitations to future Cards playtests.'
     },
-    'nathan+ghpwebeditor@bstudiob.co.uk': {
+    'nathan+buildy@bstudiob.co.uk': {
       button: 'Request private-beta access',
-      subject: 'BStudioB — GhP WebEditor access interest',
-      note: 'Free, no-obligation updates about GhP WebEditor access.'
+      subject: 'BStudioB — Buildy access interest',
+      note: 'Free, no-obligation updates about Buildy access.'
     }
   };
 
