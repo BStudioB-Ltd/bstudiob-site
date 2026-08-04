@@ -73,6 +73,8 @@ nav { position: sticky; top: 0; z-index: 100; display: flex; min-height: 72px; a
 @media (min-width: 701px) {
   .hero-product-grid { display: block; }
   .hero-product { position: absolute; width: calc(50% - .35rem); height: calc(50% - .35rem); min-height: 0; transition: left .85s cubic-bezier(.2,.65,.25,1), top .85s cubic-bezier(.2,.65,.25,1), width .85s cubic-bezier(.2,.65,.25,1), height .85s cubic-bezier(.2,.65,.25,1), opacity .85s cubic-bezier(.2,.65,.25,1), transform .85s cubic-bezier(.2,.65,.25,1), box-shadow .85s cubic-bezier(.2,.65,.25,1), visibility .85s ease; }
+  .hero-product-copy p { max-height: 0; overflow: hidden; opacity: 0; margin-top: 0; transition: max-height .7s cubic-bezier(.2,.65,.25,1), opacity .55s ease, margin-top .7s cubic-bezier(.2,.65,.25,1); }
+  .hero-product:hover .hero-product-copy p, .hero-product:focus-within .hero-product-copy p { max-height: 6rem; opacity: 1; margin-top: 0; }
   .hero-product:nth-child(1) { left: 0; top: 0; }
   .hero-product:nth-child(2) { left: calc(50% + .35rem); top: 0; }
   .hero-product:nth-child(3) { left: 0; top: calc(50% + .35rem); }
