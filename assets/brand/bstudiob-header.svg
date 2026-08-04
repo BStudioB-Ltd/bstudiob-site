@@ -3,5 +3,5 @@
   <desc id="desc">Compact handwritten BStudioB wordmark with a small Ltd suffix.</desc>
   <text x="5" y="64" fill="#10131a" font-family="Brush Script MT, Segoe Script, URW Chancery L, cursive" font-size="62" font-style="italic" letter-spacing="-3">BStudioB</text>
   <text x="332" y="67" fill="#10131a" font-family="Inter, Arial, sans-serif" font-size="14" letter-spacing="2.5">LTD</text>
-  <path d="M112 81 C160 77 220 77 278 80" fill="none" stroke="#c7df35" stroke-linecap="round" stroke-width="5"/>
+  <path d="M18 81 C82 77 196 77 302 80" fill="none" stroke="#c7df35" stroke-linecap="round" stroke-width="5"/>
 </svg>

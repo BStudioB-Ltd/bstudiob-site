@@ -4,5 +4,5 @@
   <rect width="520" height="130" fill="none"/>
   <text x="8" y="79" fill="#10131a" font-family="Brush Script MT, Segoe Script, URW Chancery L, cursive" font-size="76" font-style="italic" letter-spacing="-3">BStudioB</text>
   <text x="407" y="83" fill="#10131a" font-family="Inter, Arial, sans-serif" font-size="19" letter-spacing="3">LTD</text>
-  <path d="M174 105 C224 101 278 101 338 104" fill="none" stroke="#c7df35" stroke-linecap="round" stroke-width="7"/>
+  <path d="M20 105 C96 101 240 101 366 104" fill="none" stroke="#c7df35" stroke-linecap="round" stroke-width="7"/>
 </svg>
