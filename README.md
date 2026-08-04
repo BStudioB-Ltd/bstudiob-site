@@ -4,7 +4,7 @@ Static public landing site for BStudioB. Its current launch focus is FlowCue, In
 
 ## Publishing review checklist
 
-1. Choose a hosting route: make this repository public for GitHub Pages on GitHub Free, or upgrade to a GitHub plan that supports Pages from private repositories.
+1. Keep this repository public for GitHub Pages on GitHub Free; the company site is intended to resolve at `https://bstudiob.co.uk/`.
 2. In repository Pages settings, select the `main` branch and `/ (root)` source.
 3. Verify `bstudiob.co.uk` with GitHub before adding DNS records.
 4. Add the custom domain in GitHub Pages settings first; then make DNS changes at the registrar.
