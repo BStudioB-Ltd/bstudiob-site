@@ -53,7 +53,7 @@ nav { position: sticky; top: 0; z-index: 100; display: flex; min-height: 72px; a
 .hero-product-grid { position: relative; min-height: clamp(340px, calc(100svh - 145px), 480px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: .7rem; }
 .hero-product { position: relative; min-width: 0; min-height: 0; padding: 1rem; overflow: hidden; display: flex; flex-direction: column; border: 1px solid rgba(16,19,26,.2); transition: opacity .75s cubic-bezier(.2,.65,.25,1), transform .75s cubic-bezier(.2,.65,.25,1), box-shadow .75s cubic-bezier(.2,.65,.25,1), visibility .75s ease; }
 .hero-product-kicker { position: relative; z-index: 1; font-size: .68rem; font-weight: 800; letter-spacing: .08em; line-height: 1.2; text-transform: uppercase; }
-.hero-product figure { height: 112px; margin: .8rem 0 0; overflow: hidden; border: 1px solid rgba(16,19,26,.16); background: rgba(255,255,255,.28); }
+.hero-product figure { flex: 0 0 112px; height: 112px; margin: .8rem 0 0; overflow: hidden; border: 1px solid rgba(16,19,26,.16); background: rgba(255,255,255,.28); }
 .hero-product figure img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: top center; transition: transform .9s cubic-bezier(.2,.65,.25,1); }
 .hero-product-copy { position: relative; z-index: 1; margin-top: auto; }
 .hero-product-copy h2 { margin: 1rem 0 .4rem; font-size: clamp(1.65rem, 3vw, 3.2rem); letter-spacing: -.065em; line-height: .9; }
@@ -61,7 +61,7 @@ nav { position: sticky; top: 0; z-index: 100; display: flex; min-height: 72px; a
 .hero-product-copy b { display: inline-flex; align-items: center; gap: .35rem; margin-top: 1rem; padding-bottom: .12rem; border-bottom: 1px solid currentColor; font-size: .75rem; }
 .hero-product-copy i { font-style: normal; font-size: 1rem; }
 .hero-product:hover, .hero-product:focus-within { position: absolute; inset: 0; z-index: 3; min-height: 100%; padding: clamp(1.2rem, 2vw, 1.7rem); box-shadow: 14px 14px 0 rgba(16,19,26,.14); }
-.hero-product:hover figure, .hero-product:focus-within figure { height: 230px; transition: height .8s cubic-bezier(.2,.65,.25,1); }
+.hero-product:hover figure, .hero-product:focus-within figure { flex-basis: 230px; height: 230px; transition: height .8s cubic-bezier(.2,.65,.25,1), flex-basis .8s cubic-bezier(.2,.65,.25,1); }
 .hero-product:hover figure img, .hero-product:focus-within figure img { transform: scale(1.035); }
 .hero-product:hover .hero-product-copy h2, .hero-product:focus-within .hero-product-copy h2 { font-size: clamp(2.8rem, 6vw, 5.8rem); }
 .hero-product-grid:has(.hero-product:hover) .hero-product:not(:hover), .hero-product-grid:has(.hero-product:focus-within) .hero-product:not(:focus-within) { opacity: 0; visibility: hidden; transform: scale(.88); pointer-events: none; }
@@ -154,13 +154,13 @@ footer p { margin: 0; } footer div { display: flex; gap: 1.3rem; }
   .hero-product-grid { min-height: 0; margin-top: 2rem; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
   .hero-product { min-height: 145px; padding: .65rem; }
   .hero-product-kicker { font-size: .56rem; }
-  .hero-product figure { height: 55px; margin-top: .45rem; }
+  .hero-product figure { flex-basis: 55px; height: 55px; margin-top: .45rem; }
   .hero-product-copy h2 { margin-top: .55rem; font-size: clamp(1.12rem, 5.5vw, 1.65rem); }
   .hero-product-copy p { display: none; }
   .hero-product-copy b { margin-top: .7rem; font-size: 0; border: 0; }
   .hero-product-copy b i { font-size: 1rem; }
   .hero-product:hover, .hero-product:focus-within { position: relative; inset: auto; min-height: 145px; padding: .65rem; box-shadow: none; }
-  .hero-product:hover figure, .hero-product:focus-within figure { height: 55px; }
+  .hero-product:hover figure, .hero-product:focus-within figure { flex-basis: 55px; height: 55px; }
   .hero-product:hover .hero-product-copy h2, .hero-product:focus-within .hero-product-copy h2 { font-size: clamp(1.12rem, 5.5vw, 1.65rem); }
   .hero-product-grid:has(.hero-product:hover) .hero-product:not(:hover), .hero-product-grid:has(.hero-product:focus-within) .hero-product:not(:focus-within) { opacity: 1; visibility: visible; transform: none; pointer-events: auto; }
   .hero h1 { font-size: clamp(3rem, 12.5vw, 4.6rem); }
