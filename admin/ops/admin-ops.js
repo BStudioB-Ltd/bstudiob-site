@@ -65,6 +65,7 @@
   }
 
   async function recoverOAuthFragment() {
+    let lastError = '';
     for (let attempt = 0; attempt < 20; attempt += 1) {
       const params = new URLSearchParams(window.location.hash.slice(1));
       const accessToken = params.get('access_token');
@@ -75,9 +76,11 @@
           window.history.replaceState({}, document.title, `${window.location.pathname}${window.location.search}`);
           return result.data.session;
         }
+        lastError = result.error.message || 'session could not be established';
       }
       await new Promise((resolve) => setTimeout(resolve, 250));
     }
+    if (lastError) setStatus(`Google callback could not be completed (${lastError}).`, 'error');
     return null;
   }
 
