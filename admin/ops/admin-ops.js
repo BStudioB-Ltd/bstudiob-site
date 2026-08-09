@@ -88,7 +88,7 @@
     clearViews();
     if (!config.url || !config.anonKey || config.anonKey.includes('PASTE_')) { setStatus('Secure shell configured, awaiting its public Supabase configuration.', ''); show(setup, true); return; }
     if (!window.supabase?.createClient) { setStatus('The authentication client could not load. Refresh and try again.', 'error'); return; }
-    client = window.supabase.createClient(config.url, config.anonKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, flowType: 'pkce' } });
+    client = window.supabase.createClient(config.url, config.anonKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
     let activated = false;
     client.auth.onAuthStateChange((event, session) => {
       if (session && !activated) {
@@ -96,12 +96,7 @@
         void activateSession(session);
       }
     });
-    const callbackCode = new URLSearchParams(window.location.search).get('code');
     let callbackFailure = '';
-    if (callbackCode) {
-      const exchange = await client.auth.exchangeCodeForSession(callbackCode);
-      if (exchange.error) callbackFailure = exchange.error.message || 'authorization code exchange failed';
-    }
     let { data: { session } } = await client.auth.getSession();
     if (!session) session = await recoverOAuthFragment();
     if (session && !activated) {
