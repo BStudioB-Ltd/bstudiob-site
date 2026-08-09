@@ -1,9 +1,9 @@
 (() => {
   const launchForms = {
     'nathan+flowcue@bstudiob.co.uk': {
-      button: 'Get FlowCue launch updates',
+      button: 'Request FlowCue early access',
       subject: 'BStudioB — FlowCue launch interest',
-      note: 'Free, no-obligation FlowCue launch updates.'
+      note: 'Free, no-obligation early-access request.'
     },
     'nathan+inspector@bstudiob.co.uk': {
       button: 'Apply for an Inspector pilot',
