@@ -1,7 +1,7 @@
 // Public Supabase project configuration for the founder-only shell.
-// The anon key is intentionally blank until the Supabase Auth/RLS migration
-// has been reviewed and activated. Never put a service-role key here.
+// This is the browser-safe publishable key. RLS remains the security boundary;
+// never put a secret/service-role key here.
 window.BSTUDIOB_SUPABASE = {
   url: 'https://yfombruqgbxvntjfvhs.supabase.co',
-  anonKey: ''
+  anonKey: 'sb_publishable_ltaNA7nnVozoSCOcZIjg'
 };
