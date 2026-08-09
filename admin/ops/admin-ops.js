@@ -76,7 +76,11 @@
         void activateSession(session);
       }
     });
-    const { data: { session } } = await client.auth.getSession();
+    let { data: { session } } = await client.auth.getSession();
+    if (!session && window.location.hash.includes('access_token')) {
+      await new Promise((resolve) => setTimeout(resolve, 1200));
+      ({ data: { session } } = await client.auth.getSession());
+    }
     if (session && !activated) {
       activated = true;
       await activateSession(session);
