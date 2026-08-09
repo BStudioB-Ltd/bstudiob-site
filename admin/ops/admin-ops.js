@@ -97,7 +97,11 @@
       }
     });
     const callbackCode = new URLSearchParams(window.location.search).get('code');
-    if (callbackCode) await client.auth.exchangeCodeForSession(callbackCode);
+    let callbackFailure = '';
+    if (callbackCode) {
+      const exchange = await client.auth.exchangeCodeForSession(callbackCode);
+      if (exchange.error) callbackFailure = exchange.error.message || 'authorization code exchange failed';
+    }
     let { data: { session } } = await client.auth.getSession();
     if (!session) session = await recoverOAuthFragment();
     if (session && !activated) {
@@ -106,7 +110,8 @@
       return;
     }
     if (!session) {
-      if (!status.textContent.startsWith('Google callback could not be completed')) setStatus('Sign in is required.');
+      if (callbackFailure) setStatus(`Google callback could not be completed (${callbackFailure}).`, 'error');
+      else if (!status.textContent.startsWith('Google callback could not be completed')) setStatus('Sign in is required.');
       show(signin, true);
     }
   }
