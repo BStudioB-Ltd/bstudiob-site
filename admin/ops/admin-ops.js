@@ -103,7 +103,10 @@
       await activateSession(session);
       return;
     }
-    if (!session) { setStatus('Sign in is required.'); show(signin, true); }
+    if (!session) {
+      if (!status.textContent.startsWith('Google callback could not be completed')) setStatus('Sign in is required.');
+      show(signin, true);
+    }
   }
 
   document.querySelector('#google-sign-in').addEventListener('click', async () => {
