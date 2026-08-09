@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; style-src 'self' 'unsafe-inline'; script-src 'self' https://cdn.jsdelivr.net; connect-src 'self' https://yfombruqgbxvntjfvhs.supabase.co; img-src 'self' data:;">
+    <title>Operations · BStudioB</title>
+    <link rel="stylesheet" href="ops.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">BSTUDIOB LTD / PRIVATE OPERATIONS</p>
+          <h1>Make the next move obvious<span>.</span></h1>
+          <p class="lede">A founder-only view of projects, gates, costs and decisions. The public company site never receives these records.</p>
+        </div>
+        <button id="sign-out" class="button quiet" type="button" hidden>Sign out</button>
+      </header>
+
+      <section id="status" class="notice" aria-live="polite">Checking secure access…</section>
+
+      <section id="signin" class="auth-card" hidden>
+        <p class="eyebrow">Founder access</p>
+        <h2>Sign in with a BStudioB Google account.</h2>
+        <p>Only the approved <code>@bstudiob.co.uk</code> accounts can read the operations tables. Other Google accounts are rejected and the database enforces the same rule.</p>
+        <button id="google-sign-in" class="button" type="button">Continue with Google <span aria-hidden="true">↗</span></button>
+      </section>
+
+      <section id="setup" class="auth-card" hidden>
+        <p class="eyebrow">One-time configuration</p>
+        <h2>The secure shell is ready.</h2>
+        <p>Add the public Supabase URL and anon key to <code>admin/ops/config.js</code>. Do not add a service-role key. Then run the private schema migration from the operations repository.</p>
+        <p class="muted">This screen intentionally shows no company data while configuration is incomplete.</p>
+      </section>
+
+      <section id="denied" class="auth-card danger" hidden>
+        <p class="eyebrow">Access denied</p>
+        <h2>This account is not approved.</h2>
+        <p>Sign in with <code>nathan@bstudiob.co.uk</code> or <code>hello@bstudiob.co.uk</code>. If you believe this is incorrect, sign out and contact the founder.</p>
+      </section>
+
+      <section id="dashboard" hidden>
+        <div class="identity-row"><span id="identity"></span><span class="private-pill">Private · founder scope</span></div>
+        <div id="metrics" class="metric-grid"></div>
+        <div class="dashboard-grid">
+          <section class="panel"><div class="section-heading"><div><p class="eyebrow">Portfolio</p><h2>Project register</h2></div><span class="muted">RLS-scoped</span></div><div id="projects" class="project-list"></div></section>
+          <section class="panel"><div class="section-heading"><div><p class="eyebrow">Execution</p><h2>Open tasks</h2></div><span class="muted">Next gates</span></div><div id="tasks" class="task-list"></div></section>
+          <section class="panel wide"><div class="section-heading"><div><p class="eyebrow">Finance</p><h2>Known cost picture</h2></div><span class="muted">GBP snapshot</span></div><div id="finance" class="finance-list"></div></section>
+        </div>
+      </section>
+    </main>
+    <footer><a href="/">BStudioB</a><span>·</span><span>Internal operations only</span></footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="admin-ops.js"></script>
+  </body>
+</html>

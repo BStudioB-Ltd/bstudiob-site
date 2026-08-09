@@ -1,1 +1,6 @@
 .playwright-cli/
+
+# Local-only Supabase public configuration for the protected operations shell.
+# The anon key is not a secret, but deployment should inject it deliberately;
+# service-role keys must never be placed here.
+/admin/ops/config.js
