@@ -43,6 +43,23 @@
     note.before(consent);
   });
 
+  document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+    const slides = [...carousel.querySelectorAll('.flowcue-slide')];
+    const dots = [...carousel.querySelectorAll('[data-carousel-dot]')];
+    const caption = carousel.querySelector('[data-carousel-caption]');
+    const captions = ['Controller · church mode', 'Controller · business mode', 'Performer display', 'Audience display'];
+    let current = 0;
+    const show = (next) => {
+      current = (next + slides.length) % slides.length;
+      slides.forEach((slide, index) => slide.classList.toggle('is-active', index === current));
+      dots.forEach((dot, index) => { dot.classList.toggle('is-active', index === current); dot.setAttribute('aria-selected', index === current ? 'true' : 'false'); });
+      if (caption) caption.textContent = captions[current];
+    };
+    carousel.querySelector('[data-carousel-prev]')?.addEventListener('click', () => show(current - 1));
+    carousel.querySelector('[data-carousel-next]')?.addEventListener('click', () => show(current + 1));
+    dots.forEach((dot) => dot.addEventListener('click', () => show(Number(dot.dataset.carouselDot))));
+  });
+
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const targets = document.querySelectorAll('.hero, .statement, .focus, .company-collections, .principles, .contact, .collection-hero, .product-feature, .page-product-list, .community-products');
