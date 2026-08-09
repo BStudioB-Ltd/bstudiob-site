@@ -80,7 +80,7 @@
       }
       await new Promise((resolve) => setTimeout(resolve, 250));
     }
-    if (lastError) setStatus(`Google callback could not be completed (${lastError}).`, 'error');
+    if (lastError) setStatus(`Google callback could not be completed (${lastError}; key …${String(config.anonKey || '').slice(-6)}).`, 'error');
     return null;
   }
 
