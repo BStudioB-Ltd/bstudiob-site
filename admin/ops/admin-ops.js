@@ -46,17 +46,43 @@
     renderProjects(projects); renderTasks(tasks); renderFinance(finance);
   }
 
+  async function activateSession(session) {
+    const email = (session.user.email || '').toLowerCase();
+    if (!approvedEmails.has(email)) {
+      await client.auth.signOut();
+      setStatus('This Google account is not on the BStudioB founder allowlist.', 'error');
+      show(denied, true);
+      return;
+    }
+    show(signOut, true);
+    setStatus('Authenticated. Private records are being loaded through database policies.', 'success');
+    try {
+      await loadData(session.user);
+      show(dashboard, true);
+    } catch (error) {
+      setStatus(`Signed in, but the private schema is not ready yet (${error.message || 'database error'}).`, 'error');
+    }
+  }
+
   async function start() {
     clearViews();
     if (!config.url || !config.anonKey || config.anonKey.includes('PASTE_')) { setStatus('Secure shell configured, awaiting its public Supabase configuration.', ''); show(setup, true); return; }
     if (!window.supabase?.createClient) { setStatus('The authentication client could not load. Refresh and try again.', 'error'); return; }
     client = window.supabase.createClient(config.url, config.anonKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
+    let activated = false;
+    client.auth.onAuthStateChange((event, session) => {
+      if (session && !activated) {
+        activated = true;
+        void activateSession(session);
+      }
+    });
     const { data: { session } } = await client.auth.getSession();
-    if (!session) { setStatus('Sign in is required.'); show(signin, true); return; }
-    const email = (session.user.email || '').toLowerCase();
-    if (!approvedEmails.has(email)) { await client.auth.signOut(); setStatus('This Google account is not on the BStudioB founder allowlist.', 'error'); show(denied, true); return; }
-    show(signOut, true); setStatus('Authenticated. Private records are being loaded through database policies.', 'success');
-    try { await loadData(session.user); show(dashboard, true); } catch (error) { setStatus(`Signed in, but the private schema is not ready yet (${error.message || 'database error'}).`, 'error'); }
+    if (session && !activated) {
+      activated = true;
+      await activateSession(session);
+      return;
+    }
+    if (!session) { setStatus('Sign in is required.'); show(signin, true); }
   }
 
   document.querySelector('#google-sign-in').addEventListener('click', async () => {
