@@ -64,6 +64,23 @@
     }
   }
 
+  async function recoverOAuthFragment() {
+    for (let attempt = 0; attempt < 20; attempt += 1) {
+      const params = new URLSearchParams(window.location.hash.slice(1));
+      const accessToken = params.get('access_token');
+      const refreshToken = params.get('refresh_token');
+      if (accessToken && refreshToken) {
+        const result = await client.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
+        if (!result.error) {
+          window.history.replaceState({}, document.title, `${window.location.pathname}${window.location.search}`);
+          return result.data.session;
+        }
+      }
+      await new Promise((resolve) => setTimeout(resolve, 250));
+    }
+    return null;
+  }
+
   async function start() {
     clearViews();
     if (!config.url || !config.anonKey || config.anonKey.includes('PASTE_')) { setStatus('Secure shell configured, awaiting its public Supabase configuration.', ''); show(setup, true); return; }
@@ -77,20 +94,7 @@
       }
     });
     let { data: { session } } = await client.auth.getSession();
-    if (!session && window.location.hash.includes('access_token')) {
-      const params = new URLSearchParams(window.location.hash.slice(1));
-      const accessToken = params.get('access_token');
-      const refreshToken = params.get('refresh_token');
-      if (accessToken && refreshToken) {
-        const result = await client.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
-        session = result.data.session;
-        if (!result.error) window.history.replaceState({}, document.title, `${window.location.pathname}${window.location.search}`);
-      }
-      if (!session) {
-        await new Promise((resolve) => setTimeout(resolve, 1200));
-        ({ data: { session } } = await client.auth.getSession());
-      }
-    }
+    if (!session) session = await recoverOAuthFragment();
     if (session && !activated) {
       activated = true;
       await activateSession(session);
