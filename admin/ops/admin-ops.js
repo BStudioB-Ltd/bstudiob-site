@@ -78,8 +78,18 @@
     });
     let { data: { session } } = await client.auth.getSession();
     if (!session && window.location.hash.includes('access_token')) {
-      await new Promise((resolve) => setTimeout(resolve, 1200));
-      ({ data: { session } } = await client.auth.getSession());
+      const params = new URLSearchParams(window.location.hash.slice(1));
+      const accessToken = params.get('access_token');
+      const refreshToken = params.get('refresh_token');
+      if (accessToken && refreshToken) {
+        const result = await client.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
+        session = result.data.session;
+        if (!result.error) window.history.replaceState({}, document.title, `${window.location.pathname}${window.location.search}`);
+      }
+      if (!session) {
+        await new Promise((resolve) => setTimeout(resolve, 1200));
+        ({ data: { session } } = await client.auth.getSession());
+      }
     }
     if (session && !activated) {
       activated = true;
