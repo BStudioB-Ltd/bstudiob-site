@@ -3,5 +3,5 @@
 // never put a secret/service-role key here.
 window.BSTUDIOB_SUPABASE = {
   url: 'https://yfombrubqgbxvntjfvhs.supabase.co',
-  anonKey: 'sb_publishable_ltaNA7nnVozoSCOcZIjg'
+  anonKey: 'sb_publishable_oJ_NQy1qp8quCFZ7AaNdJw_XVCAZDq4'
 };
