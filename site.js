@@ -51,7 +51,13 @@
     let current = 0;
     const show = (next) => {
       current = (next + slides.length) % slides.length;
-      slides.forEach((slide, index) => slide.classList.toggle('is-active', index === current));
+      slides.forEach((slide, index) => {
+        const active = index === current;
+        slide.classList.toggle('is-active', active);
+        // Keep inactive panels out of the rendering tree so a cached/lazy image
+        // can never sit above the selected view during a transition.
+        slide.setAttribute('aria-hidden', String(!active));
+      });
       dots.forEach((dot, index) => { dot.classList.toggle('is-active', index === current); dot.setAttribute('aria-selected', index === current ? 'true' : 'false'); });
       if (caption) caption.textContent = captions[current];
     };
