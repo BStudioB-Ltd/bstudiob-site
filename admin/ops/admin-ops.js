@@ -80,7 +80,7 @@
       }
       await new Promise((resolve) => setTimeout(resolve, 250));
     }
-    if (lastError) setStatus(`Google callback could not be completed (${lastError}; key …${String(config.anonKey || '').slice(-6)}).`, 'error');
+    if (lastError) setStatus(`Google callback could not be completed (${lastError}).`, 'error');
     return null;
   }
 
@@ -96,7 +96,6 @@
         void activateSession(session);
       }
     });
-    let callbackFailure = '';
     let { data: { session } } = await client.auth.getSession();
     if (!session) session = await recoverOAuthFragment();
     if (session && !activated) {
@@ -105,8 +104,7 @@
       return;
     }
     if (!session) {
-      if (callbackFailure) setStatus(`Google callback could not be completed (${callbackFailure}).`, 'error');
-      else if (!status.textContent.startsWith('Google callback could not be completed')) setStatus('Sign in is required.');
+      if (!status.textContent.startsWith('Google callback could not be completed')) setStatus('Sign in is required.');
       show(signin, true);
     }
   }
