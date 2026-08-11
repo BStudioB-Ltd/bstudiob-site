@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://bstudiob-ltd.github.io/bstudiob-site/sitemap.xml
+Sitemap: https://bstudiob.co.uk/sitemap.xml
