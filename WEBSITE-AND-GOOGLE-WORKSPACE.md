@@ -59,7 +59,7 @@ Founder-only actions:
 
 ## Completed repository-safe change
 
-The working tree sitemap and robots file now advertise the canonical `bstudiob.co.uk` hostname instead of the underlying GitHub Pages hostname. Product pages in the working tree also carry canonical and OG/Twitter metadata using the existing social card. These changes do not change DNS, GitHub settings or mailbox routing, and remain unpublished pending review.
+The sitemap and robots file advertise the canonical `bstudiob.co.uk` hostname instead of the underlying GitHub Pages hostname. Product pages carry canonical and OG/Twitter metadata using the existing social card. The approved patch was merged to `main` as `54b3bf3` and the Pages deployment completed successfully; no DNS, GitHub settings or mailbox routing changed.
 
 ## Commit-ready review pack
 
@@ -79,38 +79,36 @@ The working tree sitemap and robots file now advertise the canonical `bstudiob.c
 ### Local-versus-live differences
 
 - Local working tree: all five public HTML routes have the expected canonical/social metadata; sitemap and robots use `bstudiob.co.uk`.
-- Live site: the homepage is reachable over HTTPS, but the four product pages still serve the previous revision without these new canonical/social tags; live sitemap and robots still expose the previous GitHub Pages hostname.
+- Live site: the homepage and four product pages serve the published metadata revision; live sitemap and robots use the canonical `bstudiob.co.uk` hostname.
 - Live forms and analytics are unchanged and were checked read-only only. No delivery has been proven without an approved real test submission.
 
-### Founder decisions required before publication
+### Founder decisions for remaining provider actions
 
 The founder should reply with an explicit decision for each item below:
 
-1. **Patch approval:** approve or reject the eight-file repository patch listed above.
-2. **Publication approval:** approve or defer committing the patch to the BStudioB GitHub repository and publishing it through GitHub Pages.
-3. **Public wording:** approve or request edits to the privacy, terms, retention and unsubscribe wording; this patch does not constitute legal approval.
-4. **Form routing:** confirm that `hello@`, `nathan@`, and the five product plus-address routes are BStudioB-owned and intentionally used; approve or defer one controlled test submission per form.
-5. **Workspace security:** confirm the named recovery owner, backup method and 2-step-verification coverage for admin/recovery accounts.
-6. **Email authentication:** approve or defer generation of the exact Google Workspace DKIM record and a reviewed DMARC monitoring policy; no DNS change is included in this patch.
-7. **Workspace administration:** approve or defer logo/brand-profile review and billing review; no payment or terms acceptance is included in this patch.
+1. **Patch/publication record:** complete; the eight-file patch is merged and live verification passed.
+2. **Public wording:** approve or request edits to the privacy, terms, retention and unsubscribe wording; publication does not constitute legal approval.
+3. **Form routing:** confirm that `hello@`, `nathan@`, and the five product plus-address routes are BStudioB-owned and intentionally used; approve or defer one controlled test submission per form.
+4. **Workspace security:** confirm the named recovery owner, backup method and 2-step-verification coverage for admin/recovery accounts.
+5. **Email authentication:** approve or defer generation of the exact Google Workspace DKIM record and a reviewed DMARC monitoring policy; no DNS change is included in this patch.
+6. **Workspace administration:** approve or defer logo/brand-profile review and billing review; no payment or terms acceptance is included in this patch.
 
 ## Short publish checklist
 
-After the founder approves items 1–2 above:
+For the already-approved patch:
 
 1. Review the working-tree diff and confirm no credentials, recovery codes, form contents or unrelated files are included.
-2. Commit the exact patch with an intentional message.
-3. Publish the approved `main` revision through the existing GitHub Pages configuration.
-4. Re-check the live homepage, all four product pages, sitemap, robots, HTTPS, `www` redirect and GitHub Pages redirect.
-5. Confirm the live pages expose the expected canonical/social metadata and the existing form/Umami markup.
-6. Record the commit, publication timestamp and pass/fail evidence in the parent operations thread.
-7. Only after separate founder approval, perform Workspace/DNS actions and controlled form-delivery tests.
+2. Publish verification completed through the existing GitHub Pages configuration (deployment `31499602408`).
+3. Re-check the live homepage, all four product pages, sitemap, robots, HTTPS, `www` redirect and GitHub Pages redirect.
+4. Confirm the live pages expose the expected canonical/social metadata and the existing form/Umami markup.
+5. Record the commit, publication timestamp and pass/fail evidence in the parent operations thread.
+6. Only after separate founder approval, perform Workspace/DNS actions and controlled form-delivery tests.
 
 ## WEB-002 execution record
 
 ### WEB-002.01 — Working-tree freeze
 
-Scope is limited to the existing website patch and this review document. Current changed paths are `README.md`, `creative-live.html`, `trust-security.html`, `cards.html`, `studio-tools.html`, `sitemap.xml`, `robots.txt` and this file. `git diff --check` passes. Local checks pass for canonical metadata, social metadata, local `href`/`src` targets, sitemap hostnames and robots sitemap reference. No unrelated files are included. The tree remains uncommitted.
+Scope was limited to the existing website patch and this review document. The exact eight paths were reviewed and merged; `git diff --check` and local checks passed for canonical metadata, social metadata, local `href`/`src` targets, sitemap hostnames and robots sitemap reference. No unrelated files were included.
 
 ### WEB-002.02 — Content review findings
 
@@ -125,7 +123,7 @@ Exact scope: the eight changed paths listed in WEB-002.01. Suggested commit mess
 
 ### WEB-002.04 — Publication checklist
 
-After intentional founder approval and publication, check: apex returns 200 over HTTPS; `www` returns 301 to apex; the GitHub Pages project URL returns 301 to apex; homepage and all four product pages return 200; product pages expose their canonical URLs and social-card metadata; sitemap URLs and robots sitemap reference use `bstudiob.co.uk`; the existing `/privacy.html`, `/terms.html` and `/thanks.html` routes remain reachable; no unexpected visual or form markup changes appear in the published diff.
+Publication verification: apex returns 200 over HTTPS; `www` returns 301 to apex; the GitHub Pages project URL returns 301 to apex; homepage and all four product pages return 200; product pages expose their canonical URLs and social-card metadata; sitemap URLs and robots sitemap reference use `bstudiob.co.uk`; the existing `/privacy.html`, `/terms.html` and `/thanks.html` routes remain reachable; no unexpected visual or form markup changes appeared in the published diff.
 
 ### WEB-002.05 — Form routing audit
 
@@ -153,14 +151,14 @@ No DNS change was made. FormSubmit’s sending/authentication requirements and a
 
 ### WEB-002.09 — Analytics/privacy QA
 
-Static QA confirms the Umami script is placed on the homepage, four product pages and thank-you page; the script uses the existing website ID; no form field values are referenced by the analytics markup; the privacy notice states anonymous/cookieless analytics and the current US data region; form consent wording links to the privacy notice. Runtime consent injection is implemented in `site.js` for product forms and should be checked in one approved browser test before publication if founder review requires it. Legal review remains required for the data-region, retention and unsubscribe wording.
+Static QA confirms the Umami script is placed on the homepage, four product pages and thank-you page; the script uses the existing website ID; no form field values are referenced by the analytics markup; the privacy notice states anonymous/cookieless analytics and the current US data region; form consent wording links to the privacy notice. Runtime consent injection is implemented in `site.js` and remains suitable for one approved browser test. Legal review remains required for the data-region, retention and unsubscribe wording.
 
 ### WEB-002.10 — Final founder decision table
 
 | Decision | Approve / defer | Required evidence or note |
 |---|---|---|
-| Patch scope |  | Eight-path patch and review document are ready; no commit made. |
-| Commit and publication |  | Approve intentional commit and GitHub Pages publication, or defer. |
+| Patch scope | Approved | Eight-path patch and review document merged as `54b3bf3`. |
+| Commit and publication | Complete | GitHub Pages deployment `31499602408` succeeded; live metadata and canonical routes verified. |
 | Public wording |  | Approve privacy, terms, retention, unsubscribe and authorised-use wording, or specify edits. |
 | Controlled form tests |  | Approve one minimal test per route, or defer; record metadata only. |
 | Workspace security |  | Confirm aliases, recovery owner/backup, 2SV and admin-role review. |
@@ -169,4 +167,4 @@ Static QA confirms the Umami script is placed on the homepage, four product page
 
 ## Closure pass — 11 August 2026
 
-The safe website-repository validation and documentation work is complete. No remaining autonomous action is identified within scope. The patch remains intentionally uncommitted and unpublished. Remaining work is formal founder/provider approval or external action only: wording approval, intentional commit/publication, controlled form tests, Workspace ownership/security review, Google-generated DKIM inspection, reviewed DMARC policy/DNS change, and billing/logo review. No credentials, form contents, payments, DNS records, Workspace settings or terms acceptance were accessed or changed.
+The safe website-repository validation and documentation work is complete. The approved patch is merged as `54b3bf3`; Pages deployment `31499602408` succeeded and live canonical/social metadata, sitemap, robots and redirects were verified read-only. Remaining work is formal founder/provider approval or external action only: wording approval, controlled form tests, Workspace ownership/security review, Google-generated DKIM inspection, reviewed DMARC policy/DNS change, and billing/logo review. No credentials, form contents, payments, DNS records, Workspace settings or terms acceptance were accessed or changed.
