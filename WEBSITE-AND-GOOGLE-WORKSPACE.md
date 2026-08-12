@@ -169,6 +169,10 @@ Static QA confirms the Umami script is placed on the homepage, four product page
 
 The safe website-repository validation and documentation work is complete. The approved patch is merged as `54b3bf3`; Pages deployment `31499602408` succeeded and live canonical/social metadata, sitemap, robots and redirects were verified read-only. Remaining work is formal founder/provider approval or external action only: wording approval, controlled form tests, Workspace ownership/security review, Google-generated DKIM inspection, reviewed DMARC policy/DNS change, and billing/logo review. No credentials, form contents, payments, DNS records, Workspace settings or terms acceptance were accessed or changed.
 
+## Read-only DNS recheck — 12 August 2026
+
+The public DNS now exposes the Google Workspace SPF record (`v=spf1 include:_spf.google.com ~all`) and a Google DKIM TXT record at the `google._domainkey` selector. No `_dmarc.bstudiob.co.uk` TXT record was observed. This records public evidence only; it does not verify that Google Admin reports DKIM as passing, identify the intended recovery/alias owners, or authorise a DMARC change. A founder-approved Workspace check and monitoring-first DMARC decision remain outstanding.
+
 ## BSTUDIOB-PIT-WEB-011 — PIT/PicChat subdomain readiness
 
 Status: **Static showcase only now; PIT app subdomain is not ready for controlled pilot.**
