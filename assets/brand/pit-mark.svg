@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">PIT</title>
+  <rect width="512" height="512" rx="112" fill="#0b0b0f"/>
+  <path d="M112 122h288v210H245l-87 66 18-66h-64z" fill="#f5f2e9"/>
+  <text x="256" y="256" fill="#5747ff" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="900" letter-spacing="6" text-anchor="middle">PIT</text>
+  <path d="M385 105l13 30 30 13-30 13-13 30-13-30-30-13 30-13z" fill="#ff3b5c"/>
+</svg>

@@ -1,11 +1,13 @@
 # Website and Google Workspace verification
 
-Status date: 11 August 2026
+Status date: 14 August 2026
 Scope: `bstudiob.co.uk`, public forms, analytics, social previews and BStudioB-owned Workspace routing.
 
 Review readiness: **safe repository changes ready for founder/parent review; not yet committed or published.** The live site therefore still serves the prior sitemap/robots and product metadata revision until an approved GitHub Pages publication occurs.
 
-Latest read-only rerun: 11 August 2026, Europe/London.
+Current implementation pass: public-boundary wording has been tightened for controlled FlowCue/Buildy showcases and internal-beta PIT/MyMark positioning. This pass is local-only; no DNS, Workspace, form, commit or publication action was performed.
+
+Latest read-only rerun: 12 August 2026, Europe/London.
 
 ## Read-only evidence
 
@@ -149,6 +151,19 @@ Founder must confirm, without sharing secrets: owner of `hello@bstudiob.co.uk` a
 
 No DNS change was made. FormSubmit’s sending/authentication requirements and any Brevo sender-domain requirements must be confirmed before adding providers to SPF/DKIM/DMARC.
 
+## Workspace/DNS execution checklist — founder gate
+
+Complete these in order from the authenticated BStudioB Google Admin/registrar sessions. Record only non-sensitive status, timestamps and provider-generated identifiers; never copy passwords, recovery codes, DKIM private keys, form contents or personal data into this repository.
+
+1. **Aliases and routing:** verify `hello@bstudiob.co.uk`, `nathan@bstudiob.co.uk` and the five product plus-address routes are owned and deliverable; do not create or delete aliases without explicit approval.
+2. **Recovery and 2SV:** confirm the named recovery owner, independent backup method, 2-step verification coverage and least-privilege admin roles; record status only.
+3. **DKIM:** inspect the exact Google-generated selector and TXT value in Admin; publish only that exact public TXT record after founder approval, then verify Google reports authentication passing.
+4. **DMARC:** review a monitoring-first policy (`p=none`) with an approved reporting mailbox and retention period; add `_dmarc` only after approval and verify propagation. Do not move to quarantine/reject during this pass.
+5. **Controlled forms:** after alias verification and explicit founder approval, submit one minimal, non-sensitive test per route. Record UTC timestamp, route, pass/fail and redirect only; delete the test message/address afterwards where practical.
+6. **Billing/brand:** review Workspace billing, renewal, logo and public brand-profile settings without accepting new terms or purchases. Defer any paid change.
+
+Rollback: remove only an approved new DKIM or DMARC TXT record; restore no pre-existing SPF or MX records. Stop immediately if Admin, registrar or provider state differs from the documented owner/account.
+
 ### WEB-002.09 — Analytics/privacy QA
 
 Static QA confirms the Umami script is placed on the homepage, four product pages and thank-you page; the script uses the existing website ID; no form field values are referenced by the analytics markup; the privacy notice states anonymous/cookieless analytics and the current US data region; form consent wording links to the privacy notice. Runtime consent injection is implemented in `site.js` and remains suitable for one approved browser test. Legal review remains required for the data-region, retention and unsubscribe wording.
@@ -172,6 +187,88 @@ The safe website-repository validation and documentation work is complete. The a
 ## Read-only DNS recheck — 12 August 2026
 
 The public DNS now exposes the Google Workspace SPF record (`v=spf1 include:_spf.google.com ~all`) and a Google DKIM TXT record at the `google._domainkey` selector. No `_dmarc.bstudiob.co.uk` TXT record was observed. This records public evidence only; it does not verify that Google Admin reports DKIM as passing, identify the intended recovery/alias owners, or authorise a DMARC change. A founder-approved Workspace check and monitoring-first DMARC decision remain outstanding.
+
+## Final blocker batch — 12 August 2026
+
+### Live website check after `5f8c01b`
+
+Using the existing authenticated BStudioB Chrome profile, read-only navigation confirmed:
+
+| Route | Visible status evidence |
+|---|---|
+| `https://bstudiob.co.uk/` | Page loaded with title `BStudioB — Products with purpose`, homepage heading and canonical/OG URL set to the apex. |
+| `/creative-live.html` | FlowCue page loaded with expected title/heading and apex canonical/OG URL. |
+| `/trust-security.html` | Inspector-Edu page loaded with expected title/heading and apex canonical/OG URL. |
+| `/cards.html` | Cards page loaded with expected title/heading and apex canonical/OG URL. |
+| `/studio-tools.html` | Buildy page loaded with expected title/heading and apex canonical/OG URL. |
+
+No form was submitted, no account content was copied, and no sensitive visual evidence was retained. This confirms page availability and metadata presence only.
+
+### Google Workspace/Admin status
+
+The authenticated Chrome profile exposed an existing Google Admin user-list tab and a separate sign-in challenge tab. A direct read-only navigation to the DKIM route returned an Admin 404, and the existing Admin tab could not be safely claimed before the browser session timed out. Therefore these remain **unverified**: the current Admin DKIM selector/status; `hello@`, `nathan@` and product plus-address ownership/behaviour; recovery owner and backup; 2SV coverage; admin roles; and Workspace logo/brand-profile and billing state.
+
+Public DNS evidence observed `google._domainkey.bstudiob.co.uk` and no `_dmarc.bstudiob.co.uk` TXT record. Treat `google` only as public evidence, not the authoritative Admin selector; do not infer or publish DKIM/DMARC values.
+
+### Reversible Workspace/DNS worksheet
+
+No change is authorised or applied. The safe preparation is: the founder/admin records the exact Google Admin DKIM selector/TXT value and status without copying credentials or recovery material; confirms aliases, recovery, backup, 2SV and billing/logo ownership; then, only if explicitly approved, adds the exact Google-issued DKIM TXT record. Rollback is removal of that single new TXT record. A separate monitoring-first DMARC record at `_dmarc.bstudiob.co.uk` requires founder/legal approval of the reporting mailbox and retention; rollback is removal of that new record. SPF remains unchanged.
+
+### Minimal controlled form-test plan
+
+After explicit founder approval and with a founder-controlled test address, run one non-sensitive test per route. Record only UTC timestamp, source route, provider route, pass/fail, redirect result and recipient route; do not retain the address, message body or form contents.
+
+| Source route | FormSubmit route |
+|---|---|
+| `/` | `nathan+contact@bstudiob.co.uk` |
+| `/creative-live.html` | `nathan+flowcue@bstudiob.co.uk` |
+| `/trust-security.html` | `nathan+inspector@bstudiob.co.uk` |
+| `/cards.html` | `nathan+cards@bstudiob.co.uk` |
+| `/studio-tools.html` | `nathan+buildy@bstudiob.co.uk` |
+
+No test was submitted. Plus-address delivery remains unproven until authorised.
+
+## Website IP notices and beta-boundary batch — 12 August 2026
+
+### Audit and implemented patch
+
+- Public product/service pages now use explicit `© 2026 BStudioB Ltd.` footer notices; legal pages now have the same footer notice.
+- The unregistered product names are marked with `™` in their primary public card/page mentions: FlowCue™, Inspector-Edu™, Cards™, Buildy™ and PIT™. No `®`, patent or unsupported registration claim was added.
+- The product pages retain conservative readiness wording and now state the relevant boundary: authorised early access or pilot use only, no redistribution of preview materials, no production guarantee, and `hello@bstudiob.co.uk` as the access route.
+- The existing Inspector-Edu authorised-use language remains in force. PIT remains an internal beta/development preview with no public app link and no unsupported screenshot or unintegrated-platform observability claim.
+- The terms page now states that third-party names/provider marks remain their respective owners, with no endorsement implied.
+
+### Asset/licence audit
+
+The public pages reference the existing BStudioB brand assets and locally stored product imagery, including the supplied sanitised PIT mark/screenshot. No downloadable source, private release link, credential, secret or new third-party asset was added. No separate third-party licence file or attribution requirement was found in the website repository; legal/ownership confirmation for any externally sourced image or mark remains a founder review item before wider publication.
+
+### Founder IP/publication review order
+
+Review these gates in sequence; a later gate must not be treated as approval of an earlier one:
+
+1. **Ownership:** confirm BStudioB Ltd's ownership or written permission for each wordmark, logo, screenshot, illustration, photograph, code sample and product description shown publicly.
+2. **Licence evidence:** record the source and licence/permission for any contributor or third-party asset; remove or replace anything without a documented right to publish.
+3. **Mark wording:** confirm the chosen owner and clearance strategy for BStudioB, Buildy, FlowCue, Inspector-Edu, Cards and PIT/PicChat. Keep `™` limited to unregistered marks and do not use `®` or imply registration.
+4. **Beta disclosure:** approve the authorised-use, invitation-only, non-redistribution, availability/pricing subject-to-change and no-production-guarantee wording for each preview product.
+5. **Publication:** only after the preceding approvals, approve the exact diff, commit, Pages publication and live smoke checks. Registration, filing, DNS and payment actions remain separate founder decisions.
+
+Founder review record (non-sensitive):
+
+| Gate | Evidence to review | Decision/status |
+| --- | --- | --- |
+| Ownership | contributor list, assignments, permissions and pre-incorporation ownership notes | Pending founder confirmation |
+| Licence evidence | asset/source list and licence or permission references | Pending; no unsupported third-party attribution added |
+| Mark wording | mark owner, clearance search and filing priority | Pending founder/legal decision |
+| Beta disclosure | product pages, `terms.html`, `privacy.html` and PIT boundary copy | Drafted; pending founder/legal approval |
+| Publication | exact website diff, local checks and rollback plan | Not authorised in this review |
+
+### Scope and blockers
+
+Changed website paths for this batch: `index.html`, `creative-live.html`, `trust-security.html`, `cards.html`, `studio-tools.html`, `products/pit/index.html`, `privacy.html`, `terms.html` and this document. The patch remains uncommitted and unpublished. Founder review is required for the `™` presentation, ownership/licence confirmation, and final beta/authorised-use wording before any further publication.
+
+### Final decision and next action
+
+Website live status is evidenced after the published commit sequence. The remaining work is blocked on Google Admin verification and explicit founder approval for any test or DNS/Workspace action. Next founder action: review the Admin console, record the non-sensitive status fields above, then approve or defer the controlled form tests and exact Google-generated DKIM/monitoring-first DMARC plan.
 
 ## BSTUDIOB-PIT-WEB-011 — PIT/PicChat subdomain readiness
 
