@@ -1,6 +1,6 @@
 # BStudioB website
 
-Static public landing site for BStudioB. Its current launch focus is FlowCue, Inspector-Edu and Cards; it also introduces Buildy as a web-publishing tool. It uses Umami Cloud for anonymous, cookieless website statistics and no advertising scripts. The interest forms are delivered through FormSubmit to product-specific BStudioB mailboxes.
+Static public landing site for BStudioB. Its current public lineup is FlowCue, Buildy, Provisioning and Custom Workflow Solutions. It uses Umami Cloud for anonymous, cookieless website statistics and no advertising scripts. The interest forms are delivered through FormSubmit to product-specific BStudioB mailboxes.
 
 ## Publishing review checklist
 
