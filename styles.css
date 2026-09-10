@@ -257,3 +257,10 @@ footer p { margin: 0; } footer div { display: flex; gap: 1.3rem; }
 .form-retention { max-width: 700px; margin: -.2rem 0 1.2rem; font-size: .78rem; color: rgba(16,19,26,.72); }
 @media (max-width: 900px) { .service-principles { grid-template-columns: 1fr; } }
 @media (max-width: 700px) { .service-principles { padding-inline: 1rem; } .service-principles-grid { grid-template-columns: 1fr; } .service-principles-grid article { min-height: 0; } .service-principles-grid h3 { margin-top: 1.8rem; } }
+
+/* FlowCue release callout: publication status is separate from the invite-only pilot gate. */
+.flowcue-release { padding: clamp(3.5rem, 8vw, 7rem) 0; border-bottom: 1px solid var(--line); }
+.flowcue-release h2 { max-width: 700px; margin: 0; font-size: clamp(2.7rem, 5vw, 5rem); font-weight: 700; }
+.flowcue-release > p:not(.eyebrow):not(.pilot-note) { max-width: 680px; margin: 1.35rem 0 0; color: #3d4650; font-size: 1.08rem; }
+.flowcue-release .pilot-note { max-width: 680px; margin-top: 1.35rem; }
+.flowcue-release .button { margin-top: .25rem; }
