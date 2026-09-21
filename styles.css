@@ -264,3 +264,7 @@ footer p { margin: 0; } footer div { display: flex; gap: 1.3rem; }
 .flowcue-release > p:not(.eyebrow):not(.pilot-note) { max-width: 680px; margin: 1.35rem 0 0; color: #3d4650; font-size: 1.08rem; }
 .flowcue-release .pilot-note { max-width: 680px; margin-top: 1.35rem; }
 .flowcue-release .button { margin-top: .25rem; }
+
+/* FlowCue launch message and proposed pricing. */
+.flowcue-tagline { max-width: 680px; margin: 1.4rem 0 0; color: var(--ink); font-size: clamp(1.25rem, 2.4vw, 1.85rem); font-weight: 700; letter-spacing: -.03em; line-height: 1.1; }
+.flowcue-pricing .collection-intro { margin-bottom: 2.5rem; }
