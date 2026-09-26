@@ -104,3 +104,54 @@ test('hero carousel and cards adapt to tablet and mobile widths', () => {
   assert.match(css, /\.hero-product-grid\s*\{[^}]*grid-template-columns:\s*1fr/);
   assert.match(css, /\.hero-slide\s*\{[^}]*display:\s*grid/);
 });
+
+test('About uses four centered navigation cards over a restrained BStudioB mark backdrop', () => {
+  const about = home.match(/<article\b(?=[^>]*id="hero-slide-about")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
+  assert.match(about, /hero-about-options/);
+  for (const label of ['About', 'Products and Services', 'Make your BStudioB account', 'Contact']) {
+    assert.match(about, new RegExp(`>${label}<`));
+  }
+  assert.match(about, /data-hero-select/);
+  assert.match(script, /data-hero-select/);
+  assert.match(css, /hero-slide-about[^}]*::before|hero-about-options/);
+  assert.match(css, /bstudiob-signature\.svg/);
+  assert.match(css, /background:\s*rgba\(244,242,236,\.25\)/);
+  assert.match(css, /cubic-bezier\(\.22,\s*1,\s*\.36,\s*1\)/);
+});
+
+test('Products and Services has an accessible preview carousel with first-party product imagery', () => {
+  const products = home.match(/<article\b(?=[^>]*id="hero-slide-products")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
+  assert.match(products, /data-product-gallery/);
+  assert.match(products, /Inspector-Edu™/);
+  assert.match(products, /Cards™/);
+  assert.match(products, /PIT™ \/ PicChat/);
+  for (const asset of ['inspector-story-mode.png', 'cards-mobile.png', 'pit-moderation-desktop.png']) {
+    assert.match(products, new RegExp(`assets/projects/${asset}`));
+  }
+  assert.match(products, /data-product-gallery-tab/);
+  assert.match(script, /data-product-gallery/);
+  assert.match(script, /data-product-gallery-tab/);
+});
+
+test('studio summary is a four-page carousel with honest case-study and research placeholders', () => {
+  const summary = home.match(/<section class="studio-summary"[\s\S]*?<\/section>/)?.[0] ?? '';
+  assert.ok(summary);
+  const tabs = [...summary.matchAll(/class="studio-tab[^\"]*"[^>]*>([^<]+)</g)].map((match) => match[1].replaceAll('&amp;', '&'));
+  assert.deepEqual(tabs, ['Projects & images', 'Case studies', 'Research', 'CTA']);
+  assert.match(summary, /Project imagery/);
+  assert.match(summary, /Public client case studies will be added/);
+  assert.match(summary, /Approved research will be added/);
+  assert.match(summary, /Have a product, pilot or partnership in mind\?/);
+  assert.match(css, /\.studio-project-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/);
+  assert.match(summary, /id="studio-enquiry-form"[^>]*action="https:\/\/formsubmit\.co\/nathan\+contact@bstudiob\.co\.uk"/);
+  assert.match(summary, /privacy_consent/);
+});
+
+test('homepage carousel keeps preview boundaries, accessible imagery and motion fallbacks', () => {
+  const products = home.match(/<article\b(?=[^>]*id="hero-slide-products")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
+  assert.match(products, /Availability varies/);
+  assert.match(products, /alt="[^"]+"/);
+  assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
+  assert.match(css, /product-gallery/);
+  assert.match(css, /studio-project-grid/);
+});
