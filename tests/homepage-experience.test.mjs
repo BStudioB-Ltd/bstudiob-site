@@ -77,6 +77,10 @@ test('primary Contact navigation returns visitors to the consent-aware enquiry f
   assert.match(home, /name="privacy_consent" type="checkbox" required/);
 });
 
+test('homepage carousel controls use the site’s square-edged geometric style', () => {
+  assert.match(css, /\.hero-tab, \.hero-carousel-arrows button, \.studio-tab, \.studio-carousel-arrows button\s*\{\s*border-radius:\s*0/);
+});
+
 test('four service cards remain aligned and the founder-requested copy is retained', () => {
   assert.match(css, /\.hero-product-copy\s*\{[^}]*display:\s*flex[^}]*flex-direction:\s*column/);
   assert.match(css, /\.hero-product-copy h2\s*\{[^}]*min-height:/);
