@@ -31,6 +31,10 @@
         tabs[current].focus();
       });
     });
+    document.querySelectorAll('a[href^="#studio-tab-"]').forEach((link) => {
+      const index = tabs.findIndex((tab) => `#${tab.id}` === link.hash);
+      if (index >= 0) link.addEventListener('click', () => show(index));
+    });
     show(0);
   });
 
