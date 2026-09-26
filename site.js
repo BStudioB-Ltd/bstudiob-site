@@ -1,4 +1,39 @@
 (() => {
+  document.querySelectorAll('[data-studio-carousel]').forEach((carousel) => {
+    const slides = [...carousel.querySelectorAll('[data-studio-slide]')];
+    const tabs = [...carousel.querySelectorAll('[data-studio-tab]')];
+    let current = 0;
+    const show = (next) => {
+      current = (next + slides.length) % slides.length;
+      slides.forEach((slide, index) => {
+        const active = index === current;
+        slide.hidden = !active;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', String(!active));
+        slide.inert = !active;
+      });
+      tabs.forEach((tab, index) => {
+        const active = index === current;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+      });
+    };
+    carousel.querySelector('[data-studio-prev]')?.addEventListener('click', () => show(current - 1));
+    carousel.querySelector('[data-studio-next]')?.addEventListener('click', () => show(current + 1));
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => show(index));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : current + (event.key === 'ArrowRight' ? 1 : -1);
+        show(next);
+        tabs[current].focus();
+      });
+    });
+    show(0);
+  });
+
   const launchForms = {
     'hello+tributary@bstudiob.co.uk': {
       button: 'Request invite-only access',
