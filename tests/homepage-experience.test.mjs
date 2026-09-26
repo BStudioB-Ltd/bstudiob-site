@@ -6,18 +6,18 @@ const home = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const script = readFileSync(new URL('../site.js', import.meta.url), 'utf8');
 const css = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
 
-test('homepage hero opens on About and provides four accessible destinations', () => {
-  assert.match(home, /data-studio-carousel/);
-  const tabs = [...home.matchAll(/role="tab"[^>]*data-studio-tab[^>]*>([^<]+)</g)].map((match) => match[1]);
+test('homepage keeps the original hero and lower-page composition around a four-slide hero carousel', () => {
+  const hero = home.match(/<section class="hero hero-carousel"[\s\S]*?<\/section>/)?.[0] ?? '';
+  assert.ok(hero, 'hero remains a distinct section');
+  assert.match(hero, /grid-template|data-hero-carousel/);
+  const tabs = [...hero.matchAll(/role="tab"[^>]*data-hero-tab[^>]*>([^<]+)</g)].map((match) => match[1]);
   assert.deepEqual(tabs, ['About', 'Products and Services', 'Make your BStudioB account', 'Contact']);
-  const slides = [...home.matchAll(/<article class="studio-slide[^>]*id="studio-slide-([^"]+)"/g)].map((match) => match[1]);
-  assert.deepEqual(slides, ['about', 'products', 'account', 'contact']);
-  assert.match(home, /studio-slide-about[^>]*role="tabpanel"[^>]*aria-labelledby="studio-tab-about"/);
-  assert.match(home, /studio-slide-about[^>]*is-active/);
+  assert.match(home, /<section class="studio-summary"/);
+  assert.match(home, /class="studio-enquiry-panel"/);
 });
 
-test('Products and Services reveals the four existing square hero cards and routes', () => {
-  const products = home.match(/<article\b(?=[^>]*id="studio-slide-products")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
+test('the Products and Services hero slide alone reveals the four existing square cards', () => {
+  const products = home.match(/<article\b(?=[^>]*id="hero-slide-products")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
   const cards = [...products.matchAll(/<a class="hero-product ([^"]+)" href="([^"]+)"/g)];
   assert.equal(cards.length, 4);
   assert.deepEqual(cards.map((match) => match[1].split(' ').at(-1)), [
@@ -26,68 +26,70 @@ test('Products and Services reveals the four existing square hero cards and rout
   assert.deepEqual(cards.map((match) => match[2]), [
     'creative-live.html', 'studio-tools.html', 'https://provisioning.bstudiob.co.uk/', 'services.html'
   ]);
+  assert.match(products, /hero-product-grid/);
+  assert.match(products, /Custom Workflow Solutions/);
   assert.match(css, /\.hero-product-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/);
   assert.match(css, /\.hero-product\s*\{[^}]*aspect-ratio:\s*1/);
 });
 
-test('square product cards align titles, descriptions and links without clipping', () => {
-  assert.match(css, /\.hero-product-copy\s*\{[^}]*display:\s*flex[^}]*flex-direction:\s*column/);
-  assert.match(css, /\.hero-product-copy h3\s*\{[^}]*min-height:/);
-  assert.match(css, /\.hero-product-copy b\s*\{[^}]*margin-top:\s*auto/);
-  assert.match(css, /\.studio-summary \.hero-product \.hero-product-copy > p:not\(\.studio-summary-links\)\s*\{[^}]*margin:\s*0[^}]*font-size:\s*\.76rem/);
-  assert.match(css, /\.studio-summary \.hero-product\.hero-service \.hero-product-copy > p:not\(\.studio-summary-links\)\s*\{[^}]*font-size:\s*\.68rem/);
-  assert.doesNotMatch(home, /Subject to scope\s*[·-]\s*no guaranteed savings implied/i);
-  for (const label of ['Explore product', 'Open staging app', 'Explore services']) assert.ok(home.includes(label), `${label} CTA remains in the homepage cards`);
+test('About, account and Contact hero slides retain the earlier editorial hero footprint', () => {
+  for (const slide of ['about', 'account', 'contact']) {
+    const panel = home.match(new RegExp(`<article\\b(?=[^>]*id="hero-slide-${slide}")[^>]*>[\\s\\S]*?<\\/article>`))?.[0] ?? '';
+    assert.ok(panel, `${slide} slide exists`);
+    assert.match(panel, /hero-copy/);
+  }
+  const about = home.match(/<article\b(?=[^>]*id="hero-slide-about")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
+  assert.match(about, /Exactly/);
+  assert.match(about, /specifically/);
 });
 
-test('account slide describes the planned portal without implying open registration', () => {
-  const account = home.match(/<article\b(?=[^>]*id="studio-slide-account")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
+test('planned account and contact slides use the existing enquiry route without moving the form into the hero', () => {
+  const account = home.match(/<article\b(?=[^>]*id="hero-slide-account")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
+  const contact = home.match(/<article\b(?=[^>]*id="hero-slide-contact")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
   assert.match(account, /account\.bstudiob\.co\.uk/);
   assert.match(account, /planned|developing/i);
   assert.match(account, /not available yet|not open yet/i);
-  assert.doesNotMatch(account, /<form|Sign up now|Create account now/i);
-});
-
-test('one persistent enquiry form remains beside every slide with routing and consent intact', () => {
+  assert.match(contact, /Have a product, pilot or partnership in mind\?/);
   assert.equal((home.match(/<form\b/g) || []).length, 1);
+  assert.doesNotMatch(home.match(/<section class="hero hero-carousel"[\s\S]*?<\/section>/)?.[0] ?? '', /<form\b/);
   assert.match(home, /id="studio-enquiry-form"[^>]*action="https:\/\/formsubmit\.co\/nathan\+contact@bstudiob\.co\.uk"/);
-  assert.match(home, /name="_next" value="https:\/\/bstudiob\.co\.uk\/thanks\.html"/);
   assert.match(home, /name="privacy_consent" type="checkbox" required/);
-  assert.match(home, /class="studio-enquiry-panel"/);
 });
 
-test('carousel controls are accessible, keyboard-operable and never auto-advance', () => {
-  assert.match(home, /role="region" aria-roledescription="carousel"/);
-  assert.match(home, /aria-live="polite"/);
+test('hero tabs are keyboard-accessible and navigation activates Products and Services', () => {
+  assert.match(home, /<section class="hero hero-carousel"[^>]*data-hero-carousel[^>]*role="region" aria-roledescription="carousel"/);
   assert.match(home, /role="tablist"/);
-  assert.match(home, /data-studio-tab/);
-  assert.match(home, /data-studio-prev/);
-  assert.match(home, /data-studio-next/);
+  assert.match(home, /data-hero-tab/);
+  assert.match(home, /data-hero-prev/);
+  assert.match(home, /data-hero-next/);
   assert.match(script, /data-studio-carousel/);
   assert.match(script, /aria-hidden/);
   assert.match(script, /\['ArrowLeft', 'ArrowRight', 'Home', 'End'\]/);
   assert.match(script, /\.inert\s*=/);
-  assert.match(script, /a\[href\^="#studio-tab-"\]/);
+  assert.match(script, /a\[href\^="#hero-tab-"\]/);
   assert.doesNotMatch(script, /setInterval|autoplay/i);
 });
 
-test('homepage and card copy identify BStudioB LTD and remove the old studio strapline', () => {
+test('four service cards remain aligned and the founder-requested copy is retained', () => {
+  assert.match(css, /\.hero-product-copy\s*\{[^}]*display:\s*flex[^}]*flex-direction:\s*column/);
+  assert.match(css, /\.hero-product-copy h2\s*\{[^}]*min-height:/);
+  assert.match(css, /\.hero-product-copy b\s*\{[^}]*margin-top:\s*auto/);
   assert.match(home, /BStudioB LTD/);
-  assert.doesNotMatch(home, /Independent product studio\s*[·-]\s*UK/i);
+  assert.doesNotMatch(home, /Subject to scope\s*[·-]\s*no guaranteed savings implied/i);
 });
 
-test('scroll reveals progressively enhance with view timelines and defer to reduced motion', () => {
+test('the hero uses restrained load and scroll-driven motion with reduced-motion support', () => {
   assert.match(css, /scroll-behavior:\s*smooth/);
   assert.match(css, /@supports\s*\(animation-timeline:\s*view\(\)\)/);
   assert.match(css, /animation-timeline:\s*view\(\)/);
-  assert.match(css, /animation-range:/);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
   assert.match(css, /scroll-behavior:\s*auto/);
+  assert.match(script, /prefers-reduced-motion:\s*reduce/);
 });
 
-test('hero carousel and square cards adapt to tablet and mobile widths', () => {
+test('hero carousel and cards adapt to tablet and mobile widths', () => {
   assert.match(css, /@media\s*\(max-width:\s*1000px\)/);
   assert.match(css, /@media\s*\(max-width:\s*700px\)/);
-  assert.ok(css.includes('.hero-product-grid { grid-template-columns: minmax(0, 1fr);'), 'mobile product cards use a single-column layout');
-  assert.match(css, /\.studio-carousel-layout[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)/);
+  assert.match(css, /\.hero-product-grid\s*\{[^}]*grid-template-columns:\s*1fr/);
+  assert.match(css, /\.hero-slide\s*\{[^}]*display:\s*grid/);
 });

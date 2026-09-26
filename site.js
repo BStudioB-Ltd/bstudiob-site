@@ -31,7 +31,7 @@
         tabs[current].focus();
       });
     });
-    document.querySelectorAll('a[href^="#studio-tab-"]').forEach((link) => {
+    document.querySelectorAll('a[href^="#studio-tab-"], a[href^="#hero-tab-"]').forEach((link) => {
       const index = tabs.findIndex((tab) => `#${tab.id}` === link.hash);
       if (index >= 0) link.addEventListener('click', () => show(index));
     });
