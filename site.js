@@ -2,6 +2,54 @@
   document.querySelectorAll('[data-studio-carousel]').forEach((carousel) => {
     const slides = [...carousel.querySelectorAll('[data-studio-slide]')];
     const tabs = [...carousel.querySelectorAll('[data-studio-tab]')];
+    const cards = [...carousel.querySelectorAll('[data-hero-select]')];
+    let current = 0;
+    const show = (next) => {
+      current = (next + slides.length) % slides.length;
+      slides.forEach((slide, index) => {
+        const active = index === current;
+        slide.hidden = !active;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', String(!active));
+        slide.inert = !active;
+      });
+      tabs.forEach((tab, index) => {
+        const active = index === current;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+      });
+      cards.forEach((card, index) => {
+        const active = index === current;
+        if (active) card.setAttribute('aria-current', 'true');
+        else card.removeAttribute('aria-current');
+      });
+    };
+    carousel.querySelector('[data-studio-prev]')?.addEventListener('click', () => show(current - 1));
+    carousel.querySelector('[data-studio-next]')?.addEventListener('click', () => show(current + 1));
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => show(index));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : current + (event.key === 'ArrowRight' ? 1 : -1);
+        show(next);
+        tabs[current].focus();
+      });
+    });
+    cards.forEach((card) => {
+      card.addEventListener('click', () => show(Number(card.dataset.heroSelect)));
+    });
+    document.querySelectorAll('a[href^="#studio-tab-"], a[href^="#hero-tab-"]').forEach((link) => {
+      const index = tabs.findIndex((tab) => `#${tab.id}` === link.hash);
+      if (index >= 0) link.addEventListener('click', () => show(index));
+    });
+    show(0);
+  });
+
+  document.querySelectorAll('[data-product-gallery]').forEach((gallery) => {
+    const slides = [...gallery.querySelectorAll('[data-product-gallery-slide]')];
+    const tabs = [...gallery.querySelectorAll('[data-product-gallery-tab]')];
     let current = 0;
     const show = (next) => {
       current = (next + slides.length) % slides.length;
@@ -19,8 +67,6 @@
         tab.tabIndex = active ? 0 : -1;
       });
     };
-    carousel.querySelector('[data-studio-prev]')?.addEventListener('click', () => show(current - 1));
-    carousel.querySelector('[data-studio-next]')?.addEventListener('click', () => show(current + 1));
     tabs.forEach((tab, index) => {
       tab.addEventListener('click', () => show(index));
       tab.addEventListener('keydown', (event) => {
@@ -30,10 +76,6 @@
         show(next);
         tabs[current].focus();
       });
-    });
-    document.querySelectorAll('a[href^="#studio-tab-"], a[href^="#hero-tab-"]').forEach((link) => {
-      const index = tabs.findIndex((tab) => `#${tab.id}` === link.hash);
-      if (index >= 0) link.addEventListener('click', () => show(index));
     });
     show(0);
   });
@@ -127,7 +169,8 @@
 
   const targets = document.querySelectorAll('.hero, .studio-summary, .statement, .focus, .company-collections, .principles, .contact, .collection-hero, .product-feature, .page-product-list, .community-products');
   const itemTargets = document.querySelectorAll('.focus-grid article, .collection-route, .principles li, .product-feature figure, .product-feature > div:last-child, .product-list article, .community-products article');
-  document.body.classList.add('motion-ready', 'page-loaded');
+  document.body.classList.add('motion-ready');
+  window.addEventListener('load', () => document.body.classList.add('page-loaded'), { once: true });
 
   const observer = new IntersectionObserver((entries, currentObserver) => {
     entries.forEach((entry) => {
