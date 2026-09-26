@@ -70,6 +70,13 @@ test('hero tabs are keyboard-accessible and navigation activates Products and Se
   assert.doesNotMatch(script, /setInterval|autoplay/i);
 });
 
+test('primary Contact navigation returns visitors to the consent-aware enquiry form', () => {
+  const nav = home.match(/<nav aria-label="Primary navigation">[\s\S]*?<\/nav>/)?.[0] ?? '';
+  assert.match(nav, /<a href="#studio-enquiry-form">Contact<\/a>/);
+  assert.match(home, /<form id="studio-enquiry-form"[^>]*>/);
+  assert.match(home, /name="privacy_consent" type="checkbox" required/);
+});
+
 test('four service cards remain aligned and the founder-requested copy is retained', () => {
   assert.match(css, /\.hero-product-copy\s*\{[^}]*display:\s*flex[^}]*flex-direction:\s*column/);
   assert.match(css, /\.hero-product-copy h2\s*\{[^}]*min-height:/);
