@@ -14,12 +14,24 @@
   const money = (value) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(Number(value || 0));
   const show = (node, visible) => { node.hidden = !visible; };
   const setStatus = (message, kind = '') => { status.textContent = message; status.className = `notice ${kind}`.trim(); show(status, Boolean(message)); };
+  const lockMutations = (message) => {
+    dashboard.querySelectorAll('button, input, select, textarea').forEach((control) => { control.disabled = true; });
+    setStatus(message, 'error');
+  };
   const clearViews = () => { show(signin, false); show(setup, false); show(denied, false); show(dashboard, false); show(signOut, false); };
   const projectName = (key) => projects.find((project) => project.slug === key)?.name || key;
+  const safePublicUrl = (value) => {
+    try {
+      const url = new URL(value);
+      return url.protocol === 'https:' ? url.href : '';
+    } catch {
+      return '';
+    }
+  };
 
   function renderProjects(rows) {
     const target = document.querySelector('#projects');
-    target.innerHTML = rows.length ? rows.map((row) => `<article class="project"><div><h3>${esc(row.name)}</h3><p>${esc(row.area)}${row.public_url ? ` · <a href="${esc(row.public_url)}" target="_blank" rel="noopener">public page ↗</a>` : ''}</p></div><span class="status ${esc(row.status)}">${esc(row.status)} · ${Number(row.progress || 0)}%</span><p>${esc(row.notes || 'No private note recorded.')}</p></article>`).join('') : '<p class="empty">No projects have been seeded yet.</p>';
+    target.innerHTML = rows.length ? rows.map((row) => { const publicUrl = safePublicUrl(row.public_url); return `<article class="project"><div><h3>${esc(row.name)}</h3><p>${esc(row.area)}${publicUrl ? ` · <a href="${esc(publicUrl)}" target="_blank" rel="noopener noreferrer">public page ↗</a>` : ''}</p></div><span class="status ${esc(row.status)}">${esc(row.status)} · ${Number(row.progress || 0)}%</span><p>${esc(row.notes || 'No private note recorded.')}</p></article>`; }).join('') : '<p class="empty">No projects have been seeded yet.</p>';
   }
 
   function renderTasks(rows) {
@@ -74,7 +86,12 @@
   }
 
   async function audit(entityType, entityId, action, productKey) {
-    await client.from('access_audit_events').insert({ entity_type: entityType, entity_id: entityId, action, product_key: productKey });
+    const result = await client.from('access_audit_events').insert({ entity_type: entityType, entity_id: entityId, action, product_key: productKey });
+    if (result.error) {
+      const error = new Error(result.error.message || 'audit event failed');
+      error.auditFailure = true;
+      throw error;
+    }
   }
 
   async function refresh() {
@@ -93,6 +110,7 @@
 
   document.querySelector('#access-form').addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (!window.confirm('Add this access record? Confirm that the username is opaque and contains no personal data.')) return;
     const data = Object.fromEntries(new FormData(event.currentTarget));
     const project = projects.find((row) => row.slug === data.product_key);
     const result = await client.from('product_access').insert({ ...data, project_id: project?.id || null });
@@ -103,6 +121,7 @@
   document.addEventListener('submit', async (event) => {
     if (event.target.id !== 'mailing-form') return;
     event.preventDefault();
+    if (!window.confirm('Add this mailing-list record? Confirm that the username is opaque and contains no personal data.')) return;
     const data = Object.fromEntries(new FormData(event.target));
     const result = await client.from('mailing_list_members').insert({ ...data, source: 'manual' });
     if (result.error) { setStatus(`Could not add mailing-list record: ${result.error.message}`, 'error'); return; }
@@ -112,6 +131,8 @@
   document.addEventListener('click', async (event) => {
     const button = event.target.closest('[data-action]');
     if (!button || button.dataset.action === 'request-status') return;
+    const labels = { 'block-access': 'block this account', 'remove-access': 'remove this account', 'unblock-access': 'restore this account', 'toggle-list': button.dataset.status === 'blocked' ? 'restore this subscription' : 'block this subscription', 'unsubscribe-list': 'unsubscribe this account' };
+    if (!window.confirm(`Confirm that you want to ${labels[button.dataset.action] || 'update this record'}?`)) return;
     try {
       if (button.dataset.action === 'block-access' || button.dataset.action === 'remove-access' || button.dataset.action === 'unblock-access') await updateAccess(button.dataset.id, button.dataset.action);
       if (button.dataset.action === 'toggle-list' || button.dataset.action === 'unsubscribe-list') {
@@ -123,12 +144,16 @@
         await audit('mailing-list', button.dataset.id, next === 'blocked' ? 'blocked' : next === 'subscribed' ? 'unblocked' : 'updated', rowResult.data.product_key);
       }
       setStatus('Record updated.', 'success'); await refresh();
-    } catch (error) { setStatus(`Update failed: ${error.message || 'database error'}`, 'error'); }
+    } catch (error) {
+      if (error.auditFailure) { lockMutations(`The record changed, but its audit event failed: ${error.message}. Mutations are locked; reconcile and reload before another change.`); return; }
+      setStatus(`Update failed: ${error.message || 'database error'}`, 'error');
+    }
   });
 
   document.addEventListener('change', async (event) => {
     const select = event.target.closest('[data-action="request-status"]');
     if (!select) return;
+    if (!window.confirm(`Change this request status to ${select.value}?`)) { await refresh(); return; }
     try {
       const rowResult = await client.from('access_requests').select('product_key').eq('id', select.dataset.id).single();
       if (rowResult.error) throw rowResult.error;
@@ -136,39 +161,32 @@
       if (result.error) throw result.error;
       await audit('request', select.dataset.id, select.value === 'approved' ? 'approved' : select.value === 'rejected' ? 'rejected' : select.value === 'closed' ? 'closed' : 'updated', rowResult.data.product_key);
       setStatus('Request status updated.', 'success'); await refresh();
-    } catch (error) { setStatus(`Request update failed: ${error.message || 'database error'}`, 'error'); }
+    } catch (error) {
+      if (error.auditFailure) { lockMutations(`The request changed, but its audit event failed: ${error.message}. Mutations are locked; reconcile and reload before another change.`); return; }
+      setStatus(`Request update failed: ${error.message || 'database error'}`, 'error');
+    }
   });
 
-  async function activateSession(session) {
-    const email = (session.user.email || '').toLowerCase();
+  async function activateSession() {
+    const { data: { user }, error } = await client.auth.getUser();
+    if (error || !user) { setStatus('The authenticated identity could not be verified. Sign in again.', 'error'); show(signin, true); return; }
+    const email = (user.email || '').toLowerCase();
     if (!approvedEmails.has(email)) { await client.auth.signOut(); setStatus('This Google account is not on the BStudioB founder allowlist.', 'error'); show(denied, true); return; }
     show(signOut, true); setStatus('Authenticated. Private records are being loaded through database policies.', 'success');
-    try { await loadData(session.user); show(dashboard, true); } catch (error) { setStatus(`Signed in, but the private schema is not ready yet (${error.message || 'database error'}).`, 'error'); }
-  }
-
-  async function recoverOAuthFragment() {
-    let lastError = '';
-    for (let attempt = 0; attempt < 20; attempt += 1) {
-      const params = new URLSearchParams(window.location.hash.slice(1));
-      const accessToken = params.get('access_token'); const refreshToken = params.get('refresh_token');
-      if (accessToken && refreshToken) { const result = await client.auth.setSession({ access_token: accessToken, refresh_token: refreshToken }); if (!result.error) { window.history.replaceState({}, document.title, `${window.location.pathname}${window.location.search}`); return result.data.session; } lastError = result.error.message || 'session could not be established'; }
-      await new Promise((resolve) => setTimeout(resolve, 250));
-    }
-    if (lastError) setStatus(`Google callback could not be completed (${lastError}).`, 'error');
-    return null;
+    try { await loadData(user); show(dashboard, true); } catch (loadError) { setStatus(`Signed in, but the private schema is not ready yet (${loadError.message || 'database error'}).`, 'error'); }
   }
 
   async function start() {
     clearViews();
     if (!config.url || !config.anonKey || config.anonKey.includes('PASTE_')) { setStatus('Secure shell configured, awaiting its public Supabase configuration.'); show(setup, true); return; }
     if (!window.supabase?.createClient) { setStatus('The authentication client could not load. Refresh and try again.', 'error'); return; }
-    client = window.supabase.createClient(config.url, config.anonKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
+    client = window.supabase.createClient(config.url, config.anonKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, flowType: 'pkce' } });
     let activated = false;
-    client.auth.onAuthStateChange((event, session) => { if (session && !activated) { activated = true; void activateSession(session); } });
-    let { data: { session } } = await client.auth.getSession();
-    if (!session) session = await recoverOAuthFragment();
-    if (session && !activated) { activated = true; await activateSession(session); return; }
-    if (!session) { if (!status.textContent.startsWith('Google callback could not be completed')) setStatus('Sign in is required.'); show(signin, true); }
+    client.auth.onAuthStateChange((event, session) => { if (session && !activated) { activated = true; void activateSession(); } });
+    const { data: { session }, error } = await client.auth.getSession();
+    if (error) { setStatus(`The saved session could not be read (${error.message}).`, 'error'); show(signin, true); return; }
+    if (session && !activated) { activated = true; await activateSession(); return; }
+    if (!session) { setStatus('Sign in is required.'); show(signin, true); }
   }
 
   document.querySelector('#google-sign-in').addEventListener('click', async () => { if (!client) return; const { error } = await client.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: `${window.location.origin}/admin/ops/` } }); if (error) setStatus(`Google sign-in could not start: ${error.message}`, 'error'); });

@@ -1,0 +1,4 @@
+Contact: mailto:hello@bstudiob.co.uk
+Expires: 2027-08-27T00:00:00.000Z
+Canonical: https://bstudiob.co.uk/.well-known/security.txt
+Preferred-Languages: en

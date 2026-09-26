@@ -1,0 +1,33 @@
+# BStudioB
+
+BStudioB Ltd is an independent UK software studio. It creates focused product previews and offers scoped advisory and implementation services for workflow digitisation, company-system configuration, automation and bespoke internal tools.
+
+Canonical website: https://bstudiob.co.uk/
+Contact: mailto:hello@bstudiob.co.uk
+
+## Services
+
+- Custom Workflow Solutions: https://bstudiob.co.uk/services.html
+  Advisory and implementation work is subject to scope. Outcomes depend on context and implementation; no guaranteed savings are claimed.
+
+## Products and previews
+
+- FlowCue: https://bstudiob.co.uk/creative-live.html
+  Invite-only early access for trusted venues; not a production guarantee.
+- Buildy: https://bstudiob.co.uk/studio-tools.html
+  Private-beta web-publishing workspace; access is by invitation.
+- Inspector-Edu: https://bstudiob.co.uk/trust-security.html
+  Supervised, authorised institutional security-education pilot only.
+- Cards: https://bstudiob.co.uk/cards.html
+  Early playtest concept; no public production availability is implied.
+- PIT, the public name of PicChat: https://bstudiob.co.uk/products/pit/
+  Internal beta and development preview; MyMark integration remains under qualification.
+- Provisioning: https://provisioning.bstudiob.co.uk/
+  Independently hosted staging application, not a production service.
+
+## Policies
+
+- Privacy: https://bstudiob.co.uk/privacy.html
+- Terms: https://bstudiob.co.uk/terms.html
+
+Private operations routes, credentials, personal data and unpublished release materials are not public content and must not be inferred from this directory.
