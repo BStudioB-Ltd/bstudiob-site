@@ -410,14 +410,16 @@ footer p { margin: 0; } footer div { display: flex; gap: 1.3rem; }
 
 /* The About panel turns the right side of the original hero into four direct, tactile routes. */
 .hero.hero-carousel { position: relative; isolation: isolate; }
-.hero.hero-carousel::before { content: ""; position: absolute; z-index: -1; inset: 4% 0 7%; background: url("assets/brand/bstudiob-signature.svg") center / min(72%, 780px) auto no-repeat; opacity: .07; pointer-events: none; }
+.hero.hero-carousel::before { content: ""; position: absolute; z-index: 0; inset: 4% 0 7%; background: url("assets/brand/bstudiob-signature.svg") 50% 50% / min(100%, 1180px) auto no-repeat; opacity: .07; pointer-events: none; }
+.hero-carousel-controls, .hero-carousel-slides { position: relative; z-index: 1; }
+.hero-carousel:not(.has-selection) .hero-carousel-controls { display: none; }
 .hero-slide-about .hero-about-note { min-height: 0; display: block; padding: 0; border: 0; background: transparent; }
 .hero-about-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
-.hero-about-card { position: relative; min-width: 0; min-height: clamp(170px, 18vw, 240px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; padding: 1.1rem; border: 1px solid rgba(16,19,26,.25); border-radius: 0; color: var(--ink); background: rgba(244,242,236,.25); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); text-align: center; cursor: pointer; transition: background-color .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease; }
+.hero-about-card { position: relative; min-width: 0; min-height: clamp(170px, 18vw, 240px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; padding: 1.1rem; border: 1px solid rgba(16,19,26,.25); border-radius: 0; color: var(--ink); background: var(--paper); text-align: center; cursor: pointer; transition: background-color .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease; }
 .hero-about-card > span { color: #505763; font-size: .66rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .hero-about-card > strong { max-width: 16ch; font-size: clamp(1.25rem, 2vw, 2rem); line-height: 1; letter-spacing: -.055em; }
 .hero-about-card > i { position: absolute; right: .8rem; bottom: .55rem; font-size: 1rem; font-style: normal; }
-.hero-about-card:hover, .hero-about-card:focus-visible { border-color: var(--ink); background: rgba(244,242,236,.42); box-shadow: 5px 5px 0 rgba(16,19,26,.12); transform: translate(-2px, -2px); }
+.hero-about-card:hover, .hero-about-card:focus-visible { border-color: var(--ink); background: #eae8e0; box-shadow: 5px 5px 0 rgba(16,19,26,.12); transform: translate(-2px, -2px); }
 .hero-about-card[aria-current="true"] { border-color: var(--ink); box-shadow: 5px 5px 0 rgba(16,19,26,.12); transform: translate(-2px, -2px); }
 .hero-about-card:focus-visible { outline: 3px solid #7f9900; outline-offset: 3px; }
 .page-loaded .hero-about-card { animation: hero-card-arrive .68s both cubic-bezier(.22,1,.36,1); animation-delay: calc(100ms + var(--card-index, 0) * 90ms); }
@@ -467,7 +469,7 @@ footer p { margin: 0; } footer div { display: flex; gap: 1.3rem; }
   .studio-project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 700px) {
-  .hero.hero-carousel::before { inset: 0; background-size: 110% auto; opacity: .055; }
+  .hero.hero-carousel::before { inset: 0; background-position: 50% 50%; background-size: 135% auto; opacity: .055; }
   .hero-about-options { gap: .5rem; }
   .hero-about-card { min-height: 145px; padding: .75rem .5rem; }
   .hero-about-card > strong { font-size: clamp(1.05rem, 5.4vw, 1.45rem); }

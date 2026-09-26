@@ -38,7 +38,12 @@
       });
     });
     cards.forEach((card) => {
-      card.addEventListener('click', () => show(Number(card.dataset.heroSelect)));
+      card.addEventListener('click', () => {
+        carousel.classList.add('has-selection');
+        const selected = Number(card.dataset.heroSelect);
+        tabs[selected]?.focus();
+        show(selected);
+      });
     });
     document.querySelectorAll('a[href^="#studio-tab-"], a[href^="#hero-tab-"]').forEach((link) => {
       const index = tabs.findIndex((tab) => `#${tab.id}` === link.hash);

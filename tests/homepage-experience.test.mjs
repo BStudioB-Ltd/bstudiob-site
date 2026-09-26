@@ -77,6 +77,12 @@ test('primary Contact navigation returns visitors to the consent-aware enquiry f
   assert.match(home, /name="privacy_consent" type="checkbox" required/);
 });
 
+test('homepage header keeps Contact and removes the redundant Company, Products, and Services links', () => {
+  const nav = home.match(/<nav aria-label="Primary navigation">[\s\S]*?<\/nav>/)?.[0] ?? '';
+  assert.match(nav, /<a href="#studio-enquiry-form">Contact<\/a>/);
+  assert.doesNotMatch(nav, />Company<|>Products<|>Services</);
+});
+
 test('homepage carousel controls use the site’s square-edged geometric style', () => {
   assert.match(css, /\.hero-tab, \.hero-carousel-arrows button, \.studio-tab, \.studio-carousel-arrows button\s*\{\s*border-radius:\s*0/);
 });
@@ -115,8 +121,28 @@ test('About uses four centered navigation cards over a restrained BStudioB mark 
   assert.match(script, /data-hero-select/);
   assert.match(css, /hero-slide-about[^}]*::before|hero-about-options/);
   assert.match(css, /bstudiob-signature\.svg/);
-  assert.match(css, /background:\s*rgba\(244,242,236,\.25\)/);
+  assert.match(css, /\.hero-about-card\s*\{[^}]*background:\s*var\(--paper\)/);
+  assert.match(css, /\.hero-about-card:hover,\s*\.hero-about-card:focus-visible\s*\{[^}]*background:\s*#eae8e0/);
+  assert.doesNotMatch(css, /\.hero-about-card\s*\{[^}]*backdrop-filter/);
   assert.match(css, /cubic-bezier\(\.22,\s*1,\s*\.36,\s*1\)/);
+});
+
+test('BStudioB hero watermark stays centered behind the carousel and scales up responsively', () => {
+  assert.match(css, /\.hero\.hero-carousel::before\s*\{[^}]*z-index:\s*0/);
+  assert.match(css, /\.hero-carousel-controls\s*,\s*\.hero-carousel-slides\s*\{[^}]*position:\s*relative[^}]*z-index:\s*1/);
+  assert.match(css, /background:\s*url\("assets\/brand\/bstudiob-signature\.svg"\)\s+50%\s+50%\s*\/\s*min\(100%,\s*1180px\)\s+auto\s+no-repeat/);
+  assert.match(css, /@media\s*\(max-width:\s*700px\)\s*\{[^}]*hero\.hero-carousel::before[^}]*background-position:\s*50%\s+50%[^}]*background-size:\s*135%\s+auto/);
+});
+
+test('hero carousel controls are revealed only after a visitor selects an About card', () => {
+  const hero = home.match(/<section class="hero hero-carousel"[\s\S]*?<\/section>/)?.[0] ?? '';
+  assert.doesNotMatch(hero, /has-selection/);
+  assert.match(css, /\.hero-carousel:not\(\.has-selection\)\s+\.hero-carousel-controls\s*\{\s*display:\s*none/);
+  assert.match(script, /carousel\.classList\.add\('has-selection'\);\s*const selected = Number\(card\.dataset\.heroSelect\);\s*tabs\[selected\]\?\.focus\(\);\s*show\(selected\)/);
+});
+
+test('selecting an About card moves keyboard focus out of its slide before the slide is hidden', () => {
+  assert.match(script, /const selected = Number\(card\.dataset\.heroSelect\);\s*tabs\[selected\]\?\.focus\(\);\s*show\(selected\)/);
 });
 
 test('Products and Services has an accessible preview carousel with first-party product imagery', () => {
