@@ -1,5 +1,11 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /thanks.html
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /thanks.html
 
 Sitemap: https://bstudiob.co.uk/sitemap.xml

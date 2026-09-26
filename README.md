@@ -1,6 +1,8 @@
 # BStudioB website
 
-Static public landing site for BStudioB. Its current public lineup is FlowCue, Buildy, Provisioning and Custom Workflow Solutions. It uses Umami Cloud for anonymous, cookieless website statistics and no advertising scripts. The interest forms are delivered through FormSubmit to product-specific BStudioB mailboxes.
+Static public landing site for BStudioB. Its current public lineup is FlowCue, Buildy, Provisioning and Custom Workflow Solutions, with clearly bounded previews for Inspector-Edu, Cards and PIT. Analytics are currently disabled while script isolation and provider arrangements are reviewed. Interest forms are delivered through FormSubmit to product-specific BStudioB mailboxes.
+
+Search and AI-discovery files include `sitemap.xml`, `robots.txt`, `llms.txt`, canonical/social metadata and schema.org structured data. These improve machine-readable context but do not guarantee rankings or inclusion in any search or AI answer.
 
 ## Publishing review checklist
 

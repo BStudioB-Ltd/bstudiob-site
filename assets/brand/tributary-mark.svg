@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Tributary icon</title>
+  <desc id="desc">A blue tree silhouette above water that widens into branching streams.</desc>
+  <defs>
+    <filter id="solid-mask" color-interpolation-filters="sRGB">
+      <feComponentTransfer><feFuncA type="linear" slope="4" intercept="-0.25"/></feComponentTransfer>
+    </filter>
+    <filter id="exact-brand-blue" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 0.03137255 0 0 0 0 0.49411765 0 0 0 0 0.64313725 0 0 0 1 0"/>
+    </filter>
+    <mask id="mark-shape" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512" mask-type="alpha" style="mask-type:alpha">
+      <image href="tributary-mark-source.png" x="0" y="0" width="512" height="512" preserveAspectRatio="xMidYMid meet" filter="url(#solid-mask)"/>
+    </mask>
+  </defs>
+  <rect width="512" height="512" fill="#087EA4" mask="url(#mark-shape)" filter="url(#exact-brand-blue)"/>
+</svg>
