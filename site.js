@@ -19,8 +19,8 @@
         tab.setAttribute('aria-selected', String(active));
         tab.tabIndex = active ? 0 : -1;
       });
-      cards.forEach((card, index) => {
-        const active = index === current;
+      cards.forEach((card) => {
+        const active = Number(card.dataset.heroSelect) === current;
         if (active) card.setAttribute('aria-current', 'true');
         else card.removeAttribute('aria-current');
       });

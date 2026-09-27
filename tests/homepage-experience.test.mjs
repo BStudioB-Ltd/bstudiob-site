@@ -6,12 +6,16 @@ const home = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const script = readFileSync(new URL('../site.js', import.meta.url), 'utf8');
 const css = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
 
-test('homepage keeps the original hero and lower-page composition around a four-slide hero carousel', () => {
+test('homepage opens on a distinct Home slide with a separate About slide in the hero carousel', () => {
   const hero = home.match(/<section class="hero hero-carousel"[\s\S]*?<\/section>/)?.[0] ?? '';
   assert.ok(hero, 'hero remains a distinct section');
   assert.match(hero, /grid-template|data-hero-carousel/);
   const tabs = [...hero.matchAll(/role="tab"[^>]*data-hero-tab[^>]*>([^<]+)</g)].map((match) => match[1]);
-  assert.deepEqual(tabs, ['About', 'Products and Services', 'Make your BStudioB account', 'Contact']);
+  assert.deepEqual(tabs, ['Home', 'About BStudioB', 'Products and Services', 'Make your BStudioB account', 'Contact']);
+  assert.match(hero, /<article class="hero-slide hero-slide-home is-active" id="hero-slide-home"/);
+  assert.match(hero, /<article class="hero-slide hero-slide-about" id="hero-slide-about"[^>]*hidden/);
+  const homeSlide = hero.match(/<article\b(?=[^>]*id="hero-slide-home")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
+  assert.deepEqual([...homeSlide.matchAll(/data-hero-select="(\d+)"/g)].map((match) => Number(match[1])), [1, 2, 3, 4]);
   assert.match(home, /<section class="studio-summary"/);
   assert.match(home, /class="studio-enquiry-panel"/);
 });
@@ -32,15 +36,24 @@ test('the Products and Services hero slide alone reveals the four existing squar
   assert.match(css, /\.hero-product\s*\{[^}]*aspect-ratio:\s*1/);
 });
 
-test('About, account and Contact hero slides retain the earlier editorial hero footprint', () => {
-  for (const slide of ['about', 'account', 'contact']) {
+test('Home remains the tagline and topic-card landing, while About tells the company story', () => {
+  const homeSlide = home.match(/<article\b(?=[^>]*id="hero-slide-home")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
+  assert.match(homeSlide, /Exactly/);
+  assert.match(homeSlide, /specifically/);
+  assert.match(homeSlide, /hero-about-options/);
+  const about = home.match(/<article\b(?=[^>]*id="hero-slide-about")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
+  assert.match(about, /Why BStudioB exists/);
+  assert.match(about, /Why it matters/);
+  assert.match(about, /Our approach/);
+  assert.match(about, /Nathan Brown-Bennett/);
+  assert.match(about, /Our aims/);
+  assert.match(about, /href="#studio-enquiry-form">Invest in us/);
+  assert.match(script, /Number\(card\.dataset\.heroSelect\)\s*===\s*current/);
+  for (const slide of ['home', 'about', 'account', 'contact']) {
     const panel = home.match(new RegExp(`<article\\b(?=[^>]*id="hero-slide-${slide}")[^>]*>[\\s\\S]*?<\\/article>`))?.[0] ?? '';
     assert.ok(panel, `${slide} slide exists`);
     assert.match(panel, /hero-copy/);
   }
-  const about = home.match(/<article\b(?=[^>]*id="hero-slide-about")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
-  assert.match(about, /Exactly/);
-  assert.match(about, /specifically/);
 });
 
 test('planned account and contact slides use the existing enquiry route without moving the form into the hero', () => {
@@ -111,13 +124,13 @@ test('hero carousel and cards adapt to tablet and mobile widths', () => {
   assert.match(css, /\.hero-slide\s*\{[^}]*display:\s*grid/);
 });
 
-test('About uses four centered navigation cards over a restrained BStudioB mark backdrop', () => {
-  const about = home.match(/<article\b(?=[^>]*id="hero-slide-about")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
-  assert.match(about, /hero-about-options/);
+test('Home keeps four centered navigation cards over a restrained BStudioB mark backdrop', () => {
+  const homeSlide = home.match(/<article\b(?=[^>]*id="hero-slide-home")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
+  assert.match(homeSlide, /hero-about-options/);
   for (const label of ['About', 'Products and Services', 'Make your BStudioB account', 'Contact']) {
-    assert.match(about, new RegExp(`>${label}<`));
+    assert.match(homeSlide, new RegExp(`>${label}<`));
   }
-  assert.match(about, /data-hero-select/);
+  assert.match(homeSlide, /data-hero-select/);
   assert.match(script, /data-hero-select/);
   assert.match(css, /hero-slide-about[^}]*::before|hero-about-options/);
   assert.match(css, /bstudiob-signature\.svg/);
