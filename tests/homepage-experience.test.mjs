@@ -11,7 +11,7 @@ test('homepage opens on a distinct Home slide with a separate About slide in the
   assert.ok(hero, 'hero remains a distinct section');
   assert.match(hero, /grid-template|data-hero-carousel/);
   const tabs = [...hero.matchAll(/role="tab"[^>]*data-hero-tab[^>]*>([^<]+)</g)].map((match) => match[1]);
-  assert.deepEqual(tabs, ['Home', 'About BStudioB', 'Products and Services', 'Make your BStudioB account', 'Contact']);
+  assert.deepEqual(tabs, ['Home', 'About BStudioB', 'Products and Services', 'Your account', 'Contact']);
   assert.match(hero, /<article class="hero-slide hero-slide-home is-active" id="hero-slide-home"/);
   assert.match(hero, /<article class="hero-slide hero-slide-about" id="hero-slide-about"[^>]*hidden/);
   const homeSlide = hero.match(/<article\b(?=[^>]*id="hero-slide-home")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
@@ -56,12 +56,16 @@ test('Home remains the tagline and topic-card landing, while About tells the com
   }
 });
 
-test('planned account and contact slides use the existing enquiry route without moving the form into the hero', () => {
+test('customer account slide explains access and links to the working portal without moving the enquiry form', () => {
   const account = home.match(/<article\b(?=[^>]*id="hero-slide-account")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
   const contact = home.match(/<article\b(?=[^>]*id="hero-slide-contact")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
-  assert.match(account, /account\.bstudiob\.co\.uk/);
-  assert.match(account, /planned|developing/i);
-  assert.match(account, /not available yet|not open yet/i);
+  assert.match(account, /Buildy/);
+  assert.match(account, /FlowCue/);
+  assert.match(account, /Device Provisioning Toolkit/);
+  assert.match(account, /status and expiry/i);
+  assert.match(account, /href="https:\/\/product-license-manager-staging\.nathan-e53\.workers\.dev\//);
+  assert.match(account, /Sign in or create account/i);
+  assert.doesNotMatch(account, /Planned customer portal|not available yet|not open yet|account\.bstudiob\.co\.uk/i);
   assert.match(contact, /Have a product, pilot or partnership in mind\?/);
   assert.equal((home.match(/<form\b/g) || []).length, 1);
   assert.doesNotMatch(home.match(/<section class="hero hero-carousel"[\s\S]*?<\/section>/)?.[0] ?? '', /<form\b/);
@@ -127,7 +131,7 @@ test('hero carousel and cards adapt to tablet and mobile widths', () => {
 test('Home keeps four centered navigation cards over a restrained BStudioB mark backdrop', () => {
   const homeSlide = home.match(/<article\b(?=[^>]*id="hero-slide-home")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
   assert.match(homeSlide, /hero-about-options/);
-  for (const label of ['About', 'Products and Services', 'Make your BStudioB account', 'Contact']) {
+  for (const label of ['About', 'Products and Services', 'Your account', 'Contact']) {
     assert.match(homeSlide, new RegExp(`>${label}<`));
   }
   assert.match(homeSlide, /data-hero-select/);
