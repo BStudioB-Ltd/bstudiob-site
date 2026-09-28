@@ -56,21 +56,32 @@ test('Home remains the tagline and topic-card landing, while About tells the com
   }
 });
 
-test('customer account slide explains access and links to the working portal without moving the enquiry form', () => {
+test('customer account slide embeds the working portal with a direct fallback without moving the enquiry form', () => {
   const account = home.match(/<article\b(?=[^>]*id="hero-slide-account")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
   const contact = home.match(/<article\b(?=[^>]*id="hero-slide-contact")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
   assert.match(account, /Buildy/);
   assert.match(account, /FlowCue/);
   assert.match(account, /Device Provisioning Toolkit/);
   assert.match(account, /status and expiry/i);
+  assert.match(account, /<iframe[^>]+src="https:\/\/product-license-manager-staging\.nathan-e53\.workers\.dev\//);
+  assert.match(account, /title="BStudioB customer sign in and account creation"/);
   assert.match(account, /href="https:\/\/product-license-manager-staging\.nathan-e53\.workers\.dev\//);
-  assert.match(account, /Sign in or create account/i);
+  assert.match(account, /Open account portal/i);
   assert.doesNotMatch(account, /Planned customer portal|not available yet|not open yet|account\.bstudiob\.co\.uk/i);
   assert.match(contact, /Have a product, pilot or partnership in mind\?/);
   assert.equal((home.match(/<form\b/g) || []).length, 1);
   assert.doesNotMatch(home.match(/<section class="hero hero-carousel"[\s\S]*?<\/section>/)?.[0] ?? '', /<form\b/);
   assert.match(home, /id="studio-enquiry-form"[^>]*action="https:\/\/formsubmit\.co\/nathan\+contact@bstudiob\.co\.uk"/);
   assert.match(home, /name="privacy_consent" type="checkbox" required/);
+});
+
+test('embedded account portal is responsive and has a usable direct-link fallback', () => {
+  const account = home.match(/<article\b(?=[^>]*id="hero-slide-account")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
+  assert.match(account, /class="account-portal-frame"/);
+  assert.match(account, /loading="lazy"/);
+  assert.match(account, /referrerpolicy="strict-origin-when-cross-origin"/);
+  assert.match(css, /\.account-portal-frame\s*\{[^}]*width:\s*100%/);
+  assert.match(css, /\.account-portal-frame\s*\{[^}]*min-height:/);
 });
 
 test('hero tabs are keyboard-accessible and navigation activates Products and Services', () => {
