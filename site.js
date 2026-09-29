@@ -47,9 +47,20 @@
     });
     document.querySelectorAll('a[href^="#studio-tab-"], a[href^="#hero-tab-"]').forEach((link) => {
       const index = tabs.findIndex((tab) => `#${tab.id}` === link.hash);
-      if (index >= 0) link.addEventListener('click', () => show(index));
+      if (index >= 0) link.addEventListener('click', () => {
+        carousel.classList.add('has-selection');
+        show(index);
+      });
     });
     show(0);
+  });
+
+  const accountFrame = document.querySelector('.account-portal-frame');
+  if (accountFrame) window.addEventListener('message', (event) => {
+    if (event.source !== accountFrame.contentWindow || event.origin !== new URL(accountFrame.src).origin || event.data?.type !== 'account-portal:resize') return;
+    const height = Number(event.data.height);
+    if (!Number.isFinite(height)) return;
+    accountFrame.style.height = `${Math.min(1400, Math.max(460, Math.ceil(height)))}px`;
   });
 
   document.querySelectorAll('[data-product-gallery]').forEach((gallery) => {

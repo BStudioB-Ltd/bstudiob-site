@@ -336,7 +336,7 @@ footer p { margin: 0; } footer div { display: flex; gap: 1.3rem; }
 .hero-account-note .hero-side-kicker, .hero-contact-note .hero-side-kicker { color: #cdeedd; }
 .hero-account-embed { align-items: stretch; justify-content: flex-start; min-height: 0; padding: clamp(1.25rem, 2.5vw, 2rem); background: #f8f7f2; }
 .hero-account-embed h2 { margin: .55rem 0 .8rem; font-size: clamp(1.45rem, 2.3vw, 2rem); line-height: 1.05; }
-.account-portal-frame { display: block; width: 100%; min-height: 570px; flex: 1 1 auto; border: 1px solid #c8c8c1; background: #f4f2ec; }
+.account-portal-frame { display: block; width: 100%; height: 720px; min-height: 0; flex: 1 1 auto; border: 1px solid #c8c8c1; background: #f4f2ec; }
 .hero-account-embed > .text-link { align-self: flex-start; margin-top: .8rem; }
 .hero-slide-products { grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr); gap: clamp(1.5rem, 4vw, 3.5rem); }
 .hero-slide-products .hero-copy h1 { font-size: clamp(2.7rem, 5vw, 5rem); }
@@ -393,7 +393,7 @@ footer p { margin: 0; } footer div { display: flex; gap: 1.3rem; }
   .hero-slide-products .hero-copy h1 { font-size: clamp(2.2rem, 9vw, 3.5rem); }
   .hero-side-note { min-height: 240px; padding: 1.4rem; }
   .hero-account-embed { min-height: 0; padding: 1rem; }
-  .account-portal-frame { min-height: 640px; }
+  .account-portal-frame { height: 720px; }
   .hero-slide-products .hero-product-grid { grid-template-columns: 1fr; gap: .65rem; }
   .hero-slide-products .hero-product { min-height: 310px; aspect-ratio: auto; align-self: stretch; padding: .85rem; }
   .hero-slide-products .hero-product figure, .hero-slide-products .hero-service .service-card-mark { flex-basis: 82px; height: 82px; }

@@ -34,21 +34,8 @@
   </head>
   <body>
     <main>
-      <nav aria-label="Primary navigation"><a class="wordmark" href="index.html" aria-label="BStudioB home"><img src="assets/brand/bstudiob-signature.svg" alt="BStudioB Ltd"></a><div class="nav-links"><a href="#studio-enquiry-form">Contact</a></div></nav>
+      <nav aria-label="Primary navigation"><a class="wordmark" href="index.html" aria-label="BStudioB home"><img src="assets/brand/bstudiob-signature.svg" alt="BStudioB Ltd"></a><div class="nav-links"><a href="#hero-tab-account">My account</a><a href="#studio-enquiry-form">Contact</a></div></nav>
       <section class="hero hero-carousel" id="company" aria-label="BStudioB" data-hero-carousel data-studio-carousel role="region" aria-roledescription="carousel">
-        <div class="hero-carousel-controls">
-          <div class="hero-carousel-tabs" role="tablist" aria-label="Explore BStudioB">
-            <button class="hero-tab is-active" id="hero-tab-home" type="button" role="tab" aria-selected="true" aria-controls="hero-slide-home" data-hero-tab data-studio-tab>Home</button>
-            <button class="hero-tab" id="hero-tab-about" type="button" role="tab" aria-selected="false" aria-controls="hero-slide-about" tabindex="-1" data-hero-tab data-studio-tab>About BStudioB</button>
-            <button class="hero-tab" id="hero-tab-products" type="button" role="tab" aria-selected="false" aria-controls="hero-slide-products" tabindex="-1" data-hero-tab data-studio-tab>Products and Services</button>
-            <button class="hero-tab" id="hero-tab-account" type="button" role="tab" aria-selected="false" aria-controls="hero-slide-account" tabindex="-1" data-hero-tab data-studio-tab>Your account</button>
-            <button class="hero-tab" id="hero-tab-contact" type="button" role="tab" aria-selected="false" aria-controls="hero-slide-contact" tabindex="-1" data-hero-tab data-studio-tab>Contact</button>
-          </div>
-          <div class="hero-carousel-arrows">
-            <button type="button" data-hero-prev data-studio-prev aria-label="Previous BStudioB slide">←</button>
-            <button type="button" data-hero-next data-studio-next aria-label="Next BStudioB slide">→</button>
-          </div>
-        </div>
         <div class="hero-carousel-slides" aria-live="polite">
           <article class="hero-slide hero-slide-home is-active" id="hero-slide-home" role="tabpanel" aria-labelledby="hero-tab-home" data-hero-slide data-studio-slide>
             <div class="hero-copy"><p class="eyebrow">BStudioB LTD</p><h1><span class="headline-line"><span class="headline-word" style="--word-delay:.08s">Exactly</span></span><br><span class="headline-line"><span class="headline-word" style="--word-delay:.18s">what</span> <span class="headline-word" style="--word-delay:.24s">you</span> <span class="headline-word" style="--word-delay:.3s">needed.</span></span><br><em><span class="headline-line"><span class="headline-word" style="--word-delay:.42s">Designed</span></span><br><span class="headline-line"><span class="headline-word" style="--word-delay:.52s">specifically</span> <span class="headline-word" style="--word-delay:.58s">for</span> <span class="headline-word" style="--word-delay:.64s">you.</span></span></em></h1><a class="text-link" href="#studio-enquiry-form">Start a conversation <span aria-hidden="true">↗</span></a></div>
@@ -97,12 +84,25 @@
           </article>
           <article class="hero-slide hero-slide-account" id="hero-slide-account" role="tabpanel" aria-labelledby="hero-tab-account" data-hero-slide data-studio-slide hidden>
             <div class="hero-copy"><p class="eyebrow">BStudioB customer account</p><h1>Your products, in one place.</h1><p class="hero-lede">Sign in or create a BStudioB account to view your assigned Buildy, FlowCue and Device Provisioning Toolkit access, check licence status and expiry, and contact support.</p><p class="hero-slide-note">Your account shows products assigned to you. Creating an account does not automatically include a product licence.</p></div>
-            <aside class="hero-side-note hero-account-embed"><span class="hero-side-kicker">Your BStudioB account</span><h2>Sign in or create your account.</h2><iframe class="account-portal-frame" src="https://product-license-manager-staging.nathan-e53.workers.dev/" title="BStudioB customer sign in and account creation" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="clipboard-read; clipboard-write"></iframe><a class="text-link" href="https://product-license-manager-staging.nathan-e53.workers.dev/" target="_blank" rel="noopener noreferrer">Open account portal <span aria-hidden="true">↗</span></a></aside>
+            <aside class="hero-side-note hero-account-embed"><span class="hero-side-kicker">Your BStudioB account</span><h2>Sign in or create your account.</h2><iframe class="account-portal-frame" src="https://product-license-manager-staging.nathan-e53.workers.dev/?embed=1" title="BStudioB customer sign in and account creation" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="clipboard-read; clipboard-write"></iframe><a class="text-link" href="https://product-license-manager-staging.nathan-e53.workers.dev/" target="_blank" rel="noopener noreferrer">Open account portal <span aria-hidden="true">↗</span></a></aside>
           </article>
           <article class="hero-slide hero-slide-contact" id="hero-slide-contact" role="tabpanel" aria-labelledby="hero-tab-contact" data-hero-slide data-studio-slide hidden>
             <div class="hero-copy"><p class="eyebrow">Build with BStudioB</p><h1>Have a product, pilot or partnership in mind?</h1><p class="hero-lede">We welcome conversations with people and organisations who care about making useful things well.</p><a class="text-link" href="#studio-enquiry-form">Tell us what you’re thinking <span aria-hidden="true">↗</span></a></div>
             <aside class="hero-side-note hero-contact-note"><span class="hero-side-kicker">Start a conversation</span><h2>Tell us a little about it.</h2><a class="text-link" href="#studio-enquiry-form">Go to the enquiry form <span aria-hidden="true">↗</span></a></aside>
           </article>
+        </div>
+        <div class="hero-carousel-controls">
+          <div class="hero-carousel-tabs" role="tablist" aria-label="Explore BStudioB">
+            <button class="hero-tab is-active" id="hero-tab-home" type="button" role="tab" aria-selected="true" aria-controls="hero-slide-home" data-hero-tab data-studio-tab>Home</button>
+            <button class="hero-tab" id="hero-tab-about" type="button" role="tab" aria-selected="false" aria-controls="hero-slide-about" tabindex="-1" data-hero-tab data-studio-tab>About BStudioB</button>
+            <button class="hero-tab" id="hero-tab-products" type="button" role="tab" aria-selected="false" aria-controls="hero-slide-products" tabindex="-1" data-hero-tab data-studio-tab>Products and Services</button>
+            <button class="hero-tab" id="hero-tab-account" type="button" role="tab" aria-selected="false" aria-controls="hero-slide-account" tabindex="-1" data-hero-tab data-studio-tab>Your account</button>
+            <button class="hero-tab" id="hero-tab-contact" type="button" role="tab" aria-selected="false" aria-controls="hero-slide-contact" tabindex="-1" data-hero-tab data-studio-tab>Contact</button>
+          </div>
+          <div class="hero-carousel-arrows">
+            <button type="button" data-hero-prev data-studio-prev aria-label="Previous BStudioB slide">←</button>
+            <button type="button" data-hero-next data-studio-next aria-label="Next BStudioB slide">→</button>
+          </div>
         </div>
       </section>
       <section class="studio-summary" aria-label="What BStudioB does and offers">

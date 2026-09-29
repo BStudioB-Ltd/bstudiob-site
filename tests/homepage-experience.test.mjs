@@ -7,7 +7,9 @@ const script = readFileSync(new URL('../site.js', import.meta.url), 'utf8');
 const css = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
 
 test('homepage opens on a distinct Home slide with a separate About slide in the hero carousel', () => {
-  const hero = home.match(/<section class="hero hero-carousel"[\s\S]*?<\/section>/)?.[0] ?? '';
+  const heroStart = home.indexOf('<section class="hero hero-carousel"');
+  const heroEnd = home.indexOf('<section class="studio-summary"', heroStart);
+  const hero = home.slice(heroStart, heroEnd);
   assert.ok(hero, 'hero remains a distinct section');
   assert.match(hero, /grid-template|data-hero-carousel/);
   const tabs = [...hero.matchAll(/role="tab"[^>]*data-hero-tab[^>]*>([^<]+)</g)].map((match) => match[1]);
@@ -75,13 +77,29 @@ test('customer account slide embeds the working portal with a direct fallback wi
   assert.match(home, /name="privacy_consent" type="checkbox" required/);
 });
 
+test('homepage navigation includes My account and carousel controls follow the hero slides', () => {
+  const nav = home.match(/<nav aria-label="Primary navigation">[\s\S]*?<\/nav>/)?.[0] ?? '';
+  const heroStart = home.indexOf('<section class="hero hero-carousel"');
+  const slidesStart = home.indexOf('class="hero-carousel-slides"', heroStart);
+  const controlsStart = home.indexOf('class="hero-carousel-controls"', heroStart);
+  assert.match(nav, /href="#hero-tab-account">My account/);
+  assert.match(nav, /href="#studio-enquiry-form">Contact/);
+  assert.ok(slidesStart >= 0 && controlsStart > slidesStart, 'carousel controls follow the slides');
+  assert.match(script, /carousel\.classList\.add\('has-selection'\)[\s\S]*?show\(index\)/);
+});
+
 test('embedded account portal is responsive and has a usable direct-link fallback', () => {
   const account = home.match(/<article\b(?=[^>]*id="hero-slide-account")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
   assert.match(account, /class="account-portal-frame"/);
   assert.match(account, /loading="lazy"/);
+  assert.match(account, /\?embed=1/);
   assert.match(account, /referrerpolicy="strict-origin-when-cross-origin"/);
   assert.match(css, /\.account-portal-frame\s*\{[^}]*width:\s*100%/);
   assert.match(css, /\.account-portal-frame\s*\{[^}]*min-height:/);
+  assert.match(script, /account-portal-frame/);
+  assert.match(script, /event\.source\s*!==\s*accountFrame\.contentWindow/);
+  assert.match(script, /event\.origin\s*!==\s*new URL\(accountFrame\.src\)\.origin/);
+  assert.match(script, /account-portal:resize/);
 });
 
 test('hero tabs are keyboard-accessible and navigation activates Products and Services', () => {
@@ -107,6 +125,7 @@ test('primary Contact navigation returns visitors to the consent-aware enquiry f
 
 test('homepage header keeps Contact and removes the redundant Company, Products, and Services links', () => {
   const nav = home.match(/<nav aria-label="Primary navigation">[\s\S]*?<\/nav>/)?.[0] ?? '';
+  assert.match(nav, /href="#hero-tab-account">My account<\/a>/);
   assert.match(nav, /<a href="#studio-enquiry-form">Contact<\/a>/);
   assert.doesNotMatch(nav, />Company<|>Products<|>Services</);
 });
