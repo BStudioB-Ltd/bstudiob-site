@@ -60,7 +60,7 @@
     if (event.source !== accountFrame.contentWindow || event.origin !== new URL(accountFrame.src).origin || event.data?.type !== 'account-portal:resize') return;
     const height = Number(event.data.height);
     if (!Number.isFinite(height)) return;
-    accountFrame.style.height = `${Math.min(1400, Math.max(460, Math.ceil(height)))}px`;
+    accountFrame.style.height = `${Math.min(1400, Math.max(460, Math.ceil(height) + 4))}px`;
   });
 
   document.querySelectorAll('[data-product-gallery]').forEach((gallery) => {

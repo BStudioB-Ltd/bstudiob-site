@@ -100,6 +100,7 @@ test('embedded account portal is responsive and has a usable direct-link fallbac
   assert.match(script, /event\.source\s*!==\s*accountFrame\.contentWindow/);
   assert.match(script, /event\.origin\s*!==\s*new URL\(accountFrame\.src\)\.origin/);
   assert.match(script, /account-portal:resize/);
+  assert.match(script, /Math\.ceil\(height\)\s*\+\s*4/);
 });
 
 test('hero tabs are keyboard-accessible and navigation activates Products and Services', () => {
