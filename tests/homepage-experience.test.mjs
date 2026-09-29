@@ -82,10 +82,11 @@ test('homepage navigation includes My account and carousel controls follow the h
   const heroStart = home.indexOf('<section class="hero hero-carousel"');
   const slidesStart = home.indexOf('class="hero-carousel-slides"', heroStart);
   const controlsStart = home.indexOf('class="hero-carousel-controls"', heroStart);
-  assert.match(nav, /href="#hero-tab-account">My account/);
+  assert.match(nav, /href="#hero-slide-account">My account/);
   assert.match(nav, /href="#studio-enquiry-form">Contact/);
   assert.ok(slidesStart >= 0 && controlsStart > slidesStart, 'carousel controls follow the slides');
   assert.match(script, /carousel\.classList\.add\('has-selection'\)[\s\S]*?show\(index\)/);
+  assert.match(script, /a\[href\^="#hero-slide-"\]/);
 });
 
 test('embedded account portal is responsive and has a usable direct-link fallback', () => {
@@ -101,6 +102,8 @@ test('embedded account portal is responsive and has a usable direct-link fallbac
   assert.match(script, /event\.origin\s*!==\s*new URL\(accountFrame\.src\)\.origin/);
   assert.match(script, /account-portal:resize/);
   assert.match(script, /Math\.ceil\(height\)\s*\+\s*4/);
+  assert.match(home, /site\.js\?v=[^"']+/);
+  assert.match(home, /styles\.css\?v=[^"']+/);
 });
 
 test('hero tabs are keyboard-accessible and navigation activates Products and Services', () => {
@@ -126,7 +129,7 @@ test('primary Contact navigation returns visitors to the consent-aware enquiry f
 
 test('homepage header keeps Contact and removes the redundant Company, Products, and Services links', () => {
   const nav = home.match(/<nav aria-label="Primary navigation">[\s\S]*?<\/nav>/)?.[0] ?? '';
-  assert.match(nav, /href="#hero-tab-account">My account<\/a>/);
+  assert.match(nav, /href="#hero-slide-account">My account<\/a>/);
   assert.match(nav, /<a href="#studio-enquiry-form">Contact<\/a>/);
   assert.doesNotMatch(nav, />Company<|>Products<|>Services</);
 });

@@ -45,8 +45,9 @@
         show(selected);
       });
     });
-    document.querySelectorAll('a[href^="#studio-tab-"], a[href^="#hero-tab-"]').forEach((link) => {
-      const index = tabs.findIndex((tab) => `#${tab.id}` === link.hash);
+    document.querySelectorAll('a[href^="#studio-tab-"], a[href^="#hero-tab-"], a[href^="#hero-slide-"]').forEach((link) => {
+      const targetId = link.hash.slice(1);
+      const index = tabs.findIndex((tab) => tab.id === targetId || tab.getAttribute('aria-controls') === targetId);
       if (index >= 0) link.addEventListener('click', () => {
         carousel.classList.add('has-selection');
         show(index);
