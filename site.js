@@ -184,7 +184,7 @@
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const targets = document.querySelectorAll('.hero, .studio-summary, .statement, .focus, .company-collections, .principles, .contact, .collection-hero, .product-feature, .page-product-list, .community-products');
+  const targets = document.querySelectorAll('.hero, .studio-summary, .statement, .focus, .company-collections, .principles, .contact, .collection-hero, .product-feature, .page-product-list, .community-products, .tributary-explainer');
   const itemTargets = document.querySelectorAll('.focus-grid article, .collection-route, .principles li, .product-feature figure, .product-feature > div:last-child, .product-list article, .community-products article');
   document.body.classList.add('motion-ready');
   window.addEventListener('load', () => document.body.classList.add('page-loaded'), { once: true });

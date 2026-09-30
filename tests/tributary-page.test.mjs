@@ -127,6 +127,36 @@ test('carousel imagery has meaningful alternative text and no auto-advance', () 
   assert.match(readFileSync(new URL('../assets/brand/tributary-logo.svg', import.meta.url), 'utf8'), /fill="#087EA4"/);
 });
 
+test('Church, Work, and Artist slides use real, accessible Tributary app screenshots', () => {
+  const screenshots = [
+    { mode: 'Church', path: 'assets/projects/tributary-church-controller.webp', alt: /Church controller showing a service running order and audience preview/i },
+    { mode: 'Work', path: 'assets/projects/tributary-business-import.webp', alt: /Business mode presentation import/i },
+    { mode: 'Artist', path: 'assets/projects/tributary-stage-performer.webp', alt: /Stage performer monitor/i }
+  ];
+
+  for (const screenshot of screenshots) {
+    const slide = slides.find((candidate) => candidate.includes(`<h2>${screenshot.mode}</h2>`));
+    assert.ok(slide, `${screenshot.mode} slide exists`);
+    assert.match(slide, new RegExp(`<figure class="mode-visual app-screenshot ${screenshot.mode.toLowerCase()}-visual"[\\s\\S]*?src="${screenshot.path}"`));
+    assert.match(slide, new RegExp(`alt="${screenshot.alt.source}`));
+    assert.match(slide, /loading="lazy"/);
+    assert.ok(existsSync(new URL(`../${screenshot.path}`, import.meta.url)), `${screenshot.path} exists`);
+    assert.doesNotMatch(slide, /class="visual-window"/, `${screenshot.mode} does not use the old CSS mockup`);
+  }
+});
+
+test('carousel has pitch-deck typography, scroll and text reveals, and reduced-motion-safe hover treatment', () => {
+  assert.match(css, /--tributary-navy:\s*#101a31/i);
+  assert.match(css, /\.tributary-carousel\s*\{[^}]*background:\s*var\(--tributary-navy\)/i);
+  assert.match(css, /--tributary-gold:\s*#(?:[0-9a-f]{6}|[0-9a-f]{3})/i);
+  assert.match(css, /@keyframes tributary-text-enter/);
+  assert.match(css, /\.tributary-explainer\.is-visible\s+\.tributary-slide\.is-active\s+\.tributary-slide-copy/);
+  assert.match(css, /\.app-screenshot:hover\s+img[^}]*transform:\s*scale\(/);
+  assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?\.app-screenshot/);
+  assert.match(script, /\.tributary-explainer/);
+  assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
+});
+
 test('Tributary art uses the blue mark and wordmark without the former dark icon tile', () => {
   assert.match(css, /\.tributary-overview-art img[^}]*background:\s*transparent/i);
   assert.match(css, /\.tributary-overview-art[^}]*background:[^;]*#e8f5f8/i);
