@@ -106,6 +106,20 @@ test('embedded account portal is responsive and has a usable direct-link fallbac
   assert.match(home, /styles\.css\?v=[^"']+/);
 });
 
+test('BStudioB page reflects verified account state only from its account iframe', () => {
+  assert.match(home, /id="account-auth-status"[^>]+aria-live="polite"/);
+  assert.match(home, /id="account-intro-copy"/);
+  assert.match(home, /id="account-frame-heading"/);
+  assert.match(script, /event\.source\s*!==\s*accountFrame\.contentWindow/);
+  assert.match(script, /event\.origin\s*!==\s*new URL\(accountFrame\.src\)\.origin/);
+  assert.match(script, /account-portal:auth-state/);
+  assert.match(script, /typeof event\.data\.authenticated\s*!==\s*'boolean'/);
+  assert.match(script, /account-auth-status/);
+  assert.match(script, /account-frame-heading/);
+  assert.match(script, /You’re signed in to your BStudioB account/);
+  assert.match(script, /Your BStudioB dashboard/);
+});
+
 test('hero tabs are keyboard-accessible and navigation activates Products and Services', () => {
   assert.match(home, /<section class="hero hero-carousel"[^>]*data-hero-carousel[^>]*role="region" aria-roledescription="carousel"/);
   assert.match(home, /role="tablist"/);
