@@ -120,6 +120,13 @@ test('BStudioB page reflects verified account state only from its account iframe
   assert.match(script, /Your BStudioB dashboard/);
 });
 
+test('BStudioB page requests auth state after iframe load and retries until it receives a response', () => {
+  assert.match(script, /accountFrame\.addEventListener\('load',\s*requestAccountState\)/);
+  assert.match(script, /account-portal:request-auth-state/);
+  assert.match(script, /window\.setTimeout\(retryAccountState, 500\)/);
+  assert.match(script, /accountStateReceived = true/);
+});
+
 test('hero tabs are keyboard-accessible and navigation activates Products and Services', () => {
   assert.match(home, /<section class="hero hero-carousel"[^>]*data-hero-carousel[^>]*role="region" aria-roledescription="carousel"/);
   assert.match(home, /role="tablist"/);
