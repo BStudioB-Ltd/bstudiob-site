@@ -63,6 +63,8 @@
     const accountAuthStatus = document.getElementById('account-auth-status');
     const signedOutIntro = accountIntro?.textContent ?? '';
     const signedOutHeading = accountFrameHeading?.textContent ?? '';
+    let accountStateReceived = false;
+    const requestAccountState = () => accountFrame.contentWindow?.postMessage({ type: 'account-portal:request-auth-state' }, new URL(accountFrame.src).origin);
     const updateAccountState = (authenticated) => {
       if (accountIntro) accountIntro.textContent = authenticated
         ? 'You’re signed in to your BStudioB account. Your dashboard and assigned product access are shown here.'
@@ -84,8 +86,18 @@
         return;
       }
       if (event.data?.type !== 'account-portal:auth-state' || typeof event.data.authenticated !== 'boolean') return;
+      accountStateReceived = true;
       updateAccountState(event.data.authenticated);
     });
+    accountFrame.addEventListener('load', requestAccountState);
+    requestAccountState();
+    let accountStateAttempts = 0;
+    const retryAccountState = () => {
+      if (accountStateReceived || ++accountStateAttempts >= 10) return;
+      requestAccountState();
+      window.setTimeout(retryAccountState, 500);
+    };
+    window.setTimeout(retryAccountState, 500);
   }
 
   document.querySelectorAll('[data-product-gallery]').forEach((gallery) => {
