@@ -57,12 +57,36 @@
   });
 
   const accountFrame = document.querySelector('.account-portal-frame');
-  if (accountFrame) window.addEventListener('message', (event) => {
-    if (event.source !== accountFrame.contentWindow || event.origin !== new URL(accountFrame.src).origin || event.data?.type !== 'account-portal:resize') return;
-    const height = Number(event.data.height);
-    if (!Number.isFinite(height)) return;
-    accountFrame.style.height = `${Math.min(1400, Math.max(460, Math.ceil(height) + 4))}px`;
-  });
+  if (accountFrame) {
+    const accountIntro = document.getElementById('account-intro-copy');
+    const accountFrameHeading = document.getElementById('account-frame-heading');
+    const accountAuthStatus = document.getElementById('account-auth-status');
+    const signedOutIntro = accountIntro?.textContent ?? '';
+    const signedOutHeading = accountFrameHeading?.textContent ?? '';
+    const updateAccountState = (authenticated) => {
+      if (accountIntro) accountIntro.textContent = authenticated
+        ? 'You’re signed in to your BStudioB account. Your dashboard and assigned product access are shown here.'
+        : signedOutIntro;
+      if (accountFrameHeading) accountFrameHeading.textContent = authenticated
+        ? 'Your BStudioB dashboard'
+        : signedOutHeading;
+      if (accountAuthStatus) {
+        accountAuthStatus.hidden = !authenticated;
+        accountAuthStatus.textContent = authenticated ? 'Signed in to your BStudioB account.' : '';
+      }
+    };
+    window.addEventListener('message', (event) => {
+      if (event.source !== accountFrame.contentWindow || event.origin !== new URL(accountFrame.src).origin) return;
+      if (event.data?.type === 'account-portal:resize') {
+        const height = Number(event.data.height);
+        if (!Number.isFinite(height)) return;
+        accountFrame.style.height = `${Math.min(1400, Math.max(460, Math.ceil(height) + 4))}px`;
+        return;
+      }
+      if (event.data?.type !== 'account-portal:auth-state' || typeof event.data.authenticated !== 'boolean') return;
+      updateAccountState(event.data.authenticated);
+    });
+  }
 
   document.querySelectorAll('[data-product-gallery]').forEach((gallery) => {
     const slides = [...gallery.querySelectorAll('[data-product-gallery-slide]')];
