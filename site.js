@@ -87,6 +87,10 @@
       }
       if (event.data?.type !== 'account-portal:auth-state' || typeof event.data.authenticated !== 'boolean') return;
       accountStateReceived = true;
+      if (event.data.authenticated && window.location.pathname !== '/myaccount/') {
+        window.location.assign('/myaccount/');
+        return;
+      }
       updateAccountState(event.data.authenticated);
     });
     accountFrame.addEventListener('load', requestAccountState);
