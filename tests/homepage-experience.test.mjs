@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
 const home = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const script = readFileSync(new URL('../site.js', import.meta.url), 'utf8');
@@ -82,11 +82,24 @@ test('homepage navigation includes My account and carousel controls follow the h
   const heroStart = home.indexOf('<section class="hero hero-carousel"');
   const slidesStart = home.indexOf('class="hero-carousel-slides"', heroStart);
   const controlsStart = home.indexOf('class="hero-carousel-controls"', heroStart);
-  assert.match(nav, /href="#hero-slide-account">My account/);
+  assert.match(nav, /href="\/myaccount\/">My account/);
   assert.match(nav, /href="#studio-enquiry-form">Contact/);
   assert.ok(slidesStart >= 0 && controlsStart > slidesStart, 'carousel controls follow the slides');
   assert.match(script, /carousel\.classList\.add\('has-selection'\)[\s\S]*?show\(index\)/);
   assert.match(script, /a\[href\^="#hero-slide-"\]/);
+});
+
+test('successful iframe sign-in redirects to a first-party My account dashboard route', () => {
+  const nav = home.match(/<nav aria-label="Primary navigation">[\s\S]*?<\/nav>/)?.[0] ?? '';
+  const accountPagePath = new URL('../myaccount/index.html', import.meta.url);
+  assert.match(nav, /href="\/myaccount\/">My account/);
+  assert.match(script, /event\.data\.authenticated\s*&&\s*window\.location\.pathname\s*!==\s*'\/myaccount\/'/);
+  assert.match(script, /window\.location\.assign\('\/myaccount\/'\)/);
+  assert.equal(existsSync(accountPagePath), true);
+  const accountPage = readFileSync(accountPagePath, 'utf8');
+  assert.match(accountPage, /<iframe[^>]+class="account-portal-frame"/);
+  assert.match(accountPage, /src="https:\/\/product-license-manager-staging\.nathan-e53\.workers\.dev\//);
+  assert.match(accountPage, /id="account-frame-heading"/);
 });
 
 test('embedded account portal is responsive and has a usable direct-link fallback', () => {
@@ -150,7 +163,7 @@ test('primary Contact navigation returns visitors to the consent-aware enquiry f
 
 test('homepage header keeps Contact and removes the redundant Company, Products, and Services links', () => {
   const nav = home.match(/<nav aria-label="Primary navigation">[\s\S]*?<\/nav>/)?.[0] ?? '';
-  assert.match(nav, /href="#hero-slide-account">My account<\/a>/);
+  assert.match(nav, /href="\/myaccount\/">My account<\/a>/);
   assert.match(nav, /<a href="#studio-enquiry-form">Contact<\/a>/);
   assert.doesNotMatch(nav, />Company<|>Products<|>Services</);
 });

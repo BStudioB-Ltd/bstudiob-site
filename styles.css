@@ -338,6 +338,18 @@ footer p { margin: 0; } footer div { display: flex; gap: 1.3rem; }
 .hero-account-embed h2 { margin: .55rem 0 .8rem; font-size: clamp(1.45rem, 2.3vw, 2rem); line-height: 1.05; }
 .account-portal-frame { display: block; width: 100%; height: 720px; min-height: 0; flex: 1 1 auto; border: 1px solid #c8c8c1; background: #f4f2ec; }
 .hero-account-embed > .text-link { align-self: flex-start; margin-top: .8rem; }
+.my-account-page { max-width: none; min-height: calc(100svh - 150px); padding-top: clamp(2rem, 6vw, 5rem); padding-bottom: clamp(2.5rem, 6vw, 5rem); }
+.my-account-layout { display: grid; grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr); align-items: center; gap: clamp(2rem, 6vw, 5rem); max-width: 1440px; margin: 0 auto; }
+.my-account-copy h1 { max-width: 620px; margin: .8rem 0 1.25rem; font-size: clamp(3rem, 6vw, 6rem); line-height: .98; letter-spacing: -.065em; }
+.my-account-copy .hero-lede { max-width: 680px; color: #464d57; font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.5; }
+.my-account-copy .hero-slide-note { max-width: 620px; margin-top: 1.5rem; color: var(--muted); }
+.my-account-portal { min-width: 0; padding: clamp(1.25rem, 2.5vw, 2rem); border: 1px solid var(--line); background: #f8f7f2; }
+.my-account-portal h2 { margin: .55rem 0 .8rem; font-size: clamp(1.45rem, 2.3vw, 2rem); line-height: 1.05; }
+.my-account-portal .account-portal-frame { height: min(78svh, 900px); min-height: 600px; flex: none; }
+.my-account-portal > .text-link { display: inline-block; margin-top: .8rem; }
+.my-account-body > footer { margin-top: 0; }
+@media (max-width: 900px) { .my-account-layout { grid-template-columns: minmax(0, 1fr); align-items: start; } .my-account-copy h1 { max-width: 760px; } }
+@media (max-width: 700px) { .my-account-page { padding-top: 1.5rem; } .my-account-copy h1 { font-size: clamp(2.8rem, 13vw, 4.6rem); } .my-account-portal .account-portal-frame { height: 75svh; min-height: 560px; } }
 .hero-slide-products { grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr); gap: clamp(1.5rem, 4vw, 3.5rem); }
 .hero-slide-products .hero-copy h1 { font-size: clamp(2.7rem, 5vw, 5rem); }
 .hero-slide-products .hero-products-content { min-width: 0; }
