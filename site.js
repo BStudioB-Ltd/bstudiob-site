@@ -6,9 +6,16 @@
       { label: 'VERSE 2', line: 'Through many dangers, toils and snares', subline: 'I have already come.', next: 'BRIDGE', nextLine: 'Tis grace has brought me safe thus far' },
       { label: 'BRIDGE', line: 'Tis grace has brought me safe thus far', subline: 'And grace will lead me home.', next: 'VERSE 1', nextLine: 'Amazing grace, how sweet the sound' },
     ];
+    const pitches = [
+      { eyebrow: 'TRIBUTARY / WORK', title: 'One room.', accent: 'Every slide in sync.', note: 'Import · arrange · present', presenter: 'Open with the problem: one room, multiple screens, one calm signal.', nextTitle: 'Build once.', nextAccent: 'Present with confidence.', performerNotes: 'Stay on the current slide until the Controller advances.' },
+      { eyebrow: 'TRIBUTARY / WORKFLOW', title: 'Build once.', accent: 'Present with confidence.', note: 'Agenda · slides · audience', presenter: 'Show how the Presenter keeps the next idea ready without taking over the room.', nextTitle: 'The right view.', nextAccent: 'For every person.', performerNotes: 'The next slide is queued while the current slide stays readable.' },
+      { eyebrow: 'TRIBUTARY / ROOM', title: 'The right view.', accent: 'For every person.', note: 'Controller · performer · audience', presenter: 'Close on the shared state: every screen receives the right view at the right time.', nextTitle: 'One room.', nextAccent: 'Every slide in sync.', performerNotes: 'Return to the opening slide or continue into questions.' },
+    ];
     let cueIndex = 0;
+    let pitchIndex = 0;
     const panels = [...demo.querySelectorAll('[data-tributary-demo-panel]')];
     const tabs = [...demo.querySelectorAll('[data-tributary-demo-tab]')];
+    const formatSection = (label) => label.replace('VERSE ', 'Verse ').replace('CHORUS', 'Chorus').replace('BRIDGE', 'Bridge');
     const setCue = (nextIndex) => {
       cueIndex = (nextIndex + cues.length) % cues.length;
       const cue = cues[cueIndex];
@@ -17,8 +24,8 @@
       demo.querySelectorAll('[data-tributary-demo-subline], [data-tributary-audience-subline]').forEach((node) => { node.textContent = cue.subline; });
       demo.querySelectorAll('[data-tributary-demo-next-label], [data-tributary-performer-next]').forEach((node) => { node.textContent = cue.next; });
       demo.querySelectorAll('[data-tributary-demo-next-line]').forEach((node) => { node.textContent = cue.nextLine; });
-      demo.querySelectorAll('[data-tributary-demo-preview-meta]').forEach((node) => { node.textContent = `${cue.label.replace('VERSE ', 'Verse ').replace('CHORUS', 'Chorus').replace('BRIDGE', 'Bridge')} · Next: ${cue.next.replace('VERSE ', 'Verse ').replace('CHORUS', 'Chorus').replace('BRIDGE', 'Bridge')}`; });
-      demo.querySelectorAll('[data-tributary-demo-section-label], [data-tributary-performer-label]').forEach((node) => { node.textContent = cue.label.replace('VERSE ', 'Verse ').replace('CHORUS', 'Chorus').replace('BRIDGE', 'Bridge'); });
+      demo.querySelectorAll('[data-tributary-demo-preview-meta]').forEach((node) => { node.textContent = `${formatSection(cue.label)} · Next: ${formatSection(cue.next)}`; });
+      demo.querySelectorAll('[data-tributary-demo-section-label], [data-tributary-performer-label]').forEach((node) => { node.textContent = formatSection(cue.label); });
       demo.querySelectorAll('[data-tributary-demo-counter], [data-tributary-performer-count]').forEach((node) => { node.textContent = `${cueIndex + 1} / ${cues.length}`; });
       demo.querySelectorAll('[data-tributary-demo-section]').forEach((button) => button.classList.toggle('is-current', Number(button.dataset.tributaryDemoSection) === cueIndex));
       document.querySelectorAll('[data-tributary-hero-label], [data-tributary-hero-line], [data-tributary-hero-subline], [data-tributary-hero-next], [data-tributary-hero-audience], [data-tributary-hero-performer]').forEach((node) => {
@@ -26,7 +33,7 @@
         if (node.matches('[data-tributary-hero-line]')) node.textContent = cue.line;
         if (node.matches('[data-tributary-hero-subline]')) node.textContent = cue.subline;
         if (node.matches('[data-tributary-hero-next]')) node.textContent = cue.next;
-        if (node.matches('[data-tributary-hero-audience], [data-tributary-hero-performer]')) node.textContent = cue.label.replace('VERSE ', 'Verse ').replace('CHORUS', 'Chorus').replace('BRIDGE', 'Bridge');
+        if (node.matches('[data-tributary-hero-audience], [data-tributary-hero-performer]')) node.textContent = formatSection(cue.label);
       });
     };
     const setPanel = (name) => {
@@ -39,28 +46,133 @@
     demo.querySelectorAll('[data-tributary-demo-section]').forEach((button) => button.addEventListener('click', () => setCue(Number(button.dataset.tributaryDemoSection))));
     document.querySelector('[data-tributary-hero-next-button]')?.addEventListener('click', () => setCue(cueIndex + 1));
     document.querySelector('[data-tributary-hero-prev]')?.addEventListener('click', () => setCue(cueIndex - 1));
-    const pitches = [
-      ['TRIBUTARY / WORK', 'One room.', 'Every slide in sync.', 'Import · arrange · present'],
-      ['TRIBUTARY / WORKFLOW', 'Build once.', 'Present with confidence.', 'Agenda · slides · audience'],
-      ['TRIBUTARY / ROOM', 'The right view.', 'For every person.', 'Controller · performer · audience'],
-    ];
-    let pitchIndex = 0;
-    const setPitch = (nextIndex) => { pitchIndex = (nextIndex + pitches.length) % pitches.length; const [eyebrow, title, accent, note] = pitches[pitchIndex]; const slide = demo.querySelector('[data-tributary-pitch-slide]'); if (slide) slide.innerHTML = `<small>${eyebrow}</small><h3>${title}<br><em>${accent}</em></h3><p>${note}</p>`; const counter = demo.querySelector('[data-tributary-pitch-counter]'); if (counter) counter.textContent = `${pitchIndex + 1} / ${pitches.length}`; };
+
+    const setPitch = (nextIndex) => {
+      pitchIndex = (nextIndex + pitches.length) % pitches.length;
+      const pitch = pitches[pitchIndex];
+      const text = (selector, value) => demo.querySelectorAll(selector).forEach((node) => { node.textContent = value; });
+      text('[data-tributary-pitch-audience-eyebrow], [data-tributary-pitch-performer-eyebrow], [data-tributary-pitch-performer-label]', pitch.eyebrow);
+      text('[data-tributary-pitch-audience-title], [data-tributary-pitch-performer-title]', pitch.title);
+      text('[data-tributary-pitch-audience-accent], [data-tributary-pitch-performer-accent]', pitch.accent);
+      text('[data-tributary-pitch-audience-note]', pitch.note);
+      text('[data-tributary-pitch-notes]', pitch.presenter);
+      text('[data-tributary-pitch-performer-next-title]', pitch.nextTitle);
+      text('[data-tributary-pitch-performer-next-accent]', pitch.nextAccent);
+      text('[data-tributary-pitch-performer-notes]', pitch.performerNotes);
+      text('[data-tributary-pitch-counter], [data-tributary-pitch-performer-count]', `${pitchIndex + 1} / ${pitches.length}`);
+      demo.querySelectorAll('[data-tributary-pitch-select]').forEach((button) => button.classList.toggle('is-current', Number(button.dataset.tributaryPitchSelect) === pitchIndex));
+    };
     demo.querySelector('[data-tributary-pitch-next]')?.addEventListener('click', () => setPitch(pitchIndex + 1));
     demo.querySelector('[data-tributary-pitch-prev]')?.addEventListener('click', () => setPitch(pitchIndex - 1));
-    const requestCamera = demo.querySelector('[data-tributary-camera-request]'); let cameraStream;
-    requestCamera?.addEventListener('click', async () => {
-      const status = demo.querySelector('[data-tributary-camera-status]');
-      try {
-        if (cameraStream) { cameraStream.getTracks().forEach((track) => track.stop()); cameraStream = null; const video = demo.querySelector('[data-tributary-camera-video]'); const placeholder = demo.querySelector('[data-tributary-camera-placeholder]'); video.srcObject = null; video.hidden = true; placeholder.hidden = false; requestCamera.textContent = 'Request live camera ↗'; status.textContent = 'Camera stays off until you choose to share it.'; return; }
-        if (!navigator.mediaDevices?.getUserMedia) throw new Error('Camera access is not available in this browser.');
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false }); cameraStream = stream;
-        const video = demo.querySelector('[data-tributary-camera-video]'); const placeholder = demo.querySelector('[data-tributary-camera-placeholder]');
-        video.srcObject = stream; video.hidden = false; placeholder.hidden = true; requestCamera.textContent = 'Camera active · stop sharing'; status.textContent = 'Your camera is shown locally in this demo preview.';
-        requestCamera.dataset.active = 'true';
-      } catch (error) { if (status) status.textContent = error.message || 'Camera permission was not granted.'; }
-    });
-    setCue(0); setPitch(0); setPanel('perform');
+    demo.querySelectorAll('[data-tributary-pitch-select]').forEach((button) => button.addEventListener('click', () => setPitch(Number(button.dataset.tributaryPitchSelect))));
+
+    const present = demo.querySelector('[data-tributary-present]');
+    if (present) {
+      const cameraStreams = { a: null, b: null };
+      const cameraNames = { a: 'Camera A', b: 'Camera B' };
+      const stage = present.querySelector('[data-tributary-camera-stage]');
+      const status = present.querySelector('[data-tributary-camera-status]');
+      const fade = present.querySelector('[data-tributary-camera-fade]');
+      const switchButton = present.querySelector('[data-tributary-camera-switch]');
+      const activeLabel = present.querySelector('[data-tributary-camera-active-label]');
+      const stageStatus = present.querySelector('[data-tributary-camera-stage-status]');
+      let activeCamera = 'a';
+      const updateCameraUi = () => {
+        const otherCamera = activeCamera === 'a' ? 'b' : 'a';
+        const activeStream = cameraStreams[activeCamera];
+        stage.style.setProperty('--tributary-fade-duration', `${fade.value}ms`);
+        stage.dataset.activeCamera = activeCamera;
+        activeLabel.textContent = `${cameraNames[activeCamera]} · ${activeStream ? 'ON AIR' : 'PREVIEW'}`;
+        stageStatus.textContent = `${activeStream ? 'Live camera' : 'Preview scene'} · fade ${fade.value}ms`;
+        switchButton.textContent = cameraStreams[otherCamera] ? `Fade to ${cameraNames[otherCamera]} →` : `Request ${cameraNames[otherCamera]} first`;
+        switchButton.disabled = !cameraStreams[otherCamera];
+        ['a', 'b'].forEach((id) => {
+          const video = present.querySelector(`[data-tributary-camera-video="${id}"]`);
+          const placeholder = present.querySelector(`[data-tributary-camera-placeholder="${id}"]`);
+          video.hidden = !cameraStreams[id];
+          placeholder.hidden = Boolean(cameraStreams[id]) || activeCamera !== id;
+        });
+      };
+      const setCamera = async (id) => {
+        const button = present.querySelector(`[data-tributary-camera-request="${id}"]`);
+        try {
+          if (cameraStreams[id]) {
+            cameraStreams[id].getTracks().forEach((track) => track.stop());
+            cameraStreams[id] = null;
+            if (activeCamera === id && cameraStreams[id === 'a' ? 'b' : 'a']) activeCamera = id === 'a' ? 'b' : 'a';
+            button.firstChild.nodeValue = `Request ${cameraNames[id]} `;
+            status.textContent = `${cameraNames[id]} stopped. Request another angle when ready.`;
+            updateCameraUi();
+            return;
+          }
+          if (!navigator.mediaDevices?.getUserMedia) throw new Error('Camera access is not available in this browser.');
+          const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+          cameraStreams[id] = stream;
+          const video = present.querySelector(`[data-tributary-camera-video="${id}"]`);
+          video.srcObject = stream;
+          button.firstChild.nodeValue = `${cameraNames[id]} active · stop `;
+          if (!cameraStreams[activeCamera]) activeCamera = id;
+          status.textContent = `${cameraNames[id]} is available in the local scene preview.`;
+          updateCameraUi();
+        } catch (error) {
+          status.textContent = `${cameraNames[id]} was not shared: ${error.message || 'permission was not granted.'}`;
+        }
+      };
+      present.querySelectorAll('[data-tributary-camera-request]').forEach((button) => button.addEventListener('click', () => setCamera(button.dataset.tributaryCameraRequest)));
+      fade.addEventListener('change', updateCameraUi);
+      switchButton.addEventListener('click', () => {
+        const otherCamera = activeCamera === 'a' ? 'b' : 'a';
+        if (!cameraStreams[otherCamera]) return;
+        activeCamera = otherCamera;
+        status.textContent = `Fading to ${cameraNames[activeCamera]} over ${fade.value}ms.`;
+        updateCameraUi();
+      });
+
+      const overlay = present.querySelector('[data-tributary-camera-overlay]');
+      const overlayText = present.querySelector('[data-tributary-overlay-text]');
+      const overlayCopy = present.querySelector('[data-tributary-overlay-copy]');
+      const overlayState = present.querySelector('[data-tributary-overlay-state]');
+      const overlayScale = present.querySelector('[data-tributary-overlay-scale]');
+      const overlayOpacity = present.querySelector('[data-tributary-overlay-opacity]');
+      const updateOverlay = () => {
+        overlayCopy.textContent = overlayText.value.trim() || 'Live text overlay';
+        overlay.style.setProperty('--overlay-scale', Number(overlayScale.value) / 100);
+        overlay.style.setProperty('--overlay-opacity', Number(overlayOpacity.value) / 100);
+      };
+      overlayText.addEventListener('input', updateOverlay);
+      overlayScale.addEventListener('input', updateOverlay);
+      overlayOpacity.addEventListener('input', updateOverlay);
+      present.querySelectorAll('[data-tributary-overlay-position]').forEach((button) => button.addEventListener('click', () => {
+        present.querySelectorAll('[data-tributary-overlay-position]').forEach((item) => item.classList.toggle('is-current', item === button));
+        overlay.dataset.position = button.dataset.tributaryOverlayPosition;
+        overlayState.textContent = button.textContent;
+      }));
+      updateOverlay();
+      updateCameraUi();
+
+      const interactions = [
+        { alert: 'New question from the room', copy: '“Can you share the next section?”', kind: 'Question · waiting for host', name: 'Alex', chat: 'Love the lower third — clear and calm.' },
+        { alert: 'Poll response spike', copy: '“Show the wide camera view.”', kind: 'Request · 34 votes', name: 'Maya', chat: 'The detail angle makes this feel close.' },
+        { alert: 'Chat message approved', copy: '“Please repeat the final point.”', kind: 'Question · moderator approved', name: 'Jordan', chat: 'Ready when you are — we can see the slide.' },
+      ];
+      let interactionIndex = 0;
+      const setInteraction = (nextIndex) => {
+        interactionIndex = (nextIndex + interactions.length) % interactions.length;
+        const interaction = interactions[interactionIndex];
+        present.querySelector('[data-tributary-interaction-alert]').textContent = interaction.alert;
+        present.querySelector('[data-tributary-interaction-copy]').textContent = interaction.copy;
+        present.querySelector('[data-tributary-interaction-kind]').textContent = interaction.kind;
+        present.querySelector('[data-tributary-chat-name]').textContent = interaction.name;
+        present.querySelector('[data-tributary-chat-copy]').textContent = interaction.chat;
+        present.querySelector('[data-tributary-interaction-alert-count]').textContent = String(interactionIndex + 2).padStart(2, '0');
+      };
+      present.querySelector('[data-tributary-interaction-next]')?.addEventListener('click', () => setInteraction(interactionIndex + 1));
+      setInteraction(0);
+    }
+
+    setCue(0);
+    setPitch(0);
+    setPanel('perform');
   });
 
   document.querySelectorAll('[data-tributary-showcase]').forEach((showcase) => {

@@ -184,6 +184,29 @@ test('primary Tributary route has its own visual experience and screen showcase'
   assert.doesNotMatch(primary, /class="tributary-product-facts"/);
 });
 
+test('Pitch and Present demos expose shared room views, camera controls, overlays, and live interactions', () => {
+  assert.match(primary, /data-tributary-pitch-room/);
+  assert.match(primary, /data-tributary-pitch-controller/);
+  assert.match(primary, /data-tributary-pitch-audience/);
+  assert.match(primary, /data-tributary-pitch-performer/);
+  assert.match(primary, /data-tributary-pitch-performer-next/);
+  assert.match(primary, /data-tributary-present/);
+  assert.match(primary, /data-tributary-camera-request="a"/);
+  assert.match(primary, /data-tributary-camera-request="b"/);
+  assert.match(primary, /data-tributary-camera-switch/);
+  assert.match(primary, /data-tributary-camera-fade/);
+  assert.match(primary, /data-tributary-overlay-text/);
+  assert.match(primary, /data-tributary-overlay-position/);
+  assert.match(primary, /data-tributary-overlay-scale/);
+  assert.match(primary, /data-tributary-overlay-opacity/);
+  assert.match(primary, /data-tributary-interaction-next/);
+  assert.match(primary, /data-tributary-interaction-copy/);
+  assert.match(script, /data-tributary-pitch-performer/);
+  assert.match(script, /data-tributary-camera-switch/);
+  assert.match(script, /data-tributary-overlay-position/);
+  assert.match(script, /data-tributary-interaction-next/);
+});
+
 test('use-case and pricing cards scale without a narrow-screen horizontal table', () => {
   assert.match(css, /@media \(max-width: 1000px\)/);
   assert.match(css, /\.tributary-slide \{ grid-template-columns: minmax\(0, 1fr\)/);
