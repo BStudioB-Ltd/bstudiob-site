@@ -1,4 +1,15 @@
 (() => {
+  document.querySelectorAll('[data-tributary-showcase]').forEach((showcase) => {
+    const tabs = [...showcase.querySelectorAll('[data-tributary-showcase-tab]')];
+    const panels = [...showcase.querySelectorAll('[data-tributary-showcase-panel]')];
+    const show = (name) => {
+      tabs.forEach((tab) => { const active = tab.dataset.tributaryShowcaseTab === name; tab.classList.toggle('is-active', active); tab.setAttribute('aria-selected', String(active)); });
+      panels.forEach((panel) => { const active = panel.dataset.tributaryShowcasePanel === name; panel.classList.toggle('is-active', active); panel.hidden = !active; });
+    };
+    tabs.forEach((tab, index) => { tab.addEventListener('click', () => show(tab.dataset.tributaryShowcaseTab)); tab.addEventListener('keydown', (event) => { if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return; event.preventDefault(); const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length; tabs[next].focus(); show(tabs[next].dataset.tributaryShowcaseTab); }); });
+    show(tabs[0]?.dataset.tributaryShowcaseTab || 'controller');
+  });
+
   const splash = document.querySelector('[data-tributary-splash]');
   if (splash) {
     const dismiss = () => { splash.classList.add('is-dismissed'); window.setTimeout(() => splash.remove(), 500); };

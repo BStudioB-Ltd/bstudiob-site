@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 
 const html = readFileSync(new URL('../creative-live.html', import.meta.url), 'utf8');
+const primary = readFileSync(new URL('../tributary/index.html', import.meta.url), 'utf8');
 const home = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const script = readFileSync(new URL('../site.js', import.meta.url), 'utf8');
 const css = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
@@ -162,6 +163,15 @@ test('Tributary art uses the blue mark and wordmark without the former dark icon
   assert.match(css, /\.tributary-overview-art[^}]*background:[^;]*#e8f5f8/i);
   assert.match(css, /\.tributary-overview-art\s+img\.tributary-wordmark/);
   assert.doesNotMatch(css, /\.tributary-overview-art img[^}]*background:\s*#101a31/i);
+});
+
+test('primary Tributary route has its own visual experience and screen showcase', () => {
+  assert.match(primary, /<link rel="canonical" href="https:\/\/bstudiob\.co\.uk\/tributary\/">/);
+  assert.match(primary, /class="tributary-hero-new"/);
+  assert.match(primary, /data-tributary-showcase/);
+  assert.match(primary, /Every screen, in the same current/);
+  assert.match(primary, /Request early access/);
+  assert.doesNotMatch(primary, /class="tributary-product-facts"/);
 });
 
 test('use-case and pricing cards scale without a narrow-screen horizontal table', () => {
