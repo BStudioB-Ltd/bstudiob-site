@@ -1,4 +1,11 @@
 (() => {
+  const splash = document.querySelector('[data-tributary-splash]');
+  if (splash) {
+    const dismiss = () => { splash.classList.add('is-dismissed'); window.setTimeout(() => splash.remove(), 500); };
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) dismiss();
+    else window.addEventListener('load', () => window.setTimeout(dismiss, 420), { once: true });
+  }
+
   document.querySelectorAll('[data-studio-carousel]').forEach((carousel) => {
     const slides = [...carousel.querySelectorAll('[data-studio-slide]')];
     const tabs = [...carousel.querySelectorAll('[data-studio-tab]')];
