@@ -70,10 +70,10 @@ test('Tributary hero carries a responsive low-contrast brand-mark watermark behi
 test('AI-discovery and sitemap records use Tributary as the current name and date the page update', () => {
   const llms = readFileSync(new URL('../llms.txt', import.meta.url), 'utf8');
   const sitemap = readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8');
-  assert.match(llms, /Tributary[^\n]*https:\/\/bstudiob\.co\.uk\/creative-live\.html/);
+  assert.match(llms, /Tributary[^\n]*https:\/\/bstudiob\.co\.uk\/tributary\//);
   assert.match(llms, /formerly FlowCue/i);
   assert.doesNotMatch(llms, /- FlowCue:/);
-  assert.match(sitemap, /<loc>https:\/\/bstudiob\.co\.uk\/creative-live\.html<\/loc><lastmod>2026-09-26<\/lastmod>/);
+  assert.match(sitemap, /<loc>https:\/\/bstudiob\.co\.uk\/tributary\/<\/loc><lastmod>2026-09-26<\/lastmod>/);
 });
 
 test('carousel contains the overview followed by Church, Work, and Artist slides', () => {

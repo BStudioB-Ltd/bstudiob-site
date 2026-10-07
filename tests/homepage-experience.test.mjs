@@ -30,7 +30,7 @@ test('the Products and Services hero slide alone reveals the four existing squar
     'hero-flowcue', 'hero-buildy', 'hero-provisioning', 'hero-service'
   ]);
   assert.deepEqual(cards.map((match) => match[2]), [
-    'creative-live.html', 'studio-tools.html', 'https://provisioning.bstudiob.co.uk/', 'services.html'
+    'tributary/', 'studio-tools.html', 'https://provisioning.bstudiob.co.uk/', 'services.html'
   ]);
   assert.match(products, /hero-product-grid/);
   assert.match(products, /Custom Workflow Solutions/);
