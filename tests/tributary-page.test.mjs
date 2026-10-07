@@ -168,9 +168,19 @@ test('Tributary art uses the blue mark and wordmark without the former dark icon
 test('primary Tributary route has its own visual experience and screen showcase', () => {
   assert.match(primary, /<link rel="canonical" href="https:\/\/bstudiob\.co\.uk\/tributary\/">/);
   assert.match(primary, /class="tributary-hero-new"/);
-  assert.match(primary, /data-tributary-showcase/);
+  assert.match(primary, /data-tributary-demo/);
   assert.match(primary, /Every screen, in the same current/);
   assert.match(primary, /Request early access/);
+  assert.match(primary, /data-tributary-demo-tab="perform"/);
+  assert.match(primary, /data-tributary-demo-tab="pitch"/);
+  assert.match(primary, /data-tributary-demo-tab="present"/);
+  assert.match(primary, /data-tributary-demo-next/);
+  assert.match(primary, /data-tributary-demo-prev/);
+  assert.match(primary, /data-tributary-demo-next-line/);
+  assert.match(primary, /data-tributary-demo-preview-meta/);
+  assert.match(primary, /data-tributary-hero-next-button/);
+  assert.match(primary, /href="#tributary-demo"/);
+  assert.match(primary, /data-tributary-camera-request/);
   assert.doesNotMatch(primary, /class="tributary-product-facts"/);
 });
 

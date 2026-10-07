@@ -1,4 +1,68 @@
 (() => {
+  document.querySelectorAll('[data-tributary-demo]').forEach((demo) => {
+    const cues = [
+      { label: 'VERSE 1', line: 'Amazing grace, how sweet the sound', subline: 'That saved a soul like me.', next: 'CHORUS', nextLine: 'I once was lost, but now am found' },
+      { label: 'CHORUS', line: 'I once was lost, but now am found', subline: 'Was blind, but now I see.', next: 'VERSE 2', nextLine: 'Through many dangers, toils and snares' },
+      { label: 'VERSE 2', line: 'Through many dangers, toils and snares', subline: 'I have already come.', next: 'BRIDGE', nextLine: 'Tis grace has brought me safe thus far' },
+      { label: 'BRIDGE', line: 'Tis grace has brought me safe thus far', subline: 'And grace will lead me home.', next: 'VERSE 1', nextLine: 'Amazing grace, how sweet the sound' },
+    ];
+    let cueIndex = 0;
+    const panels = [...demo.querySelectorAll('[data-tributary-demo-panel]')];
+    const tabs = [...demo.querySelectorAll('[data-tributary-demo-tab]')];
+    const setCue = (nextIndex) => {
+      cueIndex = (nextIndex + cues.length) % cues.length;
+      const cue = cues[cueIndex];
+      demo.querySelectorAll('[data-tributary-demo-label]').forEach((node) => { node.textContent = cue.label; });
+      demo.querySelectorAll('[data-tributary-demo-line], [data-tributary-audience-line], [data-tributary-performer-line]').forEach((node) => { node.textContent = cue.line; });
+      demo.querySelectorAll('[data-tributary-demo-subline], [data-tributary-audience-subline]').forEach((node) => { node.textContent = cue.subline; });
+      demo.querySelectorAll('[data-tributary-demo-next-label], [data-tributary-performer-next]').forEach((node) => { node.textContent = cue.next; });
+      demo.querySelectorAll('[data-tributary-demo-next-line]').forEach((node) => { node.textContent = cue.nextLine; });
+      demo.querySelectorAll('[data-tributary-demo-preview-meta]').forEach((node) => { node.textContent = `${cue.label.replace('VERSE ', 'Verse ').replace('CHORUS', 'Chorus').replace('BRIDGE', 'Bridge')} · Next: ${cue.next.replace('VERSE ', 'Verse ').replace('CHORUS', 'Chorus').replace('BRIDGE', 'Bridge')}`; });
+      demo.querySelectorAll('[data-tributary-demo-section-label], [data-tributary-performer-label]').forEach((node) => { node.textContent = cue.label.replace('VERSE ', 'Verse ').replace('CHORUS', 'Chorus').replace('BRIDGE', 'Bridge'); });
+      demo.querySelectorAll('[data-tributary-demo-counter], [data-tributary-performer-count]').forEach((node) => { node.textContent = `${cueIndex + 1} / ${cues.length}`; });
+      demo.querySelectorAll('[data-tributary-demo-section]').forEach((button) => button.classList.toggle('is-current', Number(button.dataset.tributaryDemoSection) === cueIndex));
+      document.querySelectorAll('[data-tributary-hero-label], [data-tributary-hero-line], [data-tributary-hero-subline], [data-tributary-hero-next], [data-tributary-hero-audience], [data-tributary-hero-performer]').forEach((node) => {
+        if (node.matches('[data-tributary-hero-label]')) node.textContent = `PREVIEW · ${cue.label}`;
+        if (node.matches('[data-tributary-hero-line]')) node.textContent = cue.line;
+        if (node.matches('[data-tributary-hero-subline]')) node.textContent = cue.subline;
+        if (node.matches('[data-tributary-hero-next]')) node.textContent = cue.next;
+        if (node.matches('[data-tributary-hero-audience], [data-tributary-hero-performer]')) node.textContent = cue.label.replace('VERSE ', 'Verse ').replace('CHORUS', 'Chorus').replace('BRIDGE', 'Bridge');
+      });
+    };
+    const setPanel = (name) => {
+      tabs.forEach((tab) => { const active = tab.dataset.tributaryDemoTab === name; tab.classList.toggle('is-active', active); tab.setAttribute('aria-selected', String(active)); tab.tabIndex = active ? 0 : -1; });
+      panels.forEach((panel) => { const active = panel.dataset.tributaryDemoPanel === name; panel.classList.toggle('is-active', active); panel.hidden = !active; });
+    };
+    tabs.forEach((tab, index) => { tab.addEventListener('click', () => setPanel(tab.dataset.tributaryDemoTab)); tab.addEventListener('keydown', (event) => { if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return; event.preventDefault(); const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length; tabs[next].focus(); setPanel(tabs[next].dataset.tributaryDemoTab); }); });
+    demo.querySelectorAll('[data-tributary-demo-next]').forEach((button) => button.addEventListener('click', () => setCue(cueIndex + 1)));
+    demo.querySelectorAll('[data-tributary-demo-prev]').forEach((button) => button.addEventListener('click', () => setCue(cueIndex - 1)));
+    demo.querySelectorAll('[data-tributary-demo-section]').forEach((button) => button.addEventListener('click', () => setCue(Number(button.dataset.tributaryDemoSection))));
+    document.querySelector('[data-tributary-hero-next-button]')?.addEventListener('click', () => setCue(cueIndex + 1));
+    document.querySelector('[data-tributary-hero-prev]')?.addEventListener('click', () => setCue(cueIndex - 1));
+    const pitches = [
+      ['TRIBUTARY / WORK', 'One room.', 'Every slide in sync.', 'Import · arrange · present'],
+      ['TRIBUTARY / WORKFLOW', 'Build once.', 'Present with confidence.', 'Agenda · slides · audience'],
+      ['TRIBUTARY / ROOM', 'The right view.', 'For every person.', 'Controller · performer · audience'],
+    ];
+    let pitchIndex = 0;
+    const setPitch = (nextIndex) => { pitchIndex = (nextIndex + pitches.length) % pitches.length; const [eyebrow, title, accent, note] = pitches[pitchIndex]; const slide = demo.querySelector('[data-tributary-pitch-slide]'); if (slide) slide.innerHTML = `<small>${eyebrow}</small><h3>${title}<br><em>${accent}</em></h3><p>${note}</p>`; const counter = demo.querySelector('[data-tributary-pitch-counter]'); if (counter) counter.textContent = `${pitchIndex + 1} / ${pitches.length}`; };
+    demo.querySelector('[data-tributary-pitch-next]')?.addEventListener('click', () => setPitch(pitchIndex + 1));
+    demo.querySelector('[data-tributary-pitch-prev]')?.addEventListener('click', () => setPitch(pitchIndex - 1));
+    const requestCamera = demo.querySelector('[data-tributary-camera-request]'); let cameraStream;
+    requestCamera?.addEventListener('click', async () => {
+      const status = demo.querySelector('[data-tributary-camera-status]');
+      try {
+        if (cameraStream) { cameraStream.getTracks().forEach((track) => track.stop()); cameraStream = null; const video = demo.querySelector('[data-tributary-camera-video]'); const placeholder = demo.querySelector('[data-tributary-camera-placeholder]'); video.srcObject = null; video.hidden = true; placeholder.hidden = false; requestCamera.textContent = 'Request live camera ↗'; status.textContent = 'Camera stays off until you choose to share it.'; return; }
+        if (!navigator.mediaDevices?.getUserMedia) throw new Error('Camera access is not available in this browser.');
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false }); cameraStream = stream;
+        const video = demo.querySelector('[data-tributary-camera-video]'); const placeholder = demo.querySelector('[data-tributary-camera-placeholder]');
+        video.srcObject = stream; video.hidden = false; placeholder.hidden = true; requestCamera.textContent = 'Camera active · stop sharing'; status.textContent = 'Your camera is shown locally in this demo preview.';
+        requestCamera.dataset.active = 'true';
+      } catch (error) { if (status) status.textContent = error.message || 'Camera permission was not granted.'; }
+    });
+    setCue(0); setPitch(0); setPanel('perform');
+  });
+
   document.querySelectorAll('[data-tributary-showcase]').forEach((showcase) => {
     const tabs = [...showcase.querySelectorAll('[data-tributary-showcase-tab]')];
     const panels = [...showcase.querySelectorAll('[data-tributary-showcase-panel]')];
