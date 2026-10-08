@@ -16,7 +16,7 @@ Contact: mailto:hello@bstudiob.co.uk
   Invite-only local-network desktop presentation and show-control software for church services, business meetings and live performances. A host saves mode-specific shows, synchronises lyrics, bundled KJV passages, supported PDF/PowerPoint imports, media and performer cues with browser-based receiver screens, and can provide a camera background and OBS browser-source outputs. Church shows can group still images into timed slideshows. Beta access and installers are supplied manually; builds are unsigned and platform availability is confirmed per invite while real-device validation continues. There is no public self-service account, subscription checkout or automatic update/install flow.
 - Buildy: https://bstudiob.co.uk/studio-tools.html
   Private-beta web-publishing workspace; access is by invitation.
-- Inspector-Edu: https://bstudiob.co.uk/trust-security.html
+- Inspector: https://bstudiob.co.uk/inspector/
   Supervised, authorised institutional security-education pilot only.
 - Cards: https://bstudiob.co.uk/cards.html
   Early playtest concept; no public production availability is implied.

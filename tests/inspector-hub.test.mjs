@@ -12,6 +12,8 @@ const hub = (() => {
 })();
 const legacy = readFileSync(new URL('../trust-security.html', import.meta.url), 'utf8');
 const sitemap = readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8');
+const homepage = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+const llms = readFileSync(new URL('../llms.txt', import.meta.url), 'utf8');
 
 test('hub presents distinct Edu and Pro sections', () => {
   assert.match(hub, /<section\b[^>]*id="edu"[^>]*>/i, 'Inspector-Edu has a canonical section');
@@ -54,4 +56,24 @@ test('legacy and sitemap routes resolve to the Inspector hub', () => {
   assert.match(legacy, /href="\/inspector\/#edu"/, 'legacy page has a no-JavaScript fallback');
   assert.match(legacy, /rel="canonical" href="https:\/\/bstudiob\.co\.uk\/inspector\/"/, 'legacy metadata points at the hub');
   assert.match(sitemap, /<loc>https:\/\/bstudiob\.co\.uk\/inspector\/<\/loc>/, 'sitemap includes the hub');
+});
+
+test('both homepage Inspector cards lead to the product hub', () => {
+  const inspectorLinks = [...homepage.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>[\s\S]*?<\/a>/gi)]
+    .filter((match) => /Inspector-Edu|Inspector supervised learning interface preview/i.test(match[0]));
+  assert.equal(inspectorLinks.length, 2, 'both existing Inspector cards remain present');
+  for (const [, href] of inspectorLinks) {
+    assert.match(href, /^inspector\/(?:#(?:edu|pro))?$/, 'homepage Inspector links point into the hub');
+  }
+});
+
+test('compatibility route names the canonical hub and keeps an Edu fallback', () => {
+  assert.match(legacy, /rel="canonical" href="https:\/\/bstudiob\.co\.uk\/inspector\/"/i);
+  assert.match(legacy, /href="\/inspector\/#edu"/i, 'visitors can continue to the Edu section without JavaScript');
+  assert.match(legacy, /http-equiv="refresh"[^>]*url=\/inspector\/#edu|url=\/inspector\/#edu[^>]*http-equiv="refresh"/i);
+});
+
+test('AI discovery points Inspector at the canonical product hub', () => {
+  assert.match(llms, /- Inspector(?:-Edu)?: https:\/\/bstudiob\.co\.uk\/inspector\//i);
+  assert.doesNotMatch(llms, /Inspector(?:-Edu)?: https:\/\/bstudiob\.co\.uk\/trust-security\.html/i);
 });
