@@ -47,6 +47,8 @@ test('pilot enquiry retains required privacy consent', () => {
   assert.ok(form, 'pilot enquiry form exists');
   assert.match(form, /action="https:\/\/formsubmit\.co\/nathan\+inspector@bstudiob\.co\.uk"/);
   assert.match(form, /name="_subject" value="BStudioB — Inspector pilot application"/);
+  assert.match(form, /name="_url" value="https:\/\/bstudiob\.co\.uk\/inspector\/"/, 'FormSubmit identifies the canonical Inspector hub as the form source');
+  assert.doesNotMatch(form, /name="_url" value="https:\/\/bstudiob\.co\.uk\/trust-security\.html"/, 'the retired source URL is not used');
   assert.match(form, /<input\b(?=[^>]*name="privacy_consent")(?=[^>]*type="checkbox")(?=[^>]*required)[^>]*>/i);
   assert.match(form, /href="(?:\.\.\/)?privacy\.html"[^>]*>Privacy notice|href="(?:\.\.\/)?privacy\.html"[^>]*>Privacy/i);
 });
