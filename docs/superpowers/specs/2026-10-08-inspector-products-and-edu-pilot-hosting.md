@@ -118,7 +118,8 @@ The cloud provider, account, instance or host types, region, DNS management for 
 - `/inspector/` is the canonical hub and advertises both Edu and Pro in distinct sections; `/trust-security.html` remains a working compatibility route to the Edu section.
 - The Edu section has an accurate desktop-first description, retained inquiry form and privacy consent, and a working `Open Inspector-Edu` link to `https://inspector.bstudiob.co.uk/` when the hosted pilot is ready.
 - The Pro section has an accurate desktop-first description and working macOS, Windows, and Linux download entries. Each artifact installs and passes a focused launch/use smoke in a clean supported environment, has a version and matching checksum, and has reviewed install instructions; no link points to a missing or unverified artifact.
-- Edu and Pro have visibly different page compositions and visual treatments while retaining BStudioB ownership and navigation.
+- The Inspector hub has an independent product visual system and navigation. It does not inherit the BStudioB stylesheet, wordmark header, company-page typography, or shared product-card treatment; BStudioB ownership appears as a quiet legal credit in the footer.
+- Inspector-Edu and Inspector-Pro demos are interactive browser simulations grounded in each app's current UI and data model. They are clearly marked as previews and do not claim to launch a hosted lab or native desktop app.
 - Product-section links work in both directions, hub metadata and sitemap are correct, and the change does not alter the BStudioB homepage's established story.
 - Layouts remain usable at mobile, tablet, laptop, and desktop widths; keyboard focus, contrast, reduced motion, form consent, and image alternatives are reviewed.
 
@@ -132,6 +133,21 @@ The cloud provider, account, instance or host types, region, DNS management for 
 - The documented 10-learner capacity check passes on the selected host set for the agreed mix of all three guest runtimes before a class pilot is claimed.
 - An operator completes the supervised learner journey, verifies only intended lab-owned resources were created, and proves shutdown/cleanup.
 - Public claims remain limited to the tested supervised pilot profile. No claim of 24/7 availability, enterprise readiness, or production SaaS follows from the endpoint being online.
+
+### Interactive product previews
+
+- Inspector-Edu preview follows the actual `DemoRPG: Cave Bash` `ls` prompt into the Task Mode menu and `Task 01: Information Gathering` steps (`whoami`, `hostname`, `ip addr`). Its output is fixed sample data, not a command run, shell connection, learner account, backend API call, or saved progress.
+- Inspector-Pro preview edits a browser-only sample using the native topology's `name`, `nodes`, `links`, node `id`/`name`/`kind`/`image`/`properties.exec`/`env`/`binds`, and link endpoint device/interface fields. It can apply edits, create/remove sample nodes and links, and run structural checks matching the Python validator: topology name and at least one node; required node ID/kind/name/image/properties and unique node IDs; valid link endpoints and referenced nodes; no self-links, duplicate directed links, or reused device interfaces; more than 100 nodes fails validation. It does not validate IP addressing, routing, reachability, image existence, container support, or deployment.
+- Inspector-Pro preview can download a browser-generated sample JSON or Containerlab YAML file. Label that output as preview data; do not imply the current native app has a verified save/export UI, launches a network, or validates live devices.
+- Both demos work without authentication and make no request to either app backend. The existing pilot enquiry consent, unavailable Edu host, and unavailable Pro release states remain accurate.
+
+### Local preview implementation record (9 October 2026)
+
+The `/inspector/` hub uses a standalone case archive shell with docket navigation, squared controls, charcoal, signal orange and chartreuse. It loads only its Inspector stylesheet and its two independent demo scripts. The cave background and single Mira sprite frame are copied from the Edu lesson assets. Both previews hold data in browser memory only; reset or reload clears edits and evidence.
+
+The Edu sample accepts exactly `ls`, then the ordered Task 01 commands `whoami`, `hostname`, and `ip addr`. Other Cave Bash menu entries are labelled menu previews. The Pro sample uses native node properties and endpoint records, allows ordinary-link editing and local device placement, and downloads fixed-name preview JSON/Containerlab YAML through browser Blobs. Environment-property parsing checks the native string-map type; structural findings remain scoped to the Python validator. Preview export can retain an invalid sample with visible findings and never constitutes a deployable-network or native-runtime verification.
+
+Hosted Edu access and versioned Pro installers for macOS, Windows and Linux remain unavailable pending their existing evidence gates. The institutional enquiry destination and required privacy consent are retained.
 
 ## Decisions still required before implementation/deployment
 
