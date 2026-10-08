@@ -24,11 +24,14 @@ test('hub presents distinct Edu and Pro sections', () => {
   assert.match(hub, /href="#pro"/i, 'the hub links directly to Pro');
 });
 
-test('Edu access points to the approved app host and remains pilot-only', () => {
+test('Edu access stays visibly unavailable until the pilot host is verified', () => {
   assert.match(hub, /supervised[^.]{0,100}pilot|pilot[^.]{0,100}supervised/i, 'Edu is explicitly bounded to a supervised pilot');
-  assert.match(hub, /configured-host/i, 'the pilot remains tied to its configured host');
-  assert.match(hub, /href="https:\/\/inspector\.bstudiob\.co\.uk\//, 'the app action points at the approved host');
-  assert.match(hub, /Open Inspector-Edu/i, 'the app action is clearly labelled');
+  assert.doesNotMatch(hub, /href=["']https?:\/\/inspector\.bstudiob\.co\.uk\//i, 'no public link points to the unverified app host');
+  assert.match(hub, /Inspector-Edu access unavailable/i, 'the unavailable state is visible');
+  assert.match(hub, /role="status"[^>]*aria-label="Inspector-Edu access unavailable"|aria-label="Inspector-Edu access unavailable"[^>]*role="status"/i, 'the unavailable state is announced accessibly');
+  assert.match(hub, /hosted learner runtime has not yet been verified/i, 'the hosting state is explicit');
+  assert.match(hub, /href="#pilot-enquiry"[^>]*>Discuss an institutional pilot/i, 'the institutional pilot enquiry remains available');
+  assert.doesNotMatch(hub, /Linux\/Kali|active execution profile/i, 'the unsupported Linux/Kali profile claim is removed');
 });
 
 test('unreleased Pro targets are not clickable downloads', () => {

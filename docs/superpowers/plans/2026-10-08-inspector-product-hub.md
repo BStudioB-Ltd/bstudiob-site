@@ -121,6 +121,18 @@ git commit -m "feat: route Inspector discovery to product hub"
 - [ ] **Step 4: Record screenshots for all three viewports in ignored local review output; do not add screenshots or generated output to Git.**
 - [ ] **Step 5: Commit any review fixes with a focused message.**
 
+### Task 5: Keep public availability states honest until the pilot is verified
+
+**Files:**
+- Modify: `inspector/index.html`
+- Modify: `inspector/inspector.css` (only if needed for the unavailable app control)
+- Modify: `tests/inspector-hub.test.mjs`
+
+- [x] Replace the active Inspector-Edu app link with a visibly unavailable, accessible control while keeping the institutional enquiry link usable.
+- [x] Remove the unsupported Linux/Kali execution claim. State that the hosted learner runtime is not yet verified; identify the current development image as Alpine Linux only if needed for clarity.
+- [x] Add regression assertions that no link points to `inspector.bstudiob.co.uk`, app access is unavailable, and the pilot enquiry remains available.
+- [x] Run the focused Inspector hub test and the full static suite; review the diff and commit only the task files and this plan update.
+
 ## Publication Gate
 
 Do not publish the Edu app link until the live `inspector.bstudiob.co.uk` pilot passes the hosting plan's gates. Do not publish Pro download links until all three platform artifacts have clean-install evidence, hashes, and approved release URLs. The product hub can be reviewed locally before either external service is live.
