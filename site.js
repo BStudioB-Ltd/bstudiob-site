@@ -12,10 +12,19 @@
       { eyebrow: 'TRIBUTARY / ROOM', title: 'The right view.', accent: 'For every person.', note: 'Controller · performer · audience', presenter: 'Close on the shared state: every screen receives the right view at the right time.', nextTitle: 'One room.', nextAccent: 'Every slide in sync.', performerNotes: 'Return to the opening slide or continue into questions.' },
     ];
     let cueIndex = 0;
+    let performerPreviewIndex = 0;
     let pitchIndex = 0;
     const panels = [...demo.querySelectorAll('[data-tributary-demo-panel]')];
     const tabs = [...demo.querySelectorAll('[data-tributary-demo-tab]')];
     const formatSection = (label) => label.replace('VERSE ', 'Verse ').replace('CHORUS', 'Chorus').replace('BRIDGE', 'Bridge');
+    const setPerformerPreview = (nextIndex) => {
+      performerPreviewIndex = (nextIndex + cues.length) % cues.length;
+      const preview = cues[performerPreviewIndex];
+      demo.querySelectorAll('[data-tributary-performer-preview-label]').forEach((node) => { node.textContent = formatSection(preview.label); });
+      demo.querySelectorAll('[data-tributary-performer-preview-line]').forEach((node) => { node.textContent = preview.line; });
+      demo.querySelectorAll('[data-tributary-performer-preview-subline]').forEach((node) => { node.textContent = preview.subline; });
+      demo.querySelectorAll('[data-tributary-performer-section]').forEach((button) => button.classList.toggle('is-current', Number(button.dataset.tributaryPerformerSection) === performerPreviewIndex));
+    };
     const setCue = (nextIndex) => {
       cueIndex = (nextIndex + cues.length) % cues.length;
       const cue = cues[cueIndex];
@@ -23,11 +32,12 @@
       demo.querySelectorAll('[data-tributary-demo-line], [data-tributary-audience-line], [data-tributary-performer-line]').forEach((node) => { node.textContent = cue.line; });
       demo.querySelectorAll('[data-tributary-demo-subline], [data-tributary-audience-subline]').forEach((node) => { node.textContent = cue.subline; });
       demo.querySelectorAll('[data-tributary-demo-next-label], [data-tributary-performer-next]').forEach((node) => { node.textContent = cue.next; });
-      demo.querySelectorAll('[data-tributary-demo-next-line]').forEach((node) => { node.textContent = cue.nextLine; });
+      demo.querySelectorAll('[data-tributary-demo-next-line], [data-tributary-performer-next-line]').forEach((node) => { node.textContent = cue.nextLine; });
       demo.querySelectorAll('[data-tributary-demo-preview-meta]').forEach((node) => { node.textContent = `${formatSection(cue.label)} · Next: ${formatSection(cue.next)}`; });
       demo.querySelectorAll('[data-tributary-demo-section-label], [data-tributary-performer-label]').forEach((node) => { node.textContent = formatSection(cue.label); });
       demo.querySelectorAll('[data-tributary-demo-counter], [data-tributary-performer-count]').forEach((node) => { node.textContent = `${cueIndex + 1} / ${cues.length}`; });
       demo.querySelectorAll('[data-tributary-demo-section]').forEach((button) => button.classList.toggle('is-current', Number(button.dataset.tributaryDemoSection) === cueIndex));
+      setPerformerPreview(cueIndex);
       document.querySelectorAll('[data-tributary-hero-label], [data-tributary-hero-line], [data-tributary-hero-subline], [data-tributary-hero-next], [data-tributary-hero-audience], [data-tributary-hero-performer]').forEach((node) => {
         if (node.matches('[data-tributary-hero-label]')) node.textContent = `PREVIEW · ${cue.label}`;
         if (node.matches('[data-tributary-hero-line]')) node.textContent = cue.line;
@@ -44,6 +54,7 @@
     demo.querySelectorAll('[data-tributary-demo-next]').forEach((button) => button.addEventListener('click', () => setCue(cueIndex + 1)));
     demo.querySelectorAll('[data-tributary-demo-prev]').forEach((button) => button.addEventListener('click', () => setCue(cueIndex - 1)));
     demo.querySelectorAll('[data-tributary-demo-section]').forEach((button) => button.addEventListener('click', () => setCue(Number(button.dataset.tributaryDemoSection))));
+    demo.querySelectorAll('[data-tributary-performer-section]').forEach((button) => button.addEventListener('click', () => setPerformerPreview(Number(button.dataset.tributaryPerformerSection))));
     document.querySelector('[data-tributary-hero-next-button]')?.addEventListener('click', () => setCue(cueIndex + 1));
     document.querySelector('[data-tributary-hero-prev]')?.addEventListener('click', () => setCue(cueIndex - 1));
 

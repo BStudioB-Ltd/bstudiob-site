@@ -177,6 +177,11 @@ test('primary Tributary route has its own visual experience and screen showcase'
   assert.match(primary, /data-tributary-demo-next/);
   assert.match(primary, /data-tributary-demo-prev/);
   assert.match(primary, /data-tributary-demo-next-line/);
+  assert.match(primary, /data-tributary-performer-next-line/);
+  assert.match(primary, /data-tributary-performer-section="0"/);
+  assert.match(primary, /data-tributary-performer-preview-line/);
+  assert.match(script, /data-tributary-performer-next-line/);
+  assert.match(script, /data-tributary-performer-section/);
   assert.match(primary, /data-tributary-demo-preview-meta/);
   assert.match(primary, /data-tributary-hero-next-button/);
   assert.match(primary, /href="#tributary-demo"/);
