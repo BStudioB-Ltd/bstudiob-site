@@ -42,6 +42,13 @@ test('unreleased Pro targets are not clickable downloads', () => {
   }
 });
 
+test('Pro copy describes design, validation, and export without denying execution capability', () => {
+  const pro = hub.match(/<section\b[^>]*id="pro"[^>]*>([\s\S]*?)<\/section>/i)?.[1] ?? '';
+  assert.match(pro, /topology design and validation/i);
+  assert.match(pro, /Export project data as JSON or Containerlab YAML/i);
+  assert.doesNotMatch(pro, /not\s+(?:a\s+)?network execution environment/i);
+});
+
 test('pilot enquiry retains required privacy consent', () => {
   const form = hub.match(/<form\b[^>]*>[\s\S]*?<\/form>/i)?.[0] ?? '';
   assert.ok(form, 'pilot enquiry form exists');
