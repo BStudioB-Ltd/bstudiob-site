@@ -79,65 +79,41 @@
 
     const present = demo.querySelector('[data-tributary-present]');
     if (present) {
-      const cameraStreams = { a: null, b: null };
-      const cameraNames = { a: 'Camera A', b: 'Camera B' };
+      let cameraStream = null;
       const stage = present.querySelector('[data-tributary-camera-stage]');
       const status = present.querySelector('[data-tributary-camera-status]');
-      const fade = present.querySelector('[data-tributary-camera-fade]');
-      const switchButton = present.querySelector('[data-tributary-camera-switch]');
+      const cameraButton = present.querySelector('[data-tributary-camera-request]');
+      const video = present.querySelector('[data-tributary-camera-video]');
+      const placeholder = present.querySelector('[data-tributary-camera-placeholder]');
       const activeLabel = present.querySelector('[data-tributary-camera-active-label]');
       const stageStatus = present.querySelector('[data-tributary-camera-stage-status]');
-      let activeCamera = 'a';
       const updateCameraUi = () => {
-        const otherCamera = activeCamera === 'a' ? 'b' : 'a';
-        const activeStream = cameraStreams[activeCamera];
-        stage.style.setProperty('--tributary-fade-duration', `${fade.value}ms`);
-        stage.dataset.activeCamera = activeCamera;
-        activeLabel.textContent = `${cameraNames[activeCamera]} · ${activeStream ? 'ON AIR' : 'PREVIEW'}`;
-        stageStatus.textContent = `${activeStream ? 'Live camera' : 'Preview scene'} · fade ${fade.value}ms`;
-        switchButton.textContent = cameraStreams[otherCamera] ? `Fade to ${cameraNames[otherCamera]} →` : `Request ${cameraNames[otherCamera]} first`;
-        switchButton.disabled = !cameraStreams[otherCamera];
-        ['a', 'b'].forEach((id) => {
-          const video = present.querySelector(`[data-tributary-camera-video="${id}"]`);
-          const placeholder = present.querySelector(`[data-tributary-camera-placeholder="${id}"]`);
-          video.hidden = !cameraStreams[id];
-          placeholder.hidden = Boolean(cameraStreams[id]) || activeCamera !== id;
-        });
+        video.hidden = !cameraStream;
+        placeholder.hidden = Boolean(cameraStream);
+        cameraButton.textContent = cameraStream ? 'Stop local camera preview' : 'Enable local camera preview';
+        activeLabel.textContent = cameraStream ? 'LOCAL CAMERA · PREVIEW' : 'CAMERA BACKGROUND · PREVIEW';
+        stageStatus.textContent = cameraStream ? 'Camera preview stays in this browser' : 'Choose a camera to preview the background';
       };
-      const setCamera = async (id) => {
-        const button = present.querySelector(`[data-tributary-camera-request="${id}"]`);
+      const toggleCamera = async () => {
         try {
-          if (cameraStreams[id]) {
-            cameraStreams[id].getTracks().forEach((track) => track.stop());
-            cameraStreams[id] = null;
-            if (activeCamera === id && cameraStreams[id === 'a' ? 'b' : 'a']) activeCamera = id === 'a' ? 'b' : 'a';
-            button.firstChild.nodeValue = `Request ${cameraNames[id]} `;
-            status.textContent = `${cameraNames[id]} stopped. Request another angle when ready.`;
+          if (cameraStream) {
+            cameraStream.getTracks().forEach((track) => track.stop());
+            cameraStream = null;
+            video.srcObject = null;
+            status.textContent = 'Local camera preview stopped. No video was sent to this website.';
             updateCameraUi();
             return;
           }
           if (!navigator.mediaDevices?.getUserMedia) throw new Error('Camera access is not available in this browser.');
-          const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
-          cameraStreams[id] = stream;
-          const video = present.querySelector(`[data-tributary-camera-video="${id}"]`);
-          video.srcObject = stream;
-          button.firstChild.nodeValue = `${cameraNames[id]} active · stop `;
-          if (!cameraStreams[activeCamera]) activeCamera = id;
-          status.textContent = `${cameraNames[id]} is available in the local scene preview.`;
+          cameraStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+          video.srcObject = cameraStream;
+          status.textContent = 'Local camera preview is running in this browser only. The Tributary app can share a host camera background to paired local receivers.';
           updateCameraUi();
         } catch (error) {
-          status.textContent = `${cameraNames[id]} was not shared: ${error.message || 'permission was not granted.'}`;
+          status.textContent = `Camera was not shared: ${error.message || 'permission was not granted.'}`;
         }
       };
-      present.querySelectorAll('[data-tributary-camera-request]').forEach((button) => button.addEventListener('click', () => setCamera(button.dataset.tributaryCameraRequest)));
-      fade.addEventListener('change', updateCameraUi);
-      switchButton.addEventListener('click', () => {
-        const otherCamera = activeCamera === 'a' ? 'b' : 'a';
-        if (!cameraStreams[otherCamera]) return;
-        activeCamera = otherCamera;
-        status.textContent = `Fading to ${cameraNames[activeCamera]} over ${fade.value}ms.`;
-        updateCameraUi();
-      });
+      cameraButton.addEventListener('click', toggleCamera);
 
       const overlay = present.querySelector('[data-tributary-camera-overlay]');
       const overlayText = present.querySelector('[data-tributary-overlay-text]');
@@ -160,25 +136,6 @@
       }));
       updateOverlay();
       updateCameraUi();
-
-      const interactions = [
-        { alert: 'New question from the room', copy: '“Can you share the next section?”', kind: 'Question · waiting for host', name: 'Alex', chat: 'Love the lower third — clear and calm.' },
-        { alert: 'Poll response spike', copy: '“Show the wide camera view.”', kind: 'Request · 34 votes', name: 'Maya', chat: 'The detail angle makes this feel close.' },
-        { alert: 'Chat message approved', copy: '“Please repeat the final point.”', kind: 'Question · moderator approved', name: 'Jordan', chat: 'Ready when you are — we can see the slide.' },
-      ];
-      let interactionIndex = 0;
-      const setInteraction = (nextIndex) => {
-        interactionIndex = (nextIndex + interactions.length) % interactions.length;
-        const interaction = interactions[interactionIndex];
-        present.querySelector('[data-tributary-interaction-alert]').textContent = interaction.alert;
-        present.querySelector('[data-tributary-interaction-copy]').textContent = interaction.copy;
-        present.querySelector('[data-tributary-interaction-kind]').textContent = interaction.kind;
-        present.querySelector('[data-tributary-chat-name]').textContent = interaction.name;
-        present.querySelector('[data-tributary-chat-copy]').textContent = interaction.chat;
-        present.querySelector('[data-tributary-interaction-alert-count]').textContent = String(interactionIndex + 2).padStart(2, '0');
-      };
-      present.querySelector('[data-tributary-interaction-next]')?.addEventListener('click', () => setInteraction(interactionIndex + 1));
-      setInteraction(0);
     }
 
     setCue(0);

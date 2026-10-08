@@ -13,7 +13,7 @@ Contact: mailto:hello@bstudiob.co.uk
 ## Products and previews
 
 - Tributary (formerly FlowCue): https://bstudiob.co.uk/tributary/
-  Invite-only local-network desktop presentation and show-control software for church services, business meetings and live performances. A host synchronises lyrics, KJV passages, supported presentation imports and cues with browser-based receiver screens on a trusted local network. Beta access and installers are supplied manually; installer signing and real-device validation are still in progress. There is no public self-service account, subscription checkout or automatic update/install flow.
+  Invite-only local-network desktop presentation and show-control software for church services, business meetings and live performances. A host saves mode-specific shows, synchronises lyrics, bundled KJV passages, supported PDF/PowerPoint imports, media and performer cues with browser-based receiver screens, and can provide a camera background and OBS browser-source outputs. Church shows can group still images into timed slideshows. Beta access and installers are supplied manually; builds are unsigned and platform availability is confirmed per invite while real-device validation continues. There is no public self-service account, subscription checkout or automatic update/install flow.
 - Buildy: https://bstudiob.co.uk/studio-tools.html
   Private-beta web-publishing workspace; access is by invitation.
 - Inspector-Edu: https://bstudiob.co.uk/trust-security.html

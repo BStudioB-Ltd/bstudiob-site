@@ -52,7 +52,7 @@ test('software application JSON-LD is truthful and does not invent an offer pric
   const application = JSON.parse(jsonLd);
   assert.equal(application['@type'], 'SoftwareApplication');
   assert.equal(application.name, 'Tributary');
-  assert.equal(application.url, 'https://bstudiob.co.uk/creative-live.html');
+  assert.equal(application.url, 'https://bstudiob.co.uk/tributary/');
   assert.deepEqual(application.operatingSystem, ['Windows', 'macOS']);
   assert.ok(application.description.toLowerCase().includes('invite-only'));
   assert.equal('offers' in application, false, 'no non-public price or checkout is marked up');
@@ -74,7 +74,7 @@ test('AI-discovery and sitemap records use Tributary as the current name and dat
   assert.match(llms, /Tributary[^\n]*https:\/\/bstudiob\.co\.uk\/tributary\//);
   assert.match(llms, /formerly FlowCue/i);
   assert.doesNotMatch(llms, /- FlowCue:/);
-  assert.match(sitemap, /<loc>https:\/\/bstudiob\.co\.uk\/tributary\/<\/loc><lastmod>2026-09-26<\/lastmod>/);
+  assert.match(sitemap, /<loc>https:\/\/bstudiob\.co\.uk\/tributary\/<\/loc><lastmod>2026-10-08<\/lastmod>/);
 });
 
 test('carousel contains the overview followed by Church, Work, and Artist slides', () => {
@@ -186,30 +186,45 @@ test('primary Tributary route has its own visual experience and screen showcase'
   assert.match(primary, /data-tributary-hero-next-button/);
   assert.match(primary, /href="#tributary-demo"/);
   assert.match(primary, /data-tributary-camera-request/);
+  assert.match(primary, /installer availability confirmed by invite/);
+  assert.match(primary, /saved shows/);
+  assert.match(primary, /group still images into timed slideshows/);
+  assert.match(primary, /bundled KJV offline/);
+  assert.match(primary, /OBS Browser Source/);
+  assert.match(primary, /full-program or transparent overlay URL/);
   assert.doesNotMatch(primary, /class="tributary-product-facts"/);
 });
 
-test('Pitch and Present demos expose shared room views, camera controls, overlays, and live interactions', () => {
+test('Pitch and camera demos expose shared room views and truthful local camera/OBS workflows', () => {
   assert.match(primary, /data-tributary-pitch-room/);
   assert.match(primary, /data-tributary-pitch-controller/);
   assert.match(primary, /data-tributary-pitch-audience/);
   assert.match(primary, /data-tributary-pitch-performer/);
   assert.match(primary, /data-tributary-pitch-performer-next/);
   assert.match(primary, /data-tributary-present/);
-  assert.match(primary, /data-tributary-camera-request="a"/);
-  assert.match(primary, /data-tributary-camera-request="b"/);
-  assert.match(primary, /data-tributary-camera-switch/);
-  assert.match(primary, /data-tributary-camera-fade/);
+  assert.match(primary, /data-tributary-camera-request/);
+  assert.match(primary, /Local browser preview only/);
+  assert.match(primary, /it does not publish or send the video/);
+  assert.doesNotMatch(primary, /camera-request="[ab]"|data-tributary-camera-switch|data-tributary-camera-fade/);
   assert.match(primary, /data-tributary-overlay-text/);
   assert.match(primary, /data-tributary-overlay-position/);
   assert.match(primary, /data-tributary-overlay-scale/);
   assert.match(primary, /data-tributary-overlay-opacity/);
-  assert.match(primary, /data-tributary-interaction-next/);
-  assert.match(primary, /data-tributary-interaction-copy/);
   assert.match(script, /data-tributary-pitch-performer/);
-  assert.match(script, /data-tributary-camera-switch/);
   assert.match(script, /data-tributary-overlay-position/);
-  assert.match(script, /data-tributary-interaction-next/);
+  assert.doesNotMatch(primary, /LIVE Q&amp;A|CHAT PREVIEW|audience interaction|Blend two camera angles/i);
+  assert.match(primary, /does not control OBS scenes or audience chat/);
+});
+
+test('primary access form collects approved beta intake fields and clear privacy/removal terms', () => {
+  assert.match(primary, /action="https:\/\/formsubmit\.co\/hello\+tributary@bstudiob\.co\.uk"/);
+  for (const field of ['name', 'email', 'organisation', 'operating_system', 'use_case', 'venue_setup', 'privacy_consent']) {
+    assert.match(primary, new RegExp(`name="${field}"`), `${field} field exists on the primary route`);
+  }
+  assert.match(primary, /correction, removal or unsubscribe/);
+  assert.match(primary, /no public checkout/);
+  assert.doesNotMatch(primary, /name="(?:password|secret|payment_details)"/i);
+  assert.match(primary, /Do not send passwords, payment details or secrets/i);
 });
 
 test('use-case and pricing cards scale without a narrow-screen horizontal table', () => {
