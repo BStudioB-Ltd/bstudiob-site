@@ -26,7 +26,11 @@ test('hub presents distinct Edu and Pro sections', () => {
 
 test('Edu access stays visibly unavailable until the pilot host is verified', () => {
   assert.match(hub, /supervised[^.]{0,100}pilot|pilot[^.]{0,100}supervised/i, 'Edu is explicitly bounded to a supervised pilot');
-  assert.doesNotMatch(hub, /href=["']https?:\/\/inspector\.bstudiob\.co\.uk\//i, 'no public link points to the unverified app host');
+  const anchorHrefs = [...hub.matchAll(/<a\b[^>]*\bhref\s*=\s*["']([^"']*)["']/gi)].map((match) => match[1]);
+  for (const href of anchorHrefs) {
+    const target = new URL(href, 'https://bstudiob.co.uk/inspector/');
+    assert.notEqual(target.hostname, 'inspector.bstudiob.co.uk', 'no public link points to the unverified app host');
+  }
   assert.match(hub, /Inspector-Edu access unavailable/i, 'the unavailable state is visible');
   assert.match(hub, /role="status"[^>]*aria-label="Inspector-Edu access unavailable"|aria-label="Inspector-Edu access unavailable"[^>]*role="status"/i, 'the unavailable state is announced accessibly');
   assert.match(hub, /hosted learner runtime has not yet been verified/i, 'the hosting state is explicit');

@@ -6,6 +6,7 @@
 .inspector-skip{position:absolute;z-index:10;top:1rem;left:1rem;transform:translateY(-180%);padding:.8rem 1rem;background:#fff;color:var(--inspector-ink);font-weight:700}
 .inspector-skip:focus{transform:translateY(0)}
 .inspector-nav{display:flex;max-width:1440px;min-height:88px;align-items:center;justify-content:space-between;margin:0 auto;padding:1rem clamp(1.25rem,5vw,5rem);border-bottom:1px solid rgba(23,51,71,.14)}
+.inspector-nav .wordmark{background-image:none}
 .inspector-nav .wordmark img{display:block;width:150px;height:auto}
 .inspector-nav .nav-links{display:flex;gap:clamp(1rem,3vw,2.7rem)}
 .inspector-nav .nav-links a,.inspector-switch a,.edu-footer-nav a,.pro-footer-nav a{font-size:.79rem;font-weight:750;text-decoration:none}
@@ -24,6 +25,8 @@
 sup{font-size:.32em;vertical-align:top;letter-spacing:0}
 .edu-status,.pro-status{display:flex;align-items:center;gap:.6rem;align-self:center;margin:0;padding:.65rem .8rem;border:1px solid rgba(45,128,107,.4);border-radius:99px;color:#236d59;font-size:.72rem;font-weight:700}
 .edu-status span,.pro-status span{width:.5rem;height:.5rem;border-radius:50%;background:#399675}
+.edu-status{border-color:rgba(83,99,107,.4);color:#53636b}
+.edu-status span{background:#77838a}
 .edu-deck{grid-column:1/-1;max-width:650px;margin:0;color:#4d5d65;font-size:clamp(1.1rem,2.1vw,1.55rem);line-height:1.45}
 .edu-feature{display:grid;max-width:1300px;grid-template-columns:minmax(260px,.74fr) minmax(0,1.26fr);gap:clamp(2rem,7vw,7rem);align-items:center;margin:0 auto}
 .edu-story-image{position:relative;max-width:500px;margin:0;overflow:hidden;background:#d6d0c1}
