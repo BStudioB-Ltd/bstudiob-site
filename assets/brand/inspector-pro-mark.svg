@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Inspector-Pro network evidence lens mark</title>
+  <g class="inspector-lens">
+    <path d="m92 79 23 25" fill="none" stroke="#EEEDE7" stroke-width="23" stroke-linecap="round"/>
+    <path d="m92 79 23 25" fill="none" stroke="#292B2A" stroke-width="18" stroke-linecap="round"/>
+    <path d="m95 82 20 22" fill="none" stroke="#B5B6AA" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="68" cy="54" r="34" fill="#292B2A" stroke="#292B2A" stroke-width="16"/>
+    <circle cx="68" cy="54" r="34" fill="none" stroke="#EEEDE7" stroke-width="8"/>
+    <g class="pro-connections" fill="none" stroke="#EEEDE7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="m68 40-17 27h34ZM51 67h34"/></g>
+    <g class="pro-nodes" stroke="#292B2A" stroke-width="3"><circle cx="51" cy="67" r="8" fill="#B5B6AA"/><circle cx="85" cy="67" r="8" fill="#B5B6AA"/><circle class="pro-clue" cx="68" cy="40" r="8" fill="#B85C38"/></g>
+  </g>
+</svg>
