@@ -53,6 +53,7 @@
 - Create: `tests/hosted_runtime_contract.test.js`
 - Create: `docs/hosted-runtime-architecture.md`
 - Modify: `backend/lessons/pilotLessons.js` only if existing metadata misstates availability
+- Modify: `backend/containers/manager.js` to remove misleading non-VM Windows/macOS fallback images
 - Review: `backend/containers/manager.js`, `scripts/provision_os_container.sh`, `docs/task-mode-curriculum-plan.md`, `docs/os-specific-guarded-blocks.md`, and `docs/pilot-readiness-final-snapshot.md`
 
 **Interfaces:**
@@ -72,7 +73,7 @@
 - [ ] **Step 7: Commit the runtime contract, tests, and decision record only.**
 
 ```bash
-git add backend/lessons/pilotLessons.js tests/hosted_runtime_contract.test.js docs/hosted-runtime-architecture.md
+git add backend/lessons/pilotLessons.js backend/containers/manager.js tests/hosted_runtime_contract.test.js docs/hosted-runtime-architecture.md
 git commit -m "docs: define Inspector-Edu hosted runtime matrix"
 ```
 
