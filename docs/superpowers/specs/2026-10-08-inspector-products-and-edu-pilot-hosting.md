@@ -17,13 +17,17 @@ The work must describe each product according to its current implementation and 
 - A technical team can understand Inspector-Pro as a desktop topology design and validation application, then contact BStudioB about its current availability.
 - A visitor can download a versioned Inspector-Pro release for macOS, Windows, or Linux from the Inspector hub.
 - An approved Inspector-Edu pilot participant can reach a stable HTTPS URL when the institution's supervised pilot is running.
+- The hosted pilot is intended to provide three learner environments: Kali/Linux, Windows, and macOS, subject to each guest runtime being integrated and proven on the selected host.
 - BStudioB can operate the pilot with known data, credential, backup, and host boundaries.
 
 ## Current evidence and constraints
 
 - The BStudioB website is a static GitHub Pages site. It already has an Inspector-Edu page at `trust-security.html`, existing Edu imagery, and a pilot enquiry form.
-- Inspector-Edu is an Express application. Its documented pilot requires Node.js 22, Docker Engine available to the Node process, persistent SQLite and PASETO storage, real SMTP, an HTTP(S) `APP_BASE_URL`, an operator present during the session, and preflight/backup/restore checks.
-- Docker absence is an abort condition for the documented core pilot. Containerlab is optional and must remain off unless separately configured and proven on the intended host.
+- Inspector-Edu is an Express application. Its documented core pilot requires Node.js 22, a Docker Engine runtime available to the Node process for the active Linux/Kali sandbox, persistent SQLite and PASETO storage, real SMTP, an HTTP(S) `APP_BASE_URL`, an operator present during the session, and preflight/backup/restore checks.
+- The standalone Linux Docker Engine is an open-source Apache 2.0 project. Docker Desktop subscription terms are a separate product; hosted compute, storage, bandwidth, and registry use may still cost money. See [Docker Engine installation and licensing](https://docs.docker.com/engine/install/) and [Docker Desktop licensing](https://docs.docker.com/subscription-billing/desktop-license/).
+- Docker containers share the host kernel. A Linux-host Docker Engine cannot run native Windows containers; see [Docker's multi-platform documentation](https://docs.docker.com/build/building/multi-platform/).
+- The implemented active execution profile is Linux/Kali. Windows and macOS are configured-host profiles, not general-purpose live learners' runtimes. `backend/containers/manager.js` currently defaults the Windows selector to a PowerShell image and both macOS and Kali selectors to Alpine Linux. The separate `scripts/provision_os_container.sh` demonstrates candidate VM-in-container paths for Windows (`dockurr/windows`) and macOS (`sickcodes/docker-osx`), requires `/dev/kvm`, and states that these guests are not integrated into Inspector-Edu's execution flow. Windows additionally requires valid licensing; macOS requires Apple hardware and compliant use. Apple documents macOS virtualization on Apple silicon and Intel Mac computers in its [Virtualization framework](https://developer.apple.com/documentation/virtualization).
+- The production host must not expose Docker's API over TCP. The current `docker-compose.yml` publishes a socket proxy on port 2375 even though the app's Dockerode manager uses the local Unix socket; `scripts/start-server.js` also starts Compose and kills ports 3000/3002, and `bin/www` opens a secondary listener on 3002. Production startup must not publish/start the proxy, kill unrelated port owners, or expose the test listener. Containerlab remains off unless separately configured and proven on the intended host.
 - Inspector-Pro's current `QT6` branch describes a PyQt6 desktop application for visual topology editing, device properties, validation, save/load, and JSON/Containerlab YAML export. It is not a hosted web product.
 - The local Inspector-Pro checkout has separate setup paths for macOS, Linux, and Windows, but no packaged release artifact or release tag. The `pyproject.toml` metadata refers to a missing `README.md`; current setup scripts install dependencies on the host and may request elevated privileges. Packaging and a clean-install review are required before any installer is offered as a download.
 - The existing BStudioB Product License Manager currently accepts `buildy`, `flowcue`, and `device-provisioning-toolkit`; Inspector is not an accepted product key. A production PLM entitlement path therefore remains unresolved.
@@ -62,21 +66,24 @@ Create a single BStudioB product hub at `/inspector/`, with a clear contents/nav
 
 ## Proposed Inspector-Edu pilot hosting
 
-### Recommended initial architecture: one dedicated Linux VM
+### Runtime and hosting decision
 
-Deploy the clean, approved Inspector-Edu release to a single operator-controlled Linux VM. Run the Express app on this host with a host-local Docker Engine for its supervised learner sandboxes. Set the production `APP_BASE_URL` to `https://inspector.bstudiob.co.uk` and configure the approved DNS record and TLS certificate for that exact host name. Keep Docker's Unix socket local to the host; never expose the Docker API over TCP or mount the host socket into unrelated services. Keep Containerlab disabled until the configured-host feature is separately approved and passes its live smoke.
+The target hosted pilot requires all three guest environments: Kali/Linux, Windows, and macOS. Docker Engine is a valid open-source container runtime for Linux; changing it solely to avoid a Docker Desktop subscription would not provide guest OS virtualization. The host's compute and operations have a cost, and the Windows/macOS profiles need actual guest VMs rather than labels over Linux containers.
 
-Use persistent, access-restricted paths for the SQLite database, PASETO key, and verified backups. Configure production HTTPS, `APP_BASE_URL`, secure cookies, SMTP, bootstrap admin credentials, and environment secrets outside Git. Permit public inbound traffic only to the HTTPS proxy/application port; restrict operator SSH to an approved source range. Use a dedicated host for Inspector workloads, with no unrelated services or sensitive datasets on the same machine.
+Use the repository's Docker plus KVM/QEMU VM-in-container experiment as the first implementation candidate, with these capability gates:
 
-The service is a supervised pilot endpoint. A healthy HTTP response or a working sign-in screen does not establish production readiness, public launch, or successful pilot operation. The operator remains present during each learner session and performs the documented pre-session backup, verification, restore drill, capacity check, and shutdown/cleanup.
+1. **Kali/Linux:** run the current bounded learner sandbox on a Linux Docker Engine. Confirm pinned image provenance, resource limits, network isolation, command policy, and cleanup on the selected host.
+2. **Windows:** run the repo's candidate Windows VM image only on a host that provides `/dev/kvm` or another explicitly supported hypervisor path, sufficient CPU/RAM/disk, valid Windows licensing, isolated lab networking, and a controlled guest connection. The current learner manager defaults `windows` to PowerShell on Linux; replace that misleading fallback with the real guest-provider path or an unavailable error.
+3. **macOS:** run a macOS guest only on suitable Apple hardware through a compliant virtualization route. The current Docker-OSX experiment's stated `/dev/kvm` requirement and its Apple-hardware requirement must both be reconciled on the actual target; do not assume a generic Linux cloud VM or Docker Desktop host can satisfy them. Require a dedicated compatible Mac host if necessary.
+4. **Managed app and runner split:** Render may be considered for the Express app, persistent storage, and public HTTPS edge, but the public docs do not establish access to its host Docker daemon or KVM. Since the current app talks to a local Docker socket, a separate lab host requires a narrow, authenticated, audited runner API with session ownership, network restrictions, timeouts, and cleanup; never expose Docker's raw TCP API.
 
-### Hosting alternatives
+If one selected host cannot safely run all three, use a multi-host runner architecture and prove the private links and per-OS journey. Do not reduce the agreed OS scope silently; keep the endpoint and relevant marketing action gated until all three are integrated and proven.
 
-1. **Render for the app, plus a separate controlled Docker host:** Render offers managed web services and paid persistent disks, but the application still needs access to Docker Engine for learner sandboxes. A split deployment would require an explicitly designed and secured remote-lab contract, which the current repository does not document. Render disks are single-instance and prevent zero-downtime deploys. Do not select this architecture without a separate design and end-to-end proof.
-2. **Single dedicated Linux VM (recommended for the current pilot):** Matches the documented host-local Docker, SQLite, PASETO, SMTP, and operator model with the fewest architectural changes. It is a single-instance service; availability, patching, monitoring, backups, and host security are BStudioB/operator responsibilities.
-3. **Future managed SaaS architecture:** Separate the application from the lab runtime, define an authenticated lab-host API, and move state to a supported shared datastore before multi-instance scaling. This is explicitly outside this project.
+For whichever route is selected, set production `APP_BASE_URL` to `https://inspector.bstudiob.co.uk`, configure the approved DNS and TLS certificate, secure cookies, SMTP, bootstrap admin credentials, persistent SQLite/PASETO/backup paths, and secrets outside Git. The deployment must bind only the intended HTTPS application/proxy ports; restrict operator SSH to an approved source range and keep Inspector workloads isolated from unrelated services and sensitive datasets. Keep Containerlab disabled until separately approved and proven on the chosen host.
 
-The cloud provider, account, instance size, region, DNS record management for `inspector.bstudiob.co.uk`, operating system image, backup destination/retention, SMTP sender, and budget must be resolved before provisioning. The Pro release-asset host, build/signing identity, and supported processor architectures must also be resolved before packaging and publishing. This spec does not create a cloud resource, external release, or authorize spend.
+The service is a supervised pilot endpoint. A healthy HTTP response or working sign-in screen does not establish production readiness, public launch, or successful pilot operation. The operator remains present during each learner session and performs the documented pre-session backup, verification, restore drill, selected-runtime capacity check, and shutdown/cleanup.
+
+The cloud provider, account, instance or host types, region, DNS management for `inspector.bstudiob.co.uk`, backup destination/retention, SMTP sender, and budget must be resolved before provisioning. The Pro release-asset host, build/signing identity, and supported processor architectures must also be resolved before packaging and publishing. This spec does not create a cloud resource, external release, or authorize spend.
 
 ## Access and entitlement boundary
 
@@ -95,13 +102,14 @@ The cloud provider, account, instance size, region, DNS record management for `i
 
 ## Delivery sequence
 
-1. Review and approve this spec, including the hosting model and product page directions.
+1. Review and approve this spec, including the three-OS pilot requirement and product page directions.
 2. Write a separately reviewable implementation plan covering the BStudioB site, macOS/Windows/Linux Inspector-Pro release packaging, and Inspector-Edu repository/host changes.
 3. Implement and locally verify the `/inspector/` product hub and legacy Edu route. Review the rendered sections and responsive states before preparing any public site update.
 4. Repair release metadata and build/install-smoke the Pro packages for macOS, Windows, and Linux. Document each immutable release asset/checksum and verify each download from the hub in a clean environment.
-5. Resolve provider/account/budget/DNS and pilot-account authorization; prepare a host runbook and environment/secret inventory without placing secrets in Git.
-6. On the chosen host, fetch `origin/unstable`, record and deploy the exact clean approved SHA, and complete the current pilot deployment gates: preflight, SMTP smoke, secure bootstrap-admin rotation, verified backup plus temporary restore drill, capacity check for 10 learners, health checks, and an operator-led end-to-end pilot journey.
-7. Only after the pilot journey and cleanup are verified, make the Edu app link live at `inspector.bstudiob.co.uk`. Continue describing the service as supervised pilot access.
+5. Integrate and locally prove the Linux/Kali, Windows, and macOS guest providers, secure session lifecycle, and no-TCP-Docker startup. Prepare host-runner-specific operations docs without placing secrets in Git.
+6. Resolve provider/account/budget/DNS and pilot-account authorization. Select runner hosts that can actually provide Docker Engine, the required KVM/hypervisor capability, and compliant Apple hardware for macOS.
+7. On the selected host set, fetch `origin/unstable`, record and deploy the exact clean approved SHA, and complete the pilot gates: preflight, SMTP smoke, secure bootstrap-admin rotation, verified backup plus temporary restore drill, capacity check for 10 learners across the agreed guest mix, health checks, and an operator-led journey on each guest OS.
+8. Only after all three guest journeys and cleanup are verified, make the Edu app link live at `inspector.bstudiob.co.uk`. Continue describing the service as supervised pilot access.
 
 ## Acceptance criteria
 
@@ -116,18 +124,20 @@ The cloud provider, account, instance size, region, DNS record management for `i
 
 ### Hosted pilot
 
-- A recorded, approved clean `origin/unstable` commit is the deployed release identity.
-- Production preflight passes with persistent database/key paths, HTTPS/secure cookies, SMTP, correct `APP_BASE_URL`, and host-local Docker available.
+- A recorded, approved clean `origin/unstable` commit is the deployed release identity across the app and every lab runner.
+- Production preflight passes with persistent app and runner state, HTTPS/secure cookies, SMTP, correct `APP_BASE_URL`, Docker Engine available on the Linux/Kali runner, and verified Windows/macOS guest-runner health.
 - Registration/verification and operator/admin access are checked through real SMTP and the approved pilot onboarding route; no unapproved account or entitlement bypass is used.
 - A new SQLite backup verifies and passes a temporary restore drill; database and PASETO key persist across restart/redeploy.
-- The documented 10-learner capacity check passes on the target host before a class pilot is claimed.
+- All three required guest environments are integrated with the learner flow on the actual target host set: Kali/Linux, Windows, and macOS. Each has a correct guest-identity check, approved task flow, isolation/resource checks, and session cleanup evidence; no Linux image is presented as a Windows or macOS guest.
+- The documented 10-learner capacity check passes on the selected host set for the agreed mix of all three guest runtimes before a class pilot is claimed.
 - An operator completes the supervised learner journey, verifies only intended lab-owned resources were created, and proves shutdown/cleanup.
 - Public claims remain limited to the tested supervised pilot profile. No claim of 24/7 availability, enterprise readiness, or production SaaS follows from the endpoint being online.
 
 ## Decisions still required before implementation/deployment
 
-1. Approve or revise the hub structure, distinct Edu/Pro art directions, and the one-VM pilot hosting recommendation.
+1. Approve or revise the hub structure and distinct Edu/Pro art directions.
 2. Select the Pro release-asset host, build/signing identity, supported processor architectures, and publication owner for all three OS targets.
-3. Select the cloud provider/account, region, machine size, DNS management for `inspector.bstudiob.co.uk`, backup destination, SMTP sender, and spend limit.
-4. Identify the approved pilot participant onboarding and entitlement route; PLM does not currently accept Inspector.
-5. Decide whether any lab feature beyond the core Docker sandbox is required for the first hosted pilot; Containerlab remains disabled by default.
+3. Select the hosting model for all required guest environments. Verify Docker Engine, `/dev/kvm`/hypervisor, suitable Apple hardware, guest licenses, storage, and networking; Render is not assumed to provide VM-host capabilities.
+4. Select the cloud/provider accounts and host types, region, machine sizes, DNS management for `inspector.bstudiob.co.uk`, backup destination, SMTP sender, and spend limit.
+5. Identify the approved pilot participant onboarding and entitlement route; PLM does not currently accept Inspector.
+6. Decide whether any lab feature beyond the three OS guests is required for the first hosted pilot; Containerlab remains disabled by default.
