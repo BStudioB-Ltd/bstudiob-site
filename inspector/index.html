@@ -1,142 +1,567 @@
 <!doctype html>
 <html lang="en-GB">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Explore Inspector-Edu, a supervised cybersecurity learning pilot, and Inspector-Pro, a desktop topology design and validation application from BStudioB.">
-    <title>Inspector products — Inspector-Edu and Inspector-Pro | BStudioB</title>
-    <link rel="canonical" href="https://bstudiob.co.uk/inspector/">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="BStudioB">
-    <meta property="og:locale" content="en_GB">
-    <meta property="og:title" content="Inspector products — Inspector-Edu and Inspector-Pro | BStudioB">
-    <meta property="og:description" content="Supervised cybersecurity learning with Inspector-Edu and desktop topology design with Inspector-Pro.">
-    <meta property="og:url" content="https://bstudiob.co.uk/inspector/">
-    <meta property="og:image" content="https://bstudiob.co.uk/assets/brand/bstudiob-social-card.png">
-    <meta property="og:image:alt" content="BStudioB products with purpose">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Inspector products — Inspector-Edu and Inspector-Pro | BStudioB">
-    <meta name="twitter:description" content="Supervised cybersecurity learning with Inspector-Edu and desktop topology design with Inspector-Pro.">
-    <meta name="twitter:image" content="https://bstudiob.co.uk/assets/brand/bstudiob-social-card.png">
-    <meta name="twitter:image:alt" content="BStudioB products with purpose">
-    <link rel="icon" href="../assets/brand/bsb-favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="inspector.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Inspector — the learning &amp; topology case archive</title>
+    <meta
+      name="description"
+      content="Open the Inspector case archive. Try a Cave Bash learning simulation with Inspector-Edu and edit a local sample topology with Inspector-Pro."
+    />
+    <link rel="canonical" href="https://bstudiob.co.uk/inspector/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Inspector" />
+    <meta property="og:locale" content="en_GB" />
+    <meta
+      property="og:title"
+      content="Inspector — the learning &amp; topology case archive"
+    />
+    <meta
+      property="og:description"
+      content="Two working previews. Follow the evidence with Edu. Inspect the structure with Pro."
+    />
+    <meta property="og:url" content="https://bstudiob.co.uk/inspector/" />
+    <meta
+      property="og:image"
+      content="https://bstudiob.co.uk/assets/projects/inspector-cave-scene.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="The original Inspector-Edu Cave Bash pixel art scene"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Inspector — the learning &amp; topology case archive"
+    />
+    <meta
+      name="twitter:description"
+      content="Try the Edu learning simulation and Pro topology editor preview."
+    />
+    <meta
+      name="twitter:image"
+      content="https://bstudiob.co.uk/assets/projects/inspector-cave-scene.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="The original Inspector-Edu Cave Bash pixel art scene"
+    />
+    <link
+      rel="icon"
+      href="../assets/brand/inspector-pro-mark.svg"
+      type="image/svg+xml"
+    />
+    <link rel="stylesheet" href="inspector.css" />
+    <script src="demo-edu.js" defer></script>
+    <script src="demo-pro.js" defer></script>
   </head>
-  <body class="inspector-hub">
-    <a class="inspector-skip" href="#edu">Skip to Inspector products</a>
-    <main>
-      <nav class="inspector-nav" aria-label="Primary navigation">
-        <a class="wordmark" href="../index.html" aria-label="BStudioB home"><img src="../assets/brand/bstudiob-signature.svg" alt="BStudioB Ltd"></a>
-        <div class="nav-links"><a href="#edu">Inspector-Edu</a><a href="#pro">Inspector-Pro</a><a href="mailto:hello@bstudiob.co.uk">Contact</a></div>
+  <body>
+    <a class="skip" href="#edu">Skip to cases</a>
+    <header class="masthead">
+      <a class="identity" href="./" aria-label="Inspector archive home"
+        ><img
+          src="../assets/brand/inspector-pro-mark.svg"
+          width="42"
+          height="42"
+          alt=""
+        /><span>INSPECTOR<small>Learning / topology / evidence</small></span></a
+      >
+      <span class="archive-label">Product archive · Vol. 01</span>
+      <nav aria-label="Inspector products">
+        <a href="#edu">01 / Edu</a><a href="#pro">02 / Pro</a
+        ><a href="#pilot-enquiry">Enquiries</a>
       </nav>
-      <header class="inspector-intro">
-        <p class="eyebrow">BStudioB / Inspector product family</p>
-        <h1>Build understanding.<br><em>Design the network.</em></h1>
-        <p>Two tools for different parts of security practice: guided, supervised learning and desktop topology design.</p>
-        <nav class="inspector-switch" aria-label="Explore Inspector products"><a href="#edu"><span>01</span> Inspector-Edu <b aria-hidden="true">↓</b></a><a href="#pro"><span>02</span> Inspector-Pro <b aria-hidden="true">↓</b></a></nav>
+    </header>
+    <main>
+      <header class="archive-intro">
+        <p class="docket">Open files / two ways to investigate</p>
+        <h1>Follow the evidence.</h1>
+        <p>
+          Learn in a guided world. Build a topology you can inspect. Open a case
+          below and try a small part of each Inspector product.
+        </p>
+        <div class="index">
+          <a href="#edu"
+            ><span>FILE 01</span><strong>Inspector-Edu</strong
+            ><small>Guided learning →</small></a
+          ><a href="#pro"
+            ><span>FILE 02</span><strong>Inspector-Pro</strong
+            ><small>Topology design →</small></a
+          >
+        </div>
       </header>
 
-      <section class="inspector-edu" id="edu" aria-labelledby="edu-title" tabindex="-1">
-        <div class="edu-heading">
-          <p class="inspector-kicker">01 / Learn with purpose</p>
-          <p class="edu-status"><span aria-hidden="true"></span> Supervised pilot / in preparation</p>
-          <div class="inspector-product-title">
-            <svg class="inspector-product-mark inspector-edu-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" aria-hidden="true" focusable="false"><g class="edu-folder">
-    <path d="M12 35V25a6 6 0 0 1 6-6h22l8 10h38a6 6 0 0 1 6 6v53H12Z" fill="#D95938" stroke="#FFF0CF" stroke-width="11" stroke-linejoin="round"/>
-    <path d="M12 35V25a6 6 0 0 1 6-6h22l8 10h38a6 6 0 0 1 6 6v53H12Z" fill="#D95938" stroke="#102C3B" stroke-width="6" stroke-linejoin="round"/>
-    <path d="M12 39h21l7-7h48a6 6 0 0 1 6 6v55H12a6 6 0 0 1-6-6V45a6 6 0 0 1 6-6Z" fill="#FFF0CF" stroke="#102C3B" stroke-width="6" stroke-linejoin="round"/>
-  </g>
-  <g class="inspector-lens">
-    <path d="m92 79 23 25" fill="none" stroke="#FFF0CF" stroke-width="23" stroke-linecap="round"/>
-    <path d="m92 79 23 25" fill="none" stroke="#102C3B" stroke-width="18" stroke-linecap="round"/>
-    <path d="m95 82 20 22" fill="none" stroke="#D95938" stroke-width="10" stroke-linecap="round"/>
-    <circle cx="68" cy="54" r="34" fill="#102C3B" stroke="#102C3B" stroke-width="16"/>
-    <circle cx="68" cy="54" r="34" fill="none" stroke="#FFF0CF" stroke-width="8"/>
-    <path d="M60 39h16M68 39v30M60 69h16" fill="none" stroke="#D95938" stroke-width="7" stroke-linecap="square"/>
-  </g></svg>
-            <h2 id="edu-title">Inspector-Edu<sup>™</sup></h2>
+      <section
+        id="edu"
+        class="case edu-case"
+        aria-labelledby="edu-title"
+        tabindex="-1"
+      >
+        <header class="case-heading">
+          <div>
+            <p class="docket">File 01 / supervised learning</p>
+            <h2 id="edu-title">
+              <img
+                src="../assets/brand/inspector-edu-mark.svg"
+                alt=""
+                width="56"
+                height="56"
+              />Inspector-Edu<sup>™</sup>
+            </h2>
           </div>
-          <p class="edu-deck">A guided cybersecurity learning platform for institutions, built around bounded lab tasks, instructor oversight and clear guardrails.</p>
+          <span class="stamp">Pilot in preparation</span>
+        </header>
+        <div class="case-deck">
+          <p>
+            A guided cybersecurity learning platform for institutions. Story,
+            bounded tasks and instructor oversight turn each lesson into
+            evidence you can explain.
+          </p>
+          <a href="#pro">Open the Pro case →</a>
         </div>
-        <div class="edu-feature">
-          <figure class="edu-story-image"><img src="../assets/projects/inspector-story-mode.png" alt="Pixel-art café interior from an Inspector-Edu Story Mode learning scene" loading="lazy" decoding="async" width="1024" height="1536"><figcaption>Story Mode / guided learning</figcaption></figure>
-          <div class="edu-content">
-            <div class="edu-stages" aria-label="Inspector-Edu learning modes">
-              <article><span>01</span><h3>Story</h3><p>Follow structured, instructor-led learning through guided lessons.</p></article>
-              <article><span>02</span><h3>Task</h3><p>Practise bounded lab tasks within the configured learning environment.</p></article>
-              <article><span>03</span><h3>Network Editor</h3><p>Work with approved network editor activities and their defined scope.</p></article>
-              <article><span>04</span><h3>Inspector Online</h3><p>Explore fictional missions designed for authorised learning.</p></article>
+        <section
+          id="edu-demo"
+          class="edu-demo"
+          aria-labelledby="edu-demo-title"
+        >
+          <div class="bench-bar">
+            <h3 id="edu-demo-title">DemoRPG: Cave Bash</h3>
+            <span>Interactive simulation</span>
+          </div>
+          <p class="simulation-note">
+            Fixed sample output only. No real commands, backend, host connection
+            or saved progress.
+          </p>
+          <div class="edu-workspace">
+            <div class="cave-scene">
+              <img
+                class="cave-background"
+                src="../assets/projects/inspector-cave-scene.png"
+                width="1024"
+                height="1536"
+                alt="Pixel art cave with glimmering blue light from Inspector-Edu Cave Bash"
+              /><img
+                class="mira"
+                src="../assets/projects/inspector-mira-front.png"
+                width="341"
+                height="512"
+                alt="Mira, the lesson guide"
+              />
+              <div class="scene-caption">
+                <span>Original lesson scene</span
+                ><strong>Look around the cave.</strong>
+              </div>
             </div>
-            <p class="edu-evidence">Instructors and operators can review learner evidence. The hosted learner runtime has not yet been verified. The current development image is Alpine Linux; this does not establish a hosted learner environment.</p>
-            <aside class="edu-boundary"><strong>Supervised pilot access</strong><p>Pilot access is not currently available. Hosted learner runtime and institutional access have not yet been verified. Contact us to discuss an institutional pilot.</p></aside>
-            <div class="edu-actions"><span class="inspector-button edu-button edu-unavailable" role="status" aria-label="Inspector-Edu access unavailable">Inspector-Edu access unavailable</span><a class="edu-contact" href="#pilot-enquiry">Discuss an institutional pilot <span aria-hidden="true">↓</span></a></div>
+            <div class="lesson-desk">
+              <p class="docket" id="edu-stage">Cave entry / 00</p>
+              <h4 id="edu-prompt">A terminal glows in the cave.</h4>
+              <p id="edu-objective">Type <code>ls</code>.</p>
+              <div id="edu-menu" class="mode-menu" hidden>
+                <button type="button" data-mode="story">Story Mode</button
+                ><button type="button" data-mode="task">Task Mode</button
+                ><button type="button" data-mode="online">
+                  Inspector Online</button
+                ><button type="button" data-mode="options">Options</button>
+              </div>
+              <div id="edu-task-choice" hidden>
+                <button type="button" id="edu-open-task">
+                  Task 01: Information Gathering →
+                </button>
+              </div>
+              <form id="edu-command-form">
+                <label for="edu-command">Sample terminal command</label>
+                <div class="command-row">
+                  <span aria-hidden="true">&gt;</span
+                  ><input
+                    id="edu-command"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    aria-describedby="edu-objective edu-feedback"
+                    maxlength="40"
+                    placeholder="ls"
+                  /><button type="submit">Enter</button>
+                </div>
+              </form>
+              <p
+                id="edu-feedback"
+                class="feedback"
+                role="status"
+                aria-live="polite"
+              >
+                Only the displayed lesson command is accepted.
+              </p>
+              <pre id="edu-output" aria-label="Fixed sample terminal output">
+Awaiting sample command…</pre>
+              <button id="edu-reset" type="button" class="quiet">
+                Reset simulation ↺
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="edu-footer-nav"><span>Continue exploring</span><a href="#pro">Inspector-Pro <span aria-hidden="true">→</span></a></div>
-        <section class="pilot-enquiry" id="pilot-enquiry" aria-labelledby="pilot-title">
-          <div><p class="inspector-kicker">Institutional enquiries</p><h3 id="pilot-title">Discuss a supervised pilot.</h3><p>Tell us about your organisation and learning context. We’ll follow up to discuss whether the current pilot is a fit.</p></div>
-          <form class="waitlist-form inspector-form" action="https://formsubmit.co/nathan+inspector@bstudiob.co.uk" method="POST">
-            <input type="hidden" name="_subject" value="BStudioB — Inspector pilot application">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://bstudiob.co.uk/thanks.html">
-            <input type="hidden" name="_url" value="https://bstudiob.co.uk/inspector/">
-            <input class="honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off">
-            <label for="inspector-email">Work email</label>
-            <div class="waitlist-controls"><input id="inspector-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@organisation.com" maxlength="254" required><button class="button inspector-submit" type="submit">Send enquiry <span aria-hidden="true">↗</span></button></div>
-            <label class="form-consent" for="inspector-email-consent"><input id="inspector-email-consent" name="privacy_consent" type="checkbox" required><span>I agree that BStudioB may use my details for this pilot enquiry, as described in the <a href="../privacy.html">Privacy notice</a>.</span></label>
-            <p class="form-note">Free application to discuss a future supervised pilot. <a href="../privacy.html">Privacy</a></p>
-          </form>
+          <div class="evidence-desk">
+            <div>
+              <p class="docket">Evidence record / this visit only</p>
+              <ol id="edu-evidence">
+                <li>No evidence collected yet.</li>
+              </ol>
+            </div>
+            <aside>
+              <strong id="edu-expected-title">What to look for</strong>
+              <p id="edu-expected">
+                A directory listing opens the Cave Bash menu.
+              </p>
+              <p class="safety" id="edu-safety">
+                In the real lesson, work only inside an authorised learning
+                environment. Do not probe public IPs or domains.
+              </p>
+            </aside>
+          </div>
+          <noscript
+            ><p class="no-script">
+              Enable JavaScript to use the sample lesson. No Inspector backend
+              is contacted.
+            </p></noscript
+          >
         </section>
+        <dl class="evidence-rows">
+          <div>
+            <dt>Learning modes</dt>
+            <dd>Story · Task · Network Editor · Inspector Online</dd>
+          </div>
+          <div>
+            <dt>Instructor oversight</dt>
+            <dd>Bounded lab tasks with learner evidence for review.</dd>
+          </div>
+          <div>
+            <dt>Access status</dt>
+            <dd>
+              Pilot access is not currently available. Hosted learner runtime
+              and institutional access have not yet been verified. The current
+              Alpine Linux development image does not establish a hosted learner
+              environment.
+            </dd>
+          </div>
+        </dl>
+        <div class="availability-strip">
+          <span class="stamp">Inspector-Edu access unavailable</span
+          ><a href="#pilot-enquiry">Discuss an institutional pilot ↓</a>
+        </div>
       </section>
 
-      <section class="inspector-pro" id="pro" aria-labelledby="pro-title" tabindex="-1">
-        <div class="pro-shell">
-          <header class="pro-heading">
-            <p class="inspector-kicker">02 / Map the system</p><p class="pro-status"><span aria-hidden="true"></span> Desktop application / release preparation</p>
-            <div class="inspector-product-title">
-            <svg class="inspector-product-mark inspector-pro-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" aria-hidden="true" focusable="false"><g class="inspector-lens">
-    <path d="m92 79 23 25" fill="none" stroke="#EEEDE7" stroke-width="23" stroke-linecap="round"/>
-    <path d="m92 79 23 25" fill="none" stroke="#292B2A" stroke-width="18" stroke-linecap="round"/>
-    <path d="m95 82 20 22" fill="none" stroke="#B5B6AA" stroke-width="10" stroke-linecap="round"/>
-    <circle cx="68" cy="54" r="34" fill="#292B2A" stroke="#292B2A" stroke-width="16"/>
-    <circle cx="68" cy="54" r="34" fill="none" stroke="#EEEDE7" stroke-width="8"/>
-    <g class="pro-connections" fill="none" stroke="#EEEDE7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="m68 40-17 27h34ZM51 67h34"/></g>
-    <g class="pro-nodes" stroke="#292B2A" stroke-width="3"><circle cx="51" cy="67" r="8" fill="#B5B6AA"/><circle cx="85" cy="67" r="8" fill="#B5B6AA"/><circle class="pro-clue" cx="68" cy="40" r="8" fill="#B85C38"/></g>
-  </g></svg>
-            <h2 id="pro-title">Inspector-Pro<sup>™</sup></h2>
+      <section
+        id="pro"
+        class="case pro-case"
+        aria-labelledby="pro-title"
+        tabindex="-1"
+      >
+        <header class="case-heading">
+          <div>
+            <p class="docket">File 02 / desktop topology design</p>
+            <h2 id="pro-title">
+              <img
+                src="../assets/brand/inspector-pro-mark.svg"
+                alt=""
+                width="56"
+                height="56"
+              />Inspector-Pro<sup>™</sup>
+            </h2>
           </div>
-            <p class="pro-deck">A desktop application for visual network topology design and validation, with practical project export.</p><a class="pro-back-link" href="#edu">← Back to Inspector-Edu</a>
-          </header>
-          <figure class="pro-visual" aria-labelledby="pro-sample-caption">
-            <div class="pro-window-bar"><span>CASE 001 / LAB-NETWORK</span><b>SAMPLE DESIGN</b></div>
-            <div class="topology-sheet" role="img" aria-label="Sample topology: a router links to a core switch, which links to a server and an endpoint. Device labels and addresses are illustrative.">
-              <div class="topology-grid" aria-hidden="true"></div>
-              <svg class="topology-lines" viewBox="0 0 900 450" preserveAspectRatio="none" aria-hidden="true"><path d="M180 225 H300 V135 H450 H600 V225 H720 M450 135 V347"/></svg>
-              <div class="topology-node node-router" aria-hidden="true"><span>01 / RTR-01</span><strong>Router</strong><small>10.0.0.1/24</small></div>
-              <div class="topology-node node-switch" aria-hidden="true"><span>02 / SW-CORE</span><strong>Switch</strong><small>VLAN 10 · 20</small></div>
-              <div class="topology-node node-server" aria-hidden="true"><span>03 / SRV-01</span><strong>Server</strong><small>10.0.0.20</small></div>
-              <div class="topology-node node-client" aria-hidden="true"><span>04 / PC-01</span><strong>Endpoint</strong><small>10.0.0.40</small></div>
-              <span class="topology-register" aria-hidden="true">FIG. 01 / LOGICAL LAYOUT</span>
-            </div>
-            <figcaption id="pro-sample-caption" class="visual-caption">Sample interface illustration · labels and addresses are illustrative</figcaption>
-          </figure>
-          <ol class="pro-case-sequence" aria-label="Sample project workflow">
-            <li><span>01 / DESIGN</span><h3>Map the devices</h3><p>Arrange a topology and edit device properties.</p></li>
-            <li><span>02 / VALIDATION</span><h3>Inspect the structure</h3><p>Run topology validation before exporting the project.</p></li>
-            <li><span>03 / EXPORT</span><h3>Keep the project record</h3><p>Export project data as JSON or Containerlab YAML.</p></li>
-          </ol>
-          <div class="pro-detail">
-            <div><p class="inspector-kicker">Design / inspect / export</p><h3>Plan a topology.<br>Check its structure.</h3><p>Build a network layout on the desktop canvas, edit device templates and properties, run topology validation, and save or load project files.</p><p>Export project data as JSON or Containerlab YAML. Inspector-Pro is a desktop design tool, not a hosted service.</p></div>
-            <aside class="pro-downloads"><p class="inspector-kicker">Desktop availability</p><h3>Downloads in preparation</h3><p>Versioned installers and verified checksums are not yet available.</p><a class="pro-contact" href="mailto:hello@bstudiob.co.uk?subject=Inspector-Pro%20availability">Ask about Inspector-Pro availability <span aria-hidden="true">↗</span></a><ul aria-label="Inspector-Pro platform availability"><li><span>macOS</span><span class="availability">In preparation</span></li><li><span>Windows</span><span class="availability">In preparation</span></li><li><span>Linux</span><span class="availability">In preparation</span></li></ul></aside>
-          </div>
-          <div class="pro-footer-nav"><span>Inspector-Pro / BStudioB</span><span>Desktop application</span></div>
+          <span class="stamp">Release preparation</span>
+        </header>
+        <div class="case-deck">
+          <p>
+            A desktop application for visual topology design and structural
+            validation. Arrange devices, inspect their properties and keep a
+            project record.
+          </p>
+          <a href="#edu">Return to the Edu case ↑</a>
         </div>
+        <section
+          id="pro-demo"
+          class="pro-demo"
+          aria-labelledby="pro-demo-title"
+        >
+          <div class="bench-bar">
+            <h3 id="pro-demo-title">Topology editor bench</h3>
+            <span>Browser sample / no network launched</span>
+          </div>
+          <p class="simulation-note">
+            Edit local preview data. Checks cover native topology structure
+            only; no IP, routing, reachability, image existence or deployment
+            check is made. No app backend is contacted.
+          </p>
+          <div class="pro-toolbar">
+            <label for="topology-name"
+              >Topology name<input
+                id="topology-name"
+                value="inspector-preview"
+                maxlength="100" /></label
+            ><button type="button" id="pro-add">+ Add device</button
+            ><button type="button" id="pro-validate">Check structure</button
+            ><button type="button" id="pro-reset" class="quiet">
+              Reset sample ↺
+            </button>
+          </div>
+          <div class="pro-workspace">
+            <div class="canvas-desk">
+              <p class="canvas-help">
+                Select a device to edit. Drag to arrange, or use arrow keys on a
+                focused device.
+              </p>
+              <div
+                id="topology-canvas"
+                class="topology-canvas"
+                role="group"
+                aria-label="Sample topology canvas"
+              >
+                <svg
+                  id="topology-links"
+                  viewBox="0 0 1000 1000"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                ></svg>
+                <div id="topology-nodes"></div>
+              </div>
+              <div class="canvas-register">
+                <span id="pro-count">3 devices / 2 links</span
+                ><span>Local sample data</span>
+              </div>
+            </div>
+            <form id="node-form" class="property-desk" novalidate>
+              <h4>Device record</h4>
+              <p id="node-id" class="docket">Select a device</p>
+              <fieldset id="node-fields">
+                <legend class="sr-only">Selected device properties</legend>
+                <label for="node-name"
+                  >Name<input id="node-name" maxlength="100"
+                /></label>
+                <div class="field-pair">
+                  <label for="node-kind"
+                    >Kind<input id="node-kind" maxlength="100" /></label
+                  ><label for="node-image"
+                    >Image<input id="node-image" maxlength="200"
+                  /></label>
+                </div>
+                <label for="node-exec"
+                  >Exec <small>one command per line / stored text only</small
+                  ><textarea id="node-exec" rows="2"></textarea></label
+                ><label for="node-env"
+                  >Env <small>JSON object of string values</small
+                  ><textarea
+                    id="node-env"
+                    rows="2"
+                    aria-describedby="node-error"
+                  ></textarea></label
+                ><label for="node-binds"
+                  >Binds <small>one mount per line / stored text only</small
+                  ><textarea id="node-binds" rows="2"></textarea>
+                </label>
+                <div class="field-pair">
+                  <label for="node-x"
+                    >Position X (%)<input
+                      id="node-x"
+                      type="number"
+                      min="12"
+                      max="88"
+                      step="1" /></label
+                  ><label for="node-y"
+                    >Position Y (%)<input
+                      id="node-y"
+                      type="number"
+                      min="15"
+                      max="85"
+                      step="1"
+                  /></label>
+                </div>
+                <p id="node-error" class="error" role="alert"></p>
+                <div class="action-row">
+                  <button type="submit">Apply device</button
+                  ><button type="button" id="pro-remove-node" class="quiet">
+                    Remove device
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <div class="link-desk">
+            <div>
+              <h4>Connections</h4>
+              <p class="muted">
+                New ordinary links receive the next unused
+                <code>ethN</code> interface on each device. Edit an existing
+                record to inspect its endpoints.
+              </p>
+              <ul id="link-list"></ul>
+            </div>
+            <form id="link-form" novalidate>
+              <h4 id="link-form-title">Create ordinary link</h4>
+              <div class="field-pair">
+                <label for="link-source"
+                  >Source device<select id="link-source"></select></label
+                ><label for="link-target"
+                  >Target device<select id="link-target"></select
+                ></label>
+              </div>
+              <div id="link-interface-fields" class="field-pair" hidden>
+                <label for="link-source-interface"
+                  >Source interface<input
+                    id="link-source-interface"
+                    maxlength="60" /></label
+                ><label for="link-target-interface"
+                  >Target interface<input
+                    id="link-target-interface"
+                    maxlength="60"
+                /></label>
+              </div>
+              <p id="link-error" class="error" role="alert"></p>
+              <div class="action-row">
+                <button id="link-submit" type="submit">Create link</button
+                ><button id="link-new" type="button" class="quiet" hidden>
+                  Cancel edit
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="validation-desk">
+            <div>
+              <h4>Structure findings</h4>
+              <p id="pro-status" role="status" aria-live="polite">
+                Sample ready. Select Check structure to inspect the record.
+              </p>
+              <ul id="pro-errors" aria-label="Structural errors"></ul>
+            </div>
+            <div class="export-desk">
+              <p class="docket">Preview data downloads</p>
+              <button id="pro-json" type="button">Sample JSON ↓</button
+              ><button id="pro-yaml" type="button">
+                Sample Containerlab YAML ↓
+              </button>
+              <p>
+                Browser-generated files only. Export uses applied edits. These
+                files do not launch a network or prove a native app save/export
+                journey.
+              </p>
+            </div>
+          </div>
+          <noscript
+            ><p class="no-script">
+              Enable JavaScript to edit the browser sample topology.
+            </p></noscript
+          >
+        </section>
+        <dl class="evidence-rows">
+          <div>
+            <dt>Design record</dt>
+            <dd>
+              Node templates, properties, endpoint connections and visual
+              positions.
+            </dd>
+          </div>
+          <div>
+            <dt>Structural scope</dt>
+            <dd>
+              Required fields, unique device IDs, link references and interface
+              use. The preview mirrors the Python structural validator.
+            </dd>
+          </div>
+          <div>
+            <dt>Desktop availability</dt>
+            <dd>
+              Versioned installers and verified checksums are not yet available.
+            </dd>
+          </div>
+        </dl>
+        <div
+          class="platform-register"
+          aria-label="Inspector-Pro platform availability"
+        >
+          <div><strong>macOS</strong><span>In preparation</span></div>
+          <div><strong>Windows</strong><span>In preparation</span></div>
+          <div><strong>Linux</strong><span>In preparation</span></div>
+        </div>
+        <p class="availability-contact">
+          <a
+            href="mailto:hello@bstudiob.co.uk?subject=Inspector-Pro%20availability"
+            >Ask about Inspector-Pro availability ↗</a
+          >
+        </p>
+      </section>
+
+      <section id="pilot-enquiry" class="enquiry" aria-labelledby="pilot-title">
+        <div>
+          <p class="docket">Correspondence / institutional enquiries</p>
+          <h2 id="pilot-title">Discuss a supervised pilot.</h2>
+          <p>
+            Tell us about your organisation and learning context. We’ll follow
+            up to discuss whether the current pilot is a fit.
+          </p>
+        </div>
+        <form
+          action="https://formsubmit.co/nathan+inspector@bstudiob.co.uk"
+          method="POST"
+        >
+          <input
+            type="hidden"
+            name="_subject"
+            value="BStudioB — Inspector pilot application"
+          /><input type="hidden" name="_template" value="table" /><input
+            type="hidden"
+            name="_next"
+            value="https://bstudiob.co.uk/thanks.html"
+          /><input
+            type="hidden"
+            name="_url"
+            value="https://bstudiob.co.uk/inspector/"
+          /><input
+            class="honeypot"
+            type="text"
+            name="_honey"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          /><label for="inspector-email">Work email</label>
+          <div class="enquiry-controls">
+            <input
+              id="inspector-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              inputmode="email"
+              placeholder="you@organisation.com"
+              maxlength="254"
+              required
+            /><button type="submit">Send enquiry ↗</button>
+          </div>
+          <label class="consent" for="inspector-email-consent"
+            ><input
+              id="inspector-email-consent"
+              name="privacy_consent"
+              type="checkbox"
+              required
+            /><span
+              >I agree that BStudioB may use my details for this pilot enquiry,
+              as described in the
+              <a href="../privacy.html">Privacy notice</a>.</span
+            ></label
+          >
+          <p class="form-note">
+            Free application to discuss a future supervised pilot.
+            <a href="../privacy.html">Privacy</a>
+          </p>
+        </form>
       </section>
     </main>
-    <footer class="inspector-footer"><p>© 2026 BStudioB Ltd.</p><div><a href="../index.html">Company</a><a href="../privacy.html">Privacy</a><a href="mailto:hello@bstudiob.co.uk">Contact</a></div></footer>
-    <script src="../site.js"></script>
+    <footer class="legal">
+      <span>Inspector · © 2026 BStudioB Ltd.</span>
+      <nav aria-label="Legal">
+        <a href="../index.html">Company</a><a href="../privacy.html">Privacy</a
+        ><a href="mailto:hello@bstudiob.co.uk">Contact</a>
+      </nav>
+    </footer>
   </body>
 </html>
