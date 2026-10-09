@@ -108,8 +108,40 @@
       $("topology-links").append(line);
     }
   }
+  // Reserve room for each card and its 3px outline + 3px outline offset.
+  function boundedPosition(button, x, y) {
+    const canvas = $("topology-canvas");
+    if (!canvas.clientWidth || !canvas.clientHeight) return { x, y };
+    const insetX = ((button.offsetWidth / 2 + 8) / canvas.clientWidth) * 100;
+    const insetY = ((button.offsetHeight / 2 + 8) / canvas.clientHeight) * 100;
+    return {
+      x: clamp(x, Math.max(12, insetX), Math.min(88, 100 - insetX)),
+      y: clamp(y, Math.max(15, insetY), Math.min(85, 100 - insetY)),
+    };
+  }
+  function containCards() {
+    root.querySelectorAll(".device").forEach((button) => {
+      const node = topology.nodes.find((item) => item.id === button.dataset.id);
+      if (!node) return;
+      const position = boundedPosition(
+        button,
+        node.ui.position.x,
+        node.ui.position.y,
+      );
+      const changed =
+        position.x !== node.ui.position.x || position.y !== node.ui.position.y;
+      node.ui.position = position;
+      button.style.left = `${position.x}%`;
+      button.style.top = `${position.y}%`;
+      if (changed && node.id === selected) {
+        $("node-x").value = Math.round(position.x);
+        $("node-y").value = Math.round(position.y);
+      }
+    });
+    drawLines();
+  }
   function moveNode(node, button, x, y) {
-    node.ui.position = { x: clamp(x, 12, 88), y: clamp(y, 15, 85) };
+    node.ui.position = boundedPosition(button, x, y);
     button.style.left = `${node.ui.position.x}%`;
     button.style.top = `${node.ui.position.y}%`;
     $("node-x").value = Math.round(node.ui.position.x);
@@ -193,7 +225,7 @@
       button.addEventListener("pointercancel", endDrag);
       $("topology-nodes").append(button);
     });
-    drawLines();
+    containCards();
   }
   function fillLinkSelects() {
     for (const field of ["source", "target"]) {
@@ -488,7 +520,10 @@
     count();
     check();
   });
-  $("link-new").addEventListener("click", newLink);
+  $("link-new").addEventListener("click", () => {
+    newLink();
+    $("link-source").focus();
+  });
   $("pro-validate").addEventListener("click", check);
   $("pro-reset").addEventListener("click", () => {
     topology = initial();
@@ -558,4 +593,10 @@
   $("pro-json").addEventListener("click", () => download("json"));
   $("pro-yaml").addEventListener("click", () => download("yaml"));
   render();
+  if (typeof ResizeObserver !== "undefined") {
+    const canvasResize = new ResizeObserver(containCards);
+    canvasResize.observe($("topology-canvas"));
+  } else {
+    window.addEventListener("resize", containCards);
+  }
 })();

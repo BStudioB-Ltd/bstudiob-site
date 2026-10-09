@@ -6,6 +6,11 @@
   --signal: #d8ed77;
   --muted: #56594f;
   --mono: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  --graphite: #1c1f1a;
+  --archive-text: #edf1e3;
+  --archive-muted: #b7c0aa;
+  --archive-line: #56604b;
+  --wayfinding: #ff874b;
 }
 * {
   box-sizing: border-box;
@@ -15,8 +20,8 @@ html {
 }
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--graphite);
+  color: var(--archive-text);
   font:
     16px/1.55 Arial,
     Helvetica,
@@ -128,6 +133,7 @@ pre {
   left: 1rem;
   background: var(--signal);
   padding: 0.8rem;
+  color: var(--ink);
 }
 .skip:focus {
   top: 1rem;
@@ -139,7 +145,7 @@ pre {
   align-items: center;
   gap: 2rem;
   padding: 1.2rem 2.5rem;
-  border-bottom: 2px solid var(--ink);
+  border-bottom: 2px solid var(--wayfinding);
 }
 .identity {
   display: flex;
@@ -161,7 +167,7 @@ pre {
 }
 .archive-label {
   font: 0.65rem var(--mono);
-  color: var(--muted);
+  color: var(--archive-muted);
   margin-left: auto;
 }
 .masthead nav {
@@ -185,22 +191,22 @@ pre {
   margin: 0 0 0.65rem;
 }
 .archive-intro h1 {
-  font:
-    400 clamp(2.7rem, 5.5vw, 4.8rem)/1 Georgia,
-    serif;
+  font: 800 clamp(2rem, 4vw, 3.3rem)/1.12 var(--mono);
   letter-spacing: -0.04em;
   margin: 0.6rem 0 1rem;
+  text-transform: uppercase;
+  max-width: 720px;
 }
 .archive-intro > p:not(.docket) {
   max-width: 630px;
-  color: var(--muted);
+  color: var(--archive-muted);
 }
 .index {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: 1.5rem;
-  border-top: 1px solid var(--ink);
-  border-left: 1px solid var(--ink);
+  border-top: 1px solid var(--archive-line);
+  border-left: 1px solid var(--archive-line);
 }
 .index a {
   display: grid;
@@ -208,12 +214,13 @@ pre {
   align-items: center;
   gap: 1.3rem;
   padding: 1.1rem 1.3rem;
-  border-right: 1px solid var(--ink);
-  border-bottom: 3px solid var(--ink);
+  border-right: 1px solid var(--archive-line);
+  border-bottom: 3px solid var(--signal);
   text-decoration: none;
 }
 .index a:hover {
   background: var(--signal);
+  color: var(--ink);
 }
 .index span,
 .index small {
@@ -226,7 +233,7 @@ pre {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2.5rem;
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--archive-line);
   scroll-margin-top: 1rem;
 }
 .case-heading {
@@ -271,7 +278,7 @@ pre {
 .case-deck p {
   max-width: 650px;
   margin: 0;
-  color: var(--muted);
+  color: var(--archive-muted);
 }
 .case-deck a {
   font: 700 0.7rem var(--mono);
@@ -279,7 +286,9 @@ pre {
 }
 .edu-demo,
 .pro-demo {
-  border: 1px solid var(--ink);
+  border: 1px solid var(--archive-line);
+  background: var(--paper);
+  color: var(--ink);
 }
 .bench-bar {
   display: flex;
@@ -428,23 +437,24 @@ pre {
 }
 .evidence-rows {
   margin: 1.5rem 0;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--archive-line);
   font-size: 0.85rem;
 }
 .evidence-rows > div {
   display: grid;
   grid-template-columns: 200px 1fr;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--archive-line);
   padding: 0.85rem 0;
   gap: 1rem;
 }
 .evidence-rows dt {
   font: 700 0.67rem var(--mono);
   text-transform: uppercase;
+  color: var(--signal);
 }
 .evidence-rows dd {
   margin: 0;
-  color: var(--muted);
+  color: var(--archive-muted);
 }
 .availability-strip {
   display: flex;
@@ -457,10 +467,10 @@ pre {
   font: 700 0.75rem var(--mono);
 }
 .pro-case {
-  background: #e6e8df;
+  background: transparent;
 }
 .pro-case .stamp {
-  color: #444a30;
+  color: var(--signal);
 }
 .pro-demo {
   background: #f7f8f3;
@@ -534,10 +544,17 @@ pre {
   display: block;
   font: 400 0.57rem/1.4 var(--mono);
   color: var(--muted);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .device strong {
-  display: block;
+  display: -webkit-box;
   font: 700 0.75rem/1.4 var(--mono);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  max-height: 2.8em;
+  overflow: hidden;
 }
 .device:hover {
   background: #e9edda;
@@ -653,14 +670,14 @@ pre {
 .platform-register {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--line);
+  border: 1px solid var(--archive-line);
 }
 .platform-register div {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem;
-  border-right: 1px solid var(--line);
+  border-right: 1px solid var(--archive-line);
 }
 .platform-register div:last-child {
   border: 0;
@@ -670,7 +687,7 @@ pre {
 }
 .platform-register span {
   font: 0.65rem var(--mono);
-  color: var(--muted);
+  color: var(--archive-muted);
 }
 .enquiry {
   max-width: 1280px;
@@ -679,18 +696,16 @@ pre {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--archive-line);
 }
 .enquiry h2 {
-  font:
-    400 2rem/1.1 Georgia,
-    serif;
+  font: 700 1.65rem/1.15 var(--mono);
   margin: 0.5rem 0 1rem;
 }
 .enquiry p {
   font-size: 0.85rem;
   max-width: 430px;
-  color: var(--muted);
+  color: var(--archive-muted);
 }
 .enquiry-controls {
   display: flex;
@@ -730,9 +745,9 @@ pre {
   justify-content: space-between;
   gap: 1rem;
   padding: 1.3rem 2.5rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--archive-line);
   font: 0.63rem var(--mono);
-  color: var(--muted);
+  color: var(--archive-muted);
 }
 .legal nav {
   display: flex;
@@ -805,7 +820,7 @@ pre {
     padding: 1.5rem 1.2rem;
   }
   .archive-intro h1 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
   .index {
     grid-template-columns: 1fr;
@@ -934,4 +949,45 @@ pre {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* Wayfinding on the charcoal archive shell. Dossier surfaces retain dark ink. */
+.archive-intro > .docket,
+.case-heading .docket,
+.enquiry .docket,
+.masthead nav a,
+.case-deck a,
+.availability-strip a,
+.availability-contact a {
+  color: var(--signal);
+}
+.case-heading .stamp,
+.availability-strip .stamp {
+  color: var(--wayfinding);
+}
+.pro-case .case-heading .stamp {
+  color: var(--signal);
+}
+.identity img {
+  background: var(--signal);
+  padding: 2px;
+}
+.enquiry-controls button {
+  background: var(--signal);
+  color: var(--ink);
+  border-color: var(--signal);
+}
+.masthead :focus-visible,
+.archive-intro :focus-visible,
+.case-deck :focus-visible,
+.availability-strip :focus-visible,
+.availability-contact :focus-visible,
+.enquiry :focus-visible,
+.legal :focus-visible,
+.skip:focus-visible {
+  outline-color: var(--wayfinding);
+}
+.edu-demo :focus-visible,
+.pro-demo :focus-visible {
+  outline-color: var(--orange);
 }

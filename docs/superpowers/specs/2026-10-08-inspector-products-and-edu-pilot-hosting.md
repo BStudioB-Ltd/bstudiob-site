@@ -35,7 +35,7 @@ The work must describe each product according to its current implementation and 
 
 ## Proposed product-site experience
 
-Create a single BStudioB product hub at `/inspector/`, with a clear contents/navigation pattern for two substantial, visually distinct product sections. Keep the existing BStudioB header/footer and contact patterns, but give Edu and Pro separate visual systems rather than presenting them as a generic pair of product cards.
+Create a single product hub at `/inspector/`, with a clear contents/navigation pattern for two substantial, visually distinct product sections. Give Inspector its own charcoal evidence-archive identity, typography, wayfinding, and page structure; do not reuse the BStudioB header, stylesheet, or company-page hero/card patterns. Keep BStudioB attribution quiet in the legal footer and preserve the existing enquiry and privacy-consent behavior. Include browser-only interactive previews grounded in each application's real workflow and data model.
 
 ### Inspector-Edu section
 
@@ -48,7 +48,7 @@ Create a single BStudioB product hub at `/inspector/`, with a clear contents/nav
 
 ### Inspector-Pro section and download
 
-- Use a distinct technical workbench direction: deep graphite surfaces, topology/grid linework, cool blue/green accents, and real or clearly labelled interface imagery. Preserve readable type and contrast on smaller screens.
+- Use a distinct technical workbench direction: deep graphite archive surfaces, topology/grid linework, signal orange and chartreuse wayfinding, and a restrained light editor canvas. Preserve readable type and contrast on smaller screens.
 - Describe only evidenced desktop capabilities from the current PyQt6 product: topology canvas, device templates and properties, validation, save/load, and JSON/YAML export.
 - Provide a product download control backed by versioned macOS, Windows, and Linux release artifacts and installation notes. The hub may advertise the planned downloads before release, but must not enable a link to a missing, untested, or unsupported artifact.
 - State supported platform, processor architecture, and release version from verified release artifacts. Do not claim a cloud service, digital-twin execution, security assessment, or production readiness without corresponding evidence.
