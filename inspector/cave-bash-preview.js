@@ -88,26 +88,26 @@
       action: "Play the Rickroll on YouTube →",
       title: "Play the welcome-page Rickroll",
       objective: "Click Play to load the official Rick Astley video from third-party YouTube. The fictional hacker’s table is revealed in the scene.",
-      output: "USER-STARTED VIDEO\nYouTube player requested after your Play click.\nStory: music at Table 04 reveals the fictional hacker.\nPlayback depends on YouTube availability; the story can continue.",
+      output: "USER-STARTED VIDEO\nYouTube player requested after your Play click.\nStory: music at Table 04 reveals the fictional hacker.\nLOCAL FICTIONAL FBI ALERT: the Rickroll alerts the agents in the story.\nNo alert was sent and no agency was contacted.\nPlayback depends on YouTube availability; the story can continue.",
       beat: "welcome",
       cue: "story-rickroll-played",
-      evidence: "Play clicked; Rickroll player requested; fictional Table 04 revealed",
-      guidance: "Your Play click requested the third-party YouTube player. In the story, music reveals the hacker’s table. Continue to the fictional FBI arrival.",
+      evidence: "Play clicked; Rickroll player requested; fictional music revealed Table 04 and triggered a local story FBI alert",
+      guidance: "Your Play click requested the third-party YouTube player. In the story, the Rickroll reveals Table 04 and triggers a fictional FBI alert locally. No alert is sent. Continue to see the agents arrive.",
       sceneCopy: "The fictional welcome page is open. Start the Rickroll: in the story, music rings out from the hacker’s table.",
       signal: "Welcome screen visible · video awaits your click.",
       client: "TABLE 04 · WELCOME PAGE",
     },
     {
       action: "Continue to the FBI arrival →",
-      title: "The music gives him away",
+      title: "The Rickroll triggers a fictional FBI alert",
       objective: "Continue the fictional story to see the FBI arrive. This sends no alert and contacts no agency.",
       output: "FICTIONAL FBI ARRIVAL\nAgents arrive at the café in the story.\nNo external alert, report or agency contact occurred.",
       beat: "music",
       cue: "story-fbi-arrived",
       evidence: "fictional FBI arrived in the scene; no alert sent",
       guidance: "The FBI have arrived in the fictional scene. Finish the story to see the hacker escorted away. No agency was contacted.",
-      sceneCopy: "The Rickroll reveals Table 04 in the story. Mira has found the fictional hacker; continue to see the FBI arrive.",
-      signal: "Music at Table 04 · fictional hacker located.",
+      sceneCopy: "The Rickroll reveals Table 04 and triggers a fictional FBI alert inside this scene. No message leaves the page. Continue to see the agents arrive.",
+      signal: "Rickroll → local fictional FBI alert · nothing sent.",
       client: "TABLE 04 · ♪ RICKROLL ♪",
     },
     {
@@ -484,7 +484,7 @@
       ],
     });
     triggerCue(
-      isStory ? "story-complete" : "task-complete",
+      isStory ? "story-hacker-escorted" : "task-complete",
       isStory
         ? "Fictional hacker taken away · mission complete."
         : "Local evidence reviewed · sample task complete.",
@@ -510,7 +510,6 @@
       guidance: step.guidance,
       video: step.beat === "welcome" ? "rickroll-requested" : undefined,
     });
-    triggerCue(step.cue, step.signal);
     storyStepIndex += 1;
     activity.dataset.storyProgress = String(storyStepIndex);
 
@@ -518,6 +517,7 @@
       showComplete("story");
     } else {
       showStoryStep();
+      triggerCue(step.cue, sceneSignal.textContent);
     }
   }
 
