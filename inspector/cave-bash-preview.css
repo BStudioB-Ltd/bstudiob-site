@@ -213,6 +213,7 @@ input:focus-visible {
 .scene-boundary,
 .scene-hotspot,
 .scene-evidence,
+.scene-alert,
 .scene-responder {
   position: absolute;
   z-index: 2;
@@ -263,6 +264,7 @@ input:focus-visible {
   white-space: nowrap;
 }
 .scene-evidence,
+.scene-alert,
 .scene-responder {
   display: grid;
   gap: 2px;
@@ -280,6 +282,7 @@ input:focus-visible {
   top: 24%;
   left: 7%;
 }
+.scene-alert,
 .scene-responder {
   top: 16%;
   right: 7%;
@@ -288,31 +291,117 @@ input:focus-visible {
   background: rgba(9, 33, 47, 0.92);
 }
 .scene-evidence i,
+.scene-alert i,
 .scene-responder i {
   color: #b9e3c2;
   font-size: 0.45rem;
   font-style: normal;
   font-weight: 600;
 }
+.scene-alert i,
 .scene-responder i {
   color: #b8eaff;
 }
-.activity[data-location="coffee-shop"]:is([data-story-progress="2"], [data-story-progress="3"], [data-story-progress="4"], [data-story-progress="5"]) .scene-boundary,
-.activity[data-location="coffee-shop"][data-cue="story-workstation-confirmed"] .scene-boundary {
+/* Fictional figures enter together, then visibly escort the hacker off scene. */
+.scene-fbi-party {
+  position: absolute;
+  z-index: 2;
+  top: 35%;
+  right: 9%;
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+}
+.scene-fbi-party span {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 52px;
+  border: 2px solid #8bd3ff;
+  border-radius: 6px 6px 2px 2px;
+  color: #e6f7ff;
+  background: #122842;
+  box-shadow: 0 5px 12px #080d19;
+  font: 800 0.45rem/1.2 var(--mono);
+}
+.scene-fbi-party span::before {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 4px);
+  width: 21px;
+  height: 21px;
+  border: 2px solid #e8bd92;
+  border-radius: 3px;
+  background: #b98463;
+}
+.scene-fbi-party .fictional-hacker {
+  border-color: #ffad9f;
+  background: #44262f;
+  color: #ffe1d6;
+  font-size: 0.35rem;
+}
+.activity[data-story-beat="music"] .scene-alert,
+.activity[data-story-beat="fbi"] .scene-fbi-party {
   opacity: 1;
 }
-.activity[data-location="coffee-shop"]:is([data-story-progress="3"], [data-story-progress="4"], [data-story-progress="5"]) .scene-hotspot {
+.activity[data-cue="story-rickroll-played"] .scene-alert {
+  animation: marker-arrive 620ms ease-out both;
+}
+.activity[data-cue="story-fbi-arrived"] .scene-fbi-party {
+  animation: fbi-enter 1000ms ease-out both;
+}
+.activity[data-story-beat="escorted"] .scene-fbi-party {
+  opacity: 0;
+}
+.activity[data-cue="story-hacker-escorted"] .scene-fbi-party {
+  animation: fbi-escort 1800ms ease-in both;
+}
+@keyframes fbi-enter {
+  from { opacity: 0; transform: translateX(180px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fbi-escort {
+  0%, 15% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(240px); }
+}
+.activity[data-location="coffee-shop"] .scene-boundary {
   opacity: 1;
 }
-.activity[data-location="coffee-shop"]:is([data-story-progress="4"], [data-story-progress="5"]) .scene-evidence {
+.activity[data-location="coffee-shop"]:not([data-story-beat="observe"]) .scene-hotspot,
+.activity[data-location="coffee-shop"]:not([data-story-beat="observe"]) .scene-evidence {
   opacity: 1;
 }
-.activity[data-location="coffee-shop"][data-story-progress="5"] .scene-responder {
+.activity[data-story-beat="disconnected"] .hotspot-ring {
+  border-style: dashed;
+  border-color: #ffad9f;
+  box-shadow: 0 0 16px rgba(255, 130, 110, 0.5);
+}
+.activity:is([data-story-beat="rejoined"], [data-story-beat="welcome"]) .hotspot-ring {
+  border-color: var(--green);
+}
+.activity[data-story-beat="music"] .hotspot-ring {
+  border-color: var(--blue);
+  animation: hotspot-pulse 1.4s ease-in-out infinite;
+}
+.activity:is([data-story-beat="fbi"], [data-story-beat="escorted"]) .scene-responder {
   opacity: 1;
 }
-.activity[data-cue="story-workstation-confirmed"] .scene-boundary,
-.activity[data-cue="story-evidence-collected"] .scene-evidence,
-.activity[data-cue="story-decoy-played"] .scene-responder {
+.activity[data-story-beat="escorted"] .hotspot-ring {
+  opacity: 0.25;
+  border-style: dashed;
+}
+.activity[data-story-beat="escorted"] .scene-object-label {
+  left: -90px;
+  width: 190px;
+  border-color: var(--green);
+  color: #eaffed;
+}
+.activity[data-cue="story-fbi-arrived"] .scene-responder,
+.activity[data-cue="story-hacker-escorted"] .scene-responder,
+.activity[data-cue="story-client-rejoined"] .scene-hotspot {
   animation: marker-arrive 620ms ease-out both;
 }
 .activity[data-cue="story-traffic-spotted"] .hotspot-ring {
@@ -618,26 +707,44 @@ input:focus-visible {
   color: #aebcda;
   font: 0.63rem/1.45 var(--mono);
 }
-.scope-checkpoint {
+.story-actions {
+  margin-top: 12px;
+}
+.story-actions button {
+  width: 100%;
+}
+.welcome-panel {
   margin-top: 12px;
   padding: 13px;
   border: 1px solid rgba(255, 224, 102, 0.48);
   border-radius: 8px;
   background: rgba(52, 42, 18, 0.36);
 }
-.scope-checkpoint h3 {
+.welcome-panel h3 {
   margin: 0;
   color: #fff5c8;
   font: 800 0.78rem/1.35 var(--mono);
 }
-.scope-checkpoint p:not(.panel-index) {
+.welcome-panel p:not(.panel-index) {
   margin: 7px 0 12px;
   color: #d5d0b5;
-  font-size: 0.67rem;
+  font-size: 0.7rem;
 }
-.scope-checkpoint button {
-  min-height: 36px;
-  font-size: 0.62rem;
+.video-disclosure {
+  padding: 8px;
+  border-left: 3px solid var(--blue);
+  background: var(--panel);
+}
+.video-player iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+.video-fallback code {
+  color: var(--blue);
+  overflow-wrap: anywhere;
 }
 .completion-panel {
   padding: 15px;
