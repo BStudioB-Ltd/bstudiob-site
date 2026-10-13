@@ -14,6 +14,11 @@ const legacy = readFileSync(new URL('../trust-security.html', import.meta.url), 
 const sitemap = readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8');
 const homepage = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const llms = readFileSync(new URL('../llms.txt', import.meta.url), 'utf8');
+const proSection = (() => {
+  const start = hub.indexOf('id="pro"');
+  const end = hub.indexOf('id="pilot-enquiry"', start);
+  return start >= 0 && end > start ? hub.slice(start, end) : '';
+})();
 
 test('hub presents distinct Edu and Pro sections', () => {
   assert.match(hub, /<section\b[^>]*id="edu"[^>]*>/i, 'Inspector-Edu has a canonical section');
@@ -33,35 +38,42 @@ test('Edu access stays visibly unavailable until the pilot host is verified', ()
   }
   assert.match(hub, /Inspector-Edu access unavailable/i, 'the unavailable state is visible');
   assert.match(hub, /role="status"[^>]*aria-label="Inspector-Edu access unavailable"|aria-label="Inspector-Edu access unavailable"[^>]*role="status"/i, 'the unavailable state is announced accessibly');
-  assert.match(hub, /hosted learner runtime has not yet been verified/i, 'the hosting state is explicit');
+  assert.match(hub, /hosted learner runtime\s+and institutional access have not yet been verified/i, 'the hosted learner and institutional access states are explicit');
   assert.match(hub, /href="#pilot-enquiry"[^>]*>Discuss an institutional pilot/i, 'the institutional pilot enquiry remains available');
   assert.doesNotMatch(hub, /Linux\/Kali|active execution profile/i, 'the unsupported Linux/Kali profile claim is removed');
 });
 
 test('unreleased Pro targets are not clickable downloads', () => {
-  const pro = hub.match(/<section\b[^>]*id="pro"[^>]*>([\s\S]*?)<\/section>/i)?.[1] ?? '';
+  const pro = proSection;
   assert.ok(pro, 'Inspector-Pro section exists');
+  const registerStart = pro.indexOf('class="platform-register"');
+  const contactStart = pro.indexOf('class="availability-contact"', registerStart);
+  const platformRegister = registerStart >= 0 && contactStart > registerStart ? pro.slice(registerStart, contactStart) : '';
+  assert.ok(platformRegister, 'platform availability register exists');
   for (const platform of ['macOS', 'Windows', 'Linux']) {
-    const platformState = pro.match(new RegExp(`<[^>]+>[^<]*${platform}[^<]*<[^>]*>[\\s\\S]{0,220}`, 'i'))?.[0] ?? pro;
-    assert.match(platformState, new RegExp(platform, 'i'), `${platform} availability is stated`);
+    const platformState = platformRegister.match(new RegExp('<div><strong>' + platform + '</strong><span>([^<]+)</span></div>', 'i'))?.[1] ?? '';
+    assert.ok(platformState, `${platform} availability is stated`);
     assert.match(platformState, /in preparation|preparing|coming soon|not yet available/i, `${platform} is shown as unreleased`);
-    assert.doesNotMatch(platformState, /<a\b[^>]*href=/i, `${platform} has no clickable download`);
   }
+  assert.doesNotMatch(platformRegister, /<a\b[^>]*href=/i, 'platform states do not expose clickable installer links');
 });
 
-test('Pro copy describes design, validation, and export without denying execution capability', () => {
-  const pro = hub.match(/<section\b[^>]*id="pro"[^>]*>([\s\S]*?)<\/section>/i)?.[1] ?? '';
-  assert.match(pro, /topology design and validation/i);
-  assert.match(pro, /Export project data as JSON or Containerlab YAML/i);
+test('Pro copy describes the current design preview and its sample exports accurately', () => {
+  const pro = proSection;
+  assert.match(pro, /visual topology design and structural\s+validation/i);
+  assert.match(pro, /Sample JSON/);
+  assert.match(pro, /Sample Containerlab YAML/);
+  assert.match(pro, /Browser-generated files only/i, 'sample exports are not presented as production deployment');
   assert.doesNotMatch(pro, /not\s+(?:a\s+)?network execution environment/i);
 });
 
 test('pilot enquiry retains required privacy consent', () => {
-  const form = hub.match(/<form\b[^>]*>[\s\S]*?<\/form>/i)?.[0] ?? '';
+  const enquirySection = hub.match(/<section\b[^>]*id="pilot-enquiry"[^>]*>([\s\S]*?)<\/section>/i)?.[1] ?? '';
+  const form = enquirySection.match(/<form\b[^>]*>[\s\S]*?<\/form>/i)?.[0] ?? '';
   assert.ok(form, 'pilot enquiry form exists');
   assert.match(form, /action="https:\/\/formsubmit\.co\/nathan\+inspector@bstudiob\.co\.uk"/);
-  assert.match(form, /name="_subject" value="BStudioB — Inspector pilot application"/);
-  assert.match(form, /name="_url" value="https:\/\/bstudiob\.co\.uk\/inspector\/"/, 'FormSubmit identifies the canonical Inspector hub as the form source');
+  assert.match(form, /name="_subject"[\s\S]{0,120}value="BStudioB — Inspector pilot application"/);
+  assert.match(form, /name="_url"[\s\S]{0,120}value="https:\/\/bstudiob\.co\.uk\/inspector\/"/, 'FormSubmit identifies the canonical Inspector hub as the form source');
   assert.doesNotMatch(form, /name="_url" value="https:\/\/bstudiob\.co\.uk\/trust-security\.html"/, 'the retired source URL is not used');
   assert.match(form, /<input\b(?=[^>]*name="privacy_consent")(?=[^>]*type="checkbox")(?=[^>]*required)[^>]*>/i);
   assert.match(form, /href="(?:\.\.\/)?privacy\.html"[^>]*>Privacy notice|href="(?:\.\.\/)?privacy\.html"[^>]*>Privacy/i);
