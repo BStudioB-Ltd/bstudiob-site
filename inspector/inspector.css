@@ -313,100 +313,12 @@ pre {
   border-bottom: 1px solid var(--line);
   background: #e7e9df;
 }
-.edu-workspace {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.cave-scene {
-  position: relative;
-  min-height: 430px;
-  overflow: hidden;
-  background: #181518;
-}
-.cave-background {
+.cave-bash-frame {
+  display: block;
   width: 100%;
-  height: 100%;
-  position: absolute;
-  object-fit: fill;
-  image-rendering: pixelated;
-}
-.mira {
-  position: absolute;
-  bottom: 20%;
-  left: 29%;
-  height: 140px;
-  width: auto;
-  image-rendering: pixelated;
-}
-.scene-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem;
-  background: #211b1ded;
-  color: #faf1e5;
-}
-.scene-caption span {
-  display: block;
-  font: 0.6rem var(--mono);
-  color: #efb286;
-}
-.scene-caption strong {
-  display: block;
-  font: 700 0.95rem var(--mono);
-  margin-top: 0.5rem;
-}
-.lesson-desk {
-  padding: 1.4rem;
-  background: #fffaf3;
-}
-.lesson-desk h4 {
-  font: 700 1.15rem var(--mono);
-}
-.lesson-desk pre {
-  background: #252322;
-  color: #f2e6d4;
-  font-size: 0.75rem;
-  line-height: 1.65;
-  min-height: 95px;
-  max-height: 210px;
-  overflow: auto;
-  padding: 1rem;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  margin: 0.6rem 0 1rem;
-}
-.command-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.4rem;
-}
-.command-row input {
-  font-family: var(--mono);
-}
-.feedback {
-  font: 0.7rem/1.5 var(--mono);
-  min-height: 1.5em;
-  margin: 0.7rem 0;
-}
-.mode-menu {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  margin: 1rem 0;
-}
-.mode-menu button {
-  background: #f6e9d9;
-  color: var(--ink);
-  border-color: #968373;
-}
-.mode-menu button:hover {
-  background: #ebccb4;
-}
-#edu-task-choice {
-  margin: 1rem 0;
+  height: 820px;
+  border: 0;
+  background: #080d19;
 }
 .evidence-desk {
   display: grid;
@@ -802,6 +714,11 @@ pre {
     gap: 2rem;
   }
 }
+@media (max-width: 840px) {
+  .cave-bash-frame {
+    height: 1220px;
+  }
+}
 @media (max-width: 740px) {
   .masthead {
     padding: 1rem 1.2rem;
@@ -850,7 +767,6 @@ pre {
     display: inline-block;
     margin-top: 1rem;
   }
-  .edu-workspace,
   .evidence-desk,
   .pro-workspace,
   .link-desk,
@@ -858,18 +774,9 @@ pre {
   .enquiry {
     grid-template-columns: 1fr;
   }
-  .cave-scene {
-    min-height: 290px;
-  }
-  .mira {
-    height: 110px;
-  }
   .evidence-desk aside {
     border-left: 0;
     border-top: 1px solid var(--line);
-  }
-  .lesson-desk {
-    padding: 1.1rem;
   }
   .bench-bar {
     align-items: flex-start;

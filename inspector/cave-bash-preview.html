@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <title>DemoRPG: Cave Bash · Inspector-Edu preview</title>
+    <link rel="stylesheet" href="cave-bash-preview.css" />
+    <script src="cave-bash-preview.js" defer></script>
+  </head>
+  <body>
+    <main class="activity" id="activity" data-cue="idle">
+      <section class="scene" aria-label="Animated Cave Bash lesson scene">
+        <div class="scene-art" aria-hidden="true"></div>
+        <div class="scene-glow" aria-hidden="true"></div>
+        <div class="scene-stars" aria-hidden="true"></div>
+        <header class="scene-hud" aria-label="Scene information">
+          <span class="hud-mark">INSPECTOR <i>EDU</i></span>
+          <span class="hud-location">CAVE BASH <b>·</b> 01</span>
+        </header>
+        <div class="scene-character-wrap" aria-hidden="true">
+          <div class="character-aura"></div>
+          <img
+            class="scene-character"
+            src="../assets/projects/inspector-mira-cave.png"
+            width="341"
+            height="512"
+            alt=""
+          />
+          <span class="character-name">MIRA <i>YOUR GUIDE</i></span>
+        </div>
+        <div class="scene-dialogue" id="scene-dialogue" aria-live="polite">
+          <p class="scene-kicker" id="scene-kicker">CAVE BASH / MAIN MENU</p>
+          <h1 id="scene-title">DemoRPG: Cave Bash</h1>
+          <p id="scene-copy">
+            A terminal glows in the cave. Choose how you want to investigate.
+          </p>
+          <div class="scene-actions" id="scene-actions"></div>
+        </div>
+        <p class="scene-signal" id="scene-signal" role="status" aria-live="polite">
+          The cave is quiet.
+        </p>
+      </section>
+
+      <section class="workbench" aria-label="Cave Bash activity workspace">
+        <header class="runtime-header">
+          <div>
+            <p class="runtime-kicker">LEARNER PREVIEW / LOCAL SAMPLE</p>
+            <p class="runtime-title">Cave Bash</p>
+          </div>
+          <button class="menu-return" id="menu-return" type="button" hidden>
+            Cave menu
+          </button>
+        </header>
+
+        <div class="workbench-body">
+          <section class="selection-panel" id="selection-panel" aria-live="polite">
+            <p class="panel-index">ACTIVITY SELECTOR</p>
+            <h2 id="selection-title">Choose a mode in the cave</h2>
+            <p id="selection-copy">
+              Story Mode follows Mira through the original Cave Bash lesson.
+              Task Mode opens Task 01: Information Gathering.
+            </p>
+            <div class="mode-register" aria-label="Available preview paths">
+              <span><b>01</b> Story Mode · two lesson actions</span>
+              <span><b>02</b> Task Mode · three local evidence steps</span>
+            </div>
+            <p class="fixed-note">
+              This frame accepts only the commands shown for the current step.
+              Every response is fixed sample data; no shell, sandbox, backend,
+              network target or saved progress is used.
+            </p>
+          </section>
+
+          <section class="play-panel" id="play-panel" aria-labelledby="activity-title" hidden>
+            <div class="activity-heading">
+              <p class="panel-index" id="mode-label">STORY MODE</p>
+              <h2 id="activity-title">Look around the cave</h2>
+              <p id="activity-objective">Type <code>ls</code> in the sample terminal.</p>
+            </div>
+
+            <div class="step-progress" id="step-progress" aria-label="Activity progress"></div>
+
+            <section class="terminal-panel" aria-labelledby="terminal-label">
+              <div class="terminal-topline">
+                <h3 id="terminal-label">SAMPLE TERMINAL</h3>
+                <span>LOCAL ONLY</span>
+              </div>
+              <pre id="terminal-output" aria-label="Fixed sample terminal output" aria-live="polite">Cave Bash preview ready.
+No command has run.</pre>
+              <div id="terminal-form" role="group" aria-labelledby="terminal-prompt">
+                <label for="terminal-command" id="terminal-prompt">Enter the displayed lesson command</label>
+                <div class="terminal-input-row">
+                  <span aria-hidden="true">&gt;</span>
+                  <input
+                    id="terminal-command"
+                    name="command"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    maxlength="24"
+                    aria-describedby="activity-objective command-feedback"
+                  />
+                  <button id="run-command" type="button">Run</button>
+                </div>
+              </div>
+              <p class="command-feedback" id="command-feedback" role="status" aria-live="polite">
+                Only the current sample command is accepted.
+              </p>
+            </section>
+
+            <section class="block-panel" id="block-panel" aria-labelledby="block-title" hidden>
+              <div class="terminal-topline">
+                <h3 id="block-title">CUSTOM COMMAND BLOCK</h3>
+                <span>STORY ACTION 02</span>
+              </div>
+              <p class="block-help">Add the lesson block, check its text, then run it.</p>
+              <button class="command-block" id="add-echo-block" type="button" draggable="true">
+                <span class="block-port" aria-hidden="true">●</span>
+                <span>echo</span>
+                <code>hi</code>
+                <span class="block-add">ADD BLOCK</span>
+              </button>
+              <div class="block-workspace" id="block-workspace" aria-label="Custom command block workspace">
+                <p class="workspace-empty" id="workspace-empty">Drop the echo block here or use Add block.</p>
+              </div>
+              <div class="block-actions">
+                <button class="run-block" id="run-echo-block" type="button" disabled>Run block</button>
+                <p class="command-feedback" id="block-feedback" role="status" aria-live="polite">The lesson expects <code>echo hi</code>.</p>
+              </div>
+            </section>
+
+            <p class="safety-note">
+              <strong>Preview boundary</strong>
+              Fixed sample responses only. Nothing is executed and no learner data is stored.
+            </p>
+          </section>
+
+          <section class="completion-panel" id="completion-panel" aria-live="polite" hidden>
+            <p class="panel-index">ACTIVITY COMPLETE</p>
+            <h2 id="completion-title">Evidence recorded</h2>
+            <p id="completion-copy"></p>
+            <button class="replay-button" id="replay-activity" type="button">Return to Cave Bash menu</button>
+          </section>
+        </div>
+
+        <footer class="runtime-footer">
+          <span><i class="status-light"></i> PREVIEW FRAME</span>
+          <button id="reset-preview" type="button">Reset preview ↺</button>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>

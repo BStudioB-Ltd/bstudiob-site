@@ -131,93 +131,34 @@
         >
           <div class="bench-bar">
             <h3 id="edu-demo-title">DemoRPG: Cave Bash</h3>
-            <span>Interactive simulation</span>
+            <span>Interactive preview</span>
           </div>
-          <p class="simulation-note">
-            Fixed sample output only. No real commands, backend, host connection
-            or saved progress.
+          <p class="simulation-note" id="edu-demo-note">
+            Choose Story Mode or Task Mode from the Cave Bash menu. Scene cues
+            animate inside this isolated frame; commands return fixed samples.
           </p>
-          <div class="edu-workspace">
-            <div class="cave-scene">
-              <img
-                class="cave-background"
-                src="../assets/projects/inspector-cave-scene.png"
-                width="1024"
-                height="1536"
-                alt="Pixel art cave with glimmering blue light from Inspector-Edu Cave Bash"
-              /><img
-                class="mira"
-                src="../assets/projects/inspector-mira-front.png"
-                width="341"
-                height="512"
-                alt="Mira, the lesson guide"
-              />
-              <div class="scene-caption">
-                <span>Original lesson scene</span
-                ><strong>Look around the cave.</strong>
-              </div>
-            </div>
-            <div class="lesson-desk">
-              <p class="docket" id="edu-stage">Cave entry / 00</p>
-              <h4 id="edu-prompt">A terminal glows in the cave.</h4>
-              <p id="edu-objective">Type <code>ls</code>.</p>
-              <div id="edu-menu" class="mode-menu" hidden>
-                <button type="button" data-mode="story">Story Mode</button
-                ><button type="button" data-mode="task">Task Mode</button
-                ><button type="button" data-mode="online">
-                  Inspector Online</button
-                ><button type="button" data-mode="options">Options</button>
-              </div>
-              <div id="edu-task-choice" hidden>
-                <button type="button" id="edu-open-task">
-                  Task 01: Information Gathering →
-                </button>
-              </div>
-              <form id="edu-command-form">
-                <label for="edu-command">Sample terminal command</label>
-                <div class="command-row">
-                  <span aria-hidden="true">&gt;</span
-                  ><input
-                    id="edu-command"
-                    autocomplete="off"
-                    autocapitalize="off"
-                    spellcheck="false"
-                    aria-describedby="edu-objective edu-feedback"
-                    maxlength="40"
-                    placeholder="ls"
-                  /><button type="submit">Enter</button>
-                </div>
-              </form>
-              <p
-                id="edu-feedback"
-                class="feedback"
-                role="status"
-                aria-live="polite"
-              >
-                Only the displayed lesson command is accepted.
-              </p>
-              <pre id="edu-output" aria-label="Fixed sample terminal output">
-Awaiting sample command…</pre>
-              <button id="edu-reset" type="button" class="quiet">
-                Reset simulation ↺
-              </button>
-            </div>
-          </div>
+          <iframe
+            id="edu-activity-frame"
+            class="cave-bash-frame"
+            title="Interactive Cave Bash activity preview with Story Mode and Task Mode"
+            src="cave-bash-preview.html"
+            sandbox="allow-scripts"
+            referrerpolicy="no-referrer"
+            loading="eager"
+          ></iframe>
           <div class="evidence-desk">
             <div>
               <p class="docket">Evidence record / this visit only</p>
-              <ol id="edu-evidence">
+              <ol id="edu-evidence" aria-live="polite" aria-relevant="additions text">
                 <li>No evidence collected yet.</li>
               </ol>
             </div>
             <aside>
               <strong id="edu-expected-title">What to look for</strong>
-              <p id="edu-expected">
-                A directory listing opens the Cave Bash menu.
-              </p>
+              <p id="edu-expected">Choose either mode, complete its activity and watch Mira and the cave respond inside the frame.</p>
               <p class="safety" id="edu-safety">
-                In the real lesson, work only inside an authorised learning
-                environment. Do not probe public IPs or domains.
+                The frame uses fixed sample responses. It never executes a
+                command, launches a sandbox or saves learner progress.
               </p>
             </aside>
           </div>
@@ -230,8 +171,8 @@ Awaiting sample command…</pre>
         </section>
         <dl class="evidence-rows">
           <div>
-            <dt>Learning modes</dt>
-            <dd>Story · Task · Network Editor · Inspector Online</dd>
+            <dt>Interactive preview</dt>
+            <dd>Cave Bash Story Mode · Task Mode, with an animated scene and fixed sample evidence.</dd>
           </div>
           <div>
             <dt>Instructor oversight</dt>
