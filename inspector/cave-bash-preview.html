@@ -17,15 +17,15 @@
         <div class="scene-boundary" aria-hidden="true">LOCAL ONLY · FICTIONAL TRAINING</div>
         <div class="scene-hotspot" aria-hidden="true">
           <span class="hotspot-ring"></span>
-          <span class="scene-object-label">TABLE 04 · NEEDS REVIEW</span>
+          <span class="scene-object-label" id="client-label">TABLE 04 · CONNECTED</span>
         </div>
         <div class="scene-evidence" aria-hidden="true">
-          <span>LOCAL EVIDENCE</span>
-          <i>OBSERVATION RECORDED</i>
+          <span>CAFÉ TRAFFIC TRACED</span>
+          <i>FICTIONAL CLIENT 04</i>
         </div>
         <div class="scene-responder" aria-hidden="true">
-          <span>SIMULATED RESPONSE</span>
-          <i>WARNING STAGED</i>
+          <span>FBI · FICTIONAL SCENE</span>
+          <i id="responder-status">AGENTS AT TABLE 04</i>
         </div>
         <header class="scene-hud" aria-label="Scene information">
           <span class="hud-mark">INSPECTOR <i>EDU</i></span>
@@ -75,12 +75,13 @@
               Recon; Task Mode opens Task 01: Information Gathering.
             </p>
             <div class="mode-register" aria-label="Available preview paths">
-              <span><b>01</b> Story Mode · Mira: Coffee Shop Recon · 5 steps</span>
+              <span><b>01</b> Story Mode · Mira: Coffee Shop Recon · 7 story beats</span>
               <span><b>02</b> Task Mode · Task 01 · 3 steps</span>
             </div>
             <p class="fixed-note">
-              This frame accepts only the displayed lesson command. Responses
-              are fixed samples; commands do not run and no learner data is saved.
+              Story buttons change this fictional scene; Task Mode accepts only
+              displayed sample commands. Nothing executes. Only an explicit Play
+              click loads the third-party YouTube player.
             </p>
           </section>
 
@@ -121,20 +122,20 @@ No command has run.</pre>
               </p>
             </section>
 
-            <section class="scope-checkpoint" id="scope-checkpoint" aria-labelledby="scope-title" hidden>
-              <p class="panel-index">SAFETY CHECKPOINT / LOCAL SCOPE</p>
-              <h3 id="scope-title">What is local and safe?</h3>
-              <p>
-                This cafe and its connection sample are fictional. Keep the
-                investigation inside this training scene: the flagged table is
-                only an observation, not an identified person or real device.
-              </p>
-              <button id="continue-safely" type="button">Continue to local evidence →</button>
+            <div class="story-actions" id="story-actions" aria-label="Next fictional story action" hidden></div>
+
+            <section class="welcome-panel" id="welcome-panel" aria-labelledby="welcome-title" hidden>
+              <p class="panel-index">IN-PAGE SIMULATION / CAFÉ WELCOME</p>
+              <h3 id="welcome-title">Welcome back to the café ♪</h3>
+              <p>Rick Astley · Never Gonna Give You Up. In the story, this Rickroll plays at the fictional hacker’s table.</p>
+              <p class="video-disclosure">Play loads a third-party YouTube player only after your click. YouTube may receive connection information. No video loads before Play.</p>
+              <div class="video-player" id="video-player"></div>
+              <p class="video-fallback">If playback is unavailable, use the official YouTube video link added to Story evidence outside this preview after Play. You can also copy this address into a new tab: <code>https://www.youtube.com/watch?v=dQw4w9WgXcQ</code>. The story can continue without waiting for playback.</p>
             </section>
 
             <p class="safety-note">
               <strong>Preview boundary</strong>
-              Fixed sample responses only. Nothing is executed and no learner data is stored.
+              Network, wireless and FBI actions are fictional local simulations. Nothing is executed. Only Play loads third-party YouTube; no learner progress is stored.
             </p>
           </section>
 

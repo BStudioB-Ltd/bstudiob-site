@@ -6,7 +6,7 @@
 
   const emptyRecord = "No evidence collected yet.";
   const defaultGuidance =
-    "Cave Bash is the startup menu. Choose Mira’s Coffee Shop Recon in Story Mode or Task 01 in Task Mode.";
+    "Cave Bash is the startup menu. Choose Mira’s fictional café hacker mission in Story Mode or Task 01 in Task Mode. Story network actions are local simulations; Play starts third-party YouTube.";
 
   function clearEvidence() {
     const empty = document.createElement("li");
@@ -48,6 +48,15 @@
       if (empty && empty.textContent === emptyRecord) empty.remove();
       const item = document.createElement("li");
       item.textContent = `${event.mode === "story" ? "Story" : "Task"}: ${event.record} (fixed sample)`;
+      if (event.mode === "story" && event.video === "rickroll-requested") {
+        // This link lives outside the sandboxed preview and requires a learner click.
+        const videoLink = document.createElement("a");
+        videoLink.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        videoLink.target = "_blank";
+        videoLink.rel = "noopener noreferrer";
+        videoLink.textContent = "Open the official YouTube video (third-party playback fallback)";
+        item.append(document.createTextNode(" — "), videoLink);
+      }
       evidence.append(item);
       guidance.textContent = event.guidance;
       return;

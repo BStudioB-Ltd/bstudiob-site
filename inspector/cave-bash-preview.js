@@ -24,82 +24,104 @@
   const terminalCommand = $("terminal-command");
   const terminalPrompt = $("terminal-prompt");
   const commandFeedback = $("command-feedback");
-  const scopeCheckpoint = $("scope-checkpoint");
+  const storyActions = $("story-actions");
+  const welcomePanel = $("welcome-panel");
+  const videoPlayer = $("video-player");
+  const clientLabel = $("client-label");
+  const responderStatus = $("responder-status");
 
+  // Story controls update only this page. Wireless actions are never executable commands.
   const storySteps = [
     {
-      command: "whoami",
-      chapter: "01",
-      title: "Who is at the terminal?",
-      objective: "Run whoami to confirm the local training operator.",
-      output: "learner",
-      cue: "story-operator-identified",
-      evidence: "operator confirmed: learner",
-      guidance:
-        "Mira confirms the sample operator. This is local sandbox context, not a real-world identity claim.",
-      sceneCopy:
-        "Mira checks your badge before trusting any evidence from the training workstation.",
-      signal: "Operator badge confirmed · sample identity only.",
-    },
-    {
-      command: "hostname",
-      chapter: "01",
-      title: "Confirm the workstation",
-      objective: "Run hostname to record the local training workstation.",
-      output: "learner-workstation",
-      cue: "story-workstation-confirmed",
-      evidence: "local workstation: learner-workstation",
-      guidance:
-        "The workstation name ties the notes to this fictional local lab. The local-only boundary is now marked in the scene.",
-      sceneCopy:
-        "The workstation is identified. Mira marks the cafe as a local-only training scene.",
-      signal: "Local-only training boundary marked.",
-    },
-    {
       command: "netstat -an",
-      chapter: "02",
-      title: "What is on the network?",
-      objective:
-        "Run netstat -an to inspect the fixed local connection sample.",
-      output:
-        "Proto  Local Address          Foreign Address        State\ntcp    127.0.0.1:3000         127.0.0.1:53014       ESTABLISHED\ntcp    127.0.0.1:4444         127.0.0.1:53018       ESTABLISHED\n\nTraining observation: Table 04 is marked needs review. No person is identified.",
+      title: "Investigate the café traffic",
+      objective: "Enter netstat -an to inspect the fictional café traffic sample.",
+      output: "CAFÉ TRAINING SAMPLE\nClient: cafe-client-04 · Table 04\nState: CONNECTED\nObservation: unusual traffic in this fictional sample.\nStory target: the fictional hacker at Table 04.",
+      beat: "observe",
       cue: "story-traffic-spotted",
-      evidence: "local traffic observed: Table 04 needs review",
-      guidance:
-        "The highlighted table is a fictional training observation, not a real suspect. Check the local-only boundary before collecting evidence.",
-      sceneCopy:
-        "A fictional local traffic sample flags Table 04 for review. Mira records an observation, not an accusation.",
-      signal: "Table 04 highlighted · training observation only.",
+      evidence: "fictional suspicious client identified: cafe-client-04 at Table 04",
+      guidance: "Mira traces the sample traffic to the fictional hacker at Table 04. The next action simulates a disconnect inside this page.",
+      sceneCopy: "Mira notices unusual café traffic. Inspect the sample to trace it to the fictional hacker at Table 04.",
+      signal: "Fictional café traffic · no live connection inspected.",
+      client: "TABLE 04 · CONNECTED",
     },
     {
-      command: "echo mira-coffee-shop local-only evidence suspicious",
-      chapter: "04",
-      title: "Gather local evidence",
-      objective:
-        "Run the displayed echo command to record a bounded training note.",
-      output: "mira-coffee-shop local-only evidence suspicious",
-      cue: "story-evidence-collected",
-      evidence: "local-only evidence note recorded",
-      guidance:
-        "The sample note records a fictional observation before any response. Nothing is written to a real file or sent outside this frame.",
-      sceneCopy:
-        "Mira adds the local-only observation to the evidence board before choosing a response.",
-      signal: "Evidence board updated · local sample only.",
+      action: "Simulate deauthentication →",
+      title: "Disconnect the fictional client",
+      objective: "Simulate deauthentication: mark cafe-client-04 disconnected in this page. No wireless signal is sent.",
+      output: "SIMULATED DEAUTHENTICATION\ncafe-client-04 → DISCONNECTED\nOnly the fictional scene state changed. No radio or network action occurred.",
+      beat: "identified",
+      cue: "story-client-disconnected",
+      evidence: "simulated deauthentication: cafe-client-04 disconnected locally",
+      guidance: "The fictional client is disconnected. Deauthentication here is a scene action only; no wireless command or signal is sent.",
+      sceneCopy: "The sample identifies the hacker at Table 04. Mira prepares a fictional disconnect so the client will rejoin the café network.",
+      signal: "Table 04 traced · simulation controls only.",
+      client: "TABLE 04 · HACKER IDENTIFIED",
     },
     {
-      command: "echo decoy-warning-ready",
-      chapter: "05",
-      title: "Stage the simulated response",
-      objective:
-        "Run echo decoy-warning-ready to stage the fictional training warning.",
-      output: "decoy-warning-ready",
-      cue: "story-decoy-played",
-      evidence: "simulated warning staged; no alert sent",
-      guidance:
-        "The story ends with a simulated defensive warning. It is not sent to staff or anyone outside the preview.",
-      sceneCopy:
-        "The responder appears in the story. Mira stages a safe training warning; no real alert is sent.",
-      signal: "Simulated response staged · no external delivery.",
+      action: "Let the client rejoin →",
+      title: "Wait for the client to rejoin",
+      objective: "Let cafe-client-04 rejoin the fictional café network. This updates the local story state.",
+      output: "SIMULATED REJOIN\ncafe-client-04 → CONNECTED\nThe fictional café welcome page is ready. No real client was contacted.",
+      beat: "disconnected",
+      cue: "story-client-rejoined",
+      evidence: "fictional client rejoined; welcome page ready",
+      guidance: "The fictional hacker rejoins the café network. Next, show the in-page welcome screen; no captive portal is created.",
+      sceneCopy: "Table 04 goes offline in the simulation. The hacker notices the disconnect and tries to rejoin the fictional café network.",
+      signal: "Table 04 disconnected · local simulation.",
+      client: "TABLE 04 · DISCONNECTED",
+    },
+    {
+      action: "Show the welcome page →",
+      title: "Open the fictional welcome page",
+      objective: "Show the café welcome page inside this preview. It redirects no real device and requests no credentials.",
+      output: "FICTIONAL WELCOME PAGE\nShown to cafe-client-04 in the story.\nRickroll ready · press Play to load the third-party YouTube video.",
+      beat: "rejoined",
+      cue: "story-welcome-shown",
+      evidence: "in-page welcome screen shown; video has not loaded",
+      guidance: "The fictional welcome page is visible. Play explicitly loads Rick Astley’s official video from YouTube; all network story actions remain simulated.",
+      sceneCopy: "The hacker rejoins. Mira shows a playful café welcome screen inside the training scene, with a Rickroll ready to reveal his table.",
+      signal: "Table 04 rejoined · fictional welcome page ready.",
+      client: "TABLE 04 · REJOINED",
+    },
+    {
+      action: "Play the Rickroll on YouTube →",
+      title: "Play the welcome-page Rickroll",
+      objective: "Click Play to load the official Rick Astley video from third-party YouTube. The fictional hacker’s table is revealed in the scene.",
+      output: "USER-STARTED VIDEO\nYouTube player requested after your Play click.\nStory: music at Table 04 reveals the fictional hacker.\nPlayback depends on YouTube availability; the story can continue.",
+      beat: "welcome",
+      cue: "story-rickroll-played",
+      evidence: "Play clicked; Rickroll player requested; fictional Table 04 revealed",
+      guidance: "Your Play click requested the third-party YouTube player. In the story, music reveals the hacker’s table. Continue to the fictional FBI arrival.",
+      sceneCopy: "The fictional welcome page is open. Start the Rickroll: in the story, music rings out from the hacker’s table.",
+      signal: "Welcome screen visible · video awaits your click.",
+      client: "TABLE 04 · WELCOME PAGE",
+    },
+    {
+      action: "Continue to the FBI arrival →",
+      title: "The music gives him away",
+      objective: "Continue the fictional story to see the FBI arrive. This sends no alert and contacts no agency.",
+      output: "FICTIONAL FBI ARRIVAL\nAgents arrive at the café in the story.\nNo external alert, report or agency contact occurred.",
+      beat: "music",
+      cue: "story-fbi-arrived",
+      evidence: "fictional FBI arrived in the scene; no alert sent",
+      guidance: "The FBI have arrived in the fictional scene. Finish the story to see the hacker escorted away. No agency was contacted.",
+      sceneCopy: "The Rickroll reveals Table 04 in the story. Mira has found the fictional hacker; continue to see the FBI arrive.",
+      signal: "Music at Table 04 · fictional hacker located.",
+      client: "TABLE 04 · ♪ RICKROLL ♪",
+    },
+    {
+      action: "See the hacker taken away →",
+      title: "The FBI arrive at the café",
+      objective: "Finish the fictional scene: the agents escort the hacker away. No real enforcement action occurs.",
+      output: "MISSION COMPLETE\nThe fictional FBI escort the hacker away from Table 04.\nAll investigation, disconnect, rejoin and enforcement actions were simulated locally.",
+      beat: "fbi",
+      cue: "story-hacker-escorted",
+      evidence: "fictional hacker escorted away; mission complete",
+      guidance: "Mission complete: sample traffic traced, disconnect and rejoin simulated, welcome Rickroll started, and fictional FBI ending shown.",
+      sceneCopy: "The fictional FBI enter the café and approach Table 04. Finish the scene to see them take the hacker away.",
+      signal: "FBI at Table 04 · fictional story ending.",
+      client: "TABLE 04 · FBI PRESENT",
     },
   ];
 
@@ -212,12 +234,20 @@
     view = "menu";
     activeMode = null;
     setLocation("cave", "CAVE BASH · STARTUP");
+    storyStepIndex = 0;
+    taskStepIndex = 0;
     activity.dataset.storyProgress = "0";
+    activity.dataset.storyBeat = "idle";
+    cueSequence += 1;
+    activity.dataset.cue = "idle";
+    sceneSignal.textContent = "The cave is quiet.";
+    videoPlayer.replaceChildren();
     menuReturn.hidden = true;
     selectionPanel.hidden = false;
     playPanel.hidden = true;
     completionPanel.hidden = true;
-    scopeCheckpoint.hidden = true;
+    storyActions.hidden = true;
+    welcomePanel.hidden = true;
     terminalForm.hidden = true;
     setSelection(
       "Cave Bash startup menu",
@@ -250,15 +280,16 @@
     selectionPanel.hidden = false;
     playPanel.hidden = true;
     completionPanel.hidden = true;
-    scopeCheckpoint.hidden = true;
+    storyActions.hidden = true;
+    welcomePanel.hidden = true;
     setSelection(
       "Story Mode / Mira’s Coffee Shop Recon",
-      "A five-step story about local context, network awareness, bounded evidence and an ethical simulated response.",
+      "Trace fictional café traffic, simulate a disconnect and rejoin, play the welcome-page Rickroll, then see the fictional FBI take the hacker away.",
     );
     setScene({
       kicker: "STORY MODE / SELECT A STORY",
       title: "Mira: Coffee Shop Recon",
-      copy: "Mira is investigating a fictional cafe training network. Establish local context, observe activity, record evidence and stage a safe simulated response.",
+      copy: "Mission: Trace the Hacker. Follow Mira through the fictional café investigation, welcome-page Rickroll and FBI ending. Every wireless and enforcement action is simulated locally.",
       actions: [
         { label: "Select Coffee Shop Recon →", callback: startStory },
         { label: "Back to Cave Bash", callback: showMainMenu, secondary: true },
@@ -275,7 +306,8 @@
     selectionPanel.hidden = false;
     playPanel.hidden = true;
     completionPanel.hidden = true;
-    scopeCheckpoint.hidden = true;
+    storyActions.hidden = true;
+    welcomePanel.hidden = true;
     setSelection(
       "Task Mode / Task 01",
       "Identify the local user and host, then inspect the sample interface records. The target is the fictional learner workstation only.",
@@ -319,55 +351,62 @@
     completionPanel.hidden = true;
     playPanel.hidden = false;
     menuReturn.hidden = false;
-    scopeCheckpoint.hidden = true;
+    storyActions.hidden = true;
+    welcomePanel.hidden = true;
     terminalForm.hidden = false;
     modeLabel.textContent = "STORY MODE / MIRA: COFFEE SHOP RECON";
 
     const step = storySteps[storyStepIndex];
+    activity.dataset.storyBeat = step.beat;
+    clientLabel.textContent = step.client;
+    responderStatus.textContent = "AGENTS AT TABLE 04";
     activityTitle.textContent = step.title;
     activityObjective.textContent = step.objective;
-    terminalPrompt.textContent = `Enter ${step.command} for this fixed sample`;
+    terminalForm.hidden = !step.command;
     terminalCommand.value = "";
-    terminalCommand.placeholder = step.command;
-    commandFeedback.textContent = `Only ${step.command} is accepted for this step.`;
+    if (step.command) {
+      terminalPrompt.textContent = `Enter ${step.command} for this fixed sample`;
+      terminalCommand.placeholder = step.command;
+      commandFeedback.textContent = `Only ${step.command} is accepted for this step.`;
+    } else {
+      storyActions.hidden = false;
+      storyActions.replaceChildren(actionButton(step.action, () => {
+        if (view !== "story-play" || storySteps[storyStepIndex] !== step) return;
+        if (step.beat === "welcome") loadRickroll();
+        recordStoryStep(step);
+      }));
+      commandFeedback.textContent = step.beat === "welcome"
+        ? "Play loads third-party YouTube after your click; the network story stays simulated."
+        : "Use the story action below. Only the fictional page state changes.";
+    }
+    welcomePanel.hidden = !["welcome", "music"].includes(step.beat);
+    if (welcomePanel.hidden) videoPlayer.replaceChildren();
     renderProgress(storySteps.length, storyStepIndex);
     setPlayScene(
-      `STORY MODE / CHAPTER ${step.chapter}`,
+      `STORY MODE / BEAT ${storyStepIndex + 1} OF ${storySteps.length}`,
       step.title,
       step.sceneCopy,
       step.signal,
     );
-    focusElement(terminalCommand);
+    focusElement(step.command ? terminalCommand : storyActions.querySelector("button"));
   }
 
-  function showScopeCheckpoint() {
-    view = "story-scope";
-    activeMode = "story";
-    activity.dataset.storyProgress = String(storyStepIndex);
-    selectionPanel.hidden = true;
-    completionPanel.hidden = true;
-    playPanel.hidden = false;
-    menuReturn.hidden = false;
-    terminalForm.hidden = true;
-    scopeCheckpoint.hidden = false;
-    modeLabel.textContent = "STORY MODE / SCOPE CHECKPOINT";
-    activityTitle.textContent = "Stay inside the training boundary";
-    activityObjective.textContent =
-      "Before collecting evidence, confirm the cafe and its traffic are fictional local samples.";
-    renderProgress(storySteps.length, storyStepIndex);
-    setPlayScene(
-      "STORY MODE / CHAPTER 03",
-      "What is local and safe?",
-      "The cafe is fictional. Keep this investigation inside the training scene and treat the flagged table as an observation, not a person or real device.",
-      "Local-only boundary check · no external target.",
-    );
-    focusElement($("continue-safely"));
+  function loadRickroll() {
+    // Created only in the explicit Play button handler; never preloaded or embedded at startup.
+    const player = document.createElement("iframe");
+    player.src = "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1";
+    player.title = "Rick Astley — Never Gonna Give You Up (official YouTube video)";
+    player.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    player.referrerPolicy = "strict-origin-when-cross-origin";
+    player.allowFullscreen = true;
+    videoPlayer.replaceChildren(player);
   }
 
   function startStory() {
     storyStepIndex = 0;
     terminalOutput.textContent =
       "Mira: Coffee Shop Recon\nFictional local-only training sample.\nNo command has run.";
+    videoPlayer.replaceChildren();
     commandFeedback.textContent = "Only the displayed sample command is accepted.";
     publish({ kind: "reset" });
     showStoryStep();
@@ -381,7 +420,8 @@
     completionPanel.hidden = true;
     playPanel.hidden = false;
     menuReturn.hidden = false;
-    scopeCheckpoint.hidden = true;
+    storyActions.hidden = true;
+    welcomePanel.hidden = true;
     terminalForm.hidden = false;
     modeLabel.textContent = "TASK MODE / TASK 01: INFORMATION GATHERING";
 
@@ -404,6 +444,8 @@
 
   function startTask() {
     taskStepIndex = 0;
+    videoPlayer.replaceChildren();
+    activity.dataset.storyBeat = "idle";
     terminalOutput.textContent =
       "Task 01: Information Gathering\n\n[Local workstation sample only]";
     commandFeedback.textContent = "Only the displayed sample command is accepted.";
@@ -414,21 +456,28 @@
   function showComplete(mode) {
     view = "complete";
     playPanel.hidden = true;
-    scopeCheckpoint.hidden = true;
+    storyActions.hidden = true;
+    welcomePanel.hidden = true;
     completionPanel.hidden = false;
     menuReturn.hidden = true;
     const isStory = mode === "story";
+    videoPlayer.replaceChildren();
+    if (isStory) {
+      activity.dataset.storyBeat = "escorted";
+      clientLabel.textContent = "TABLE 04 · HACKER TAKEN AWAY";
+      responderStatus.textContent = "HACKER ESCORTED AWAY";
+    }
     $("completion-title").textContent = isStory
       ? "Coffee Shop Recon complete"
       : "Three pieces of local evidence";
     $("completion-copy").textContent = isStory
-      ? "You confirmed the operator and workstation, observed fictional local traffic, recorded bounded evidence and staged a simulated warning. Nothing was sent outside the preview."
+      ? "You traced the fictional hacker, simulated a disconnect and rejoin, opened the welcome page and requested the Rickroll player. The fictional FBI arrived and took the hacker away. Only your Play click requested third-party YouTube; all story actions stayed local."
       : "You recorded the local user, workstation name and interface sample. No external target was contacted.";
     setScene({
       kicker: isStory ? "STORY MODE / COMPLETE" : "TASK MODE / COMPLETE",
-      title: isStory ? "Mira’s report is ready." : "Evidence gathered.",
+      title: isStory ? "Mission: Trace the Hacker — complete." : "Evidence gathered.",
       copy: isStory
-        ? "The fictional cafe investigation ends with a local evidence note and a simulated response."
+        ? "The FBI escort the fictional hacker away from Table 04. Mira’s café mission is complete. No real client, agency or enforcement action was involved."
         : "The local workstation evidence is recorded in this preview. Mira marks the task complete.",
       actions: [
         { label: "Return to Cave Bash menu →", callback: showMainMenu },
@@ -437,28 +486,29 @@
     triggerCue(
       isStory ? "story-complete" : "task-complete",
       isStory
-        ? "Coffee Shop Recon complete · simulated response only."
+        ? "Fictional hacker taken away · mission complete."
         : "Local evidence reviewed · sample task complete.",
     );
     publish({
       kind: "complete",
       mode,
       guidance: isStory
-        ? "Mira’s Coffee Shop Recon is complete: local context, traffic observation, safe evidence collection and a simulated response."
+        ? "Mira’s mission is complete: fictional traffic traced, disconnect and rejoin simulated, welcome Rickroll requested, and FBI escort shown. No real network or enforcement action occurred."
         : "Task Mode complete: local user, host and interface evidence are recorded.",
     });
     focusElement($("replay-activity"));
   }
 
   function recordStoryStep(step) {
-    terminalOutput.textContent = `> ${step.command}\n${step.output}\n\n[Fixed sample output — no command executed]`;
+    terminalOutput.textContent = `> ${step.command || step.action}\n${step.output}\n\n[Fixed story sample — no network or shell action executed]`;
     commandFeedback.textContent =
       "Sample evidence recorded. Mira responds in the coffee shop scene.";
     publish({
       kind: "evidence",
       mode: "story",
-      record: `${step.command} → ${step.evidence}`,
+      record: step.command ? `${step.command} → ${step.evidence}` : step.evidence,
       guidance: step.guidance,
+      video: step.beat === "welcome" ? "rickroll-requested" : undefined,
     });
     triggerCue(step.cue, step.signal);
     storyStepIndex += 1;
@@ -466,8 +516,6 @@
 
     if (storyStepIndex >= storySteps.length) {
       showComplete("story");
-    } else if (storyStepIndex === 3) {
-      showScopeCheckpoint();
     } else {
       showStoryStep();
     }
@@ -524,7 +572,6 @@
     runCurrentTerminalCommand();
   });
 
-  $("continue-safely").addEventListener("click", showStoryStep);
   menuReturn.addEventListener("click", showMainMenu);
   $("replay-activity").addEventListener("click", showMainMenu);
   $("reset-preview").addEventListener("click", resetPreview);

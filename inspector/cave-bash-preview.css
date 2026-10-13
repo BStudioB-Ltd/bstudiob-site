@@ -297,22 +297,41 @@ input:focus-visible {
 .scene-responder i {
   color: #b8eaff;
 }
-.activity[data-location="coffee-shop"]:is([data-story-progress="2"], [data-story-progress="3"], [data-story-progress="4"], [data-story-progress="5"]) .scene-boundary,
-.activity[data-location="coffee-shop"][data-cue="story-workstation-confirmed"] .scene-boundary {
+.activity[data-location="coffee-shop"] .scene-boundary {
   opacity: 1;
 }
-.activity[data-location="coffee-shop"]:is([data-story-progress="3"], [data-story-progress="4"], [data-story-progress="5"]) .scene-hotspot {
+.activity[data-location="coffee-shop"]:not([data-story-beat="observe"]) .scene-hotspot,
+.activity[data-location="coffee-shop"]:not([data-story-beat="observe"]) .scene-evidence {
   opacity: 1;
 }
-.activity[data-location="coffee-shop"]:is([data-story-progress="4"], [data-story-progress="5"]) .scene-evidence {
+.activity[data-story-beat="disconnected"] .hotspot-ring {
+  border-style: dashed;
+  border-color: #ffad9f;
+  box-shadow: 0 0 16px rgba(255, 130, 110, 0.5);
+}
+.activity:is([data-story-beat="rejoined"], [data-story-beat="welcome"]) .hotspot-ring {
+  border-color: var(--green);
+}
+.activity[data-story-beat="music"] .hotspot-ring {
+  border-color: var(--blue);
+  animation: hotspot-pulse 1.4s ease-in-out infinite;
+}
+.activity:is([data-story-beat="fbi"], [data-story-beat="escorted"]) .scene-responder {
   opacity: 1;
 }
-.activity[data-location="coffee-shop"][data-story-progress="5"] .scene-responder {
-  opacity: 1;
+.activity[data-story-beat="escorted"] .hotspot-ring {
+  opacity: 0.25;
+  border-style: dashed;
 }
-.activity[data-cue="story-workstation-confirmed"] .scene-boundary,
-.activity[data-cue="story-evidence-collected"] .scene-evidence,
-.activity[data-cue="story-decoy-played"] .scene-responder {
+.activity[data-story-beat="escorted"] .scene-object-label {
+  left: -90px;
+  width: 190px;
+  border-color: var(--green);
+  color: #eaffed;
+}
+.activity[data-cue="story-fbi-arrived"] .scene-responder,
+.activity[data-cue="story-hacker-escorted"] .scene-responder,
+.activity[data-cue="story-client-rejoined"] .scene-hotspot {
   animation: marker-arrive 620ms ease-out both;
 }
 .activity[data-cue="story-traffic-spotted"] .hotspot-ring {
@@ -618,26 +637,44 @@ input:focus-visible {
   color: #aebcda;
   font: 0.63rem/1.45 var(--mono);
 }
-.scope-checkpoint {
+.story-actions {
+  margin-top: 12px;
+}
+.story-actions button {
+  width: 100%;
+}
+.welcome-panel {
   margin-top: 12px;
   padding: 13px;
   border: 1px solid rgba(255, 224, 102, 0.48);
   border-radius: 8px;
   background: rgba(52, 42, 18, 0.36);
 }
-.scope-checkpoint h3 {
+.welcome-panel h3 {
   margin: 0;
   color: #fff5c8;
   font: 800 0.78rem/1.35 var(--mono);
 }
-.scope-checkpoint p:not(.panel-index) {
+.welcome-panel p:not(.panel-index) {
   margin: 7px 0 12px;
   color: #d5d0b5;
-  font-size: 0.67rem;
+  font-size: 0.7rem;
 }
-.scope-checkpoint button {
-  min-height: 36px;
-  font-size: 0.62rem;
+.video-disclosure {
+  padding: 8px;
+  border-left: 3px solid var(--blue);
+  background: var(--panel);
+}
+.video-player iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+.video-fallback code {
+  color: var(--blue);
+  overflow-wrap: anywhere;
 }
 .completion-panel {
   padding: 15px;
