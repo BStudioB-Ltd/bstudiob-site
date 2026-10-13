@@ -12,7 +12,8 @@ test('homepage wordmark points to a packaged first-party image that exists', () 
   assert.equal(logoPath, 'assets/brand/bstudiob-signature-ltd.png');
   assert.equal(existsSync(new URL(`../${logoPath}`, import.meta.url)), true);
   assert.match(css, /background:\s*url\("assets\/brand\/bstudiob-signature-ltd\.png"\)/);
-  for (const page of ['../index.html', '../services.html', '../myaccount/index.html', '../products/pit/index.html', '../creative-live.html', '../tributary/index.html']) {
+  assert.match(home, /styles\.css\?v=hero-height-20261013-c/);
+  for (const page of ['../services.html', '../myaccount/index.html', '../products/pit/index.html', '../creative-live.html', '../tributary/index.html']) {
     assert.match(readFileSync(new URL(page, import.meta.url), 'utf8'), /styles\.css\?v=brand-lockup-20261013-a/);
   }
 });
@@ -207,6 +208,15 @@ test('homepage hero uses inline top tabs without arrows and keeps the hero footp
   assert.match(css, /\.hero\.hero-carousel\s*\{[^}]*gap:\s*0/);
 });
 
+test('hero keeps one Home-sized frame across all tabs at tablet and mobile widths', () => {
+  assert.match(css, /@media \(max-width:\s*1000px\)\s*\{[^}]*\.hero\.hero-carousel\s*\{[^}]*height:\s*calc\(100svh\s*-\s*72px\)[^}]*overflow:\s*hidden/);
+  assert.doesNotMatch(css, /@media \(max-width:\s*1000px\)\s*\{[^}]*\.hero-carousel-slides\s*\{[^}]*height:\s*auto/);
+  assert.match(css, /\.hero-slide,\s*\.hero-slide-products\s*\{[^}]*overflow-y:\s*auto/);
+  assert.match(css, /\.hero-slide-products \.hero-product-grid\s*\{[^}]*height:\s*clamp\(380px,\s*52svh,\s*460px\)[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/);
+  assert.match(css, /@media \(max-width:\s*360px\)\s*\{[^}]*\.hero-slide-products \.hero-product-grid\s*\{[^}]*height:\s*clamp\(420px,\s*60svh,\s*480px\)/);
+  assert.doesNotMatch(css, /\.hero-account-embed \.account-portal-frame\s*\{[^}]*height:\s*720px/);
+});
+
 test('four service cards remain aligned and the founder-requested copy is retained', () => {
   assert.match(css, /\.hero-product-copy\s*\{[^}]*display:\s*flex[^}]*flex-direction:\s*column/);
   assert.match(css, /\.hero-product-copy h2\s*\{[^}]*min-height:/);
@@ -227,7 +237,7 @@ test('the hero uses restrained load and scroll-driven motion with reduced-motion
 test('hero carousel and cards adapt to tablet and mobile widths', () => {
   assert.match(css, /@media\s*\(max-width:\s*1000px\)/);
   assert.match(css, /@media\s*\(max-width:\s*700px\)/);
-  assert.match(css, /\.hero-product-grid\s*\{[^}]*grid-template-columns:\s*1fr/);
+  assert.match(css, /\.hero-slide-products \.hero-product-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/);
   assert.match(css, /\.hero-slide\s*\{[^}]*display:\s*grid/);
 });
 
