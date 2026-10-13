@@ -12,12 +12,13 @@ test('homepage opens on a distinct Home slide with a separate About slide in the
   const hero = home.slice(heroStart, heroEnd);
   assert.ok(hero, 'hero remains a distinct section');
   assert.match(hero, /grid-template|data-hero-carousel/);
-  const tabs = [...hero.matchAll(/role="tab"[^>]*data-hero-tab[^>]*>([^<]+)</g)].map((match) => match[1]);
-  assert.deepEqual(tabs, ['Home', 'About BStudioB', 'Products and Services', 'Your account', 'Contact']);
+  const tabs = [...hero.matchAll(/<button\b(?=[^>]*data-hero-tab)[^>]*>([\s\S]*?)<\/button>/g)].map((match) => match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
+  assert.deepEqual(tabs, ['Home', '01 / Studio About', '02 / Explore Products and Services', '03 / Customer access Your account', '04 / Get in touch Contact']);
   assert.match(hero, /<article class="hero-slide hero-slide-home is-active" id="hero-slide-home"/);
   assert.match(hero, /<article class="hero-slide hero-slide-about" id="hero-slide-about"[^>]*hidden/);
   const homeSlide = hero.match(/<article\b(?=[^>]*id="hero-slide-home")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
-  assert.deepEqual([...homeSlide.matchAll(/data-hero-select="(\d+)"/g)].map((match) => Number(match[1])), [1, 2, 3, 4]);
+  assert.match(homeSlide, /Independent UK software studio/);
+  assert.doesNotMatch(homeSlide, /data-hero-select/);
   assert.match(home, /<section class="studio-summary"/);
   assert.match(home, /class="studio-enquiry-panel"/);
 });
@@ -38,11 +39,11 @@ test('the Products and Services hero slide alone reveals the four existing squar
   assert.match(css, /\.hero-product\s*\{[^}]*aspect-ratio:\s*1/);
 });
 
-test('Home remains the tagline and topic-card landing, while About tells the company story', () => {
+test('Home keeps its tagline and About tells the company story', () => {
   const homeSlide = home.match(/<article\b(?=[^>]*id="hero-slide-home")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
   assert.match(homeSlide, /Exactly/);
   assert.match(homeSlide, /specifically/);
-  assert.match(homeSlide, /hero-about-options/);
+  assert.match(homeSlide, /Independent UK software studio/);
   const about = home.match(/<article\b(?=[^>]*id="hero-slide-about")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
   assert.match(about, /Why BStudioB exists/);
   assert.match(about, /Why it matters/);
@@ -50,7 +51,7 @@ test('Home remains the tagline and topic-card landing, while About tells the com
   assert.match(about, /Nathan Brown-Bennett/);
   assert.match(about, /Our aims/);
   assert.match(about, /href="#studio-enquiry-form">Invest in us/);
-  assert.match(script, /Number\(card\.dataset\.heroSelect\)\s*===\s*current/);
+  assert.match(script, /tabs\.forEach\(\(tab, index\)\s*=>\s*\{[\s\S]*?const active = index === current/);
   for (const slide of ['home', 'about', 'account', 'contact']) {
     const panel = home.match(new RegExp(`<article\\b(?=[^>]*id="hero-slide-${slide}")[^>]*>[\\s\\S]*?<\\/article>`))?.[0] ?? '';
     assert.ok(panel, `${slide} slide exists`);
@@ -77,15 +78,15 @@ test('customer account slide embeds the working portal with a direct fallback wi
   assert.match(home, /name="privacy_consent" type="checkbox" required/);
 });
 
-test('homepage navigation includes My account and carousel controls follow the hero slides', () => {
+test('homepage navigation includes My account and hero tabs precede their panels', () => {
   const nav = home.match(/<nav aria-label="Primary navigation">[\s\S]*?<\/nav>/)?.[0] ?? '';
   const heroStart = home.indexOf('<section class="hero hero-carousel"');
   const slidesStart = home.indexOf('class="hero-carousel-slides"', heroStart);
   const controlsStart = home.indexOf('class="hero-carousel-controls"', heroStart);
   assert.match(nav, /href="\/myaccount\/">My account/);
   assert.match(nav, /href="#studio-enquiry-form">Contact/);
-  assert.ok(slidesStart >= 0 && controlsStart > slidesStart, 'carousel controls follow the slides');
-  assert.match(script, /carousel\.classList\.add\('has-selection'\)[\s\S]*?show\(index\)/);
+  assert.ok(controlsStart >= 0 && slidesStart > controlsStart, 'tabs precede the slides');
+  assert.match(script, /tab\.addEventListener\('click',\s*\(\)\s*=>\s*show\(index\)\)/);
   assert.match(script, /a\[href\^="#hero-slide-"\]/);
 });
 
@@ -144,8 +145,7 @@ test('hero tabs are keyboard-accessible and navigation activates Products and Se
   assert.match(home, /<section class="hero hero-carousel"[^>]*data-hero-carousel[^>]*role="region" aria-roledescription="carousel"/);
   assert.match(home, /role="tablist"/);
   assert.match(home, /data-hero-tab/);
-  assert.match(home, /data-hero-prev/);
-  assert.match(home, /data-hero-next/);
+  assert.doesNotMatch(home, /data-hero-prev|data-hero-next|hero-carousel-arrows/);
   assert.match(script, /data-studio-carousel/);
   assert.match(script, /aria-hidden/);
   assert.match(script, /\['ArrowLeft', 'ArrowRight', 'Home', 'End'\]/);
@@ -169,7 +169,31 @@ test('homepage header keeps Contact and removes the redundant Company, Products,
 });
 
 test('homepage carousel controls use the site’s square-edged geometric style', () => {
-  assert.match(css, /\.hero-tab, \.hero-carousel-arrows button, \.studio-tab, \.studio-carousel-arrows button\s*\{\s*border-radius:\s*0/);
+  assert.match(css, /\.hero-tab, \.studio-tab\s*\{\s*border-radius:\s*0/);
+});
+
+test('homepage hero uses inline top tabs without arrows and keeps the hero footprint stable', () => {
+  const heroStart = home.indexOf('<section class="hero hero-carousel"');
+  const studioStart = home.indexOf('<section class="studio-summary"', heroStart);
+  const hero = home.slice(heroStart, studioStart);
+  const slidesStart = hero.indexOf('class="hero-carousel-slides"');
+  const controlsStart = hero.indexOf('class="hero-carousel-controls"');
+
+  assert.ok(controlsStart >= 0 && controlsStart < slidesStart, 'hero tabs appear before their panels');
+  assert.deepEqual(
+    [...hero.matchAll(/<button\b(?=[^>]*data-hero-tab)[^>]*>([\s\S]*?)<\/button>/g)].map((match) => match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()),
+    ['Home', '01 / Studio About', '02 / Explore Products and Services', '03 / Customer access Your account', '04 / Get in touch Contact']
+  );
+  assert.doesNotMatch(hero, /data-hero-prev|data-hero-next|hero-carousel-arrows|hero-about-card/);
+  assert.doesNotMatch(home.match(/<section class="studio-summary"[\s\S]*?<\/section>/)?.[0] ?? '', /data-studio-prev|data-studio-next|studio-carousel-arrows/);
+  assert.match(css, /\.hero\.hero-carousel\s*\{[^}]*min-height:\s*calc\(100svh\s*-\s*72px\)/);
+  assert.match(css, /\.hero-carousel-slides\s*\{[^}]*height:\s*clamp\(/);
+  assert.match(css, /\.hero-slide-products \.hero-product-grid\s*\{[^}]*height:\s*clamp\(420px,\s*calc\(100svh\s*-\s*360px\),\s*540px\)/);
+  assert.match(css, /\.hero-account-embed\s*\{[^}]*max-height:\s*100%[^}]*overflow:\s*hidden/);
+  assert.match(css, /\.account-portal-frame\s*\{[^}]*height:\s*0[^}]*flex:\s*1\s+1\s+0/);
+  assert.match(css, /\.hero-slide-account\s*\{[^}]*align-items:\s*stretch/);
+  assert.match(css, /\.hero-slide-about \.hero-copy h1\s*\{[^}]*font-size:\s*clamp\(2\.8rem,\s*5vw,\s*5rem\)/);
+  assert.match(css, /\.hero\.hero-carousel\s*\{[^}]*gap:\s*0/);
 });
 
 test('four service cards remain aligned and the founder-requested copy is retained', () => {
@@ -196,20 +220,16 @@ test('hero carousel and cards adapt to tablet and mobile widths', () => {
   assert.match(css, /\.hero-slide\s*\{[^}]*display:\s*grid/);
 });
 
-test('Home keeps four centered navigation cards over a restrained BStudioB mark backdrop', () => {
+test('Home keeps its editorial headline beside a compact studio summary', () => {
   const homeSlide = home.match(/<article\b(?=[^>]*id="hero-slide-home")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
-  assert.match(homeSlide, /hero-about-options/);
-  for (const label of ['About', 'Products and Services', 'Your account', 'Contact']) {
-    assert.match(homeSlide, new RegExp(`>${label}<`));
-  }
-  assert.match(homeSlide, /data-hero-select/);
-  assert.match(script, /data-hero-select/);
-  assert.match(css, /hero-slide-about[^}]*::before|hero-about-options/);
+  assert.match(homeSlide, /Exactly/);
+  assert.match(homeSlide, /Independent UK software studio/);
+  assert.match(home, /01 \/ Studio<\/span>\s*<strong>About<\/strong>/);
+  assert.match(home, /02 \/ Explore<\/span>\s*<strong>Products and Services<\/strong>/);
+  assert.match(home, /03 \/ Customer access<\/span>\s*<strong>Your account<\/strong>/);
+  assert.match(home, /04 \/ Get in touch<\/span>\s*<strong>Contact<\/strong>/);
   assert.match(css, /bstudiob-signature\.svg/);
-  assert.match(css, /\.hero-about-card\s*\{[^}]*background:\s*var\(--paper\)/);
-  assert.match(css, /\.hero-about-card:hover,\s*\.hero-about-card:focus-visible\s*\{[^}]*background:\s*#eae8e0/);
-  assert.doesNotMatch(css, /\.hero-about-card\s*\{[^}]*backdrop-filter/);
-  assert.match(css, /cubic-bezier\(\.22,\s*1,\s*\.36,\s*1\)/);
+  assert.doesNotMatch(homeSlide, /hero-about-card/);
 });
 
 test('BStudioB hero watermark stays centered behind the carousel and scales up responsively', () => {
@@ -219,15 +239,16 @@ test('BStudioB hero watermark stays centered behind the carousel and scales up r
   assert.match(css, /@media\s*\(max-width:\s*700px\)\s*\{[^}]*hero\.hero-carousel::before[^}]*background-position:\s*50%\s+50%[^}]*background-size:\s*135%\s+auto/);
 });
 
-test('hero carousel controls are revealed only after a visitor selects an About card', () => {
+test('hero tabs are visible at the start and no longer require an overview-card selection', () => {
   const hero = home.match(/<section class="hero hero-carousel"[\s\S]*?<\/section>/)?.[0] ?? '';
   assert.doesNotMatch(hero, /has-selection/);
-  assert.match(css, /\.hero-carousel:not\(\.has-selection\)\s+\.hero-carousel-controls\s*\{\s*display:\s*none/);
-  assert.match(script, /carousel\.classList\.add\('has-selection'\);\s*const selected = Number\(card\.dataset\.heroSelect\);\s*tabs\[selected\]\?\.focus\(\);\s*show\(selected\)/);
+  assert.doesNotMatch(css, /\.hero-carousel:not\(\.has-selection\)/);
+  assert.match(hero, /class="hero-carousel-controls"/);
+  assert.match(hero, /class="hero-tab is-active"/);
 });
 
-test('selecting an About card moves keyboard focus out of its slide before the slide is hidden', () => {
-  assert.match(script, /const selected = Number\(card\.dataset\.heroSelect\);\s*tabs\[selected\]\?\.focus\(\);\s*show\(selected\)/);
+test('tab selection directly changes the active hero panel', () => {
+  assert.match(script, /tab\.addEventListener\('click',\s*\(\)\s*=>\s*show\(index\)\)/);
 });
 
 test('Products and Services has an accessible preview carousel with first-party product imagery', () => {
@@ -249,6 +270,7 @@ test('studio summary is a four-page carousel with honest case-study and research
   assert.ok(summary);
   const tabs = [...summary.matchAll(/class="studio-tab[^\"]*"[^>]*>([^<]+)</g)].map((match) => match[1].replaceAll('&amp;', '&'));
   assert.deepEqual(tabs, ['Projects & images', 'Case studies', 'Research', 'CTA']);
+  assert.doesNotMatch(summary, /data-studio-prev|data-studio-next|studio-carousel-arrows/);
   assert.match(summary, /Project imagery/);
   assert.match(summary, /Public client case studies will be added/);
   assert.match(summary, /Approved research will be added/);

@@ -164,7 +164,6 @@
   document.querySelectorAll('[data-studio-carousel]').forEach((carousel) => {
     const slides = [...carousel.querySelectorAll('[data-studio-slide]')];
     const tabs = [...carousel.querySelectorAll('[data-studio-tab]')];
-    const cards = [...carousel.querySelectorAll('[data-hero-select]')];
     let current = 0;
     const show = (next) => {
       current = (next + slides.length) % slides.length;
@@ -181,14 +180,7 @@
         tab.setAttribute('aria-selected', String(active));
         tab.tabIndex = active ? 0 : -1;
       });
-      cards.forEach((card) => {
-        const active = Number(card.dataset.heroSelect) === current;
-        if (active) card.setAttribute('aria-current', 'true');
-        else card.removeAttribute('aria-current');
-      });
     };
-    carousel.querySelector('[data-studio-prev]')?.addEventListener('click', () => show(current - 1));
-    carousel.querySelector('[data-studio-next]')?.addEventListener('click', () => show(current + 1));
     tabs.forEach((tab, index) => {
       tab.addEventListener('click', () => show(index));
       tab.addEventListener('keydown', (event) => {
@@ -199,19 +191,10 @@
         tabs[current].focus();
       });
     });
-    cards.forEach((card) => {
-      card.addEventListener('click', () => {
-        carousel.classList.add('has-selection');
-        const selected = Number(card.dataset.heroSelect);
-        tabs[selected]?.focus();
-        show(selected);
-      });
-    });
     document.querySelectorAll('a[href^="#studio-tab-"], a[href^="#hero-tab-"], a[href^="#hero-slide-"]').forEach((link) => {
       const targetId = link.hash.slice(1);
       const index = tabs.findIndex((tab) => tab.id === targetId || tab.getAttribute('aria-controls') === targetId);
       if (index >= 0) link.addEventListener('click', () => {
-        carousel.classList.add('has-selection');
         show(index);
       });
     });
@@ -244,7 +227,8 @@
       if (event.data?.type === 'account-portal:resize') {
         const height = Number(event.data.height);
         if (!Number.isFinite(height)) return;
-        accountFrame.style.height = `${Math.min(1400, Math.max(460, Math.ceil(height) + 4))}px`;
+        const heightLimit = accountFrame.closest('.hero-carousel') ? 600 : 1400;
+        accountFrame.style.height = `${Math.min(heightLimit, Math.max(360, Math.ceil(height) + 4))}px`;
         return;
       }
       if (event.data?.type !== 'account-portal:auth-state' || typeof event.data.authenticated !== 'boolean') return;
