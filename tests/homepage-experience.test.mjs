@@ -6,6 +6,17 @@ const home = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const script = readFileSync(new URL('../site.js', import.meta.url), 'utf8');
 const css = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
 
+test('homepage wordmark points to a packaged first-party image that exists', () => {
+  const wordmark = home.match(/<a class="wordmark"[^>]*>([\s\S]*?)<\/a>/)?.[1] ?? '';
+  const logoPath = wordmark.match(/<img[^>]+src="([^"]+)"/)?.[1];
+  assert.equal(logoPath, 'assets/brand/bstudiob-signature-ltd.png');
+  assert.equal(existsSync(new URL(`../${logoPath}`, import.meta.url)), true);
+  assert.match(css, /background:\s*url\("assets\/brand\/bstudiob-signature-ltd\.png"\)/);
+  for (const page of ['../index.html', '../services.html', '../myaccount/index.html', '../products/pit/index.html', '../creative-live.html', '../tributary/index.html']) {
+    assert.match(readFileSync(new URL(page, import.meta.url), 'utf8'), /styles\.css\?v=brand-lockup-20261013-a/);
+  }
+});
+
 test('homepage opens on a distinct Home slide with a separate About slide in the hero carousel', () => {
   const heroStart = home.indexOf('<section class="hero hero-carousel"');
   const heroEnd = home.indexOf('<section class="studio-summary"', heroStart);
@@ -228,14 +239,14 @@ test('Home keeps its editorial headline beside a compact studio summary', () => 
   assert.match(home, /02 \/ Explore<\/span>\s*<strong>Products and Services<\/strong>/);
   assert.match(home, /03 \/ Customer access<\/span>\s*<strong>Your account<\/strong>/);
   assert.match(home, /04 \/ Get in touch<\/span>\s*<strong>Contact<\/strong>/);
-  assert.match(css, /bstudiob-signature\.svg/);
+  assert.match(css, /bstudiob-signature-ltd\.png/);
   assert.doesNotMatch(homeSlide, /hero-about-card/);
 });
 
 test('BStudioB hero watermark stays centered behind the carousel and scales up responsively', () => {
   assert.match(css, /\.hero\.hero-carousel::before\s*\{[^}]*z-index:\s*0/);
   assert.match(css, /\.hero-carousel-controls\s*,\s*\.hero-carousel-slides\s*\{[^}]*position:\s*relative[^}]*z-index:\s*1/);
-  assert.match(css, /background:\s*url\("assets\/brand\/bstudiob-signature\.svg"\)\s+50%\s+50%\s*\/\s*min\(100%,\s*1180px\)\s+auto\s+no-repeat/);
+  assert.match(css, /background:\s*url\("assets\/brand\/bstudiob-signature-ltd\.png"\)\s+50%\s+50%\s*\/\s*min\(100%,\s*1180px\)\s+auto\s+no-repeat/);
   assert.match(css, /@media\s*\(max-width:\s*700px\)\s*\{[^}]*hero\.hero-carousel::before[^}]*background-position:\s*50%\s+50%[^}]*background-size:\s*135%\s+auto/);
 });
 
