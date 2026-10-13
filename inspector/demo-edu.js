@@ -6,7 +6,7 @@
 
   const emptyRecord = "No evidence collected yet.";
   const defaultGuidance =
-    "Choose either mode, complete its activity and watch Mira and the cave respond inside the frame.";
+    "Cave Bash is the startup menu. Choose Mira’s Coffee Shop Recon in Story Mode or Task 01 in Task Mode.";
 
   function clearEvidence() {
     const empty = document.createElement("li");

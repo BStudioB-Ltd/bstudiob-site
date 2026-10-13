@@ -10,13 +10,26 @@
   </head>
   <body>
     <main class="activity" id="activity" data-cue="idle">
-      <section class="scene" aria-label="Animated Cave Bash lesson scene">
+      <section class="scene" aria-label="Animated Inspector Edu training scene">
         <div class="scene-art" aria-hidden="true"></div>
         <div class="scene-glow" aria-hidden="true"></div>
         <div class="scene-stars" aria-hidden="true"></div>
+        <div class="scene-boundary" aria-hidden="true">LOCAL ONLY · FICTIONAL TRAINING</div>
+        <div class="scene-hotspot" aria-hidden="true">
+          <span class="hotspot-ring"></span>
+          <span class="scene-object-label">TABLE 04 · NEEDS REVIEW</span>
+        </div>
+        <div class="scene-evidence" aria-hidden="true">
+          <span>LOCAL EVIDENCE</span>
+          <i>OBSERVATION RECORDED</i>
+        </div>
+        <div class="scene-responder" aria-hidden="true">
+          <span>SIMULATED RESPONSE</span>
+          <i>WARNING STAGED</i>
+        </div>
         <header class="scene-hud" aria-label="Scene information">
           <span class="hud-mark">INSPECTOR <i>EDU</i></span>
-          <span class="hud-location">CAVE BASH <b>·</b> 01</span>
+          <span class="hud-location" id="hud-location">CAVE BASH · STARTUP</span>
         </header>
         <div class="scene-character-wrap" aria-hidden="true">
           <div class="character-aura"></div>
@@ -58,25 +71,24 @@
             <p class="panel-index">ACTIVITY SELECTOR</p>
             <h2 id="selection-title">Choose a mode in the cave</h2>
             <p id="selection-copy">
-              Story Mode follows Mira through the original Cave Bash lesson.
-              Task Mode opens Task 01: Information Gathering.
+              Cave Bash is the startup menu. Story Mode opens Mira: Coffee Shop
+              Recon; Task Mode opens Task 01: Information Gathering.
             </p>
             <div class="mode-register" aria-label="Available preview paths">
-              <span><b>01</b> Story Mode · two lesson actions</span>
-              <span><b>02</b> Task Mode · three local evidence steps</span>
+              <span><b>01</b> Story Mode · Mira: Coffee Shop Recon · 5 steps</span>
+              <span><b>02</b> Task Mode · Task 01 · 3 steps</span>
             </div>
             <p class="fixed-note">
-              This frame accepts only the commands shown for the current step.
-              Every response is fixed sample data; no shell, sandbox, backend,
-              network target or saved progress is used.
+              This frame accepts only the displayed lesson command. Responses
+              are fixed samples; commands do not run and no learner data is saved.
             </p>
           </section>
 
           <section class="play-panel" id="play-panel" aria-labelledby="activity-title" hidden>
             <div class="activity-heading">
               <p class="panel-index" id="mode-label">STORY MODE</p>
-              <h2 id="activity-title">Look around the cave</h2>
-              <p id="activity-objective">Type <code>ls</code> in the sample terminal.</p>
+              <h2 id="activity-title">Coffee Shop Recon</h2>
+              <p id="activity-objective">Follow Mira’s local-only investigation.</p>
             </div>
 
             <div class="step-progress" id="step-progress" aria-label="Activity progress"></div>
@@ -98,7 +110,7 @@ No command has run.</pre>
                     autocomplete="off"
                     autocapitalize="off"
                     spellcheck="false"
-                    maxlength="24"
+                    maxlength="80"
                     aria-describedby="activity-objective command-feedback"
                   />
                   <button id="run-command" type="button">Run</button>
@@ -109,25 +121,15 @@ No command has run.</pre>
               </p>
             </section>
 
-            <section class="block-panel" id="block-panel" aria-labelledby="block-title" hidden>
-              <div class="terminal-topline">
-                <h3 id="block-title">CUSTOM COMMAND BLOCK</h3>
-                <span>STORY ACTION 02</span>
-              </div>
-              <p class="block-help">Add the lesson block, check its text, then run it.</p>
-              <button class="command-block" id="add-echo-block" type="button" draggable="true">
-                <span class="block-port" aria-hidden="true">●</span>
-                <span>echo</span>
-                <code>hi</code>
-                <span class="block-add">ADD BLOCK</span>
-              </button>
-              <div class="block-workspace" id="block-workspace" aria-label="Custom command block workspace">
-                <p class="workspace-empty" id="workspace-empty">Drop the echo block here or use Add block.</p>
-              </div>
-              <div class="block-actions">
-                <button class="run-block" id="run-echo-block" type="button" disabled>Run block</button>
-                <p class="command-feedback" id="block-feedback" role="status" aria-live="polite">The lesson expects <code>echo hi</code>.</p>
-              </div>
+            <section class="scope-checkpoint" id="scope-checkpoint" aria-labelledby="scope-title" hidden>
+              <p class="panel-index">SAFETY CHECKPOINT / LOCAL SCOPE</p>
+              <h3 id="scope-title">What is local and safe?</h3>
+              <p>
+                This cafe and its connection sample are fictional. Keep the
+                investigation inside this training scene: the flagged table is
+                only an observation, not an identified person or real device.
+              </p>
+              <button id="continue-safely" type="button">Continue to local evidence →</button>
             </section>
 
             <p class="safety-note">
