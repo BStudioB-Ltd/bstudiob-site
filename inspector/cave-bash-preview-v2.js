@@ -1,6 +1,7 @@
 (() => {
   const activity = document.getElementById("activity");
   if (!activity) return;
+  const scene = activity.querySelector(".scene");
 
   const $ = (id) => document.getElementById(id);
   const sceneKicker = $("scene-kicker");
@@ -32,28 +33,42 @@
   const spriteActors = new Map();
   const pendingSpriteClips = new Map();
   const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+  const sceneResizeObserver = window.ResizeObserver
+    ? new window.ResizeObserver(updateSpriteScales)
+    : null;
 
   function drawSpriteFrame(actor, frame) {
     const { cell, source } = actor.pose;
     const scale = actor.scale;
+    actor.currentFrame = frame;
     actor.node.style.width = `${cell.width * scale}px`;
     actor.node.style.height = `${cell.height * scale}px`;
     actor.node.style.backgroundSize = `${source.width * scale}px ${source.height * scale}px`;
     actor.node.style.backgroundPosition = `${-frame.x * scale}px ${-frame.y * scale}px`;
   }
 
-  function playSpriteClip(actor, requestedClip) {
+  function playSpriteClip(actor, requestedClip, requestedDirection) {
     if (!actor) return;
-    const direction = actor.pose.directions.down;
-    const clipName = direction[requestedClip] && actor.pose.clips[requestedClip]
-      ? requestedClip
-      : "idle";
+    const hasClip = (directionName, clipName) => (
+      actor.pose.directions[directionName]?.[clipName]?.length
+      && actor.pose.clips[clipName]
+    );
+    let directionName = requestedDirection || actor.direction || "down";
+    if (!hasClip(directionName, requestedClip) && hasClip("down", requestedClip)) {
+      directionName = "down";
+    }
+    if (!hasClip(directionName, requestedClip) && !hasClip(directionName, "idle")) {
+      directionName = "down";
+    }
+    const direction = actor.pose.directions[directionName];
+    const clipName = hasClip(directionName, requestedClip) ? requestedClip : "idle";
     const frames = direction[clipName];
     const clip = actor.pose.clips[clipName];
     if (!frames?.length || !clip) return;
 
     window.clearTimeout(actor.timer);
     const sequence = ++actor.sequence;
+    actor.direction = directionName;
     actor.clipName = clipName;
     let frameIndex = 0;
     drawSpriteFrame(actor, frames[frameIndex]);
@@ -76,9 +91,21 @@
     actor.timer = window.setTimeout(advance, clip.frameDurationMs);
   }
 
-  function setSpriteClip(actorId, clipName) {
-    pendingSpriteClips.set(actorId, clipName);
-    playSpriteClip(spriteActors.get(actorId), clipName);
+  function setSpriteClip(actorId, clipName, direction = "down") {
+    pendingSpriteClips.set(actorId, { clipName, direction });
+    playSpriteClip(spriteActors.get(actorId), clipName, direction);
+  }
+
+  function sceneScaleFactor() {
+    return Math.min(1, Math.max(0.25, scene.clientWidth / 700));
+  }
+
+  function updateSpriteScales() {
+    const scaleFactor = sceneScaleFactor();
+    for (const actor of spriteActors.values()) {
+      actor.scale = actor.baseScale * scaleFactor;
+      if (actor.currentFrame) drawSpriteFrame(actor, actor.currentFrame);
+    }
   }
 
   async function loadSpriteActor(node) {
@@ -96,19 +123,27 @@
       const actor = {
         node,
         pose,
-        scale: Number(node.dataset.spriteScale) || 1,
+        baseScale: Number(node.dataset.spriteScale) || 1,
+        scale: (Number(node.dataset.spriteScale) || 1) * sceneScaleFactor(),
         sequence: 0,
         timer: 0,
+        direction: "down",
         clipName: "idle",
       };
       spriteActors.set(actorId, actor);
-      playSpriteClip(actor, pendingSpriteClips.get(actorId) || "idle");
+      const pendingClip = pendingSpriteClips.get(actorId) || { clipName: "idle", direction: "down" };
+      playSpriteClip(actor, pendingClip.clipName, pendingClip.direction);
     } catch {
       node.hidden = true;
     }
   }
 
   function loadSceneSprites() {
+    if (sceneResizeObserver) {
+      sceneResizeObserver.observe(scene);
+    } else {
+      window.addEventListener("resize", updateSpriteScales);
+    }
     document.querySelectorAll("[data-sprite-actor]").forEach((node) => {
       loadSpriteActor(node);
     });
@@ -119,7 +154,7 @@
       if (event.matches) {
         window.clearTimeout(actor.timer);
         actor.sequence += 1;
-        const frames = actor.pose.directions.down[actor.clipName];
+        const frames = actor.pose.directions[actor.direction]?.[actor.clipName];
         if (frames?.length) drawSpriteFrame(actor, frames[0]);
       } else {
         playSpriteClip(actor, actor.clipName);
@@ -133,9 +168,9 @@
     reducedMotion.addListener(syncReducedMotion);
   }
 
-  function setRespondersClip(clipName) {
-    setSpriteClip("responder-left", clipName);
-    setSpriteClip("responder-right", clipName);
+  function setRespondersClip(clipName, direction = "down") {
+    setSpriteClip("responder-left", clipName, direction);
+    setSpriteClip("responder-right", clipName, direction);
   }
 
   function resetSceneSprites() {
@@ -143,6 +178,7 @@
     setSpriteClip("mira", "idle");
     setSpriteClip("barista", "idle");
     setSpriteClip("suspect", "idle");
+    setSpriteClip("suspect-escort", "idle");
     setRespondersClip("idle");
   }
 
@@ -168,14 +204,18 @@
       setSpriteClip("mira", "alert");
       setSpriteClip("barista", "investigate");
       setSpriteClip("suspect", "alert");
-      setRespondersClip("walk");
+      setRespondersClip("walk", "left");
       window.setTimeout(() => {
-        if (activity.dataset.storyBeat === "fbi") setRespondersClip("idle");
+        if (activity.dataset.storyBeat === "fbi") setRespondersClip("idle", "down");
       }, 1100);
     } else if (cue === "story-hacker-escorted") {
-      setRespondersClip("walk");
+      setRespondersClip("walk", "right");
+      setSpriteClip("suspect-escort", "walk", "right");
       window.setTimeout(() => {
-        if (activity.dataset.storyBeat === "escorted") setRespondersClip("idle");
+        if (activity.dataset.storyBeat === "escorted") {
+          setRespondersClip("idle", "right");
+          setSpriteClip("suspect-escort", "idle", "right");
+        }
       }, 1900);
     } else if (cue.startsWith("task-")) {
       setSpriteClip("mira", "investigate");

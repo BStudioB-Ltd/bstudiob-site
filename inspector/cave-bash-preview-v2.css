@@ -343,8 +343,14 @@ input:focus-visible {
 .activity[data-story-beat="escorted"] .scene-suspect {
   opacity: 0;
 }
-.activity[data-cue="story-hacker-escorted"] .scene-suspect {
-  animation: suspect-escort 1800ms ease-in both;
+.scene-escort-suspect {
+  visibility: hidden;
+  opacity: 0;
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.5));
+}
+.activity[data-story-beat="escorted"] .scene-escort-suspect {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* Responders enter with the atlas walk frames and accompany the suspect off scene. */
@@ -355,7 +361,7 @@ input:focus-visible {
   left: 70%;
   display: flex;
   align-items: flex-end;
-  gap: clamp(22px, 8vw, 80px);
+  gap: clamp(4px, 1.5vw, 80px);
   opacity: 0;
   pointer-events: none;
   transform: translateX(-50%);
@@ -404,10 +410,6 @@ input:focus-visible {
 @keyframes suspect-notice {
   0%, 100% { transform: translateX(-50%); }
   45% { transform: translate(-50%, -8px); }
-}
-@keyframes suspect-escort {
-  0%, 15% { opacity: 1; transform: translateX(-50%); }
-  100% { opacity: 0; transform: translateX(190px); }
 }
 .activity[data-location="coffee-shop"] .scene-boundary {
   opacity: 1;
@@ -1013,10 +1015,6 @@ input:focus-visible {
     left: 16%;
     bottom: 31%;
   }
-  .scene-character {
-    transform: translateX(-50%) scale(0.9);
-    transform-origin: bottom center;
-  }
   .scene-barista {
     left: 39%;
     bottom: 38%;
@@ -1025,12 +1023,9 @@ input:focus-visible {
     left: 70%;
     bottom: 40%;
   }
-  .scene-cafe-actor .sprite-frame,
-  .scene-fbi-agent .sprite-frame {
-    transform: scale(0.8);
-    transform-origin: bottom center;
-  }
   .scene-fbi-party {
+    top: auto;
+    bottom: 40%;
     gap: 8px;
   }
 }
