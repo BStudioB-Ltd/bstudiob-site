@@ -1,0 +1,425 @@
+{
+  "schemaVersion": 2,
+  "spriteId": "barista",
+  "proportionId": "barista-average",
+  "poses": {
+    "seated": {
+      "sheet": "barista-average-seated.png",
+      "source": {
+        "width": 480,
+        "height": 1152
+      },
+      "cell": {
+        "width": 96,
+        "height": 144
+      },
+      "anchor": {
+        "x": 48,
+        "y": 132
+      },
+      "clips": {
+        "idle": {
+          "frameCount": 2,
+          "frameDurationMs": 480,
+          "loopMode": "loop"
+        },
+        "investigate": {
+          "frameCount": 2,
+          "frameDurationMs": 260,
+          "loopMode": "once"
+        },
+        "interact": {
+          "frameCount": 1,
+          "frameDurationMs": 220,
+          "loopMode": "once"
+        }
+      },
+      "directions": {
+        "down": {
+          "idle": [
+            {
+              "id": "barista-barista-average-seated-down-idle-1",
+              "x": 0,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-down-idle-2",
+              "x": 96,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "barista-barista-average-seated-down-investigate-1",
+              "x": 192,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-down-investigate-2",
+              "x": 288,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "interact": [
+            {
+              "id": "barista-barista-average-seated-down-interact-1",
+              "x": 384,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        },
+        "down-left": {
+          "idle": [
+            {
+              "id": "barista-barista-average-seated-down-left-idle-1",
+              "x": 0,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-down-left-idle-2",
+              "x": 96,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "barista-barista-average-seated-down-left-investigate-1",
+              "x": 192,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-down-left-investigate-2",
+              "x": 288,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "interact": [
+            {
+              "id": "barista-barista-average-seated-down-left-interact-1",
+              "x": 384,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        },
+        "left": {
+          "idle": [
+            {
+              "id": "barista-barista-average-seated-left-idle-1",
+              "x": 0,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-left-idle-2",
+              "x": 96,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "barista-barista-average-seated-left-investigate-1",
+              "x": 192,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-left-investigate-2",
+              "x": 288,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "interact": [
+            {
+              "id": "barista-barista-average-seated-left-interact-1",
+              "x": 384,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        },
+        "up-left": {
+          "idle": [
+            {
+              "id": "barista-barista-average-seated-up-left-idle-1",
+              "x": 0,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-up-left-idle-2",
+              "x": 96,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "barista-barista-average-seated-up-left-investigate-1",
+              "x": 192,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-up-left-investigate-2",
+              "x": 288,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "interact": [
+            {
+              "id": "barista-barista-average-seated-up-left-interact-1",
+              "x": 384,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        },
+        "up": {
+          "idle": [
+            {
+              "id": "barista-barista-average-seated-up-idle-1",
+              "x": 0,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-up-idle-2",
+              "x": 96,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "barista-barista-average-seated-up-investigate-1",
+              "x": 192,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-up-investigate-2",
+              "x": 288,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "interact": [
+            {
+              "id": "barista-barista-average-seated-up-interact-1",
+              "x": 384,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        },
+        "up-right": {
+          "idle": [
+            {
+              "id": "barista-barista-average-seated-up-right-idle-1",
+              "x": 0,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-up-right-idle-2",
+              "x": 96,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "barista-barista-average-seated-up-right-investigate-1",
+              "x": 192,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-up-right-investigate-2",
+              "x": 288,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "interact": [
+            {
+              "id": "barista-barista-average-seated-up-right-interact-1",
+              "x": 384,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        },
+        "right": {
+          "idle": [
+            {
+              "id": "barista-barista-average-seated-right-idle-1",
+              "x": 0,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-right-idle-2",
+              "x": 96,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "barista-barista-average-seated-right-investigate-1",
+              "x": 192,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-right-investigate-2",
+              "x": 288,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "interact": [
+            {
+              "id": "barista-barista-average-seated-right-interact-1",
+              "x": 384,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        },
+        "down-right": {
+          "idle": [
+            {
+              "id": "barista-barista-average-seated-down-right-idle-1",
+              "x": 0,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-down-right-idle-2",
+              "x": 96,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "barista-barista-average-seated-down-right-investigate-1",
+              "x": 192,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "barista-barista-average-seated-down-right-investigate-2",
+              "x": 288,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "interact": [
+            {
+              "id": "barista-barista-average-seated-down-right-interact-1",
+              "x": 384,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        }
+      }
+    }
+  }
+}

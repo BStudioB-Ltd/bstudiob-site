@@ -27,10 +27,45 @@
           <span>RICKROLL → FICTIONAL FBI ALERT</span>
           <i>LOCAL STORY ONLY · NOTHING SENT</i>
         </div>
+        <div class="scene-cafe-cast" aria-hidden="true">
+          <div class="scene-cafe-actor scene-barista">
+            <div
+              class="sprite-frame"
+              data-sprite-actor="barista"
+              data-sprite-character="barista"
+              data-sprite-pose="seated"
+              data-sprite-scale="1.05"
+            ></div>
+          </div>
+          <div class="scene-cafe-actor scene-suspect">
+            <div
+              class="sprite-frame"
+              data-sprite-actor="suspect"
+              data-sprite-character="suspect"
+              data-sprite-pose="seated"
+              data-sprite-scale="1.05"
+            ></div>
+          </div>
+        </div>
         <div class="scene-fbi-party" aria-hidden="true">
-          <span class="fbi-agent">FBI</span>
-          <span class="fictional-hacker">HACKER</span>
-          <span class="fbi-agent">FBI</span>
+          <div class="scene-fbi-agent scene-fbi-agent-left">
+            <div
+              class="sprite-frame"
+              data-sprite-actor="responder-left"
+              data-sprite-character="responder"
+              data-sprite-pose="standing"
+              data-sprite-scale="1.15"
+            ></div>
+          </div>
+          <div class="scene-fbi-agent scene-fbi-agent-right">
+            <div
+              class="sprite-frame"
+              data-sprite-actor="responder-right"
+              data-sprite-character="responder"
+              data-sprite-pose="standing"
+              data-sprite-scale="1.15"
+            ></div>
+          </div>
         </div>
         <div class="scene-responder" aria-hidden="true">
           <span>FBI · FICTIONAL SCENE</span>
@@ -42,13 +77,13 @@
         </header>
         <div class="scene-character-wrap" aria-hidden="true">
           <div class="character-aura"></div>
-          <img
-            class="scene-character"
-            src="../assets/projects/inspector-mira-cave.png"
-            width="341"
-            height="512"
-            alt=""
-          />
+          <div
+            class="scene-character sprite-frame"
+            data-sprite-actor="mira"
+            data-sprite-character="mira"
+            data-sprite-pose="standing"
+            data-sprite-scale="1.35"
+          ></div>
           <span class="character-name">MIRA <i>YOUR GUIDE</i></span>
         </div>
         <div class="scene-dialogue" id="scene-dialogue" aria-live="polite">
