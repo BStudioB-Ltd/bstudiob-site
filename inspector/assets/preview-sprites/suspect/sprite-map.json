@@ -1,0 +1,1184 @@
+{
+  "schemaVersion": 2,
+  "spriteId": "suspect",
+  "proportionId": "suspect-average",
+  "poses": {
+    "standing": {
+      "sheet": "suspect-average-standing.png",
+      "source": {
+        "width": 960,
+        "height": 1152
+      },
+      "cell": {
+        "width": 96,
+        "height": 144
+      },
+      "anchor": {
+        "x": 48,
+        "y": 138
+      },
+      "clips": {
+        "idle": {
+          "frameCount": 2,
+          "frameDurationMs": 420,
+          "loopMode": "loop"
+        },
+        "walk": {
+          "frameCount": 4,
+          "frameDurationMs": 120,
+          "loopMode": "loop"
+        },
+        "investigate": {
+          "frameCount": 2,
+          "frameDurationMs": 260,
+          "loopMode": "once"
+        },
+        "alert": {
+          "frameCount": 2,
+          "frameDurationMs": 180,
+          "loopMode": "once"
+        }
+      },
+      "directions": {
+        "down": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-standing-down-idle-1",
+              "x": 0,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-idle-2",
+              "x": 96,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "walk": [
+            {
+              "id": "suspect-suspect-average-standing-down-walk-1",
+              "x": 192,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-walk-2",
+              "x": 288,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-walk-3",
+              "x": 384,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 2
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-walk-4",
+              "x": 480,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 3
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-standing-down-investigate-1",
+              "x": 576,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-investigate-2",
+              "x": 672,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-standing-down-alert-1",
+              "x": 768,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-alert-2",
+              "x": 864,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ]
+        },
+        "down-left": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-standing-down-left-idle-1",
+              "x": 0,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-left-idle-2",
+              "x": 96,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "walk": [
+            {
+              "id": "suspect-suspect-average-standing-down-left-walk-1",
+              "x": 192,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-left-walk-2",
+              "x": 288,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-left-walk-3",
+              "x": 384,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 2
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-left-walk-4",
+              "x": 480,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 3
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-standing-down-left-investigate-1",
+              "x": 576,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-left-investigate-2",
+              "x": 672,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-standing-down-left-alert-1",
+              "x": 768,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-left-alert-2",
+              "x": 864,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ]
+        },
+        "left": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-standing-left-idle-1",
+              "x": 0,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-left-idle-2",
+              "x": 96,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "walk": [
+            {
+              "id": "suspect-suspect-average-standing-left-walk-1",
+              "x": 192,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-left-walk-2",
+              "x": 288,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            },
+            {
+              "id": "suspect-suspect-average-standing-left-walk-3",
+              "x": 384,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 2
+            },
+            {
+              "id": "suspect-suspect-average-standing-left-walk-4",
+              "x": 480,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 3
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-standing-left-investigate-1",
+              "x": 576,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-left-investigate-2",
+              "x": 672,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-standing-left-alert-1",
+              "x": 768,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-left-alert-2",
+              "x": 864,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ]
+        },
+        "up-left": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-standing-up-left-idle-1",
+              "x": 0,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-left-idle-2",
+              "x": 96,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "walk": [
+            {
+              "id": "suspect-suspect-average-standing-up-left-walk-1",
+              "x": 192,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-left-walk-2",
+              "x": 288,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-left-walk-3",
+              "x": 384,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 2
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-left-walk-4",
+              "x": 480,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 3
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-standing-up-left-investigate-1",
+              "x": 576,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-left-investigate-2",
+              "x": 672,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-standing-up-left-alert-1",
+              "x": 768,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-left-alert-2",
+              "x": 864,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ]
+        },
+        "up": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-standing-up-idle-1",
+              "x": 0,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-idle-2",
+              "x": 96,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "walk": [
+            {
+              "id": "suspect-suspect-average-standing-up-walk-1",
+              "x": 192,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-walk-2",
+              "x": 288,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-walk-3",
+              "x": 384,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 2
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-walk-4",
+              "x": 480,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 3
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-standing-up-investigate-1",
+              "x": 576,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-investigate-2",
+              "x": 672,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-standing-up-alert-1",
+              "x": 768,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-alert-2",
+              "x": 864,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ]
+        },
+        "up-right": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-standing-up-right-idle-1",
+              "x": 0,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-right-idle-2",
+              "x": 96,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "walk": [
+            {
+              "id": "suspect-suspect-average-standing-up-right-walk-1",
+              "x": 192,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-right-walk-2",
+              "x": 288,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-right-walk-3",
+              "x": 384,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 2
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-right-walk-4",
+              "x": 480,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 3
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-standing-up-right-investigate-1",
+              "x": 576,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-right-investigate-2",
+              "x": 672,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-standing-up-right-alert-1",
+              "x": 768,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-up-right-alert-2",
+              "x": 864,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ]
+        },
+        "right": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-standing-right-idle-1",
+              "x": 0,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-right-idle-2",
+              "x": 96,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "walk": [
+            {
+              "id": "suspect-suspect-average-standing-right-walk-1",
+              "x": 192,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-right-walk-2",
+              "x": 288,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            },
+            {
+              "id": "suspect-suspect-average-standing-right-walk-3",
+              "x": 384,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 2
+            },
+            {
+              "id": "suspect-suspect-average-standing-right-walk-4",
+              "x": 480,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 3
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-standing-right-investigate-1",
+              "x": 576,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-right-investigate-2",
+              "x": 672,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-standing-right-alert-1",
+              "x": 768,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-right-alert-2",
+              "x": 864,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ]
+        },
+        "down-right": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-standing-down-right-idle-1",
+              "x": 0,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-right-idle-2",
+              "x": 96,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "walk": [
+            {
+              "id": "suspect-suspect-average-standing-down-right-walk-1",
+              "x": 192,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-right-walk-2",
+              "x": 288,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-right-walk-3",
+              "x": 384,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 2
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-right-walk-4",
+              "x": 480,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 3
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-standing-down-right-investigate-1",
+              "x": 576,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-right-investigate-2",
+              "x": 672,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-standing-down-right-alert-1",
+              "x": 768,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-standing-down-right-alert-2",
+              "x": 864,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ]
+        }
+      }
+    },
+    "seated": {
+      "sheet": "suspect-average-seated.png",
+      "source": {
+        "width": 480,
+        "height": 1152
+      },
+      "cell": {
+        "width": 96,
+        "height": 144
+      },
+      "anchor": {
+        "x": 48,
+        "y": 132
+      },
+      "clips": {
+        "idle": {
+          "frameCount": 2,
+          "frameDurationMs": 480,
+          "loopMode": "loop"
+        },
+        "investigate": {
+          "frameCount": 2,
+          "frameDurationMs": 260,
+          "loopMode": "once"
+        },
+        "alert": {
+          "frameCount": 1,
+          "frameDurationMs": 180,
+          "loopMode": "once"
+        }
+      },
+      "directions": {
+        "down": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-seated-down-idle-1",
+              "x": 0,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-down-idle-2",
+              "x": 96,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-seated-down-investigate-1",
+              "x": 192,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-down-investigate-2",
+              "x": 288,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-seated-down-alert-1",
+              "x": 384,
+              "y": 0,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        },
+        "down-left": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-seated-down-left-idle-1",
+              "x": 0,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-down-left-idle-2",
+              "x": 96,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-seated-down-left-investigate-1",
+              "x": 192,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-down-left-investigate-2",
+              "x": 288,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-seated-down-left-alert-1",
+              "x": 384,
+              "y": 144,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        },
+        "left": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-seated-left-idle-1",
+              "x": 0,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-left-idle-2",
+              "x": 96,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-seated-left-investigate-1",
+              "x": 192,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-left-investigate-2",
+              "x": 288,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-seated-left-alert-1",
+              "x": 384,
+              "y": 288,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        },
+        "up-left": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-seated-up-left-idle-1",
+              "x": 0,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-up-left-idle-2",
+              "x": 96,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-seated-up-left-investigate-1",
+              "x": 192,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-up-left-investigate-2",
+              "x": 288,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-seated-up-left-alert-1",
+              "x": 384,
+              "y": 432,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        },
+        "up": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-seated-up-idle-1",
+              "x": 0,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-up-idle-2",
+              "x": 96,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-seated-up-investigate-1",
+              "x": 192,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-up-investigate-2",
+              "x": 288,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-seated-up-alert-1",
+              "x": 384,
+              "y": 576,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        },
+        "up-right": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-seated-up-right-idle-1",
+              "x": 0,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-up-right-idle-2",
+              "x": 96,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-seated-up-right-investigate-1",
+              "x": 192,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-up-right-investigate-2",
+              "x": 288,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-seated-up-right-alert-1",
+              "x": 384,
+              "y": 720,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        },
+        "right": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-seated-right-idle-1",
+              "x": 0,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-right-idle-2",
+              "x": 96,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-seated-right-investigate-1",
+              "x": 192,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-right-investigate-2",
+              "x": 288,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-seated-right-alert-1",
+              "x": 384,
+              "y": 864,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        },
+        "down-right": {
+          "idle": [
+            {
+              "id": "suspect-suspect-average-seated-down-right-idle-1",
+              "x": 0,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-down-right-idle-2",
+              "x": 96,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "investigate": [
+            {
+              "id": "suspect-suspect-average-seated-down-right-investigate-1",
+              "x": 192,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            },
+            {
+              "id": "suspect-suspect-average-seated-down-right-investigate-2",
+              "x": 288,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 1
+            }
+          ],
+          "alert": [
+            {
+              "id": "suspect-suspect-average-seated-down-right-alert-1",
+              "x": 384,
+              "y": 1008,
+              "width": 96,
+              "height": 144,
+              "order": 0
+            }
+          ]
+        }
+      }
+    }
+  }
+}

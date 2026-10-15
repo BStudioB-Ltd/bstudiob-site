@@ -183,14 +183,19 @@ input:focus-visible {
   filter: blur(7px);
 }
 .scene-character {
-  position: relative;
+  position: absolute;
   z-index: 1;
-  width: auto;
-  height: 198px;
-  object-fit: contain;
-  image-rendering: pixelated;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   filter: drop-shadow(0 7px 12px rgba(0, 0, 0, 0.5));
-  animation: mira-idle 2.7s ease-in-out infinite;
+}
+.sprite-frame {
+  display: block;
+  flex: none;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  pointer-events: none;
 }
 .character-name {
   position: absolute;
@@ -302,46 +307,67 @@ input:focus-visible {
 .scene-responder i {
   color: #b8eaff;
 }
-/* Fictional figures enter together, then visibly escort the hacker off scene. */
+/* Café patrons stay behind the foreground HUD and Mira. */
+.scene-cafe-actor {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.48));
+}
+.scene-barista {
+  left: 45%;
+  bottom: 34%;
+}
+.scene-suspect {
+  left: 70%;
+  bottom: 37%;
+}
+.activity[data-location="coffee-shop"] .scene-barista,
+.activity[data-location="coffee-shop"][data-traffic-found="true"] .scene-suspect {
+  opacity: 1;
+}
+.activity[data-cue="story-traffic-spotted"] .scene-suspect {
+  animation: patron-reveal 620ms ease-out both;
+}
+.activity[data-cue="story-client-disconnected"] .scene-suspect {
+  animation: suspect-flinch 420ms ease-out both;
+}
+.activity[data-cue="story-client-rejoined"] .scene-suspect {
+  animation: suspect-rejoin 700ms ease-out both;
+}
+.activity[data-cue="story-welcome-shown"] .scene-suspect {
+  animation: suspect-notice 520ms ease-out both;
+}
+.activity[data-story-beat="escorted"] .scene-suspect {
+  opacity: 0;
+}
+.scene-escort-suspect {
+  visibility: hidden;
+  opacity: 0;
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.5));
+}
+.activity[data-story-beat="escorted"] .scene-escort-suspect {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Responders enter with the atlas walk frames and accompany the suspect off scene. */
 .scene-fbi-party {
   position: absolute;
   z-index: 2;
-  top: 35%;
-  right: 9%;
+  top: 42%;
+  left: 70%;
   display: flex;
-  align-items: end;
-  gap: 8px;
+  align-items: flex-end;
+  gap: clamp(4px, 1.5vw, 80px);
   opacity: 0;
   pointer-events: none;
+  transform: translateX(-50%);
 }
-.scene-fbi-party span {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 52px;
-  border: 2px solid #8bd3ff;
-  border-radius: 6px 6px 2px 2px;
-  color: #e6f7ff;
-  background: #122842;
-  box-shadow: 0 5px 12px #080d19;
-  font: 800 0.45rem/1.2 var(--mono);
-}
-.scene-fbi-party span::before {
-  content: "";
-  position: absolute;
-  bottom: calc(100% + 4px);
-  width: 21px;
-  height: 21px;
-  border: 2px solid #e8bd92;
-  border-radius: 3px;
-  background: #b98463;
-}
-.scene-fbi-party .fictional-hacker {
-  border-color: #ffad9f;
-  background: #44262f;
-  color: #ffe1d6;
-  font-size: 0.35rem;
+.scene-fbi-agent {
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.5));
 }
 .activity[data-story-beat="music"] .scene-alert,
 .activity[data-story-beat="fbi"] .scene-fbi-party {
@@ -360,12 +386,30 @@ input:focus-visible {
   animation: fbi-escort 1800ms ease-in both;
 }
 @keyframes fbi-enter {
-  from { opacity: 0; transform: translateX(180px); }
-  to { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateX(calc(-50% + 180px)); }
+  to { opacity: 1; transform: translateX(-50%); }
 }
 @keyframes fbi-escort {
-  0%, 15% { opacity: 1; transform: translateX(0); }
-  100% { opacity: 0; transform: translateX(240px); }
+  0%, 15% { opacity: 1; transform: translateX(-50%); }
+  100% { opacity: 0; transform: translateX(calc(-50% + 340px)); }
+}
+@keyframes patron-reveal {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+@keyframes suspect-flinch {
+  0%, 100% { transform: translateX(-50%); }
+  35% { transform: translateX(calc(-50% - 8px)) rotate(-2deg); }
+  70% { transform: translateX(calc(-50% + 4px)) rotate(1deg); }
+}
+@keyframes suspect-rejoin {
+  from { transform: translate(-50%, 5px); }
+  55% { transform: translate(calc(-50% - 9px), 0); }
+  to { transform: translate(-50%, 0); }
+}
+@keyframes suspect-notice {
+  0%, 100% { transform: translateX(-50%); }
+  45% { transform: translate(-50%, -8px); }
 }
 .activity[data-location="coffee-shop"] .scene-boundary {
   opacity: 1;
@@ -816,10 +860,6 @@ input:focus-visible {
 .activity[data-cue="story-traffic-spotted"] .scene-art {
   animation: cave-reveal 900ms ease-out both;
 }
-.activity[data-cue^="story-"] .scene-character,
-.activity[data-cue^="task-"] .scene-character {
-  animation: mira-react 780ms ease-out both;
-}
 .activity[data-cue^="story-"] .character-aura,
 .activity[data-cue^="task-"] .character-aura {
   animation: aura-pulse 780ms ease-out both;
@@ -843,29 +883,6 @@ input:focus-visible {
 @keyframes cave-drift {
   to {
     background-position: 117% 25%, -5% 60%;
-  }
-}
-@keyframes mira-idle {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-@keyframes mira-react {
-  0% {
-    transform: translateY(0) scale(1);
-  }
-  35% {
-    transform: translateY(-15px) scale(1.04);
-  }
-  68% {
-    transform: translateY(1px) scale(0.99);
-  }
-  100% {
-    transform: translateY(0) scale(1);
   }
 }
 @keyframes aura-pulse {
@@ -997,6 +1014,19 @@ input:focus-visible {
   .activity[data-location="coffee-shop"] .scene-character-wrap {
     left: 16%;
     bottom: 31%;
+  }
+  .scene-barista {
+    left: 39%;
+    bottom: 38%;
+  }
+  .scene-suspect {
+    left: 70%;
+    bottom: 40%;
+  }
+  .scene-fbi-party {
+    top: auto;
+    bottom: 40%;
+    gap: 8px;
   }
 }
 @media (max-width: 420px) {
