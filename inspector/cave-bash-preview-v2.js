@@ -296,7 +296,7 @@
       action: "Simulate deauthentication →",
       title: "Disconnect the fictional client",
       objective: "Simulate deauthentication: mark cafe-client-04 disconnected in this page. No wireless signal is sent.",
-      output: "SIMULATED DEAUTHENTICATION\ncafe-client-04 → DISCONNECTED\nOnly the fictional scene state changed. No radio or network action occurred.",
+      output: "SIMULATED DEAUTHENTICATION\ncafe-client-04 → DISCONNECTED\nOnly the fictional in-frame client state changed; no learner lab network was contacted.",
       beat: "identified",
       cue: "story-client-disconnected",
       evidence: "simulated deauthentication: cafe-client-04 disconnected locally",
@@ -402,7 +402,7 @@
       cue: "task-interfaces-inspected",
       evidence: "local interfaces: lo, eth0, 127.0.0.1, 172.18.0.2",
       guidance:
-        "The interface records describe local network surfaces. This preview makes no network request.",
+        "The interface records are fixed local samples. Task Mode does not contact the Inspector backend or a learner lab network.",
     },
   ];
 
@@ -743,7 +743,7 @@
       kind: "complete",
       mode,
       guidance: isStory
-        ? "Mira’s mission is complete: fictional traffic traced, disconnect and rejoin simulated, welcome Rickroll requested, and FBI escort shown. No real network or enforcement action occurred."
+        ? "Mira’s mission is complete: sample traffic traced, disconnect/rejoin simulated, welcome page shown and fictional FBI escort complete. All events were scripted in-frame; no learner lab network or agency was contacted."
         : "Task Mode complete: local user, host and interface evidence are recorded.",
     });
     focusElement($("replay-activity"));

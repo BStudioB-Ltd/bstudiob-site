@@ -42,7 +42,7 @@
 
   const emptyRecord = "No evidence collected yet.";
   const defaultGuidance =
-    "Choose Story Mode for Mira’s fictional café mission or Task Mode for Task 01. Follow the displayed sample steps and watch the scene and evidence record respond. Network actions stay local; no command executes or learner progress is saved.";
+    "Choose Story Mode for Mira’s fictional café mission or Task Mode for Task 01. Follow the displayed sample steps and watch the scene and evidence record respond. Traffic, wireless and FBI events are scripted in-frame; no command executes or learner progress is saved.";
 
   function clearEvidence() {
     const empty = document.createElement("li");
