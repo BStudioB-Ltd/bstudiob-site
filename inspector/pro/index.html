@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="referrer" content="no-referrer" />
+<title>Inspector-Pro — design the topology. Inspect the record.</title>
+<meta name="description" content="Desktop visual topology design and structural inspection. Explore the editable browser sample and a deterministic policy scenario. Installers in preparation." />
+<link rel="canonical" href="https://bstudiob.co.uk/inspector/pro/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Inspector" />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:title" content="Inspector-Pro — design the topology. Inspect the record." />
+<meta property="og:description" content="Explore local topology editing and an explainable simulated policy flow. Desktop installers in preparation." />
+<meta property="og:url" content="https://bstudiob.co.uk/inspector/pro/" />
+<meta property="og:image" content="https://bstudiob.co.uk/assets/brand/inspector-pro-mark.svg" />
+<meta property="og:image:alt" content="Inspector-Pro product mark" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Inspector-Pro — design the topology. Inspect the record." />
+<meta name="twitter:description" content="Desktop topology design. Local browser samples. Installers in preparation." />
+<meta name="twitter:image" content="https://bstudiob.co.uk/assets/brand/inspector-pro-mark.svg" />
+<meta name="twitter:image:alt" content="Inspector-Pro product mark" />
+<link rel="icon" href="../../assets/brand/inspector-pro-mark.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="pro.css" />
+<script src="../demo-pro.js" defer></script>
+<script src="network-demo.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead"><a class="wordmark" href="../"><img src="../../assets/brand/inspector-pro-mark.svg" width="34" height="34" alt="" />INSPECTOR <span>/ PRO</span></a><nav aria-label="Page navigation"><a href="#pro-demo">Topology editor</a><a href="#network-simulation">Policy scenario</a><a href="#availability">Availability</a></nav></header>
+<main id="main">
+<section class="intro" aria-labelledby="title"><div><p class="eyebrow">Desktop topology design / Inspector-Pro</p><h1 id="title">Design the topology.<br /><span>Inspect the record.</span></h1><p class="lead">Put devices, links and their properties on one canvas. Build a topology you can read, edit and check before the next step.</p><div class="action-row"><a class="button" href="#pro-demo">Open the browser editor ↓</a><a href="#network-simulation">Explore a policy scenario →</a></div></div><aside class="intro-note"><span class="eyebrow">Product status / 01</span><h2>In preparation</h2><p>Inspector-Pro is a desktop topology design application. Platform installers are in preparation.</p><p class="muted">The interactive experiences below are browser samples. No network is launched.</p></aside></section>
+<div class="section-heading"><p class="eyebrow">01 / Edit the design record</p><h2>Your topology, made explicit.</h2><p>Arrange devices, inspect properties and connect interfaces. Download the applied preview data to see the underlying record.</p></div>
+        <section
+          id="pro-demo"
+          class="pro-demo"
+          aria-labelledby="pro-demo-title"
+        >
+          <div class="bench-bar">
+            <h3 id="pro-demo-title">Topology editor bench</h3>
+            <span>Browser sample / no network launched</span>
+          </div>
+          <p class="simulation-note">
+            Edit local preview data. Checks cover native topology structure
+            only; no IP, routing, reachability, image existence or deployment
+            check is made. No app backend is contacted.
+          </p>
+          <div class="pro-toolbar">
+            <label for="topology-name"
+              >Topology name<input
+                id="topology-name"
+                value="inspector-preview"
+                maxlength="100" /></label
+            ><button type="button" id="pro-add">+ Add device</button
+            ><button type="button" id="pro-validate">Check structure</button
+            ><button type="button" id="pro-reset" class="quiet">
+              Reset sample ↺
+            </button>
+          </div>
+          <div class="pro-workspace">
+            <div class="canvas-desk">
+              <p class="canvas-help">
+                Select a device to edit. Drag to arrange, or use arrow keys on a
+                focused device.
+              </p>
+              <div
+                id="topology-canvas"
+                class="topology-canvas"
+                role="group"
+                aria-label="Sample topology canvas"
+              >
+                <svg
+                  id="topology-links"
+                  viewBox="0 0 1000 1000"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                ></svg>
+                <div id="topology-nodes"></div>
+              </div>
+              <div class="canvas-register">
+                <span id="pro-count">3 devices / 2 links</span
+                ><span>Local sample data</span>
+              </div>
+            </div>
+            <form id="node-form" class="property-desk" novalidate>
+              <h4>Device record</h4>
+              <p id="node-id" class="docket">Select a device</p>
+              <fieldset id="node-fields">
+                <legend class="sr-only">Selected device properties</legend>
+                <label for="node-name"
+                  >Name<input id="node-name" maxlength="100"
+                /></label>
+                <div class="field-pair">
+                  <label for="node-kind"
+                    >Kind<input id="node-kind" maxlength="100" /></label
+                  ><label for="node-image"
+                    >Image<input id="node-image" maxlength="200"
+                  /></label>
+                </div>
+                <label for="node-exec"
+                  >Exec <small>one command per line / stored text only</small
+                  ><textarea id="node-exec" rows="2"></textarea></label
+                ><label for="node-env"
+                  >Env <small>JSON object of string values</small
+                  ><textarea
+                    id="node-env"
+                    rows="2"
+                    aria-describedby="node-error"
+                  ></textarea></label
+                ><label for="node-binds"
+                  >Binds <small>one mount per line / stored text only</small
+                  ><textarea id="node-binds" rows="2"></textarea>
+                </label>
+                <div class="field-pair">
+                  <label for="node-x"
+                    >Position X (%)<input
+                      id="node-x"
+                      type="number"
+                      min="12"
+                      max="88"
+                      step="1" /></label
+                  ><label for="node-y"
+                    >Position Y (%)<input
+                      id="node-y"
+                      type="number"
+                      min="15"
+                      max="85"
+                      step="1"
+                  /></label>
+                </div>
+                <p id="node-error" class="error" role="alert"></p>
+                <div class="action-row">
+                  <button type="submit">Apply device</button
+                  ><button type="button" id="pro-remove-node" class="quiet">
+                    Remove device
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <div class="link-desk">
+            <div>
+              <h4>Connections</h4>
+              <p class="muted">
+                New ordinary links receive the next unused
+                <code>ethN</code> interface on each device. Edit an existing
+                record to inspect its endpoints.
+              </p>
+              <ul id="link-list"></ul>
+            </div>
+            <form id="link-form" novalidate>
+              <h4 id="link-form-title">Create ordinary link</h4>
+              <div class="field-pair">
+                <label for="link-source"
+                  >Source device<select id="link-source"></select></label
+                ><label for="link-target"
+                  >Target device<select id="link-target"></select
+                ></label>
+              </div>
+              <div id="link-interface-fields" class="field-pair" hidden>
+                <label for="link-source-interface"
+                  >Source interface<input
+                    id="link-source-interface"
+                    maxlength="60" /></label
+                ><label for="link-target-interface"
+                  >Target interface<input
+                    id="link-target-interface"
+                    maxlength="60"
+                /></label>
+              </div>
+              <p id="link-error" class="error" role="alert"></p>
+              <div class="action-row">
+                <button id="link-submit" type="submit">Create link</button
+                ><button id="link-new" type="button" class="quiet" hidden>
+                  Cancel edit
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="validation-desk">
+            <div>
+              <h4>Structure findings</h4>
+              <p id="pro-status" role="status" aria-live="polite">
+                Sample ready. Select Check structure to inspect the record.
+              </p>
+              <ul id="pro-errors" aria-label="Structural errors"></ul>
+            </div>
+            <div class="export-desk">
+              <p class="docket">Preview data downloads</p>
+              <button id="pro-json" type="button">Sample JSON ↓</button
+              ><button id="pro-yaml" type="button">
+                Sample Containerlab YAML ↓
+              </button>
+              <p>
+                Browser-generated files only. Export uses applied edits. These
+                files do not launch a network or prove a native app save/export
+                journey.
+              </p>
+            </div>
+          </div>
+          <noscript
+            ><p class="no-script">
+              Enable JavaScript to edit the browser sample topology.
+            </p></noscript
+          >
+        </section>
+
+<section id="network-simulation" class="scenario" aria-labelledby="scenario-title">
+<header class="bench-bar"><div><p class="eyebrow">02 / Explain the policy</p><h2 id="scenario-title">Same attempt. Different boundary.</h2></div><span class="sample-tag">Simulated browser sample</span></header>
+<p>This deterministic illustration shows an attacker attempting to reach a service through a router/firewall boundary. Apply a deny rule, then replay the same attempt to inspect the changed result. All events are local sample data; no network action occurs.</p>
+<div class="scenario-toolbar"><button id="scenario-play" type="button">Play scenario</button><button id="scenario-harden" type="button">Apply boundary deny rule</button><button id="scenario-reset" type="button" class="quiet">Reset scenario</button><span id="policy-state">Current policy: allow untrusted access</span></div>
+<div class="scenario-grid"><div class="flow-panel"><div class="canvas-register"><span>FLOW / ILLUSTRATION</span><span id="flow-result">Awaiting playback</span></div>
+<div class="map-scroll" tabindex="0" role="group" aria-label="Traffic flow diagram; scroll horizontally on narrow screens"><svg id="scenario-map" viewBox="0 0 800 320" role="img" aria-labelledby="map-title map-desc"><title id="map-title">Simulated browser sample: attacker, boundary and service</title><desc id="map-desc">No attempt played yet. The topology connects an attacker to a router/firewall boundary and then a service.</desc><path class="base-link" d="M150 145 H400 H650"/><g id="scenario-flow"></g><g class="map-device"><rect x="60" y="103" width="180" height="84" rx="6"/><text x="150" y="136">ATTACKER</text><text class="device-caption" x="150" y="163">Untrusted sample</text></g><g class="map-device"><rect x="295" y="103" width="210" height="84" rx="6"/><text x="400" y="136">ROUTER / FIREWALL</text><text class="device-caption" x="400" y="163">Policy boundary</text></g><g class="map-device"><rect x="560" y="103" width="180" height="84" rx="6"/><text x="650" y="136">SERVICE</text><text class="device-caption" x="650" y="163">Protected sample</text></g><text class="map-note" x="400" y="251">ATTEMPT → POLICY DECISION → RESULT</text></svg></div>
+<p class="legend">Amber = attempted / allowed · Mint + stop marker = blocked. Scroll the diagram on narrow screens.</p>
+<div class="findings"><article><h3>Before / weak policy</h3><p>Untrusted access is allowed at the boundary. In this sample, the attempt reaches the service.</p></article><article><h3>After / deny rule</h3><p id="after-finding">Apply the deny rule and replay to collect the changed result.</p></article></div></div>
+<section class="timeline-panel" aria-labelledby="timeline-title"><p class="eyebrow">Evidence / ordered events</p><h3 id="timeline-title">Playback record</h3><p id="scenario-status" role="status" aria-live="polite">Ready. Play the weak-policy sample, then apply the deny rule and replay.</p><ol id="scenario-events" aria-label="Simulated browser sample events"></ol></section></div>
+<p class="boundary-note">This scenario explains a fixed policy outcome. It does not validate the editor topology, execute commands, contact a service or prove native lab behaviour. The editor and scenario have independent local state.</p><noscript><p>Enable JavaScript to play this local scenario.</p></noscript>
+</section>
+<section id="availability" class="availability"><div><p class="eyebrow">Next / desktop application</p><h2>Platform installers<br />are in preparation.</h2></div><div><p>Inspector-Pro availability is in preparation. There is no installer download available here.</p><p>The browser editor exports preview data files only. A structural pass does not establish reachability, deployment readiness or runtime safety.</p><a href="../">Return to the Inspector hub →</a></div></section>
+</main><footer><a href="../">← Inspector hub</a><span>Inspector-Pro / a BStudioB project</span><a href="../../privacy.html">Privacy notice</a></footer>
+</body></html>
