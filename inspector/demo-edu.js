@@ -42,7 +42,7 @@
 
   const emptyRecord = "No evidence collected yet.";
   const defaultGuidance =
-    "Choose Story Mode for Mira’s fictional café mission or Task Mode for Task 01. Story Mode’s fictional Rickroll welcome-page beat has optional Play, which loads the official Rick Astley video from YouTube. The Cave Bash menu and Task Mode do not use YouTube.";
+    "Choose Story Mode for Mira’s fictional café mission or Task Mode for Task 01. Follow the displayed sample steps and watch the scene and evidence record respond. Network actions stay local; no command executes or learner progress is saved.";
 
   function clearEvidence() {
     const empty = document.createElement("li");
