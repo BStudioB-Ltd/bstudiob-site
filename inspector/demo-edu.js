@@ -102,7 +102,7 @@
         videoLink.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
         videoLink.target = "_blank";
         videoLink.rel = "noopener noreferrer";
-        videoLink.textContent = "Open the official YouTube video (third-party playback fallback)";
+        videoLink.textContent = "Open the official music video";
         item.append(document.createTextNode(" — "), videoLink);
       }
       evidence.append(item);

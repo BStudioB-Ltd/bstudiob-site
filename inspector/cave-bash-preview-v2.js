@@ -339,7 +339,7 @@
       beat: "welcome",
       cue: "story-rickroll-played",
       evidence: "Play clicked; Rickroll player requested; fictional music revealed Table 04 and triggered a local story FBI alert",
-      guidance: "Your Play click requested the third-party YouTube player. In the story, the Rickroll reveals Table 04 and triggers a fictional FBI alert locally. No alert is sent. Continue to see the agents arrive.",
+      guidance: "The café welcome page is shown. In the story, music reveals Table 04 and triggers a fictional FBI alert locally. Continue to see the agents arrive.",
       sceneCopy: "The fictional welcome page is open. Start the Rickroll: in the story, music rings out from the hacker’s table.",
       signal: "Welcome screen visible · video awaits your click.",
       client: "TABLE 04 · WELCOME PAGE",
