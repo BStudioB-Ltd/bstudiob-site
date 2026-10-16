@@ -4,9 +4,45 @@
   const guidance = document.getElementById("edu-expected");
   if (!frame || !evidence || !guidance) return;
 
+  const spriteCharacters = new Set(["mira", "barista", "suspect", "responder"]);
+  const spriteMaps = new Map();
+
+  async function replyWithSpriteMap(packet, source) {
+    try {
+      if (!spriteMaps.has(packet.character)) {
+        // Resolve only our fixed asset path against the configured frame URL.
+        const frameUrl = new URL(frame.src, document.baseURI);
+        if (frameUrl.origin !== window.location.origin) return;
+        const mapUrl = new URL(
+          `assets/preview-sprites/${packet.character}/sprite-map.json`,
+          frameUrl,
+        );
+        const pendingMap = fetch(mapUrl).then((response) => {
+          if (!response.ok) throw new Error("Sprite map unavailable");
+          return response.json();
+        });
+        spriteMaps.set(packet.character, pendingMap);
+        pendingMap.catch(() => spriteMaps.delete(packet.character));
+      }
+      const map = await spriteMaps.get(packet.character);
+      if (source !== frame.contentWindow) return;
+      // The sandbox has an opaque origin, so the verified frame requires '*'.
+      source.postMessage({
+        type: "inspector-edu-sprite-map",
+        version: 1,
+        kind: "result",
+        requestId: packet.requestId,
+        character: packet.character,
+        map,
+      }, "*");
+    } catch {
+      // The child's bounded retry also covers transient fetch failures.
+    }
+  }
+
   const emptyRecord = "No evidence collected yet.";
   const defaultGuidance =
-    "Cave Bash is the startup menu. Choose Mira’s fictional café hacker mission in Story Mode or Task 01 in Task Mode. Story network actions are local simulations; Play starts third-party YouTube.";
+    "Choose Story Mode for Mira’s fictional café mission or Task Mode for Task 01. Story Mode’s fictional Rickroll welcome-page beat has optional Play, which loads the official Rick Astley video from YouTube. The Cave Bash menu and Task Mode do not use YouTube.";
 
   function clearEvidence() {
     const empty = document.createElement("li");
@@ -18,6 +54,18 @@
   window.addEventListener("message", (message) => {
     if (message.source !== frame.contentWindow) return;
     const packet = message.data;
+    if (packet?.type === "inspector-edu-sprite-map") {
+      if (
+        packet.version === 1 &&
+        packet.kind === "request" &&
+        typeof packet.requestId === "string" &&
+        /^[a-z0-9-]{1,64}$/.test(packet.requestId) &&
+        spriteCharacters.has(packet.character)
+      ) {
+        void replyWithSpriteMap(packet, message.source);
+      }
+      return;
+    }
     if (
       !packet ||
       packet.type !== "inspector-edu-preview" ||

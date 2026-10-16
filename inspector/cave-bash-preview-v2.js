@@ -108,15 +108,70 @@
     }
   }
 
+  const spriteMapLoads = new Map();
+  const spriteMapRequests = new Map();
+  let spriteRequestSequence = 0;
+
+  window.addEventListener("message", (message) => {
+    if (message.source !== window.parent) return;
+    const packet = message.data;
+    if (
+      !packet || packet.type !== "inspector-edu-sprite-map" ||
+      packet.version !== 1 || packet.kind !== "result"
+    ) return;
+    const request = spriteMapRequests.get(packet.requestId);
+    if (!request || packet.character !== request.character || !packet.map?.poses) return;
+    window.clearInterval(request.retry);
+    spriteMapRequests.delete(packet.requestId);
+    request.resolve(packet.map);
+  });
+
+  function loadSpriteMap(character, mapUrl) {
+    if (spriteMapLoads.has(character)) return spriteMapLoads.get(character);
+    const pendingMap = window.parent === window
+      ? fetch(mapUrl).then((response) => {
+        if (!response.ok) throw new Error("Sprite map unavailable");
+        return response.json();
+      })
+      : new Promise((resolve, reject) => {
+        const requestId = `sprite-${++spriteRequestSequence}`;
+        let attempts = 0;
+        const request = {
+          character,
+          resolve,
+          retry: 0,
+        };
+        const send = () => {
+          if (++attempts > 40) {
+            window.clearInterval(request.retry);
+            spriteMapRequests.delete(requestId);
+            reject(new Error("Sprite map bridge unavailable"));
+            return;
+          }
+          // Retry covers a parent defer script that starts after this frame.
+          window.parent.postMessage({
+            type: "inspector-edu-sprite-map",
+            version: 1,
+            kind: "request",
+            requestId,
+            character,
+          }, "*");
+        };
+        spriteMapRequests.set(requestId, request);
+        request.retry = window.setInterval(send, 250);
+        send();
+      });
+    spriteMapLoads.set(character, pendingMap);
+    return pendingMap;
+  }
+
   async function loadSpriteActor(node) {
     const character = node.dataset.spriteCharacter;
     const poseName = node.dataset.spritePose;
     const actorId = node.dataset.spriteActor;
     const mapUrl = new URL(`assets/preview-sprites/${character}/sprite-map.json`, document.baseURI);
     try {
-      const response = await fetch(mapUrl);
-      if (!response.ok) throw new Error("Sprite map unavailable");
-      const map = await response.json();
+      const map = await loadSpriteMap(character, mapUrl);
       const pose = map.poses[poseName];
       if (!pose) throw new Error("Sprite pose unavailable");
       node.style.backgroundImage = `url("${new URL(pose.sheet, mapUrl).href}")`;
