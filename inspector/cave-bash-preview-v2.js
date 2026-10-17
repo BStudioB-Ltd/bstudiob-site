@@ -478,7 +478,7 @@
     }, 2600);
   }
 
-  function showMainMenu() {
+  function showMainMenu({ focusButton = true } = {}) {
     view = "menu";
     activeMode = null;
     setLocation("cave", "CAVE BASH · STARTUP");
@@ -513,7 +513,7 @@
         { label: "Options", disabled: true },
       ],
     });
-    focusSceneAction();
+    if (focusButton) focusSceneAction();
   }
 
   function resetPreview() {
@@ -827,6 +827,6 @@
   $("reset-preview").addEventListener("click", resetPreview);
 
   loadSceneSprites();
-  showMainMenu();
+  showMainMenu({ focusButton: false });
   publish({ kind: "reset" });
 })();
