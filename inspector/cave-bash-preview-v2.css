@@ -786,10 +786,6 @@ input:focus-visible {
   border: 1px solid var(--line);
   border-radius: 5px;
 }
-.video-fallback code {
-  color: var(--blue);
-  overflow-wrap: anywhere;
-}
 .completion-panel {
   padding: 15px;
   border-color: #37694b;
