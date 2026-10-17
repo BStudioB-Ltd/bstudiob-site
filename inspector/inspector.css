@@ -98,6 +98,12 @@ select:focus-visible {
   outline: 3px solid var(--orange);
   outline-offset: 3px;
 }
+#edu:focus-visible,
+#pro:focus-visible,
+#pilot-enquiry:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
 p {
   margin: 0.6rem 0 1rem;
 }
