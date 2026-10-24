@@ -71,7 +71,7 @@ test('Home keeps its tagline and About tells the company story', () => {
   }
 });
 
-test('customer account slide embeds the working portal with a direct fallback without moving the enquiry form', () => {
+test('customer account slide embeds the portal without exposing a standalone portal link', () => {
   const account = home.match(/<article\b(?=[^>]*id="hero-slide-account")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
   const contact = home.match(/<article\b(?=[^>]*id="hero-slide-contact")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
   assert.match(account, /Buildy/);
@@ -80,8 +80,8 @@ test('customer account slide embeds the working portal with a direct fallback wi
   assert.match(account, /status and expiry/i);
   assert.match(account, /<iframe[^>]+src="https:\/\/product-license-manager-staging\.nathan-e53\.workers\.dev\//);
   assert.match(account, /title="BStudioB customer sign in and account creation"/);
-  assert.match(account, /href="https:\/\/product-license-manager-staging\.nathan-e53\.workers\.dev\//);
-  assert.match(account, /Open account portal/i);
+  assert.doesNotMatch(account, /href="https:\/\/product-license-manager-staging\.nathan-e53\.workers\.dev\//);
+  assert.doesNotMatch(account, /Open account portal/i);
   assert.doesNotMatch(account, /Planned customer portal|not available yet|not open yet|account\.bstudiob\.co\.uk/i);
   assert.match(contact, /Have a product, pilot or partnership in mind\?/);
   assert.equal((home.match(/<form\b/g) || []).length, 1);
@@ -112,14 +112,17 @@ test('successful iframe sign-in redirects to a first-party My account dashboard 
   const accountPage = readFileSync(accountPagePath, 'utf8');
   assert.match(accountPage, /<iframe[^>]+class="account-portal-frame"/);
   assert.match(accountPage, /src="https:\/\/product-license-manager-staging\.nathan-e53\.workers\.dev\//);
+  assert.doesNotMatch(accountPage, /href="https:\/\/product-license-manager-staging\.nathan-e53\.workers\.dev\//);
+  assert.doesNotMatch(accountPage, /Open account portal/i);
   assert.match(accountPage, /id="account-frame-heading"/);
 });
 
-test('embedded account portal is responsive and has a usable direct-link fallback', () => {
+test('embedded account portal is responsive and has no standalone portal fallback', () => {
   const account = home.match(/<article\b(?=[^>]*id="hero-slide-account")[^>]*>[\s\S]*?<\/article>/)?.[0] ?? '';
   assert.match(account, /class="account-portal-frame"/);
   assert.match(account, /loading="lazy"/);
   assert.match(account, /\?embed=1/);
+  assert.doesNotMatch(account, /href="https:\/\/product-license-manager-staging\.nathan-e53\.workers\.dev\//);
   assert.match(account, /referrerpolicy="strict-origin-when-cross-origin"/);
   assert.match(css, /\.account-portal-frame\s*\{[^}]*width:\s*100%/);
   assert.match(css, /\.account-portal-frame\s*\{[^}]*min-height:/);
