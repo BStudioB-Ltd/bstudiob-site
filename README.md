@@ -4,6 +4,8 @@ Static public landing site for BStudioB. Its current public lineup is Tributary 
 
 Search and AI-discovery files include `sitemap.xml`, `robots.txt`, `llms.txt`, canonical/social metadata and schema.org structured data. These improve machine-readable context but do not guarantee rankings or inclusion in any search or AI answer.
 
+The evidence-led crawl, indexing and editorial checklist is in [`docs/seo/discoverability-runbook.md`](docs/seo/discoverability-runbook.md). Run the repository's static contract suite with `node --test tests/*.test.mjs`.
+
 ## Publishing review checklist
 
 1. Keep this repository public for GitHub Pages on GitHub Free; the company site is intended to resolve at `https://bstudiob.co.uk/`.

@@ -74,7 +74,7 @@ test('AI-discovery and sitemap records use Tributary as the current name and dat
   assert.match(llms, /Tributary[^\n]*https:\/\/bstudiob\.co\.uk\/tributary\//);
   assert.match(llms, /formerly FlowCue/i);
   assert.doesNotMatch(llms, /- FlowCue:/);
-  assert.match(sitemap, /<loc>https:\/\/bstudiob\.co\.uk\/tributary\/<\/loc><lastmod>2026-10-08<\/lastmod>/);
+  assert.match(sitemap, /<loc>https:\/\/bstudiob\.co\.uk\/tributary\/<\/loc><lastmod>2026-10-13<\/lastmod>/);
 });
 
 test('carousel contains the overview followed by Church, Work, and Artist slides', () => {

@@ -5,6 +5,8 @@ BStudioB Ltd is an independent UK software studio. It creates focused product pr
 Canonical website: https://bstudiob.co.uk/
 Contact: mailto:hello@bstudiob.co.uk
 
+Founder: Nathan Brown-Bennett, Founder and Director. The company identifies its founder on the homepage and links to his first-party biography: https://nathanbrownbennett.github.io/NathanBrown-Bennett/index.html
+
 ## Services
 
 - Custom Workflow Solutions: https://bstudiob.co.uk/services.html
