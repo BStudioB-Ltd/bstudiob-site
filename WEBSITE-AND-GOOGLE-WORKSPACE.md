@@ -1,5 +1,12 @@
 # Website and Google Workspace verification
 
+## Post-publication verification — 26 October 2026
+
+- Search-readiness commit `3622b072ccc6c106ab161addf84ead64617a5159` was pushed to `main`. GitHub Pages is configured to publish the repository root from `main`; its latest build reported `built` for this commit at 11:33:23 UTC.
+- The live `https://bstudiob.co.uk/robots.txt` now contains `User-agent: GPTBot` / `Disallow: /`, a separate `User-agent: OAI-SearchBot` / `Allow: /`, and retains `/admin/` exclusion. This is a crawler preference, not access control.
+- In the existing authenticated BStudioB Chrome profile, Bing Webmaster Tools still selected `bstudiob.co.uk/`. The existing `https://bstudiob.co.uk/sitemap.xml` entry now shows **Success**, last submitted 10/25/2026, last crawled 10/25/2026, 11 URLs discovered, and 0 sitemap errors/warnings. No duplicate sitemap submission was made.
+- The unrelated `.DS_Store`, `assets/brand/tributary-mark.png`, `docs/superpowers/plans/2026-10-23-seo-discoverability.md`, and `output/` screenshots were left uncommitted. Google Search Console was not reopened after publication; use its existing 25 October evidence above and refresh only if a current report is needed.
+
 ## Search-readiness follow-up — 26 October 2026
 
 - **Live crawl recheck:** all 11 URLs currently listed by `https://bstudiob.co.uk/sitemap.xml` returned HTTP 200 and each page's canonical matched its sitemap URL. `robots.txt` and `sitemap.xml` returned HTTP 200. HTTP apex, both `www` variants, and the GitHub Pages project URL returned a single 301 to the canonical HTTPS apex. The live sitemap includes `/products/pit/`.
