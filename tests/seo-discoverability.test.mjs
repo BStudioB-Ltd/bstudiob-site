@@ -12,6 +12,7 @@ const robots = read('robots.txt');
 const expectedRoutes = [
   '/',
   '/tributary/',
+  '/collections/creative/',
   '/studio-tools.html',
   '/inspector/',
   '/inspector/edu/',
