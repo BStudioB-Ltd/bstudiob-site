@@ -469,7 +469,7 @@ footer p { margin: 0; } footer div { display: flex; gap: 1.3rem; }
 .product-gallery-controls button:focus-visible { outline: 3px solid #7f9900; outline-offset: 3px; }
 .product-gallery-slide[hidden] { display: none; }
 .product-gallery-slide.is-active { animation: studio-slide-in .34s both cubic-bezier(.2,.65,.25,1); }
-.product-preview-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; }
+.product-preview-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .7rem; }
 .product-preview-card { min-width: 0; min-height: 420px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(16,19,26,.22); color: var(--ink); background: #e9e7e0; transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease; }
 .product-preview-card:hover, .product-preview-card:focus-visible { transform: translateY(-4px); box-shadow: 5px 5px 0 rgba(16,19,26,.14); }
 .product-preview-card:focus-visible { outline: 3px solid #7f9900; outline-offset: 3px; }
