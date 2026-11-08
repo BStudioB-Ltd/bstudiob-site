@@ -45,6 +45,7 @@ nav { position: sticky; top: 0; z-index: 100; display: flex; min-height: 72px; a
 .product-collections-heading h2 em, .creative-collection-hero h1 em, .creative-collection-intro h2 em { font-family: Georgia, serif; font-weight: 400; }
 .product-collections-heading > p { max-width: 28rem; margin: 0; color: #4e5661; }
 .product-collections-list { display: grid; gap: 1rem; }
+.resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: 1rem; }
 .resource-card { border: 1px solid #c7ceca; background: #e6e0f3; }
 .resource-card > div { max-width: 52rem; }
 .resource-card a { margin-top: 1rem; }

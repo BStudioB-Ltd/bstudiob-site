@@ -12,7 +12,7 @@ test('homepage wordmark points to a packaged first-party image that exists', () 
   assert.equal(logoPath, 'assets/brand/bstudiob-signature-ltd.png');
   assert.equal(existsSync(new URL(`../${logoPath}`, import.meta.url)), true);
   assert.match(css, /background:\s*url\("assets\/brand\/bstudiob-signature-ltd\.png"\)/);
-  assert.match(home, /styles\.css\?v=resources-20261108-a/);
+  assert.match(home, /styles\.css\?v=resources-20261108-b/);
   for (const page of ['../services.html', '../myaccount/index.html', '../products/pit/index.html', '../creative-live.html', '../tributary/index.html']) {
     assert.match(readFileSync(new URL(page, import.meta.url), 'utf8'), /styles\.css\?v=brand-lockup-20261013-a/);
   }
