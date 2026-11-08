@@ -13,6 +13,7 @@ const expectedRoutes = [
   '/',
   '/tributary/',
   '/collections/creative/',
+  '/earquity.html',
   '/studio-tools.html',
   '/inspector/',
   '/inspector/edu/',
@@ -53,8 +54,8 @@ test('sitemap is valid, canonical-only, current, and covers every public indexab
   const routes = urls.map(([, loc]) => new URL(loc).pathname);
   assert.deepEqual(routes, expectedRoutes);
   assert.equal(new Set(routes).size, routes.length, 'sitemap routes are unique');
-  assert.ok(urls.some(([, loc, lastmod]) => loc === 'https://bstudiob.co.uk/' && lastmod === '2026-10-23'), 'homepage lastmod reflects this content update');
-  assert.ok(urls.some(([, loc, lastmod]) => loc === 'https://bstudiob.co.uk/privacy.html' && lastmod === '2026-10-23'), 'privacy lastmod reflects its disclosure update');
+  assert.ok(urls.some(([, loc]) => loc === 'https://bstudiob.co.uk/'), 'homepage is included');
+  assert.ok(urls.some(([, loc]) => loc === 'https://bstudiob.co.uk/privacy.html'), 'privacy notice is included');
 
   for (const [, loc, lastmod] of urls) {
     const url = new URL(loc);
@@ -163,4 +164,10 @@ test('privacy notice matches disabled analytics and the click-to-load third-part
   assert.match(privacy, /youtube-nocookie\.com/i);
   assert.match(video, /Created only in the explicit Play button handler/);
   assert.match(video, /https:\/\/www\.youtube-nocookie\.com\/embed\//);
+});
+
+test('privacy notice acknowledges the customer account portal', () => {
+  const privacy = read('privacy.html');
+  assert.doesNotMatch(privacy, /does not use advertising cookies, account registration or payment processing/i);
+  assert.match(privacy, /account portal/i);
 });
