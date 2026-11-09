@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">MemGos arch and sun mark</title>
+  <path fill="#ef7463" d="M18 45c0-15 12-26 27-26h38c15 0 27 11 27 26v8H18z"/>
+  <rect x="31" y="11" width="23" height="16" rx="5" fill="#ef7463"/><rect x="74" y="11" width="23" height="16" rx="5" fill="#ef7463"/>
+  <path fill="#ef7463" d="M18 45h25v66H18zM85 45h25v66H85z"/>
+  <path fill="#f5dfbc" d="M18 53h25v19H18zM85 53h25v19H85z"/>
+  <path fill="#163a4b" d="M18 72h25v19H18zM85 72h25v19H85z"/>
+  <circle cx="64" cy="60" r="13" fill="#ef7463"/>
+  <path fill="#163a4b" d="M35 103c0-5 4-9 9-9h40c5 0 9 4 9 9v8H35z"/>
+</svg>

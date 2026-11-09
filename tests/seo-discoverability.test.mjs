@@ -14,6 +14,7 @@ const expectedRoutes = [
   '/tributary/',
   '/collections/creative/',
   '/earquity.html',
+  '/MemGos/',
   '/studio-tools.html',
   '/inspector/',
   '/inspector/edu/',
