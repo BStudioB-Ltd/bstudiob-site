@@ -1,0 +1,6 @@
+# MemGos routing and release boundaries
+
+- The BStudioB project and licensing information page is `/MemGos/` on `https://bstudiob.co.uk`; `/MemGos` redirects to the trailing-slash route on ordinary static hosting. The route is case-sensitive on the host.
+- The intended customer app origin is `https://memgos.bstudiob.co.uk`. This repository does not configure its DNS, hosting, authentication, payment, upload, processing or customer data storage. Those require implementation and end-to-end verification before the app address is presented as live.
+- The page describes planned digital instructions and parts lists, optional community sharing and later kits. It does not define licence grants, terms, pricing, commercial availability, or make claims that the research models are physically buildable. Final product licensing and terms require separate decisions and implementation before purchase is offered.
+- The experimental Radcliffe imagery needs its linked photo, OpenStreetMap and Environment Agency credits; retain them with the images.
