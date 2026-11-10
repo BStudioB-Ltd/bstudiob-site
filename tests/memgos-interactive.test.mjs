@@ -39,3 +39,10 @@ test('the photo mosaic is a separately credited 2D study with section controls',
   assert.ok(existsSync('MemGos/interactive/radcliffe-mosaic.png'));
   assert.ok(existsSync('MemGos/interactive/LDRAW-CREDITS.txt'));
 });
+
+test('the updated car data, viewer and credits use versioned URLs', () => {
+  const page=readFileSync('MemGos/interactive/index.html','utf8');
+  for (const name of ['review-data.js','viewer.js','LDRAW-CREDITS.txt']) {
+    assert.ok(page.includes(`${name}?v=combined-car-20261110`), `${name} must have the matching asset version`);
+  }
+});
