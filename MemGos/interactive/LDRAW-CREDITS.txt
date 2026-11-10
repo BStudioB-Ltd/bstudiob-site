@@ -1,0 +1,1149 @@
+The displayed brick geometry was derived from the LDraw Parts Library, with transformations and colours used to depict the MemGos model. Part and primitive credits and licence notices from the pinned archive follow. LDraw is an independent community project: https://www.ldraw.org/
+Licences: https://creativecommons.org/licenses/by/4.0/ and https://creativecommons.org/licenses/by/2.0/
+
+ldraw/p/1-16chrd.dat
+0 Name: 1-16chrd.dat
+0 Author: Philippe Hurbain [Philo]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2015-10-11 [PTadmin] Official Update 2015-01
+
+ldraw/p/1-4cyls.dat
+0 Name: 1-4cyls.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 1998-12-15 [PTadmin] Official Update 1998-10
+0 !HISTORY 2002-07-03 [sbliss] Added BFC statement
+0 !HISTORY 2002-08-18 [PTadmin] Official Update 2002-04
+0 !HISTORY 2007-06-22 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-02-16 [Philo] Changed to CCW
+0 !HISTORY 2012-03-30 [PTadmin] Official Update 2012-01
+
+ldraw/p/1-8chrd.dat
+0 Name: 1-8chrd.dat
+0 Author: Orion Pobursky [OrionP]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2004-04-22 [PTadmin] Official Update 2004-02
+0 !HISTORY 2007-06-22 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2023-10-27 [OrionP] Rebuilt with PrimGen2, original author westrate
+0 !HISTORY 2023-10-31 [OrionP] Official Update 2023-05
+
+ldraw/p/2-4chrd.dat
+0 Name: 2-4chrd.dat
+0 Author: Philippe Hurbain [Philo]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2014-06-21 [PTadmin] Official Update 2014-01
+
+ldraw/p/2-4cyli.dat
+0 Name: 2-4cyli.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-03-23 [sbliss] Added BFC statement; compacted code
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2004-12-11 [nielsk] Recreated using Primitive Generator, Edge lines fixed, BFC changed to CCW
+0 !HISTORY 2005-12-28 [PTadmin] Official Update 2005-01
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/p/2-4edge.dat
+0 Name: 2-4edge.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2017-01-15 [Steffen] BFCed
+0 !HISTORY 2017-12-30 [PTadmin] Official Update 2017-01
+
+ldraw/p/2-4ndis.dat
+0 Name: 2-4ndis.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-03-23 [sbliss] Added BFC statement; compacted code
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-02-16 [Philo] Changed to CCW
+0 !HISTORY 2012-03-30 [PTadmin] Official Update 2012-01
+
+ldraw/p/3-16cyli.dat
+0 Name: 3-16cyli.dat
+0 Author: Mark Kennedy [mkennedy]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2004-03-02 [PTadmin] Official Update 2004-01
+0 !HISTORY 2004-12-11 [nielsk] Recreated using Primitive Generator, Edge lines fixed, BFC changed to CCW
+0 !HISTORY 2005-12-28 [PTadmin] Official Update 2005-01
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/p/3-16edge.dat
+0 Name: 3-16edge.dat
+0 Author: Donald Sutter [technog]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2004-03-02 [PTadmin] Official Update 2004-01
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2017-01-15 [Steffen] BFCed
+0 !HISTORY 2017-12-30 [PTadmin] Official Update 2017-01
+
+ldraw/p/4-4cyli.dat
+0 Name: 4-4cyli.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 1998-12-15 [PTadmin] Official Update 1998-10
+0 !HISTORY 2002-03-23 [sbliss] Added BFC statement; merged headers from files in distributions LDraw 0.27 and Complete.
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2004-12-14 [guyvivan] BFC CCW
+0 !HISTORY 2005-12-28 [PTadmin] Official Update 2005-01
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/p/4-4cylo.dat
+0 Name: 4-4cylo.dat
+0 Author: Mark Kennedy [mkennedy]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2010-04-05 [PTadmin] Official Update 2010-01
+
+ldraw/p/4-4disc.dat
+0 Name: 4-4disc.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 1998-12-15 [PTadmin] Official Update 1998-10
+0 !HISTORY 2002-03-23 [sbliss] Added BFC statement
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/p/4-4edge.dat
+0 Name: 4-4edge.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 1998-12-15 [PTadmin] Official Update 1998-10
+0 !HISTORY 2005-12-28 [PTadmin] Official Update 2005-01
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2017-01-15 [Steffen] BFCed
+0 !HISTORY 2017-12-30 [PTadmin] Official Update 2017-01
+
+ldraw/p/4-4ndis.dat
+0 Name: 4-4ndis.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-03-23 [sbliss] Added BFC statement; compacted code
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-02-16 [Philo] Changed to CCW
+0 !HISTORY 2012-03-30 [PTadmin] Official Update 2012-01
+
+ldraw/p/4-4ring2.dat
+0 Name: 4-4ring2.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 1998-12-15 [PTadmin] Official Update 1998-10
+0 !HISTORY 2002-04-05 [hafhead] Added BFC statement
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2008-08-26 [cwdee] Switch polygon winding and rename
+0 !HISTORY 2009-05-02 [PTadmin] Official Update 2009-01
+
+ldraw/p/4-4ring3.dat
+0 Name: 4-4ring3.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 1998-12-15 [PTadmin] Official Update 1998-10
+0 !HISTORY 2002-04-05 [hafhead] Added BFC statement
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2008-08-26 [cwdee] Switch polygon winding and rename
+0 !HISTORY 2009-05-02 [PTadmin] Official Update 2009-01
+
+ldraw/p/4-4ring4.dat
+0 Name: 4-4ring4.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 1998-12-15 [PTadmin] Official Update 1998-10
+0 !HISTORY 2002-04-08 [BrickCaster] Modified for BFC compliance
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2008-08-26 [cwdee] Switch polygon winding and rename
+0 !HISTORY 2009-05-02 [PTadmin] Official Update 2009-01
+
+ldraw/p/4-4ring5.dat
+0 Name: 4-4ring5.dat
+0 Author: Mark Kennedy [mkennedy]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2001-10-23 [pneaster] resequenced quads, corrected winding.
+0 !HISTORY 2001-12-29 [pneaster] Added BFC.
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-02-16 [Philo] Changed to CCW
+0 !HISTORY 2012-03-30 [PTadmin] Official Update 2012-01
+0 !HISTORY 2024-12-30 [MagFors] Recreated using PrimGen
+0 !HISTORY 2025-01-20 [OrionP] Official Update 2025-01
+
+ldraw/p/4-4ring8.dat
+0 Name: 4-4ring8.dat
+0 Author: Steffen [Steffen]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2003-12-19 [PTadmin] Official Update 2003-03
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-02-16 [Philo] Changed to CCW
+0 !HISTORY 2012-03-30 [PTadmin] Official Update 2012-01
+
+ldraw/p/4-4ring9.dat
+0 Name: 4-4ring9.dat
+0 Author: Magnus Forsberg [MagFors]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2004-04-22 [PTadmin] Official Update 2004-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2024-01-04 [MagFors] Complete regeneration, original by jriley
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/p/48/1-12cyli.dat
+0 Name: 48\1-12cyli.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2009-05-02 [PTadmin] Official Update 2009-01
+0 !HISTORY 2024-01-08 [Holly-Wood] Complete regeneration, original by westrate
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/p/48/1-12edge.dat
+0 Name: 48\1-12edge.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2009-05-02 [PTadmin] Official Update 2009-01
+0 !HISTORY 2024-01-07 [Holly-Wood] Complete regeneration, original by westrate
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/p/48/1-4con6.dat
+0 Name: 48\1-4con6.dat
+0 Author: Paul Easter [pneaster]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-08-18 [PTadmin] Official Update 2002-04
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2019-11-29 [GeraldLasser] Rebuilt with LDPE due to missing Cond-Line
+0 !HISTORY 2022-01-14 [PTadmin] Official Update 2022-01
+
+ldraw/p/48/1-4cyli.dat
+0 Name: 48\1-4cyli.dat
+0 Author: Magnus Forsberg [MagFors]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 1999-07-05 [PTadmin] Official Update 1999-05
+0 !HISTORY 2002-02-28 [hafhead] Added BFC statement
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2008-07-07 [guyvivan] Made BFC'ed CCW (2005-12-06)
+0 !HISTORY 2009-05-02 [PTadmin] Official Update 2009-01
+0 !HISTORY 2024-01-03 [MagFors] Complete regeneration, original by Manfred Moolhuysen
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/p/48/1-4edge.dat
+0 Name: 48\1-4edge.dat
+0 Author: Magnus Forsberg [MagFors]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 1999-07-05 [PTadmin] Official Update 1999-05
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2010-03-17 [MagFors] Updated description
+0 !HISTORY 2010-05-21 [mikeheide] BFC'ed and compacted numbers (saved 10% filesize)
+0 !HISTORY 2010-07-05 [PTadmin] Official Update 2010-02
+0 !HISTORY 2024-01-02 [MagFors] Complete regeneration, original by Manfred Moolhuysen
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/p/48/1-4ring9.dat
+0 Name: 48\1-4ring9.dat
+0 Author: Paul Easter [pneaster]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-08-18 [PTadmin] Official Update 2002-04
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-02-27 [Philo] Changed to CCW
+0 !HISTORY 2012-08-09 [PTadmin] Official Update 2012-02
+0 !HISTORY 2014-12-20 [MMR1988] Fixed a rounding issue
+0 !HISTORY 2014-12-23 [PTadmin] Official Update 2014-02
+
+ldraw/p/48/4-4con12.dat
+0 Name: 48\4-4con12.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2009-12-29 [PTadmin] Official Update 2009-03
+0 !HISTORY 2024-01-22 [Holly-Wood] Complete regeneration, original by guyvivan
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/p/48/4-4con17.dat
+0 Name: 48\4-4con17.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2011-07-25 [PTadmin] Official Update 2011-01
+0 !HISTORY 2024-01-29 [Holly-Wood] Complete regeneration, original by guyvivan
+0 !HISTORY 2024-03-24 [OrionP] Official Update 2024-02
+
+ldraw/p/48/4-4con30.dat
+0 Name: 48\4-4con30.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2009-05-02 [PTadmin] Official Update 2009-01
+0 !HISTORY 2024-01-29 [Holly-Wood] Complete regeneration, original by guyvivan
+0 !HISTORY 2024-03-24 [OrionP] Official Update 2024-02
+
+ldraw/p/48/4-4con5.dat
+0 Name: 48\4-4con5.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2009-09-03 [PTadmin] Official Update 2009-02
+0 !HISTORY 2024-01-19 [Holly-Wood] Complete regeneration, original by guyvivan
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/p/48/4-4cyli.dat
+0 Name: 48\4-4cyli.dat
+0 Author: Paul Easter [pneaster]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-08-18 [PTadmin] Official Update 2002-04
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-02-27 [Philo] Changed to CCW
+0 !HISTORY 2012-08-09 [PTadmin] Official Update 2012-02
+
+ldraw/p/48/4-4edge.dat
+0 Name: 48\4-4edge.dat
+0 Author: Paul Easter [pneaster]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-08-18 [PTadmin] Official Update 2002-04
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-01-15 [MagFors] BFC'ed, title changed from Edge to Circle
+0 !HISTORY 2012-03-30 [PTadmin] Official Update 2012-01
+
+ldraw/p/48/4-4ring10.dat
+0 Name: 48\4-4ring10.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2009-05-02 [PTadmin] Official Update 2009-01
+0 !HISTORY 2024-01-16 [Holly-Wood] Complete regeneration, original by guyvivan
+0 !HISTORY 2024-03-24 [OrionP] Official Update 2024-02
+
+ldraw/p/48/4-4ring17.dat
+0 Name: 48\4-4ring17.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2009-12-29 [PTadmin] Official Update 2009-03
+0 !HISTORY 2024-01-20 [Holly-Wood] Complete regeneration, original by guyvivan
+0 !HISTORY 2024-03-24 [OrionP] Official Update 2024-02
+
+ldraw/p/48/4-4ring19.dat
+0 Name: 48\4-4ring19.dat
+0 Author: Paul Easter [pneaster]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2009-05-02 [PTadmin] Official Update 2009-01
+0 !HISTORY 2012-02-27 [Philo] Changed to CCW
+0 !HISTORY 2012-08-09 [PTadmin] Official Update 2012-02
+0 !HISTORY 2024-03-23 [OrionP] Moved from 48\4-4rin19.dat
+0 !HISTORY 2024-03-24 [OrionP] Official Update 2024-02
+
+ldraw/p/48/4-4ring2.dat
+0 Name: 48\4-4ring2.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2009-05-02 [PTadmin] Official Update 2009-01
+0 !HISTORY 2012-02-27 [Philo] Changed to CCW
+0 !HISTORY 2012-08-09 [PTadmin] Official Update 2012-02
+0 !HISTORY 2024-01-18 [Holly-Wood] Complete regeneration, original by SirBugge
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/p/48/4-4ring20.dat
+0 Name: 48\4-4ring20.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2011-07-25 [PTadmin] Official Update 2011-01
+0 !HISTORY 2024-01-22 [Holly-Wood] Complete regeneration, original by guyvivan
+0 !HISTORY 2024-03-24 [OrionP] Official Update 2024-02
+
+ldraw/p/48/4-4ring29.dat
+0 Name: 48\4-4ring29.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2009-05-02 [PTadmin] Official Update 2009-01
+0 !HISTORY 2024-02-06 [Holly-Wood] Complete regeneration, original by guyvivan
+0 !HISTORY 2024-03-24 [OrionP] Official Update 2024-02
+
+ldraw/p/48/4-4ring7.dat
+0 Name: 48\4-4ring7.dat
+0 Author: Mark Kennedy [mkennedy]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2004-04-22 [PTadmin] Official Update 2004-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-02-27 [Philo] Changed to CCW
+0 !HISTORY 2012-08-09 [PTadmin] Official Update 2012-02
+
+ldraw/p/48/4-4ring8.dat
+0 Name: 48\4-4ring8.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2010-04-05 [PTadmin] Official Update 2010-01
+0 !HISTORY 2024-01-16 [Holly-Wood] Complete regeneration, original by guyvivan
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/p/48/4-4ring9.dat
+0 Name: 48\4-4ring9.dat
+0 Author: Paul Easter [pneaster]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-08-18 [PTadmin] Official Update 2002-04
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-02-27 [Philo] Changed to CCW
+0 !HISTORY 2012-08-09 [PTadmin] Official Update 2012-02
+
+ldraw/p/5-16edge.dat
+0 Name: 5-16edge.dat
+0 Author: Philippe Hurbain [Philo]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2009-12-29 [PTadmin] Official Update 2009-03
+
+ldraw/p/axl3hole.dat
+0 Name: axl3hole.dat
+0 Author: J.C. Tchang [tchang]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2010-04-05 [PTadmin] Official Update 2010-01
+
+ldraw/p/axl5ho10.dat
+0 Name: axl5ho10.dat
+0 Author: Magnus Forsberg [MagFors]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2022-01-14 [PTadmin] Official Update 2022-01
+
+ldraw/p/axl5hol8.dat
+0 Name: axl5hol8.dat
+0 Author: Magnus Forsberg [MagFors]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2022-01-14 [PTadmin] Official Update 2022-01
+
+ldraw/p/axl5hol9.dat
+0 Name: axl5hol9.dat
+0 Author: Magnus Forsberg [MagFors]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2022-01-14 [PTadmin] Official Update 2022-01
+
+ldraw/p/axleend2.dat
+0 Name: axleend2.dat
+0 Author: Magnus Forsberg [MagFors]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2025-09-29 [OrionP] Official Update 2025-09
+
+ldraw/p/axlehol2.dat
+0 Name: axlehol2.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-11-08 [OrionP] Adjusted fit and precision
+0 !HISTORY 2003-03-12 [PTadmin] Official Update 2003-01
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2021-12-24 [MagFors] rounded to four decimals
+0 !HISTORY 2022-03-06 [PTadmin] Official Update 2022-02
+
+ldraw/p/axlehol8.dat
+0 Name: axlehol8.dat
+0 Author: Steve Bliss [sbliss]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2000-05-07 [PTadmin] Official Update 2000-01
+0 !HISTORY 2002-11-08 [OrionP] Adjusted fit and precision
+0 !HISTORY 2003-03-12 [PTadmin] Official Update 2003-01
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2021-03-25 [Sirio] Rounded to four decimals and added primitives
+0 !HISTORY 2022-03-06 [PTadmin] Official Update 2022-02
+0 !HISTORY 2024-01-24 [MagFors] Update description, to be only used on axles, not holes
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/p/axlehole.dat
+0 Name: axlehole.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2000-04-23 [sbliss] Added conditional edges along outermost diameters
+0 !HISTORY 2000-05-07 [PTadmin] Official Update 2000-01
+0 !HISTORY 2002-05-08 [OrionP] Made BFC compliant
+0 !HISTORY 2002-08-18 [PTadmin] Official Update 2002-04
+0 !HISTORY 2002-11-08 [OrionP] Adjusted fit and precision
+0 !HISTORY 2003-03-12 [PTadmin] Official Update 2003-01
+0 !HISTORY 2005-05-15 [guyvivan] Use 1-8chrd.dat primitive and made BFC'ed CCW
+0 !HISTORY 2005-12-28 [PTadmin] Official Update 2005-01
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2021-03-25 [Sirio] Added adapter rings and rounded to four decimals
+0 !HISTORY 2021-12-20 [MagFors] Reshaped the hole
+0 !HISTORY 2022-03-06 [PTadmin] Official Update 2022-02
+
+ldraw/p/box2-5.dat
+0 Name: box2-5.dat
+0 Author: Steffen [Steffen]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2003-12-19 [PTadmin] Official Update 2003-03
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/p/box2-9p.dat
+0 Name: box2-9p.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2013-12-23 [PTadmin] Official Update 2013-02
+0 !HISTORY 2024-01-04 [Holly-Wood] Complete re-write, original by Duq
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/p/box3u2p.dat
+0 Name: box3u2p.dat
+0 Author: Niels Karsdorp [nielsk]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2003-03-12 [PTadmin] Official Update 2003-01
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-02-16 [Philo] Changed to CCW
+0 !HISTORY 2012-03-30 [PTadmin] Official Update 2012-01
+
+ldraw/p/box3u4a.dat
+0 Name: box3u4a.dat
+0 Author: Niels Karsdorp [nielsk]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2009-05-02 [PTadmin] Official Update 2009-01
+
+ldraw/p/box4-4a.dat
+0 Name: box4-4a.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 1998-07-15 [PTadmin] Official Update 1998-07
+0 !HISTORY 2002-12-13 [hafhead] Made BFC compliant
+0 !HISTORY 2003-03-12 [PTadmin] Official Update 2003-01
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-02-16 [Philo] Changed to CCW
+0 !HISTORY 2012-03-30 [PTadmin] Official Update 2012-01
+0 !HISTORY 2024-01-03 [Holly-Wood] Complete re-write, original by Manfred Moolhuysen
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/p/box4t.dat
+0 Name: box4t.dat
+0 Author: Tore Eriksson [Tore_Eriksson]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 1997-09-29 [PTadmin] Official Update 1997-15
+0 !HISTORY 2002-08-31 [izanette] Modified with WINDZ for BFC compliance
+0 !HISTORY 2003-08-01 [PTadmin] Official Update 2003-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/p/box5.dat
+0 Name: box5.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-04-03 [sbliss] Modified for BFC compliance
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-02-16 [Philo] Changed to CCW
+0 !HISTORY 2012-03-30 [PTadmin] Official Update 2012-01
+
+ldraw/p/connhole.dat
+0 Name: connhole.dat
+0 Author: Magnus Forsberg [MagFors]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2005-07-09 [mikeheide] use 4-4ring8 primitive
+0 !HISTORY 2009-09-03 [PTadmin] Official Update 2009-02
+0 !HISTORY 2024-01-05 [MagFors] Complete rewrite, original by t.woelk
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/p/cylj4x8.dat
+0 Name: cylj4x8.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2010-04-05 [PTadmin] Official Update 2010-01
+0 !HISTORY 2021-10-16 [MMR1988] Changed to four decimals
+0 !HISTORY 2022-03-06 [PTadmin] Official Update 2022-02
+0 !HISTORY 2024-01-11 [Holly-Wood] Complete re-write, original by guyvivan
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/p/empty.dat
+0 Name: empty.dat
+0 Author: Steffen [Steffen]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2015-10-11 [PTadmin] Official Update 2015-01
+0 !HISTORY 2025-08-13 [OrionP] Fix comments
+0 !HISTORY 2025-08-31 [OrionP] Official Update 2025-08
+
+ldraw/p/peghole.dat
+0 Name: peghole.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-05-01 [mkennedy] replace code with ring3
+0 !HISTORY 2002-05-01 [sbliss] BFC
+0 !HISTORY 2002-06-11 [PTadmin] Official Update 2002-03
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2010-01-14 [cwdee] Update ring3 to 4-4ring3
+0 !HISTORY 2010-04-05 [PTadmin] Official Update 2010-01
+
+ldraw/p/rect.dat
+0 Name: rect.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-04-05 [hafhead] Added BFC statement
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2010-01-17 [mikeheide] changed winding to CCW
+0 !HISTORY 2010-04-05 [PTadmin] Official Update 2010-01
+
+ldraw/p/rect1.dat
+0 Name: rect1.dat
+0 Author: Chris Dee [cwdee]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2003-12-19 [PTadmin] Official Update 2003-03
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2010-01-17 [mikeheide] changed winding to CCW
+0 !HISTORY 2010-04-05 [PTadmin] Official Update 2010-01
+
+ldraw/p/rect2a.dat
+0 Name: rect2a.dat
+0 Author: Chris Dee [cwdee]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2003-12-19 [PTadmin] Official Update 2003-03
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2010-01-17 [mikeheide] changed winding to CCW
+0 !HISTORY 2010-04-05 [PTadmin] Official Update 2010-01
+
+ldraw/p/rect2p.dat
+0 Name: rect2p.dat
+0 Author: Donald Sutter [technog]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2003-08-01 [PTadmin] Official Update 2003-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2010-01-17 [mikeheide] changed winding to CCW
+0 !HISTORY 2010-04-05 [PTadmin] Official Update 2010-01
+
+ldraw/p/rect3.dat
+0 Name: rect3.dat
+0 Author: Mark Kennedy [mkennedy]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2003-08-01 [PTadmin] Official Update 2003-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2010-01-17 [mikeheide] Change winding to CCW
+0 !HISTORY 2010-04-05 [PTadmin] Official Update 2010-01
+
+ldraw/p/stud.dat
+0 Name: stud.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-04-04 [sbliss] Modified for BFC compliance
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-02-16 [Philo] Changed to CCW
+0 !HISTORY 2012-03-30 [PTadmin] Official Update 2012-01
+
+ldraw/p/stud2.dat
+0 Name: stud2.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 1999-07-05 [PTadmin] Official Update 1999-05
+0 !HISTORY 2002-04-04 [sbliss] Modified for BFC compliance
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2009-06-21 [cwdee] Update ring references to 4-4ring
+0 !HISTORY 2009-09-03 [PTadmin] Official Update 2009-02
+
+ldraw/p/stud3.dat
+0 Name: stud3.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-04-04 [sbliss] Modified for BFC compliance
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-02-16 [Philo] Changed to CCW
+0 !HISTORY 2012-03-30 [PTadmin] Official Update 2012-01
+
+ldraw/p/stud3a.dat
+0 Name: stud3a.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-08-31 [izanette] Modified with WINDZ for BFC compliance
+0 !HISTORY 2003-08-01 [PTadmin] Official Update 2003-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/p/stud4.dat
+0 Name: stud4.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 1999-07-05 [PTadmin] Official Update 1999-05
+0 !HISTORY 2002-04-04 [sbliss] Modified for BFC compliance
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2009-06-21 [cwdee] Update ring references to 4-4ring
+0 !HISTORY 2009-09-03 [PTadmin] Official Update 2009-02
+
+ldraw/p/stud4a.dat
+0 Name: stud4a.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 1999-07-05 [PTadmin] Official Update 1999-05
+0 !HISTORY 2002-04-04 [sbliss] Modified for BFC compliance
+0 !HISTORY 2002-04-25 [PTadmin] Official Update 2002-02
+0 !HISTORY 2007-06-24 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2009-06-21 [cwdee] Update ring references to 4-4ring
+0 !HISTORY 2009-09-03 [PTadmin] Official Update 2009-02
+
+ldraw/p/stug-1x2.dat
+0 Name: stug-1x2.dat
+0 Author: Steffen [Steffen]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2011-07-25 [PTadmin] Official Update 2011-01
+
+ldraw/p/stug-1x4.dat
+0 Name: stug-1x4.dat
+0 Author: Steffen [Steffen]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2011-07-25 [PTadmin] Official Update 2011-01
+
+ldraw/p/stug-1x8.dat
+0 Name: stug-1x8.dat
+0 Author: Steffen [Steffen]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2011-07-25 [PTadmin] Official Update 2011-01
+
+ldraw/p/stug-2x2.dat
+0 Name: stug-2x2.dat
+0 Author: Steffen [Steffen]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2005-12-28 [PTadmin] Official Update 2005-01
+0 !HISTORY 2007-05-04 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2011-07-01 [PTadmin] Renamed from stug2
+0 !HISTORY 2011-07-25 [PTadmin] Official Update 2011-01
+0 !HISTORY 2012-02-16 [Philo] Changed to CCW
+0 !HISTORY 2012-03-30 [PTadmin] Official Update 2012-01
+
+ldraw/p/stug3-1x3.dat
+0 Name: stug3-1x3.dat
+0 Author: Steffen [Steffen]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2012-08-09 [PTadmin] Official Update 2012-02
+
+ldraw/p/stug3-1x7.dat
+0 Name: stug3-1x7.dat
+0 Author: Steffen [Steffen]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2012-03-30 [PTadmin] Official Update 2012-01
+
+ldraw/p/t04i2500.dat
+0 Name: t04i2500.dat
+0 Author: Paul Easter [pneaster]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2004-04-22 [PTadmin] Official Update 2004-02
+0 !HISTORY 2007-12-20 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-02-22 [Philo] Rebuilt CCW
+0 !HISTORY 2012-03-30 [PTadmin] Official Update 2012-01
+
+ldraw/parts/2995.dat
+0 Name: 2995.dat
+0 Author: Marc Klein [marckl]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2004-11-06 [PTadmin] Official Update 2004-04
+0 !HISTORY 2007-05-23 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-05-01 [Steffen] BFCed
+0 !HISTORY 2013-09-08 [MMR1988] Updated description, added keywords
+0 !HISTORY 2013-12-23 [PTadmin] Official Update 2013-02
+
+ldraw/parts/2996.dat
+0 Name: 2996.dat
+0 Author: Marc Klein [marckl]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2004-11-15 [sbliss] BFC'ed, inlined subfile, used more primitives.
+0 !HISTORY 2010-04-03 [Philo] Rebuilt center
+0 !HISTORY 2014-06-21 [PTadmin] Official Update 2014-01
+0 !HISTORY 2024-03-23 [OrionP] Updated ring primitives
+0 !HISTORY 2024-03-24 [OrionP] Official Update 2024-02
+
+ldraw/parts/2996c01.dat
+0 Name: 2996c01.dat
+0 Author: Steffen [Steffen]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2015-12-30 [PTadmin] Official Update 2015-02
+
+ldraw/parts/3001.dat
+0 Name: 3001.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-05-07 {unknown} BFC Certification
+0 !HISTORY 2002-06-11 [PTadmin] Official Update 2002-03
+0 !HISTORY 2004-02-08 [Steffen] used s\3001s01.dat
+0 !HISTORY 2004-09-15 [PTadmin] Official Update 2004-03
+0 !HISTORY 2007-05-07 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/parts/3002.dat
+0 Name: 3002.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2001-10-26 [PTadmin] Official Update 2001-01
+0 !HISTORY 2002-05-07 {unknown} BFC Certification
+0 !HISTORY 2002-06-11 [PTadmin] Official Update 2002-03
+0 !HISTORY 2003-07-03 [Steffen] Subfiled for patterns
+0 !HISTORY 2003-12-19 [PTadmin] Official Update 2003-03
+0 !HISTORY 2007-05-07 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/parts/3003.dat
+0 Name: 3003.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2001-10-26 [PTadmin] Official Update 2001-01
+0 !HISTORY 2002-05-07 {unknown} BFC Certification
+0 !HISTORY 2002-06-11 [PTadmin] Official Update 2002-03
+0 !HISTORY 2007-05-07 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2022-08-04 [MagFors] Using subfile
+0 !HISTORY 2022-09-15 [PTadmin] Official Update 2022-05
+
+ldraw/parts/3004.dat
+0 Name: 3004.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2001-10-26 [PTadmin] Official Update 2001-01
+0 !HISTORY 2002-05-07 {unknown} BFC Certification
+0 !HISTORY 2002-06-11 [PTadmin] Official Update 2002-03
+0 !HISTORY 2007-05-07 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2022-08-04 [MagFors] Using subfile
+0 !HISTORY 2022-09-15 [PTadmin] Official Update 2022-05
+
+ldraw/parts/3005.dat
+0 Name: 3005.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2001-10-26 [PTadmin] Official Update 2001-01
+0 !HISTORY 2002-05-07 {unknown} BFC Certification
+0 !HISTORY 2002-06-11 [PTadmin] Official Update 2002-03
+0 !HISTORY 2007-05-07 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2022-08-04 [MagFors] Using subfile
+0 !HISTORY 2022-09-15 [PTadmin] Official Update 2022-05
+
+ldraw/parts/3010.dat
+0 Name: 3010.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2001-10-26 [PTadmin] Official Update 2001-01
+0 !HISTORY 2002-05-07 {unknown} BFC Certification
+0 !HISTORY 2002-06-11 [PTadmin] Official Update 2002-03
+0 !HISTORY 2002-12-12 [hafhead] New subparted version
+0 !HISTORY 2003-08-01 [PTadmin] Official Update 2003-02
+0 !HISTORY 2007-06-06 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2025-09-27 [OrionP] Changed winding to CCW
+0 !HISTORY 2025-09-29 [OrionP] Official Update 2025-09
+
+ldraw/parts/3020.dat
+0 Name: 3020.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2001-10-26 [PTadmin] Official Update 2001-01
+0 !HISTORY 2002-05-07 {unknown} BFC Certification
+0 !HISTORY 2002-06-11 [PTadmin] Official Update 2002-03
+0 !HISTORY 2007-06-07 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/parts/3022.dat
+0 Name: 3022.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2001-10-26 [PTadmin] Official Update 2001-01
+0 !HISTORY 2002-05-07 {unknown} BFC Certification
+0 !HISTORY 2002-06-11 [PTadmin] Official Update 2002-03
+0 !HISTORY 2007-06-07 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/parts/3023.dat
+0 Name: 3023.dat
+0 Author: Orion Pobursky [OrionP]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2023-06-24 [OrionP] Official Update 2023-03
+0 !HISTORY 2024-08-10 [MagFors] Update description
+0 !HISTORY 2024-08-26 [OrionP] Official Update 2024-07
+
+ldraw/parts/3023b.dat
+0 Name: 3023b.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2001-10-26 [PTadmin] Official Update 2001-01
+0 !HISTORY 2002-05-07 {unknown} BFC Certification
+0 !HISTORY 2002-06-11 [PTadmin] Official Update 2002-03
+0 !HISTORY 2007-06-07 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2020-03-07 [Sirio] Subparted
+0 !HISTORY 2022-01-14 [PTadmin] Official Update 2022-01
+0 !HISTORY 2023-05-26 [OrionP] Moved from 3023.dat
+0 !HISTORY 2023-06-24 [OrionP] Official Update 2023-03
+
+ldraw/parts/3024.dat
+0 Name: 3024.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2001-10-26 [PTadmin] Official Update 2001-01
+0 !HISTORY 2002-05-07 {unknown} BFC Certification
+0 !HISTORY 2002-06-11 [PTadmin] Official Update 2002-03
+0 !HISTORY 2007-06-07 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2022-08-04 [MagFors] Using subfile
+0 !HISTORY 2022-09-15 [PTadmin] Official Update 2022-05
+
+ldraw/parts/3034.dat
+0 Name: 3034.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2001-10-26 [PTadmin] Official Update 2001-01
+0 !HISTORY 2003-08-07 [jriley] BFCed
+0 !HISTORY 2003-12-19 [PTadmin] Official Update 2003-03
+0 !HISTORY 2007-06-07 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/parts/3035.dat
+0 Name: 3035.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2001-10-26 [PTadmin] Official Update 2001-01
+0 !HISTORY 2004-07-26 [guyvivan] Made BFC Compliant
+0 !HISTORY 2004-11-06 [PTadmin] Official Update 2004-04
+0 !HISTORY 2007-06-07 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2025-09-27 [OrionP] Changed winding to CCW
+0 !HISTORY 2025-09-29 [OrionP] Official Update 2025-09
+
+ldraw/parts/3039.dat
+0 Name: 3039.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2003-07-02 [Steffen] BFCed; re-worked part to use s\3039s01.dat
+0 !HISTORY 2003-12-19 [PTadmin] Official Update 2003-03
+0 !HISTORY 2007-06-09 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/parts/3040b.dat
+0 Name: 3040b.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-09-13 [izanette] modified with WINDZ for BFC compliance
+0 !HISTORY 2003-07-11 [Steffen] made use of existing subfile
+0 !HISTORY 2004-11-06 [PTadmin] Official Update 2004-04
+0 !HISTORY 2007-06-09 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/parts/32123b.dat
+0 Name: 32123b.dat
+0 Author: J.C. Tchang [tchang]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2010-04-05 [PTadmin] Official Update 2010-01
+
+ldraw/parts/3460.dat
+0 Name: 3460.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2004-07-25 [guyvivan] Made BFC Compliant
+0 !HISTORY 2004-11-06 [PTadmin] Official Update 2004-04
+0 !HISTORY 2007-06-25 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2023-03-28 [Sirio] Introduced use of subpart
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/parts/3700.dat
+0 Name: 3700.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-08-31 [izanette] Modified with WINDZ for BFC compliance
+0 !HISTORY 2003-12-19 [PTadmin] Official Update 2003-03
+0 !HISTORY 2007-06-29 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2008-07-07 [guyvivan] Add missing element cylj4x8.dat and use more primitives (2005-11-30)
+0 !HISTORY 2010-07-05 [PTadmin] Official Update 2010-02
+
+ldraw/parts/3708.dat
+0 Name: 3708.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2004-07-11 [guyvivan] BFC'ed
+0 !HISTORY 2005-12-28 [PTadmin] Official Update 2005-01
+0 !HISTORY 2007-06-29 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2025-09-01 [MagFors] Beveled axle ends
+0 !HISTORY 2025-09-29 [OrionP] Official Update 2025-09
+
+ldraw/parts/3710.dat
+0 Name: 3710.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2004-07-25 [guyvivan] Made BFC Compliant
+0 !HISTORY 2004-11-06 [PTadmin] Official Update 2004-04
+0 !HISTORY 2007-06-29 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2023-03-28 [Sirio] Introduced use of subpart
+0 !HISTORY 2023-11-19 [OrionP] Official Update 2023-06
+
+ldraw/parts/3795.dat
+0 Name: 3795.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2003-08-01 [Steffen] BFCed
+0 !HISTORY 2003-12-19 [PTadmin] Official Update 2003-03
+0 !HISTORY 2007-06-29 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2025-09-27 [OrionP] Changed winding to CCW
+0 !HISTORY 2025-09-29 [OrionP] Official Update 2025-09
+
+ldraw/parts/60479.dat
+0 Name: 60479.dat
+0 Author: Philippe Hurbain [Philo]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2009-09-03 [PTadmin] Official Update 2009-02
+
+ldraw/parts/s/2995s.dat
+0 Name: s\2995s.dat
+0 Author: Marc Klein [marckl]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2004-11-06 [PTadmin] Official Update 2004-04
+0 !HISTORY 2007-08-29 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2012-05-01 [Steffen] BFCed
+0 !HISTORY 2013-09-03 [MMR1988] Reorganized, simplified, rectified, corrected and added condlines, added keywords, updated description
+0 !HISTORY 2013-12-23 [PTadmin] Official Update 2013-02
+
+ldraw/parts/s/2996s01.dat
+0 Name: s\2996s01.dat
+0 Author: Philippe Hurbain [Philo]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2014-06-21 [PTadmin] Official Update 2014-01
+
+ldraw/parts/s/3001s01.dat
+0 Name: s\3001s01.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-05-07 {unknown} BFC certification
+0 !HISTORY 2002-05-07 [westrate] Unknown change
+0 !HISTORY 2004-09-15 [PTadmin] Official Update 2004-03
+0 !HISTORY 2007-08-29 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/parts/s/3002s01.dat
+0 Name: s\3002s01.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2002-05-07 {unknown} BFC Certification
+0 !HISTORY 2003-07-03 [Steffen] Subfiled for patterns
+0 !HISTORY 2003-12-19 [PTadmin] Official Update 2003-03
+0 !HISTORY 2007-08-29 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/parts/s/3003s01.dat
+0 Name: s\3003s01.dat
+0 Author: Steffen [Steffen]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2009-05-02 [PTadmin] Official Update 2009-01
+0 !HISTORY 2013-04-02 [Steffen] used s\3003s02.dat
+0 !HISTORY 2013-12-23 [PTadmin] Official Update 2013-02
+
+ldraw/parts/s/3003s02.dat
+0 Name: s\3003s02.dat
+0 Author: Owen Burgoyne [C3POwen]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2013-12-23 [PTadmin] Official Update 2013-02
+
+ldraw/parts/s/3004s01.dat
+0 Name: s\3004s01.dat
+0 Author: James Jessiman
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2003-09-07 [jriley] Subfiling, BFC
+0 !HISTORY 2003-12-19 [PTadmin] Official Update 2003-03
+0 !HISTORY 2007-08-29 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/parts/s/3005s01.dat
+0 Name: s\3005s01.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2003-09-07 [jriley] BFCed & Subfiled
+0 !HISTORY 2004-03-02 [PTadmin] Official Update 2004-01
+0 !HISTORY 2007-08-29 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2024-03-15 [Holly-Wood] Complete re-write, original by jriley
+0 !HISTORY 2024-05-28 [OrionP] Official Update 2024-04
+
+ldraw/parts/s/3010s01.dat
+0 Name: s\3010s01.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2003-08-01 [PTadmin] Official Update 2003-02
+0 !HISTORY 2007-08-29 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2024-03-15 [Holly-Wood] Complete re-write, original by hafhead
+0 !HISTORY 2024-04-28 [OrionP] Official Update 2024-03
+
+ldraw/parts/s/3023bs01.dat
+0 Name: s\3023bs01.dat
+0 Author: Massimo Maso [Sirio]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2022-01-14 [PTadmin] Official Update 2022-01
+0 !HISTORY 2023-05-27 [OrionP] Moved from s\3023s01.dat
+0 !HISTORY 2023-06-24 [OrionP] Official Update 2023-03
+
+ldraw/parts/s/3024s01.dat
+0 Name: s\3024s01.dat
+0 Author: Tore Eriksson [Tore_Eriksson]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2012-12-28 [PTadmin] Official Update 2012-03
+
+ldraw/parts/s/3039s01.dat
+0 Name: s\3039s01.dat
+0 Author: Willy Tschager [Holly-Wood]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 1999-12-31 [PTadmin] Official Update 1999-06
+0 !HISTORY 2003-07-02 [Steffen] BFCed; change in part name: "w/o" --> "without"
+0 !HISTORY 2003-12-19 [PTadmin] Official Update 2003-03
+0 !HISTORY 2007-08-30 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+0 !HISTORY 2024-03-14 [Holly-Wood] Complete re-write, original by jvan
+0 !HISTORY 2024-03-24 [OrionP] Official Update 2024-02
+
+ldraw/parts/s/3040s01.dat
+0 Name: s\3040s01.dat
+0 Author: Orion Pobursky [OrionP]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2003-07-02 [Steffen] BFCed; removed matrix all zero "errors"
+0 !HISTORY 2004-03-02 [PTadmin] Official Update 2004-01
+0 !HISTORY 2007-08-30 [PTadmin] Header formatted for Contributor Agreement
+0 !HISTORY 2008-07-01 [PTadmin] Official Update 2008-01
+
+ldraw/parts/s/3460s01.dat
+0 Name: s\3460s01.dat
+0 Author: Massimo Maso [Sirio]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2024-01-29 [OrionP] Official Update 2024-01
+
+ldraw/parts/s/3710s01.dat
+0 Name: s\3710s01.dat
+0 Author: Massimo Maso [Sirio]
+0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt
+0 !HISTORY 2023-11-19 [OrionP] Official Update 2023-06
