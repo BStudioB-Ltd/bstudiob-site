@@ -41,6 +41,8 @@
     const play=document.getElementById('play');let timer=null;
     function stop(){if(timer!==null)clearInterval(timer);timer=null;play.textContent='Play build';}
     play.onclick=()=>{if(timer!==null){stop();return;}if(step===data.steps.length)setStep(0);play.textContent='Pause';timer=setInterval(()=>{if(step>=data.steps.length){stop();return;}setStep(Math.min(data.steps.length,step+10));},120);};
+    const underneath=data.steps.map((item,index)=>item.instruction?.includes('Proposed approach from below')?index+1:0).filter(Boolean);
+    document.getElementById('next-underneath').onclick=()=>{stop();if(underneath.length)setStep(underneath.find(position=>position>step)??underneath[0]);};
     document.getElementById('prev').onclick=()=>{stop();setStep(step-1);};
     document.getElementById('next').onclick=()=>{stop();setStep(step+1);};
     range.oninput=()=>{stop();setStep(Number(range.value));};
