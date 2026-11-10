@@ -17,10 +17,17 @@ test('the study distinguishes the real source from the experimental build', () =
   assert.ok(existsSync('MemGos/interactive/review-data.js'));
   const raw=readFileSync('MemGos/interactive/review-data.js','utf8');
   const data=JSON.parse(raw.slice('window.MEMGOS_DATA='.length).trim().replace(/;$/, ''));
-  assert.equal(data.steps.length,1717);
+  assert.equal(data.steps.length,1475);
   const placements=data.steps.flatMap(s=>s.placements);
-  assert.equal(new Set(placements).size,1717);
-  assert.equal(data.physical_pieces,1721);
+  assert.equal(new Set(placements).size,1475);
+  assert.equal(data.physical_pieces,1479);
+  assert.match(page,/1,479 pieces/);
+  assert.equal(data.steps.filter(step=>step.node?.startsWith('multi-merge:')).length,243);
+  for (const part of ['3007.dat','3008.dat','2456.dat']) {
+    assert.ok(data.meshes[part]?.length > 0);
+    assert.ok(data.instances[part]?.length > 0);
+    assert.match(readFileSync('MemGos/interactive/LDRAW-CREDITS.txt','utf8'),new RegExp(`ldraw/parts/${part.replace('.', '\\.')}`));
+  }
 });
 
 test('the photo mosaic is a separately credited 2D study with section controls', () => {
