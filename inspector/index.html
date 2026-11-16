@@ -11,7 +11,7 @@
     <title>Inspector — the learning &amp; topology case archive</title>
     <meta
       name="description"
-      content="Explore Inspector-Edu and Inspector-Pro browser samples. Planned macOS, Windows, and Linux Pro installers are in preparation."
+      content="Meet Inspector-Edu, a candidate for a supervised learning pilot, and Inspector-Pro, a desktop topology design tool. Explore each product on its own page."
     />
     <link rel="canonical" href="https://bstudiob.co.uk/inspector/" />
     <meta property="og:type" content="website" />
@@ -23,7 +23,7 @@
     />
     <meta
       property="og:description"
-      content="Two working previews. Follow the evidence with Edu. Inspect structure with Pro. Planned macOS, Windows, and Linux Pro installers are in preparation."
+      content="Explore Inspector-Edu and Inspector-Pro. Follow the evidence with Edu. Inspect structure with Pro. Visit each product page to learn more."
     />
     <meta property="og:url" content="https://bstudiob.co.uk/inspector/" />
     <meta
@@ -41,7 +41,7 @@
     />
     <meta
       name="twitter:description"
-      content="Try the Edu and Pro browser samples. Planned macOS, Windows, and Linux Pro installers are in preparation."
+      content="Explore Inspector-Edu and Inspector-Pro on their dedicated product pages."
     />
     <meta
       name="twitter:image"
@@ -57,8 +57,6 @@
       type="image/svg+xml"
     />
     <link rel="stylesheet" href="inspector.css" />
-    <script src="demo-edu.js" defer></script>
-    <script src="demo-pro.js" defer></script>
     <script src="hub-navigation.js" defer></script>
   </head>
   <body>
@@ -83,8 +81,8 @@
         <p class="docket">Open files / two ways to investigate</p>
         <h1>Follow the evidence.</h1>
         <p>
-          Learn in a guided world. Build a topology you can inspect. Open a case
-          below and try a small part of each Inspector product.
+          Learn in a guided world. Build a topology you can inspect. Explore
+          each Inspector product on its own page.
         </p>
         <div class="index">
           <a href="edu/"
@@ -115,77 +113,24 @@
               />Inspector-Edu<sup>™</sup>
             </h2>
           </div>
-          <span class="stamp">Pilot in preparation</span>
+          <span class="stamp">Supervised pilot candidate</span>
         </header>
         <div class="case-deck">
           <p>
-            A guided cybersecurity learning platform for institutions. Story,
-            bounded tasks and instructor oversight turn each lesson into
-            evidence you can explain.
+            Inspector-Edu is a candidate for a supervised institutional pilot.
+            Its dedicated page presents a guided story, bounded sample tasks and
+            a visit-only record for discussion.
           </p>
           <a href="edu/">Explore the Inspector-Edu website →</a>
         </div>
-        <section
-          id="edu-demo"
-          class="edu-demo"
-          aria-labelledby="edu-demo-title"
-        >
-          <div class="bench-bar">
-            <h3 id="edu-demo-title">DemoRPG: Cave Bash</h3>
-            <span>Interactive preview</span>
-          </div>
-          <p class="simulation-note" id="edu-demo-note">
-            Start at the Cave Bash menu. Follow Mira’s seven-beat café hacker
-            story: trace sample traffic, simulate a disconnect and rejoin, show
-            the welcome-page Rickroll, then see a fictional FBI alert, arrival
-            and escort. Task Mode offers three local information-gathering
-            samples. Commands return fixed evidence. Sample traffic, wireless
-            actions and FBI events are fictional in-frame scene changes; no
-            Inspector backend or learner lab network is contacted, and no learner
-            progress is saved.
-          </p>
-          <iframe
-            id="edu-activity-frame"
-            class="cave-bash-frame"
-            title="Cave Bash menu, Mira Coffee Shop Story Mode, and Task Mode preview"
-            src="cave-bash-preview-v2.html"
-            sandbox="allow-scripts"
-            referrerpolicy="no-referrer"
-            loading="eager"
-          ></iframe>
-          <div class="evidence-desk">
-            <div>
-              <p class="docket">Evidence record / this visit only</p>
-              <ol id="edu-evidence" aria-live="polite" aria-relevant="additions text">
-                <li>No evidence collected yet.</li>
-              </ol>
-            </div>
-            <aside>
-              <strong id="edu-expected-title">What to look for</strong>
-              <p id="edu-expected">Choose a mode, follow its fixed sample steps and watch Mira and the scene respond inside the frame.</p>
-              <p class="safety" id="edu-safety">
-                Sample traffic, wireless actions and FBI events are fictional
-                in-frame scene changes. Commands return fixed samples; no command
-                executes and no learner progress is saved. No Inspector backend
-                or learner lab network is contacted.
-              </p>
-            </aside>
-          </div>
-          <noscript
-            ><p class="no-script">
-              Enable JavaScript to use the sample lesson. No Inspector backend
-              is contacted.
-            </p></noscript
-          >
-        </section>
+
         <dl class="evidence-rows">
           <div>
-            <dt>Interactive preview</dt>
-            <dd>Cave Bash menu · Mira’s seven-beat fictional café hacker story · Task 01, with scene animation and fixed sample evidence.</dd>
-          </div>
-          <div>
-            <dt>Instructor oversight</dt>
-            <dd>Bounded lab tasks with learner evidence for review.</dd>
+            <dt>Instructor discussion</dt>
+            <dd>
+              Fixed sample entries appear in the visit-only record; no learner
+              outcomes are saved or assessed.
+            </dd>
           </div>
           <div>
             <dt>Access status</dt>
@@ -235,179 +180,7 @@
           </p>
           <a href="pro/">Explore the Inspector-Pro website →</a>
         </div>
-        <section
-          id="pro-demo"
-          class="pro-demo"
-          aria-labelledby="pro-demo-title"
-        >
-          <div class="bench-bar">
-            <h3 id="pro-demo-title">Topology editor bench</h3>
-            <span>Browser sample / no network launched</span>
-          </div>
-          <p class="simulation-note">
-            Edit local preview data. Checks cover native topology structure
-            only; no IP, routing, reachability, image existence or deployment
-            check is made. No app backend is contacted.
-          </p>
-          <div class="pro-toolbar">
-            <label for="topology-name"
-              >Topology name<input
-                id="topology-name"
-                value="inspector-preview"
-                maxlength="100" /></label
-            ><button type="button" id="pro-add">+ Add device</button
-            ><button type="button" id="pro-validate">Check structure</button
-            ><button type="button" id="pro-reset" class="quiet">
-              Reset sample ↺
-            </button>
-          </div>
-          <div class="pro-workspace">
-            <div class="canvas-desk">
-              <p class="canvas-help">
-                Select a device to edit. Drag to arrange, or use arrow keys on a
-                focused device.
-              </p>
-              <div
-                id="topology-canvas"
-                class="topology-canvas"
-                role="group"
-                aria-label="Sample topology canvas"
-              >
-                <svg
-                  id="topology-links"
-                  viewBox="0 0 1000 1000"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                ></svg>
-                <div id="topology-nodes"></div>
-              </div>
-              <div class="canvas-register">
-                <span id="pro-count">3 devices / 2 links</span
-                ><span>Local sample data</span>
-              </div>
-            </div>
-            <form id="node-form" class="property-desk" novalidate>
-              <h4>Device record</h4>
-              <p id="node-id" class="docket">Select a device</p>
-              <fieldset id="node-fields">
-                <legend class="sr-only">Selected device properties</legend>
-                <label for="node-name"
-                  >Name<input id="node-name" maxlength="100"
-                /></label>
-                <div class="field-pair">
-                  <label for="node-kind"
-                    >Kind<input id="node-kind" maxlength="100" /></label
-                  ><label for="node-image"
-                    >Image<input id="node-image" maxlength="200"
-                  /></label>
-                </div>
-                <label for="node-exec"
-                  >Exec <small>one command per line / stored text only</small
-                  ><textarea id="node-exec" rows="2"></textarea></label
-                ><label for="node-env"
-                  >Env <small>JSON object of string values</small
-                  ><textarea
-                    id="node-env"
-                    rows="2"
-                    aria-describedby="node-error"
-                  ></textarea></label
-                ><label for="node-binds"
-                  >Binds <small>one mount per line / stored text only</small
-                  ><textarea id="node-binds" rows="2"></textarea>
-                </label>
-                <div class="field-pair">
-                  <label for="node-x"
-                    >Position X (%)<input
-                      id="node-x"
-                      type="number"
-                      min="12"
-                      max="88"
-                      step="1" /></label
-                  ><label for="node-y"
-                    >Position Y (%)<input
-                      id="node-y"
-                      type="number"
-                      min="15"
-                      max="85"
-                      step="1"
-                  /></label>
-                </div>
-                <p id="node-error" class="error" role="alert"></p>
-                <div class="action-row">
-                  <button type="submit">Apply device</button
-                  ><button type="button" id="pro-remove-node" class="quiet">
-                    Remove device
-                  </button>
-                </div>
-              </fieldset>
-            </form>
-          </div>
-          <div class="link-desk">
-            <div>
-              <h4>Connections</h4>
-              <p class="muted">
-                New ordinary links receive the next unused
-                <code>ethN</code> interface on each device. Edit an existing
-                record to inspect its endpoints.
-              </p>
-              <ul id="link-list"></ul>
-            </div>
-            <form id="link-form" novalidate>
-              <h4 id="link-form-title">Create ordinary link</h4>
-              <div class="field-pair">
-                <label for="link-source"
-                  >Source device<select id="link-source"></select></label
-                ><label for="link-target"
-                  >Target device<select id="link-target"></select
-                ></label>
-              </div>
-              <div id="link-interface-fields" class="field-pair" hidden>
-                <label for="link-source-interface"
-                  >Source interface<input
-                    id="link-source-interface"
-                    maxlength="60" /></label
-                ><label for="link-target-interface"
-                  >Target interface<input
-                    id="link-target-interface"
-                    maxlength="60"
-                /></label>
-              </div>
-              <p id="link-error" class="error" role="alert"></p>
-              <div class="action-row">
-                <button id="link-submit" type="submit">Create link</button
-                ><button id="link-new" type="button" class="quiet" hidden>
-                  Cancel edit
-                </button>
-              </div>
-            </form>
-          </div>
-          <div class="validation-desk">
-            <div>
-              <h4>Structure findings</h4>
-              <p id="pro-status" role="status" aria-live="polite">
-                Sample ready. Select Check structure to inspect the record.
-              </p>
-              <ul id="pro-errors" aria-label="Structural errors"></ul>
-            </div>
-            <div class="export-desk">
-              <p class="docket">Preview data downloads</p>
-              <button id="pro-json" type="button">Sample JSON ↓</button
-              ><button id="pro-yaml" type="button">
-                Sample Containerlab YAML ↓
-              </button>
-              <p>
-                Browser-generated files only. Export uses applied edits. These
-                files do not launch a network or prove a native app save/export
-                journey.
-              </p>
-            </div>
-          </div>
-          <noscript
-            ><p class="no-script">
-              Enable JavaScript to edit the browser sample topology.
-            </p></noscript
-          >
-        </section>
+
         <dl class="evidence-rows">
           <div>
             <dt>Design record</dt>
@@ -420,7 +193,7 @@
             <dt>Structural scope</dt>
             <dd>
               Required fields, unique device IDs, link references and interface
-              use. The preview mirrors the Python structural validator.
+              use.
             </dd>
           </div>
           <div>
