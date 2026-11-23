@@ -39,8 +39,6 @@
 .title-brick[data-piece="24"]{--piece:24}
 .title-brick[data-piece="25"]{--piece:25}
 .title-brick[data-piece="26"]{--piece:26}
-.title-brick[data-piece="27"]{--piece:27}
-.title-brick[data-piece="28"]{--piece:28}
 @keyframes memory-settle{from{opacity:.65;transform:translate3d(0,1rem,0)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:no-preference){.hero-art{animation:memory-settle .8s ease-out .2s both}}
 

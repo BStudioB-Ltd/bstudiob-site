@@ -2,12 +2,29 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 
-test('MemGos listing links to its concept page without claiming availability', () => {
+test('MemGos listing uses the agreed headline and points to the project page', () => {
   const html = readFileSync('index.html', 'utf8');
-  assert.match(html, /href="\/MemGos\/"[^>]*><figure><img src="assets\/memgos\/memgos-mark\.svg"/);
+  assert.match(html, /href="\/MemGos\/"[^>]*><figure><img src="assets\/memgos\/memgos-brick-mark\.svg"/);
   assert.match(html, /<h2>MemGos<\/h2>/);
-  assert.match(html, /Early concept · feasibility research/);
-  assert.match(html, /Not yet available/);
+  assert.match(html, /Reconstruct your best moments/);
+  assert.match(html, /Exploring digital brick scenes/);
+});
+
+test('MemGos uses the approved headline and keeps the interactive build reachable', () => {
+  const page = readFileSync('MemGos/index.html', 'utf8');
+  const home = readFileSync('index.html', 'utf8');
+  assert.match(page, /aria-label="Reconstruct your best moments\."/);
+  assert.match(page, /href="interactive\/"[^>]*>Explore the interactive build/);
+  assert.match(home, /Reconstruct your best moments/);
+});
+
+test('MemGos page and homepage use the brick M mark', () => {
+  const page = readFileSync('MemGos/index.html', 'utf8');
+  const home = readFileSync('index.html', 'utf8');
+  assert.match(page, /assets\/memgos\/memgos-brick-mark\.svg/);
+  assert.match(home, /assets\/memgos\/memgos-brick-mark\.svg/);
+  assert.ok(existsSync('assets/memgos/memgos-brick-mark.svg'));
+  assert.ok(existsSync('assets/memgos/memgos-wordmark.svg'));
 });
 
 test('MemGos page states planned scope and credits the sample image', () => {
