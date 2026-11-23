@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" role="img" aria-labelledby="title desc">
+  <title id="title">MemGos</title>
+  <desc id="desc">A small stack of colourful brick shapes forms an abstract M.</desc>
+  <g stroke="#17212b" stroke-width="5" stroke-linejoin="round">
+    <g fill="#e34d43">
+      <path d="M44 124h54v62H44z"/><path d="M98 92h54v94H98z"/>
+      <path d="M152 92h54v94h-54z"/><path d="M206 124h54v62h-54z"/>
+      <path d="M44 111v13m54-43v13m54-13v13m54 7v13m54-3v13" fill="none" stroke="#17212b" stroke-width="2"/>
+    </g>
+    <g fill="#f5c84c" stroke-width="4">
+      <ellipse cx="71" cy="118" rx="10" ry="5"/><ellipse cx="125" cy="86" rx="10" ry="5"/>
+      <ellipse cx="179" cy="86" rx="10" ry="5"/><ellipse cx="233" cy="118" rx="10" ry="5"/>
+    </g>
+    <path d="M44 186h216v18H44z" fill="#39a7a0"/>
+    <g fill="#67c5bb" stroke-width="4"><ellipse cx="70" cy="185" rx="9" ry="4.5"/><ellipse cx="124" cy="185" rx="9" ry="4.5"/><ellipse cx="178" cy="185" rx="9" ry="4.5"/><ellipse cx="232" cy="185" rx="9" ry="4.5"/></g>
+  </g>
+</svg>
