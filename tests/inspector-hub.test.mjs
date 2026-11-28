@@ -14,6 +14,7 @@ const legacy = readFileSync(new URL('../trust-security.html', import.meta.url), 
 const sitemap = readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8');
 const homepage = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const llms = readFileSync(new URL('../llms.txt', import.meta.url), 'utf8');
+const proPage = readFileSync(new URL('../inspector/pro/index.html', import.meta.url), 'utf8');
 const proSection = (() => {
   const start = hub.indexOf('id="pro"');
   const end = hub.indexOf('id="pilot-enquiry"', start);
@@ -61,9 +62,10 @@ test('unreleased Pro targets are not clickable downloads', () => {
 test('Pro copy describes the current design preview and its sample exports accurately', () => {
   const pro = proSection;
   assert.match(pro, /visual topology design and structural\s+validation/i);
-  assert.match(pro, /Sample JSON/);
-  assert.match(pro, /Sample Containerlab YAML/);
-  assert.match(pro, /Browser-generated files only/i, 'sample exports are not presented as production deployment');
+  assert.match(pro, /href="pro\/"/i, 'the hub links to the dedicated Pro page');
+  assert.match(proPage, /Sample JSON/);
+  assert.match(proPage, /Sample Containerlab YAML/);
+  assert.match(proPage, /Browser-generated files only/i, 'sample exports are not presented as production deployment');
   assert.doesNotMatch(pro, /not\s+(?:a\s+)?network execution environment/i);
 });
 
