@@ -35,13 +35,13 @@ test('the study distinguishes the real source from the experimental build', () =
   }
 });
 
-test('the photo mosaic is a separately credited 2D study with section controls', () => {
+test('the interactive page focuses on the 3D study without the retired mosaic', () => {
   const page=readFileSync('MemGos/interactive/index.html','utf8');
-  for (const id of ['mosaic','mosaic-progress','mosaic-play','mosaic-reset']) assert.match(page,new RegExp(`id="${id}"`));
-  assert.match(page,/JuliaC2006/);
-  assert.match(page,/2D plate layout/);
-  assert.ok(existsSync('MemGos/interactive/radcliffe-photo.jpg'));
-  assert.ok(existsSync('MemGos/interactive/radcliffe-mosaic.png'));
+  const landing=readFileSync('MemGos/index.html','utf8');
+  for (const id of ['mosaic','mosaic-progress','mosaic-play','mosaic-reset']) assert.doesNotMatch(page,new RegExp(`id="${id}"`));
+  assert.doesNotMatch(page,/mosaic\.js|photo-study|2D plate layout/);
+  assert.doesNotMatch(landing,/mosaic|flat mosaic/i);
+  assert.match(landing,/radcliffe-model\.png/);
   assert.ok(existsSync('MemGos/interactive/LDRAW-CREDITS.txt'));
 });
 
