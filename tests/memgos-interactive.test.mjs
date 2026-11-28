@@ -35,14 +35,11 @@ test('the study distinguishes the real source from the experimental build', () =
   }
 });
 
-test('the photo mosaic is a separately credited 2D study with section controls', () => {
+test('the interactive study contains the 3D build without the retired mosaic', () => {
   const page=readFileSync('MemGos/interactive/index.html','utf8');
-  for (const id of ['mosaic','mosaic-progress','mosaic-play','mosaic-reset']) assert.match(page,new RegExp(`id="${id}"`));
-  assert.match(page,/JuliaC2006/);
-  assert.match(page,/2D plate layout/);
-  assert.ok(existsSync('MemGos/interactive/radcliffe-photo.jpg'));
-  assert.ok(existsSync('MemGos/interactive/radcliffe-mosaic.png'));
-  assert.ok(existsSync('MemGos/interactive/LDRAW-CREDITS.txt'));
+  assert.doesNotMatch(page,/mosaic|photo-study|radcliffe-photo/i);
+  assert.match(page,/<model-viewer/);
+  assert.match(page,/id="progress"/);
 });
 
 test('the updated car data, viewer and credits use versioned URLs', () => {
@@ -50,4 +47,17 @@ test('the updated car data, viewer and credits use versioned URLs', () => {
   for (const name of ['review-data.js','viewer.js','LDRAW-CREDITS.txt']) {
     assert.ok(page.includes(`${name}?v=trimmed-car-20261110`), `${name} must have the matching asset version`);
   }
+});
+
+test('project page presents a 3D study instead of the retired mosaic',()=>{
+ const page=readFileSync('MemGos/index.html','utf8');
+ assert.doesNotMatch(page,/mosaic/i);
+ assert.match(page,/radcliffe-model\.png/);
+ assert.match(page,/not physically built/i);
+});
+
+test('project page describes a location-first journey with photos as a later step',()=>{
+ const page=readFileSync('MemGos/index.html','utf8');
+ assert.match(page,/choose a place on a map/i);
+ assert.match(page,/photos and video.*later/i);
 });
